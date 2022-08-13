@@ -21,5 +21,6 @@ export const modList: Array<string> = [
     "rustyshakes",
     "streamelements",
     "thebutteredlugia",
+    "warpworldbot",
     "weakman2048"
 ];
