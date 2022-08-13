@@ -8,6 +8,7 @@ export const socialTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!discord",
         aliases: ["discord"],
+        cooldown: 300,
         action: "https://discord.gg/0X84YV4Sn1v0wyUa"
     }, {
         trigger: "!extralife",

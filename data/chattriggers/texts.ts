@@ -34,12 +34,6 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "have you ever",
         action: "Have you ever thought about what it would be like to be a bee??"
     }, {
-        trigger: "its him",
-        aliases: ["it's him"],
-        cooldown: 60,
-        announceCD: false,
-        action: "IT'S HIM MOOOO"
-    }, {
         trigger: "!itsnot",
         action: "\"It's not sexual!!\""
     }, {

@@ -78,6 +78,26 @@ export const actionTriggers: Array<ChatTriggerData> = [
             await app.obs.hideSource("SHILL MONTH", "** Mega Overlay");
         }
     }, {
+        trigger: "its him",
+        aliases: ["it's him"],
+        cooldown: 60,
+        announceCD: false, // "IT'S HIM MOOOO"
+        action: async (data) => {
+            let translations: Array<string> = [
+                "IT'S HIM", // English
+                "C'EST LUI", // French
+                "ES ÉL", // Spanish
+                "ANDIYAN NA SIYA", // Filipino
+                "01001001 01010100 00100111 01010011 00100000 01001000 01001001 01001101", // Binary
+                "495427532048494D", // Hexadecimal
+                "GHAH'E'", // Klingon
+                "Ha'S hon" // Elvish (Sindarin)
+            ];
+            let rand: number = Util.Math.getRandomIntegerInclusive(0, translations.length - 1);
+            let output: string = translations[rand] + " MOOOO";
+            app.twitch.bot.say(output);
+        }
+    }, {
         trigger: "!jamm",
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
