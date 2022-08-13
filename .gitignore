@@ -23,7 +23,6 @@
 /vendor
 
 data/badwords.ts
-data/modlist.ts
 data/secrets.ts
 data/webhookURLs.ts
 
