@@ -21,6 +21,10 @@ export const socialTriggers: Array<ChatTriggerData> = [
         trigger: "!gartic",
         action: "https://www.carefreebomb.com/joingartic"
     }, {
+        trigger: "!github",
+        aliases: ["!git", "!code", "!fx2"],
+        action: "https://github.com/lucasgerrits/BombFX2"
+    }, {
         trigger: "!gmod",
         aliases: ["!ttt"],
         action: "Thanks to @DRock4Real1324 for hosting the server! - IP: 65.31.255.217 Password: bombsquad"
