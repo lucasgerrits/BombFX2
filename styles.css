@@ -1,0 +1,77 @@
+
+@font-face {
+    font-family: 'Nunito Bold';
+    src: url('ac/fonts/Nunito-Bold.ttf') format('truetype');
+}
+ 
+body {
+    margin: 0px;
+}
+
+#app {
+    position: absolute;
+    top: 1090px;
+    left: 0;
+}
+
+#fx-box, #vfx-box, #click-box {
+    width: 1920px;
+    height: 1080px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#fx-box {
+    border: 0px solid red;
+    z-index: 1;
+}
+
+#vfx-box {
+    border: 0px solid yellow;
+    text-align: center;
+    z-index: 2;
+}
+
+#click-box {
+    border: 0px solid blue;
+    text-align: center;
+    z-index: 3;
+}
+
+#video-player {
+    border: 0px solid purple;
+    margin: auto;
+    max-width: 1920px;
+    height: 100%;
+    position: relative;
+}
+
+.click-fade-in {
+    opacity: 1.0;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.click-fade-out {
+    opacity: 0.0;
+    animation: fadeOut 1.0s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0.0;
+    }
+}

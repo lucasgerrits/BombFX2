@@ -1,0 +1,26 @@
+
+@font-face {
+   font-family: 'Lucida Casual';
+   src: url('fonts/lucida-casual.ttf') format('truetype');
+}
+
+#sunnyBG {
+   background-color: #000000;
+   width: 1920px;
+   height: 1080px;
+   text-align: center;
+   vertical-align: middle;
+   display: table-cell;
+}
+
+#sunnyText {
+   font-family: 'Lucida Casual';
+   font-style: italic;
+   font-weight: bold;
+   font-size: 48pt;
+   color: #FFFFFF;
+   margin: auto;
+   text-align: center;
+   display: inline-block;
+}
+

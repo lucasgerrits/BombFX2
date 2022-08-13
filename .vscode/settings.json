@@ -1,0 +1,23 @@
+{
+    "files.exclude": {
+        "**/*.js": {"when": "$(basename).ts"},
+        "**/*.js.map": true,
+        "**/*.webm": true,
+        "**/*.mov": true,
+        "**/*.mp4": true,
+        "**/*.png": true,
+        "**/*.jpg": true,
+        "**/*.gif": true,
+        "**/*.psd": true,
+        "**/*.mp3": true,
+        "**/*.wav": true,
+        "**/*.oga": true,
+        "**/*.ogg": true,
+        "**/*.m4a": true,
+        "**/*.aup": true,
+        "**/*.au": true,
+        "**/*.7z": true,
+        "**/*.ttf": true,
+        "**/*.lnk": true
+    }
+}

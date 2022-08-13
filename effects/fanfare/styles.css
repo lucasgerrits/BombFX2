@@ -1,0 +1,48 @@
+
+@font-face {
+   font-family: 'Joystix Monospace';
+   src: url('fonts/joystix-monospace.ttf') format('truetype');
+}
+
+#metroid-item-box {
+   /*display: inline-block;*/
+   background-color: #030003;
+   padding: 25px;
+   padding-left: 110px;
+   padding-right: 110px;
+   margin: 0 auto;
+   margin-top: 450px;
+   font-family: 'Joystix Monospace', sans-serif;
+   font-size: 2.5em;
+   color: #ed5490;
+   text-align: center;
+   vertical-align: middle;
+   width: fit-content;
+   max-width: 1700px;
+}
+
+@keyframes itemBoxGrow {
+   0% {
+      transform: scaleY(0);
+   }
+   100% {
+      transform: scaleY(1);
+   }
+}
+
+.item-box-grow {
+   animation: itemBoxGrow .3s ease-in;
+}
+
+@keyframes itemBoxShrink {
+   0% {
+      transform: scaleY(1);
+   }
+   100% {
+      transform: scaleY(0);
+   }
+}
+
+.item-box-shrink {
+   animation: itemBoxShrink .3s ease-in;
+}

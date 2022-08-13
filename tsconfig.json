@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        //"allowSyntheticDefaultImports": true,
+        //"moduleResolution": "Node",
+        "sourceMap": true,
+        "target": "es2020",
+        "strict": true,
+        "strictNullChecks": false,
+        "noImplicitOverride": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": false,
+        "watch": true,
+        "typeRoots": [
+            "./types/",
+            "node_modules/@types"
+        ]
+    },
+    "exclude": ["./vendor"]
+}
