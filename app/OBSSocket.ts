@@ -1,6 +1,6 @@
 import { BombFX } from './BombFX.js';
-import { secrets } from '../data/secrets.js';
 import { Logger } from './Logger.js';
+import { secrets } from '../data/secrets.js';
 import { streamEventList } from '../data/streamEventList.js';
 import { transitionsList } from '../data/transitionsList.js';
 import { Util } from './Util.js';

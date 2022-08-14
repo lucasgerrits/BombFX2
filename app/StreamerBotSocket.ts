@@ -1,6 +1,7 @@
 import { BombFX } from './BombFX.js';
 import { Logger } from './Logger.js';
 import { Util } from './Util.js';
+import { secrets } from '../data/secrets.js';
 
 declare var app: BombFX;
 
@@ -9,8 +10,12 @@ export class StreamerBotSocket {
     private socket: WebSocket;
 
     constructor() {
-        let address: string = "ws://127.0.0.1:8080/sb";
-        this.socket = new WebSocket(address);
+        let address: string = secrets.sbotSocket.address;
+        let port: string = secrets.sbotSocket.port;
+        let endpoint: string = secrets.sbotSocket.endpoint;
+        
+        let fullAddress: string = "wss://" + address + ":" + port + "/" + endpoint;
+        this.socket = new WebSocket(fullAddress);
         this.setEventHandlers();
     }
 
