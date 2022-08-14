@@ -1,7 +1,7 @@
 import { BombFX } from "../app/BombFX.js";
 import { CowReward } from "../effects/cow/Cow.js";
+import { hostURLs, webhookURLs } from "./urls.js";
 import { Util } from "../app/Util.js";
-import { webhookURLs } from "./webhookURLs.js";
 
 declare var app: BombFX;
 
@@ -24,7 +24,8 @@ export const streamEventList = {
 
     stop: async () => {
         // Post Cow Launch Top 10 to Announcements
-        let result = await Util.Web.makeRequest("https://www.carefreebomb.com/cows/leaderboard.php?format=webhook");
+        let url: string = hostURLs.cowLeaderboard + "?format=webhook";
+        let result = await Util.Web.makeRequest(url);
         let msg: string = "CFB programmed me to thank you for joining us! Another stream may have ended, but the milk is always on tap.\n\n";
         msg += result.response;
         let hookURL: string = webhookURLs.announcements;

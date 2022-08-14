@@ -6,7 +6,7 @@ import { Logger } from '../../app/Logger.js';
 import { Reward } from '../../app/twitch/Reward.js';
 import { RewardTriggerData } from '../../app/EventTriggerData.js';
 import { Util } from '../../app/Util.js';
-import { webhookURLs } from '../../data/webhookURLs.js';
+import { webhookURLs } from '../../data/urls.js';
 import type { TakeSourceScreenshotResponse } from '../../types/OBSSocketTypes.js';
 
 declare var app: BombFX;

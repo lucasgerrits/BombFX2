@@ -1,0 +1,58 @@
+
+:root {
+    --cow-char-width: 115px;
+}
+
+#cow-name-box {
+    width: 1840px;
+    height: 170px;
+    border: 0px solid yellow;
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: #FFFFFF;
+    font-size: 36pt;
+    overflow: hidden;
+}
+
+#cow-name-box img {
+    width: var(--cow-char-width);
+    margin: 0px;
+    padding: 0px;
+    border: 0px solid purple;
+}
+
+#cow-launches-box {
+    width: 600px;
+    height: 200px;
+    border: 0px solid green;
+    text-align: center;
+    position: absolute;
+    top: 310px;
+    left: 660px;
+    color: #FFFFFF;
+    font-size: 36pt;
+}
+
+#cow-rank-box {
+    width: 1000px;
+    height: 200px;
+    border: 0px solid blue;
+    text-align: right;
+    position: absolute;
+    bottom: 100px;
+    right: 60px;
+    color: #FFFFFF;
+    font-size: 36pt;
+}
+
+#cow-rank-box img {
+    width: 80px;
+}
+
+#cow-rank-box .cow-space {
+    width: 50px;
+}

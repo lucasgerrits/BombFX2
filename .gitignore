@@ -24,7 +24,7 @@
 
 data/badwords.ts
 data/secrets.ts
-data/webhookURLs.ts
+data/urls.ts
 
 audio/
 fonts/
@@ -37,7 +37,8 @@ video/
 videos/
 
 effects/ankha/
-effects/cow/
+effects/cow/char/
+effects/cow/kowna/
 effects/disrespect/
 effects/greetings/
 effects/hardware/

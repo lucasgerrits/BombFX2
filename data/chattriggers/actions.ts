@@ -1,19 +1,18 @@
 import { Barkeep } from "../../effects/barkeep/Barkeep.js";
 import { BombFX } from "../../app/BombFX.js";
+import { ChatEventTriggerData } from "../../app/EventTriggerData.js";
+import { Effect } from "../../app/Effect.js";
+import { EventTriggerData } from '../../app/EventTriggerData.js';
+import { hostURLs, webhookURLs } from "../urls.js";
+import { JamBreak } from "../../effects/jambreak/JamBreak.js";
 import { PantsGrab } from "../../effects/commands/pantsgrab/PantsGrab.js";
 import { Pineapple } from "../../effects/commands/pineapple/Pineapple.js";
 import { Spray } from "../../effects/commands/spray/Spray.js";
 import { streamEventList } from "../streamEventList.js";
 import { UserLevel } from '../../app/Enums.js';
 import { Util } from "../../app/Util.js";
-import { webhookURLs } from "../webhookURLs.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
 import type { CommandEventData } from "../../types/ComfyTypes.js";
-import { Effect } from "../../app/Effect.js";
-import { ChatEventTriggerData } from "../../app/EventTriggerData.js";
-
-import { JamBreak } from "../../effects/jambreak/JamBreak.js";
-import { EventTriggerData } from '../../app/EventTriggerData.js';
 
 declare var app: BombFX;
 
@@ -43,7 +42,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
             if (data.message !== "") {
                 userToCheck = data.message;
             }
-            let url: string = "https://www.carefreebomb.com/cows/getcount.php?user=" + userToCheck;
+            let url: string = hostURLs.getCowLaunchCount + "?user=" + userToCheck;
             let result: any = await Util.Web.makeRequest(url);
             let msg: string = result.response;
             app.twitch.bot.say(msg);
@@ -111,7 +110,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "!leaderboard",
-        action: "https://www.carefreebomb.com/cows/leaderboard.php",
+        action: hostURLs.cowLeaderboard,
         fetch: true
     }, {
         trigger: "!louder",
@@ -213,7 +212,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!sounds",
         action: async (data) => {
-            let url: string = "https://www.carefreebomb.com/sfx/getpage.php?page=" + data.message;
+            let url: string = hostURLs.sfxPageNumber + "?page=" + data.message;
             let result: any = await Util.Web.makeRequest(url);
             let msg: string = result.response;
             app.twitch.bot.say(msg);

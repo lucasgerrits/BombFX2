@@ -1,7 +1,7 @@
 import { BombFX } from './BombFX.js';
 import { Logger } from './Logger.js';
 import { badWords } from '../data/badwords.js';
-import { webhookURLs } from '../data/webhookURLs.js';
+import { hostURLs, webhookURLs } from '../data/urls.js';
 
 declare var app: BombFX;
 
@@ -211,7 +211,8 @@ export class Util {
     public static Vars = class {
 
         public static async get(varName: string): Promise<boolean | string> {
-            let result: any = await Util.Web.makeRequest("https://www.carefreebomb.com/data/get_variable.php?var=" + varName);
+            let url: string = hostURLs.varGet + "?var=" + varName;
+            let result: any = await Util.Web.makeRequest(url);
             let value: string = result.response;
             // Converting truthy string into bool
             if (value == "true") {
@@ -235,7 +236,7 @@ export class Util {
         }
 
         public static async set(varName: string, value: string): Promise<any> {
-            let url: string = "https://www.carefreebomb.com/data/set_variable.php?var=" + varName + "&val=" + value;
+            let url: string = hostURLs.varSet + "?var=" + varName + "&val=" + value;
             let result = await Util.Web.makeRequest(url);
             return result;
         }
