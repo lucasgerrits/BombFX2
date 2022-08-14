@@ -18,7 +18,8 @@ Note: This project currently relies on specifically v4.0.3 with a push to v5 soo
 
 ## Interfaces With
 
-* [Streamer.bot](https://www.streamer.bot/) - for Windows Speech Recognition and VoiceMod
+* [Streamer.bot](https://www.streamer.bot/) - for Windows Speech Recognition and VoiceMod.
+* [Heat](https://heat.j38.net/) - a Twitch Extension that allows for user engagement through clicking directly on the video.
 
 ## Built With
 
