@@ -31,9 +31,11 @@ Note: This project currently relies on specifically v4.0.3 with a push to v5 soo
 ## FAQ
 
 Q: Why isn't this a Node app
+
 A: Spaghetti
 
 Q: Why don't you just use Streamer.bot / SAMMI / MixItUp / Biku
+
 A: Spaghetti
 
 ## Obligatory Shill
