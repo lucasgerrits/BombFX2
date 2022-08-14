@@ -13,8 +13,8 @@ export class StreamerBotSocket {
         let address: string = secrets.sbotSocket.address;
         let port: string = secrets.sbotSocket.port;
         let endpoint: string = secrets.sbotSocket.endpoint;
-        
-        let fullAddress: string = "wss://" + address + ":" + port + "/" + endpoint;
+
+        let fullAddress: string = "ws://" + address + ":" + port + "/" + endpoint;
         this.socket = new WebSocket(fullAddress);
         this.setEventHandlers();
     }
