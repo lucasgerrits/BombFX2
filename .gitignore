@@ -20,7 +20,7 @@
 *.js
 *.js.map
 
-/vendor
+/vendor/*
 
 data/badwords.ts
 data/secrets.ts
