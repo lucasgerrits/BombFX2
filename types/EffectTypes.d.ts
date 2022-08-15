@@ -10,8 +10,8 @@ export type CowLaunchData = {
 
 export type JamBreakData = {
     name: string,
-    source: string,
-    duration: number,
+    action: string | (() => Promise<void>),
+    duration?: number,
     chatText?: string
 }
 

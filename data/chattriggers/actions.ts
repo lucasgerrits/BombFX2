@@ -98,6 +98,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "!jamm",
+        aliases: ["!jammbreak", "!jam", "!jambreak"],
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
             if (data.message === "") {
