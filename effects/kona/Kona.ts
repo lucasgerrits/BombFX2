@@ -10,9 +10,9 @@ export class Kona {
         "Bobbius",
         "CFBB",
         "Dorororo1",
+        "Dorororo2",
         "Eazy",
         "HarlHarlHarl",
-        "Hockey",
         "OG",
         "Walpo",
         "Wustyo"
