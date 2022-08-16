@@ -271,7 +271,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!vfx",
         aliases: ["!videos", "!videolist"],
-        action: "boned, catjam, cena, chocolate, coffin, confused, dante, disappear, doit, donuts, duckhuntdog, eyboss, frydrool, frythink, game, guns, hannibal, hello, kirby, ko, manydoors, math, milk, miyamoto, nokids, notfunny, ohh, pizzatime, place, popuko, prettygood, profanity, ready, scream, scum, showme, soccer, stop, thatshot, therules, torture, totsugeki, totsugeki2, trap, tunes, wasted, wow, youdied"
+        action: "boned, catjam, cena, chocolate, coffin, confused, dance, dante, disappear, doit, donuts, duckhuntdog, eyboss, frydrool, frythink, game, guns, hannibal, hello, kirby, ko, manydoors, math, milk, miyamoto, nokids, notfunny, nou, nouwu, ohh, pizzatime, place, popuko, prettygood, profanity, ready, scream, scum, showme, soccer, stop, thatshot, therules, torture, totsugeki, totsugeki2, trap, tunes, wasted, wow, youdied"
     }, {
         trigger: "!yoda",
         action: async (data) => {

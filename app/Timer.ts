@@ -1,6 +1,6 @@
 import { BombFX } from './BombFX.js';
-import { Kona } from '../effects/kona/Kona.js';
 import { Logger } from './Logger.js';
+import { timers } from '../data/timers.js';
 import { Util } from "./Util.js";
 
 declare var app: BombFX;
@@ -27,7 +27,7 @@ export class ChatTimer extends Timer {
 }
 
 export class TimerMap {
-    private enabled: boolean = false;
+    private enabled: boolean = true;
     private map: Map<string, Timer>
 
     constructor() {
@@ -40,20 +40,8 @@ export class TimerMap {
     }
 
     private setTimers(): void {
-        this.map.set("kona", new Timer(
-            Kona.determineInterval(),
-            () => {
-                Kona.wave();
-            }
-        ));
-        this.map.set("dice", new Timer(
-            Util.Time.minToMS(60),
-            () => {
-                let diceStr: string = "/announce To meet the best " + 
-                    "followers, viewers, primes, and streamer, tune in " + 
-                    "to twitch .tv/Dice_The_Vice (remove the space)";
-                app.twitch.bot.say(diceStr, true);
-            }
-        ));
+        timers.forEach((t) => {
+            this.map.set(t.name, new Timer(t.interval, t.action));
+        });
     }
 }

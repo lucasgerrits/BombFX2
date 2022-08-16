@@ -32,3 +32,10 @@ export type SceneTransition = {
     to: (data: TransitionBeginEvent) => Promise<void>,
     from: (data: TransitionBeginEvent) => Promise<void>
 }
+
+export type TimerData = {
+    name: string,
+    enabled: boolean,
+    interval: number,
+    action: () => Promise<void>
+}
