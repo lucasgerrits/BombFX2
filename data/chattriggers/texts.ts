@@ -1,4 +1,8 @@
+import { BombFX } from "../../app/BombFX.js";
+import { Util } from "../../app/Util.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
+
+declare var app: BombFX;
 
 export const textTriggers: Array<ChatTriggerData> = [
     {
@@ -33,6 +37,13 @@ export const textTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "have you ever",
         action: "Have you ever thought about what it would be like to be a bee??"
+    }, {
+        trigger: "itchy",
+        action: async () => {
+            app.twitch.bot.say("Itchy.");
+            await Util.sleep(1000);
+            app.twitch.bot.say("Tasty.");
+        }
     }, {
         trigger: "!itsnot",
         action: "\"It's not sexual!!\""
