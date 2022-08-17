@@ -111,7 +111,7 @@ export class OBSSocket {
     }
 
     public async restartMedia(sourceName: string) {
-        this.socket.send('RestartMedia', {
+        await this.socket.send('RestartMedia', {
             "sourceName" : sourceName,
         });
     }

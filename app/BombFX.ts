@@ -29,11 +29,11 @@ export class BombFX {
         Logger.bomb("Bomb FX 2 Loading...");
         
         this.tts = new TextToSpeech();
+        this.sbot = new StreamerBotSocket();
         this.twitch = new Twitch();
         this.obs = new OBSSocket();
-        this.sbot = new StreamerBotSocket();
         this.heat = new Heat();
-
+        
         this.timers = new TimerMap();
         this.setEffectQueues();
         

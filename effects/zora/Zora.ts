@@ -1,6 +1,7 @@
 import { BombFX } from '../../app/BombFX.js';
 import { Effect } from '../../app/Effect.js';
 import { EffectQueueName } from '../../app/EffectQueue.js';
+import { Logger } from '../../app/Logger.js';
 import { Reward } from '../../app/twitch/Reward.js';
 import { Util } from '../../app/Util.js';
 
@@ -36,6 +37,7 @@ export class Zora extends Effect {
         
         // While King Zora has not yet reached left edge, scoot left
         while (x > endX) {
+            await this.pleaseHold();
             x -= scootAmount;
             await this.moveKingZora(x, scootTime);
         }
@@ -47,10 +49,29 @@ export class Zora extends Effect {
         await app.obs.showFilter("** Videos", "Zora - Reset");
     }
     
-    private async moveKingZora(newX: number, duration: number) {
+    private async pleaseHold(): Promise<void> {
+        let chance: number = 2;
+        let waitMinInSec: number = 3;
+        let waitMaxInSec: number = 15;
+
+        // There is a chance to make him wait
+        let roll: number = Util.Math.getRandomIntegerInclusive(1, 100);
+        if (roll <= chance) {
+            // Random wait time
+            let waitInSec: number = Util.Math.getRandomIntegerInclusive(waitMinInSec, waitMaxInSec);
+            let waitInMS: number = waitInSec * 1000;
+            Logger.noise("Waiting " + waitInSec + " seconds for scoots.");
+            app.twitch.bot.say("PauseFish", true);
+            await Util.sleep(waitInMS);
+            app.twitch.bot.say("OOOO", true);
+        }
+    }
+
+    private async moveKingZora(newX: number, duration: number): Promise<void> {
         // Adjust Move Source filter settings
         let transform_text: string = "pos: x " + newX + 
             ".0 y 378.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0";
+        //Logger.noise("Sending filter settings");
         await app.obs.send('SetSourceFilterSettings', {
             "sourceName" : "** Videos",
             "filterName" : "Zora - Move",
@@ -65,19 +86,30 @@ export class Zora extends Effect {
                 "transform_text" : transform_text
             }
         });
-        await Util.sleep(300);
+        //Logger.noise("Sent filter settings");
+        await Util.sleep(100);
 
         // Apply the filter and replay video
-        await app.obs.showFilter("** Videos", "Zora - Move");
-        await app.obs.restartMedia("King Zora");
-        await app.obs.playMedia("King Zora");
-        await Util.sleep(200);
+        
+        //Logger.noise("Playing media");
+        app.obs.playMedia("King Zora");
 
+        await Util.sleep(350);
+
+        //Logger.bomb("Restarting media");
+        app.obs.restartMedia("King Zora");
+
+        await Util.sleep(550);
+        
+        //Logger.bomb("Starting move filter");
+        app.obs.showFilter("** Videos", "Zora - Move");
+        
         this.scootSound();
-        await Util.sleep(duration + 200);
+        await Util.sleep(duration + 25);
     }
 
-    private scootSound(): void {
+    private async scootSound(): Promise<void> {
+        await Util.sleep(650);
         let num: number = Util.Math.getRandomIntegerInclusive(1, 3);
         let filename = "effects/zora/scoot" + num + ".mp3";
         Util.playSound(filename);
