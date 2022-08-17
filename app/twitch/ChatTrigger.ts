@@ -54,7 +54,7 @@ export class ChatTrigger {
         this.eventData = eventIn;
 
         // First determine if user is proper level
-        if (this.checkIfRequiredUserLevel()) {
+        if (this.checkIfPermittedUser() || this.checkIfRequiredUserLevel()) {
             // Then determine if trigger is still on cooldown from previous use
             if (!this.checkIfOnCooldown()) {
                 // If it was not (and has a cd time set), it is now
@@ -89,6 +89,14 @@ export class ChatTrigger {
             return true;
         } else {
             app.twitch.bot.say("Sorry, " + this.eventData.user + ", but you just ain't poggy enough for that command.");
+            return false;
+        }
+    }
+
+    private checkIfPermittedUser(): boolean {
+        if (this.triggerData.permittedUsers && this.triggerData.permittedUsers.includes(this.eventData.user)) {
+            return true;
+        } else {
             return false;
         }
     }

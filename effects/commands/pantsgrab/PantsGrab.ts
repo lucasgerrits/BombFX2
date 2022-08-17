@@ -18,7 +18,7 @@ export class PantsGrab {
             return;
         }
 
-        Util.playSoundForDuration("effects/pantsgrab/OHHHH.mp3", 2000);
+        Util.playSoundForDuration("effects/commands/pantsgrab/OHHHH.mp3", 2000);
 
         await app.obs.showSource("PantsGrab", "** Mega Overlay");
 

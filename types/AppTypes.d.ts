@@ -10,6 +10,7 @@ export type ChatTriggerData = {
     cooldown?: number,
     announceCD?: boolean,
     userLevel?: UserLevel,
+    permittedUsers?: string[],
     fetch?: boolean,
     action: string | ((data?: ChatEventData | CommandEventData) => Promise<void>)
 }

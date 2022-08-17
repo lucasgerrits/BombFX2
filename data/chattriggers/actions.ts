@@ -148,11 +148,13 @@ export const actionTriggers: Array<ChatTriggerData> = [
             let msg: string = obj.contents.translated;
             app.twitch.bot.say(msg);
         }
-    }, /*{
-        trigger: "PantsGrab",
+    }, {
+        trigger: "pantsgrab",
+        userLevel: UserLevel.Broadcaster,
+        permittedUsers: ["Currrrt", "RustyShakes"],
         cooldown: 60,
         action: async () => { PantsGrab.these(); }
-    },*/ {
+    }, {
         trigger: "!pineapple",
         cooldown: 10,
         action: async () => { Pineapple.check(); }
