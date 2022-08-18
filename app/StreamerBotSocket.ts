@@ -2,12 +2,14 @@ import { BombFX } from './BombFX.js';
 import { Logger } from './Logger.js';
 import { Util } from './Util.js';
 import { secrets } from '../data/secrets.js';
+import { streamerBotTriggers } from '../data/streamerBotTriggers.js';
 
 declare var app: BombFX;
 
 export class StreamerBotSocket {
 
     private socket: WebSocket;
+    private triggerMap: Map<string, () => Promise<void>>;
 
     constructor() {
         let address: string = secrets.sbotSocket.address;
@@ -16,7 +18,14 @@ export class StreamerBotSocket {
 
         let fullAddress: string = "ws://" + address + ":" + port + "/" + endpoint;
         this.socket = new WebSocket(fullAddress);
+        this.fillMap();
         this.setEventHandlers();
+    }
+
+    private fillMap() {
+        this.triggerMap = new Map<string, () => Promise<void>>(
+            streamerBotTriggers.map(t => [t.name, t.action])
+        );
     }
 
     private setEventHandlers(): void {
@@ -52,16 +61,14 @@ export class StreamerBotSocket {
             if (data.hasOwnProperty("data")) { data = data.data; }
 
             // Was message type specified
-            if (data.hasOwnProperty("type")) {
+            if (data.hasOwnProperty("name")) {
                 //console.log(data);
-                let type = data.type;
+                let name = data.name;
 
-                // Request for Text-To-Speech
-                if (type === "tts") {
-                    app.tts.say(data.message);
-                // Request to perform some action
-                } else if (type === "function") {
-                    // Likely needs to be recreated for TS version
+                // Function request FROM a Streamer.bot Action
+                if (this.triggerMap.has(name)) {
+                    let action: Function = this.triggerMap.get(name);
+                    action(data);
                 }
             }
         }
