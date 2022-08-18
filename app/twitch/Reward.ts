@@ -1,6 +1,6 @@
 import { Effect } from '../Effect.js';
 import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets.js';
+import { secrets } from '../../data/secrets/secrets.js';
 import type { RewardSettings } from '../../types/ComfyTypes.js';
 
 declare var ComfyJS: any;

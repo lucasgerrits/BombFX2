@@ -1,7 +1,7 @@
 import { BombFX } from './BombFX.js';
 import { Logger } from './Logger.js';
-import { badWords } from '../data/badwords.js';
-import { hostURLs, webhookURLs } from '../data/urls.js';
+import { badWords } from '../data/secrets/badwords.js';
+import { hostURLs, webhookURLs } from '../data/secrets/urls.js';
 
 declare var app: BombFX;
 

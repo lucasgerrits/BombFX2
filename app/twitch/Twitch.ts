@@ -7,7 +7,7 @@ import { modList } from '../../data/modlist.js';
 import { Reward } from './Reward.js';
 import { RewardMap } from './RewardMap.js';
 import { RewardTriggerData } from '../EventTriggerData.js';
-import { secrets } from '../../data/secrets.js';
+import { secrets } from '../../data/secrets/secrets.js';
 import { Util } from '../Util.js';
 
 declare var app: BombFX;

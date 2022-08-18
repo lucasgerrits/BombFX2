@@ -21,10 +21,7 @@
 *.js.map
 
 /vendor/*
-
-data/badwords.ts
-data/secrets.ts
-data/urls.ts
+data/secrets/*
 
 audio/
 fonts/

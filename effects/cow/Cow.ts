@@ -1,5 +1,5 @@
 import { BombFX } from '../../app/BombFX.js';
-import { hostURLs } from '../../data/urls.js';
+import { hostURLs } from '../../data/secrets/urls.js';
 import { Effect } from '../../app/Effect.js';
 import { EffectQueueName } from '../../app/EffectQueue.js';
 import { Logger } from '../../app/Logger.js';

@@ -4,7 +4,7 @@ import { ChatTrigger } from './ChatTrigger.js';
 import { DonutBreak } from '../../effects/donut/Donut.js';
 import { GreetingMap } from './GreetingMap.js';
 import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets.js';
+import { secrets } from '../../data/secrets/secrets.js';
 import { TriggerMap } from './TriggerMap.js';
 import { Util } from '../Util.js';
 import type { ChatEventData, CheerEventData, CommandEventData } from '../../types/ComfyTypes.js';

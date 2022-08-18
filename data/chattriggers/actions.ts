@@ -3,7 +3,7 @@ import { BombFX } from "../../app/BombFX.js";
 import { ChatEventTriggerData } from "../../app/EventTriggerData.js";
 import { Effect } from "../../app/Effect.js";
 import { EventTriggerData } from '../../app/EventTriggerData.js';
-import { hostURLs, webhookURLs } from "../urls.js";
+import { hostURLs, webhookURLs } from "../secrets/urls.js";
 import { JamBreak } from "../../effects/jambreak/JamBreak.js";
 import { PantsGrab } from "../../effects/commands/pantsgrab/PantsGrab.js";
 import { Pineapple } from "../../effects/commands/pineapple/Pineapple.js";

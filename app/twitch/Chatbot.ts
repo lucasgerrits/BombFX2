@@ -1,5 +1,5 @@
 import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets.js';
+import { secrets } from '../../data/secrets/secrets.js';
 import { Util } from '../Util.js';
 
 declare var tmi: any;

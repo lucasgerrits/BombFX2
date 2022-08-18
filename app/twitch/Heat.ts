@@ -1,6 +1,6 @@
 import { BombFX } from "../BombFX.js";
 import { Logger } from "../Logger.js";
-import { secrets } from "../../data/secrets.js";
+import { secrets } from "../../data/secrets/secrets.js";
 import type { ClickData } from "../../types/HeatTypes";
 
 declare var app: BombFX;
