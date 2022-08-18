@@ -46,6 +46,7 @@ export class Effect {
         if (this.queueType !== EffectQueueName.None) {
             Logger.bomb(this.constructor.name + " Ended");
         }
+        app.tts.speaker.onended = null;
         this.next();
     }
 

@@ -7,23 +7,23 @@ import { Util } from '../../app/Util.js';
 
 declare var app: BombFX;
 
-export class YodaReward extends Reward {
-    public static override id: string = "a5a12697-258e-4d3b-addb-0d1fbac88b16";
-    public static override title: string = "Yoda TTS";
-    public static override cost: number = 1200;
+export class TheWordReward extends Reward {
+    public static override id: string = "dd5ca1f3-c846-442a-b4a0-519ad21166ad";
+    public static override title: string = "Forbidden Word";
+    public static override cost: number = 700;
     
     constructor() {
-        super(YodaReward.id, YodaReward.title, new Yoda());
+        super(TheWordReward.id, TheWordReward.title, new TheWord());
     }
 }
 
-export class Yoda extends Effect {
+export class TheWord extends Effect {
     constructor() {
-        super(EffectQueueName.Main);
+        super(EffectQueueName.None);
     }
     
     public override async start(): Promise<void> {
         // message, rawInputEscaped
-        app.sbot.doAction("Read My Message", { "message": this.triggerData.message });
+        app.sbot.doAction("Set Forbidden Word", { "rawInput": this.triggerData.message });
     }
 }

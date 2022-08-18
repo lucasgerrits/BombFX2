@@ -1,7 +1,7 @@
 import { AguaReward } from '../effects/agua/Agua.js';
 import { BattletoadsReward } from '../effects/battletoads/Battletoads.js';
 import { BigPPReward } from '../effects/bigpp/BigPP.js';
-import { ButtsbotWordReward, CloneHeroRequestReward, FiveMinPaintReward, SubparImpressionReward, TypeRacerBreakReward } from '../effects/misc/MiscRewards.js';
+import { ButtsbotWordReward, CloneHeroRequestReward, FiveMinPaintReward, NutButtonReward, SubparImpressionReward, TypeRacerBreakReward } from '../effects/misc/MiscRewards.js';
 import { CodecReward } from '../effects/codec/Codec.js';
 import { CowReward, GoldenCowReward } from '../effects/cow/Cow.js';
 import { CrimbobReward } from '../effects/crimbob/Crimbob.js';
@@ -17,12 +17,12 @@ import { SFXReward, SFXBombReward, SFXDoubleSpeedReward, SFXQuarterSpeedReward }
 import { SpacebarReward } from '../effects/spacebar/Spacebar.js';
 import { SunnyReward } from '../effects/sunny/Sunny.js';
 import { SuplexReward } from '../effects/suplex/Suplex.js';
+import { TheWordReward } from '../effects/secretword/TheWord.js';
 import { TimeWarpReward } from '../effects/timewarp/TimeWarp.js';
 import { VFXReward } from '../effects/vfx/VFX.js';
 import { YodaReward } from '../effects/yoda/Yoda.js';
 import { ZoraReward } from '../effects/zora/Zora.js';
 import type { RewardMapping } from '../types/AppTypes';
-
 
 export const rewardsList: Array<RewardMapping> = [
     { key: AguaReward.id, value: new AguaReward() },
@@ -41,6 +41,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: JamBreakReward.id, value: new JamBreakReward() },
     { key: NiceReward.id, value: new NiceReward() },
     { key: NotifsReward.id, value: new NotifsReward() },
+    { key: NutButtonReward.id, value: new NutButtonReward() },
     { key: OrbReward.id, value: new OrbReward() },
     { key: PanicSwitchReward.id, value: new PanicSwitchReward() },
     { key: SFXReward.id, value: new SFXReward() },
@@ -51,9 +52,10 @@ export const rewardsList: Array<RewardMapping> = [
     { key: SubparImpressionReward.id, value: new SubparImpressionReward() },
     { key: SunnyReward.id, value: new SunnyReward() },
     { key: SuplexReward.id, value: new SuplexReward() },
+    { key: TheWordReward.id, value: new TheWordReward() },
     { key: TimeWarpReward.id, value: new TimeWarpReward() },
     { key: TypeRacerBreakReward.id, value: new TypeRacerBreakReward() },
     { key: VFXReward.id, value: new VFXReward() },
-    //{ key: YodaReward.id, value: new YodaReward() },
+    { key: YodaReward.id, value: new YodaReward() },
     { key: ZoraReward.id, value: new ZoraReward() }
 ];

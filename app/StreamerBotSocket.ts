@@ -82,7 +82,9 @@ export class StreamerBotSocket {
     }
 
     public async doAction(action: string, args: { } = { }): Promise<void> {
-        this.socket.send(JSON.stringify(
+        console.log(action);
+        console.log(args);
+        let json: string = JSON.stringify(
             {
                 "request": "DoAction",
                 "action": {
@@ -91,7 +93,9 @@ export class StreamerBotSocket {
                 "args": args,
                 "id": "" + this.createID()
             }
-        ));
+        );
+        console.log(json);
+        this.socket.send(json);
     }
 
     private createID(): number {

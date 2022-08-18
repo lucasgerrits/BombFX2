@@ -40,7 +40,7 @@ export abstract class Reward {
     }
 
     private static async pauseReward(idIn: string, newTitle: string): Promise<void> {
-        Logger.twitch("Pausing " + newTitle); // + " - (" + idIn + ")"
+        // Logger.twitch("Pausing " + newTitle); // + " - (" + idIn + ")"
         // todo: stop effect queue
         await ComfyJS.UpdateChannelReward(secrets.comfy.clientID, idIn, {
             title: newTitle,
@@ -60,7 +60,7 @@ export abstract class Reward {
     }
 
     private static async resumeReward(idIn: string, newTitle: string, buttonColor: string): Promise<void> {
-        Logger.twitch("Resuming " + newTitle); // + " - (" + idIn + ")"
+        // Logger.twitch("Resuming " + newTitle); // + " - (" + idIn + ")"
         // todo: resume effect queue
         await ComfyJS.UpdateChannelReward(secrets.comfy.clientID, idIn, {
             title: newTitle,

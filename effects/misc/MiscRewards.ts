@@ -34,6 +34,16 @@ export class FiveMinPaintReward extends Reward {
     }
 }
 
+export class NutButtonReward extends Reward {
+    public static override id: string = "a263a273-2cca-417b-9505-595764dde0f2";
+    public static override title: string = "Nut Button";
+    public static override cost: number = 300;
+
+    constructor() {
+        super(NutButtonReward.id, NutButtonReward.title, new Blank());
+    }
+}
+
 export class SubparImpressionReward extends Reward {
     public static override id: string = "f593ba8f-4f0b-4605-bfe3-2416e9effcab";
     public static override title: string = "Subpar Impression (No Song)";
