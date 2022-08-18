@@ -1,6 +1,6 @@
 import { BombFX } from "../app/BombFX.js";
 import { CowReward } from "../effects/cow/Cow.js";
-import { hostURLs, webhookURLs } from "./urls.js";
+import { hostURLs, webhookURLs } from "./secrets/urls.js";
 import { Util } from "../app/Util.js";
 
 declare var app: BombFX;
