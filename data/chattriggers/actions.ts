@@ -236,6 +236,17 @@ export const actionTriggers: Array<ChatTriggerData> = [
             effect.setTriggerData(data);
             app.queues[effect.queueType].push(effect);
         }
+    }, {
+        trigger: "!tallgirl",
+        userLevel: UserLevel.Broadcaster,
+        permittedUsers: ["KonaChocolate"],
+        action: async (data) => {
+            if (data.message === "") {
+                app.twitch.bot.say("Kona buddy, you gotta provide a username.");
+                return;
+            }
+            app.twitch.bot.say("/timeout " + data.message + " 24 because papas fritas", true);
+        }
     }, { 
         trigger: "!timeoutduration",
         aliases: ["!secondstohoursminutes", "!s2hm"],
