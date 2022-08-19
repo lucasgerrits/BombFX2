@@ -77,10 +77,10 @@ export class Orb extends Effect {
 
         // Orb and effects remain until question is answered
         // So move to next effect in queue
-        app.queues.main.next();
+        this.stop();
     }
 
-    public static async stop(): Promise<void> {
+    public static async dismiss(): Promise<void> {
         let scene: string = "** Webcam";
         let cfbCamSourceMirror: string = "Webcam Greenscreen Mirror";
         let fullCamSourceMirror: string = "Webcam BG Mirror";

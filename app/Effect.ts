@@ -38,7 +38,7 @@ export class Effect {
         Logger.error("No start() method override set for " + (typeof this));
     }
 
-    private async stop(): Promise<void> {
+    protected async stop(): Promise<void> {
         await this.dismantle();
         if (this.stopOverride === true) {
             this.removeStopListener();

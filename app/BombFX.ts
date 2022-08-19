@@ -71,7 +71,7 @@ export class BombFX {
         window.pauseAll = () => { this.twitch.rewards.pauseAll(); };
         window.resumeAll = () => { this.twitch.rewards.resumeAll(); };
         window.createNewReward = Twitch.createNewReward;
-        window.stopOrb = Orb.stop;
+        window.dismissOrb = Orb.dismiss;
     }
 
     private async testGrounds(): Promise<void> {
