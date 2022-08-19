@@ -7,11 +7,20 @@ import { Util } from '../../app/Util.js';
 declare var app: BombFX;
 
 export class Barkeep extends Effect {
-    constructor() {
-        super(EffectQueueName.Barkeep, true); //
+    private message: string = "";
+
+    constructor(message?: string) {
+        super(EffectQueueName.Barkeep, true);
+        if (message != null) {
+            this.message = message;
+        }
     }
     
     public override async start(): Promise<void> {
+        if (this.triggerData !== undefined) {
+            this.message = this.triggerData.message;
+        }
+
         await app.obs.showSource("Barkeep - In", "Barkeep");
 
         await Util.sleep(770);
@@ -20,7 +29,7 @@ export class Barkeep extends Effect {
 
         await app.obs.hideSource("Barkeep - In", "Barkeep");
 
-        app.tts.say(this.triggerData.message);
+        app.tts.say(this.message);
 
         app.tts.speaker.onended = async () => {
             Logger.tts("Barkeep TTS ended.");

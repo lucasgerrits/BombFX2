@@ -64,7 +64,7 @@ export class Effect {
     }
 
     protected emitStop(): void {
-        Logger.bomb("emitStop()");
+        Logger.noise("emitStop()");
         let evt = new CustomEvent("EffectStop", { bubbles: true, detail: "Hi, github" });
         window.dispatchEvent(evt);
     }

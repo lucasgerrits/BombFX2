@@ -1,4 +1,6 @@
+import { Barkeep } from "../effects/barkeep/Barkeep.js";
 import { BombFX } from "../app/BombFX.js";
+import { Effect } from "../app/Effect.js";
 import { PantsGrab } from "../effects/commands/pantsgrab/PantsGrab.js";
 import type { StreamerBotTriggerData } from "../types/StreamerBotTypes";
 
@@ -15,7 +17,8 @@ export const streamerBotTriggers: Array<StreamerBotTriggerData> = [
         name: "tts",
         action: async (data) => {
             console.log(data);
-            app.tts.say(data.message);
+            let effect: Effect = new Barkeep(data.message);
+            app.queues[effect.queueType].push(effect);
         }
     }
 ];
