@@ -50,8 +50,7 @@ export class StreamerBotSocket {
         }
 
         this.socket.onerror = (event): void => {
-            Logger.sbot("Socket error:");
-            console.log(event);
+            Logger.sbot("Socket error");
         }
 
         this.socket.onmessage = (event): void => {
