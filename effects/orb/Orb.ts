@@ -73,7 +73,7 @@ export class Orb extends Effect {
         this.chatText(this.triggerData.user);
 
         // Wait remaining duration of audio to disable
-        await Util.sleep(13000);
+        await Util.sleep(18000);
 
         // Orb and effects remain until question is answered
         // So move to next effect in queue
