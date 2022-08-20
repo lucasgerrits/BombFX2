@@ -1,7 +1,7 @@
 import { EffectQueue } from './EffectQueue.js';
 import { Heat } from './twitch/Heat.js';
 import { Logger } from './Logger.js';
-import { OBSSocket } from './OBSSocket.js';
+import { OBSSocket } from './OBSSocketV5.js';
 import { Orb } from '../effects/orb/Orb.js';
 import { SFX } from '../effects/sfx/SFX.js';
 import { StreamerBotSocket } from './StreamerBotSocket.js';
@@ -65,9 +65,6 @@ export class BombFX {
         window.Util = Util;
 
         // Functions
-        window.refresh = () => { this.obs.refreshCode(); };
-        window.refreshChat = () => { this.obs.refreshChat(); };
-        window.ebNames = () => { this.obs.ebNames(); };
         window.pauseAll = () => { this.twitch.rewards.pauseAll(); };
         window.resumeAll = () => { this.twitch.rewards.resumeAll(); };
         window.createNewReward = Twitch.createNewReward;
@@ -75,6 +72,8 @@ export class BombFX {
     }
 
     private async testGrounds(): Promise<void> {
+        await Util.sleep(1000);
+
         
     }
 }

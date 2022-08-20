@@ -48,6 +48,15 @@ export const actionTriggers: Array<ChatTriggerData> = [
             app.twitch.bot.say(msg);
         }
     }, {
+        trigger: "!ebnames",
+        userLevel: UserLevel.Broadcaster,
+        action: async () => {
+            app.obs.clearText("EarthBound Name #1");
+            app.obs.clearText("EarthBound Name #2");
+            app.obs.clearText("EarthBound Name #3");
+            app.obs.clearText("EarthBound Name #4");
+        }
+    }, {
         trigger: "dead rising 2",
         aliases: ["Dead Rising 2", "Dead rising 2"],
         action: async (data) => {
@@ -170,6 +179,19 @@ export const actionTriggers: Array<ChatTriggerData> = [
         userLevel: UserLevel.Moderator,
         cooldown: 5,
         action: async () => { Pineapple.forbidden(); }
+    }, {
+        trigger: "!refresh",
+        userLevel: UserLevel.Broadcaster,
+        action: async (data) => {
+            if (data.message === "") {
+                app.twitch.bot.say("Enter something to refresh, CFB.");
+                return;
+            } else if (data.message === "code") {
+                app.obs.refreshBrowserSource("Bomb FX 2");
+            } else if (data.message === "chat") {
+                app.obs.refreshBrowserSource("Sideways Chat");
+            }
+        }
     }, {
         trigger: "!reminder",
         cooldown: 3,

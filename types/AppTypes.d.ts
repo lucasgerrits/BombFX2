@@ -1,8 +1,7 @@
 import { EffectQueue } from "../app/EffectQueue.js";
 import { Reward } from "../app/twitch/Reward.js";
 import { UserLevel } from "../app/Enums.js";
-import type { ChatEventData, CommandEventData } from "./ComfyTypes";
-import type { TransitionBeginEvent } from "./OBSSocketTypes";
+import type { ChatEventData, CommandEventData } from "./ComfyTypes.js";
 
 export type ChatTriggerData = {
     trigger: string,
@@ -30,8 +29,13 @@ export type RewardMapping = {
 
 export type SceneTransition = {
     scene: string,
-    to: (data: TransitionBeginEvent) => Promise<void>,
-    from: (data: TransitionBeginEvent) => Promise<void>
+    to: (data: TransitionScenes) => Promise<void>,
+    from: (data: TransitionScenes) => Promise<void>
+}
+
+export type TransitionScenes = {
+    fromScene: string,
+    toScene: string
 }
 
 export type TimerData = {

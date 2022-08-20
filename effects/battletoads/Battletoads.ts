@@ -34,16 +34,16 @@ export class Battletoads extends Effect {
 
         let currentScene: string = await app.obs.getCurrentSceneName();
         
-        app.obs.send("AddFilterToSource", {
+        app.obs.call("CreateSourceFilter", {
             "sourceName" : currentScene,
             "filterName" : "Battletoads Freeze",
-            "filterType" : "freeze_filter",
-            "filterSettings" : { }
+            "filterKind" : "freeze_filter",
+            "filterSettings" : { "refresh_interval": 0 }
         });
             
         await Util.sleep(8100);
 
-        app.obs.send('RemoveFilterFromSource', {
+        app.obs.call('RemoveSourceFilter', {
             sourceName : currentScene,
             filterName : "Battletoads Freeze"
         });

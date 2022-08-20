@@ -44,9 +44,9 @@ export class Barkeep extends Effect {
     
             await app.obs.hideSource("Barkeep - Out", "Barkeep");
 
-            await app.obs.send("RestartMedia", { "sourceName": "Barkeep - In" });
-            await app.obs.send("RestartMedia", { "sourceName": "Barkeep - Loop" });
-            await app.obs.send("RestartMedia", { "sourceName": "Barkeep - Out" });
+            await app.obs.restartMedia("Barkeep - In");
+            await app.obs.restartMedia("Barkeep - Loop");
+            await app.obs.restartMedia("Barkeep - Out");
 
             this.emitStop();
         }

@@ -72,19 +72,15 @@ export class Zora extends Effect {
         let transform_text: string = "pos: x " + newX + 
             ".0 y 378.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0";
         //Logger.noise("Sending filter settings");
-        await app.obs.send('SetSourceFilterSettings', {
-            "sourceName" : "** Videos",
-            "filterName" : "Zora - Move",
-            "filterSettings" : {
-                "duration" : duration,
-                "pos" : {
-                    "x" : newX,
-                    "x_sign" : " ",
-                    "y" : 378,
-                    "y_sign" : " "
-                },
-                "transform_text" : transform_text
-            }
+        await app.obs.setSourceFilterSettings("** Videos", "Zora - Move", {
+            "duration" : duration,
+            "pos" : {
+                "x" : newX,
+                "x_sign" : " ",
+                "y" : 378,
+                "y_sign" : " "
+            },
+            "transform_text" : transform_text
         });
         //Logger.noise("Sent filter settings");
         await Util.sleep(100);

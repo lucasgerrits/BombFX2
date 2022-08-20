@@ -5,7 +5,7 @@ import { streamEventList } from '../data/streamEventList.js';
 import { transitionsList } from '../data/transitionsList.js';
 import { Util } from './Util.js';
 import type { SceneTransition } from '../types/AppTypes.js';
-import type { SourceMuteStateChangedEvent, TakeSourceScreenshotResponse, TransitionBeginEvent } from '../types/OBSSocketTypes.js';
+import type { SourceMuteStateChangedEvent, TakeSourceScreenshotResponse, TransitionBeginEvent } from '../types/OBSSocketV4Types.js';
 
 declare var app: BombFX;
 declare const OBSWebSocket: any;
@@ -26,8 +26,8 @@ export class OBSSocket {
 
     private async connect(): Promise<void> {
         await this.socket.connect({ 
-            address: secrets.obssocket.address, 
-            password: secrets.obssocket.password
+            address: secrets.obsSocketV4.address, 
+            password: secrets.obsSocketV4.password
         });
     }
 

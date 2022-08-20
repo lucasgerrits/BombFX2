@@ -7,7 +7,7 @@ import { Reward } from '../../app/twitch/Reward.js';
 import { RewardTriggerData } from '../../app/EventTriggerData.js';
 import { Util } from '../../app/Util.js';
 import { webhookURLs } from '../../data/secrets/urls.js';
-import type { TakeSourceScreenshotResponse } from '../../types/OBSSocketTypes.js';
+import type { TakeSourceScreenshotResponse } from '../../types/OBSSocketV4Types.js';
 
 declare var app: BombFX;
 
@@ -49,13 +49,9 @@ export class TimeWarp extends Effect {
         let currentScene: string = await app.obs.getCurrentSceneName();
 
         // Set random values to time warp filter settings
-        app.obs.send('SetSourceFilterSettings', {
-            "sourceName" : "Webcam Time Warp",
-            "filterName" : "Time Warp Scan",
-            "filterSettings" : {
-                "rotation" : randomAngle,
-                "scan_duration" : randomDurationInMS
-            }
+        app.obs.setSourceFilterSettings("Webcam Time Warp", "Time Warp Scan", {
+            "rotation" : randomAngle,
+            "scan_duration" : randomDurationInMS
         });
 
         // Show portal opening circle
@@ -83,11 +79,12 @@ export class TimeWarp extends Effect {
         app.twitch.bot.say(chatString);
 
         // Take screenshot of nested scene
-        let filePath: string = "D:\\carefreebomb\\Twitch\\fx\\timewarp\\photos\\temp.png";
-        let screenshotData: TakeSourceScreenshotResponse = await app.obs.screenshot("Time Warp Nested", filePath);
+        const filePath: string = "D:\\carefreebomb\\Twitch\\fx\\timewarp\\photos\\temp.png";
+        //const filePath: string = "C:\\xampp\\htdocs\\fx2\\effects\\timewarp\\photos\\temp.png";
+        const screenshotImageData: string = await app.obs.getSourceScreenshot("Time Warp Nested", filePath);
 
         // Upload screenshot to Discord channel
-        this.uploadTimeWarpToDiscord(randomDuration, randomAngle, screenshotData);
+        this.uploadTimeWarpToDiscord(randomDuration, randomAngle, screenshotImageData);
 
         // Switch back to original scene
         await app.obs.setScene(currentScene);
@@ -106,7 +103,7 @@ export class TimeWarp extends Effect {
         await app.obs.hideSource("Time Warp Portal Webm", "** Videos");
     }
 
-    private async uploadTimeWarpToDiscord(duration: number, angle: number, screenshotData: any) {
+    private async uploadTimeWarpToDiscord(duration: number, angle: number, screenshotImageData: string) {
         let data: RewardTriggerData = <RewardTriggerData> this.triggerData;
 
         let debug: boolean = false;
@@ -126,7 +123,7 @@ export class TimeWarp extends Effect {
                     " PP. Effect duration: " + duration + " seconds " +
                     "/ Warp angle: " + angle + " degrees.";
         
-        let imgFile: string = screenshotData.img;
+        let imgFile: string = screenshotImageData;
         let block: Array<string> = imgFile.split(";");
         let contentType: string = block[0].split(":")[1];
         let encodedImage: string = block[1].split(",")[1];

@@ -1,13 +1,13 @@
 import { BombFX } from "../app/BombFX.js";
 import { Util } from "../app/Util.js";
-import type { SceneTransition } from "../types/AppTypes";
+import type { SceneTransition, TransitionScenes } from "../types/AppTypes.js";
 
 declare var app: BombFX;
 
 export const transitionsList: Array<SceneTransition> = [
     {
         scene: "Just Chatting",
-        to: async (data) => {
+        to: async (data: TransitionScenes) => {
             if (data.fromScene === "Stream Starting / BRB") {
                 await app.obs.showFilter("Webcam", "Metroid Move Value Hide");
                 await Util.sleep(1000);
@@ -23,7 +23,7 @@ export const transitionsList: Array<SceneTransition> = [
             }
         },
         from: async (data) => {
-            console.log(data);
+            
         }
     }, {
         scene: "Stream Starting / BRB",
@@ -38,7 +38,7 @@ export const transitionsList: Array<SceneTransition> = [
             app.obs.unmuteMic();
 
             // Unmute Alerts overlay
-            app.obs.send("SetMute", { "source" : "StreamElements", "mute" : false });
+            app.obs.setInputMute("StreamElements", false);
 
             if (data.toScene === "Just Chatting") {
                 await Util.sleepInSeconds(90);

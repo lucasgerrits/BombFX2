@@ -41,26 +41,18 @@ export class Orb extends Effect {
         await app.obs.showFilter(cfbCamSourceMirror, "Virtual Greenscreen");
 
         // Swap greenscreen mode to make stupid filter work lol
-        await app.obs.send("SetSourceFilterSettings", {
-            "sourceName" : cfbCamSourceMirror,
-            "filterName" : "Virtual Greenscreen",
-            "filterSettings" : {
-                "Commit" : "g81a96998",
-                "NVIDIA.Greenscreen.Mode" : 1,
-                "Version" : 47244705792
-            }
+        await app.obs.setSourceFilterSettings(cfbCamSourceMirror, "Virtual Greenscreen", {
+            "Commit" : "g81a96998",
+            "NVIDIA.Greenscreen.Mode" : 1,
+            "Version" : 47244705792
         }); // Performance
 
         await Util.sleep(1000); // REQUIRED PAUSE
 
-        await app.obs.send("SetSourceFilterSettings", {
-            "sourceName" : cfbCamSourceMirror,
-            "filterName" : "Virtual Greenscreen",
-            "filterSettings" : {
-                "Commit" : "g81a96998",
-                "NVIDIA.Greenscreen.Mode" : 0,
-                "Version" : 47244705792
-            }
+        await app.obs.setSourceFilterSettings(cfbCamSourceMirror, "Virtual Greenscreen", {
+            "Commit" : "g81a96998",
+            "NVIDIA.Greenscreen.Mode" : 0,
+            "Version" : 47244705792
         }); // Quality
 
         // Show background move value filter (darken mirror)
@@ -114,6 +106,6 @@ export class Orb extends Effect {
         await Util.sleep(7000);
         app.twitch.bot.say(user + " has summoned...");
         await Util.sleep(5000);
-        app.twitch.bot.say("OrbOrb The Orb OrbOrb");
+        app.twitch.bot.say("The Orb ™");
     }
 }

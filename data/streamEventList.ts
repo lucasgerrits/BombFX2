@@ -12,7 +12,7 @@ export const streamEventList = {
         CowReward.resume();
 
         // Mute Alerts overlay
-        app.obs.send("SetMute", { "source" : "StreamElements", "mute" : true });
+        app.obs.setInputMute("StreamElements", true);
 
         // Alert the Discord that I've gone live
         let hookURL: string = webhookURLs.announcements;

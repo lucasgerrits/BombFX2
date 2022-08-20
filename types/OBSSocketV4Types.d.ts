@@ -7,11 +7,11 @@ export type SourceMuteStateChangedEvent = {
 }
 
 type TransitionBeginEvent = {
-    duration: number;
+    name?: string;
+    type?: string;
+    duration?: number;
     fromScene: string;
-    name: string;
     toScene: string;
-    type: string;
 }
 
 // REQUESTS
