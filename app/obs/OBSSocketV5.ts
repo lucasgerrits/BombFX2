@@ -1,11 +1,11 @@
-import { BombFX } from './BombFX.js';
-import { Logger } from './Logger.js';
-import { secrets } from '../data/secrets/secrets.js';
-import { streamEventList } from '../data/streamEventList.js';
-import { transitionsList } from '../data/transitionsList.js';
-import { Util } from './Util.js';
-import type { SceneTransition, TransitionScenes } from '../types/AppTypes.js';
-import type { CurrentProgramSceneChangedEvent, GetInputSettingsResponse, InputMuteStateChangedEvent } from '../types/OBSSocketV5Types.js';
+import { BombFX } from '../BombFX.js';
+import { Logger } from '../Logger.js';
+import { secrets } from '../../data/secrets/secrets.js';
+import { streamEventList } from '../../data/streamEventList.js';
+import { transitionsList } from '../../data/transitionsList.js';
+import { Util } from '../Util.js';
+import type { SceneTransition, TransitionScenes } from '../../types/AppTypes.js';
+import type { CurrentProgramSceneChangedEvent, GetInputSettingsResponse, InputMuteStateChangedEvent } from '../../types/OBSSocketV5Types.js';
 
 declare var app: BombFX;
 declare const OBSWebSocket: any;

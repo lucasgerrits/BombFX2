@@ -1,20 +1,21 @@
-import { BombFX } from './BombFX.js';
-import { Logger } from './Logger.js';
-import { secrets } from '../data/secrets/secrets.js';
-import { streamEventList } from '../data/streamEventList.js';
-import { transitionsList } from '../data/transitionsList.js';
-import { Util } from './Util.js';
-import type { SceneTransition } from '../types/AppTypes.js';
-import type { SourceMuteStateChangedEvent, TakeSourceScreenshotResponse, TransitionBeginEvent } from '../types/OBSSocketV4Types.js';
+import { BombFX } from '../BombFX.js';
+import { Logger } from '../Logger.js';
+import { secrets } from '../../data/secrets/secrets.js';
+import { streamEventList } from '../../data/streamEventList.js';
+import { transitionsList } from '../../data/transitionsList.js';
+import { Util } from '../Util.js';
+import type { SceneTransition } from '../../types/AppTypes.js';
+import type { SourceMuteStateChangedEvent, TakeSourceScreenshotResponse, TransitionBeginEvent } from '../../types/OBSSocketV4Types.js';
 
 declare var app: BombFX;
 declare const OBSWebSocket: any;
 
+// Just holding onto this for backup for now
 export class OBSSocket {
 
     public socket: any;
     private transitions: Map<string, SceneTransition>;
-
+    
     constructor() {
         this.socket = new OBSWebSocket();
         this.setEventHandlers();

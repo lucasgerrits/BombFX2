@@ -1,7 +1,7 @@
 import { EffectQueue } from './EffectQueue.js';
 import { Heat } from './twitch/Heat.js';
 import { Logger } from './Logger.js';
-import { OBSSocket } from './OBSSocketV5.js';
+import { OBSSocket } from './obs/OBSSocketV5.js';
 import { Orb } from '../effects/orb/Orb.js';
 import { SFX } from '../effects/sfx/SFX.js';
 import { StreamerBotSocket } from './StreamerBotSocket.js';
