@@ -1,8 +1,8 @@
-import { Logger } from './Logger.js';
-import { secrets } from '../data/secrets/secrets.js';
-import { Util } from './Util.js';
-import { voices } from '../data/pollyvoices.js';
-import type { PollyParams, Voice } from '../types/PollyTypes.js';
+import { Logger } from '../Logger.js';
+import { secrets } from '../../data/secrets/secrets.js';
+import { Util } from '../Util.js';
+import { voices } from '../../data/pollyvoices.js';
+import type { PollyParams, Voice } from '../../types/PollyTypes.js';
 
 declare var AWS: any;
 

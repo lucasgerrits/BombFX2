@@ -1,8 +1,8 @@
-import { BombFX } from './BombFX.js';
-import { Logger } from './Logger.js';
-import { Util } from './Util.js';
-import { secrets } from '../data/secrets/secrets.js';
-import { streamerBotTriggers } from '../data/streamerBotTriggers.js';
+import { BombFX } from '../BombFX.js';
+import { Logger } from '../Logger.js';
+import { Util } from '../Util.js';
+import { secrets } from '../../data/secrets/secrets.js';
+import { streamerBotTriggers } from '../../data/streamerBotTriggers.js';
 
 declare var app: BombFX;
 

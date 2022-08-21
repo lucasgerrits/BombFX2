@@ -5,8 +5,6 @@ import { Effect } from '../../app/Effect.js';
 import { EffectQueueName } from '../../app/EffectQueue.js';
 import { Logger } from '../../app/Logger.js';
 import { Reward } from '../../app/twitch/Reward.js';
-import { TextToSpeech } from '../../app/TextToSpeech.js';
-import { Twitch } from '../../app/twitch/Twitch.js';
 import { Util } from '../../app/Util.js';
 
 declare var app: BombFX;
