@@ -3,7 +3,7 @@ import { Chatbot } from './Chatbot.js';
 import { ChatHandler } from './ChatHandler.js';
 import { Effect } from '../Effect.js';
 import { Logger } from '../Logger.js';
-import { modList } from '../../data/modlist.js';
+import { modList } from '../../data/secrets/modlist.js';
 import { Reward } from './Reward.js';
 import { RewardMap } from './RewardMap.js';
 import { RewardTriggerData } from '../EventTriggerData.js';
