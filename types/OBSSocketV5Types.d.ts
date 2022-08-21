@@ -1,13 +1,18 @@
 
 // EVENTS
 
+export type CurrentProgramSceneChangedEvent = {
+    sceneName: string
+}
+
 export type InputMuteStateChangedEvent = {
     inputName: string,
     inputMuted: boolean
 }
 
-export type CurrentProgramSceneChangedEvent = {
-    sceneName: string
+export type StreamStateChangedEvent = {
+    outputActive: boolean;
+    outputState: string;
 }
 
 // REQUEST RESPONSES

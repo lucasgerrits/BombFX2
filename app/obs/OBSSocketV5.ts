@@ -5,7 +5,7 @@ import { streamEventList } from '../../data/streamEventList.js';
 import { transitionsList } from '../../data/transitionsList.js';
 import { Util } from '../Util.js';
 import type { SceneTransition, TransitionScenes } from '../../types/AppTypes.js';
-import type { CurrentProgramSceneChangedEvent, GetInputSettingsResponse, InputMuteStateChangedEvent } from '../../types/OBSSocketV5Types.js';
+import type { CurrentProgramSceneChangedEvent, GetInputSettingsResponse, InputMuteStateChangedEvent, StreamStateChangedEvent } from '../../types/OBSSocketV5Types.js';
 
 declare var app: BombFX;
 declare const OBSWebSocket: any;
@@ -283,14 +283,14 @@ export class OBSSocket {
             console.log(error);
         });
 
-        this.socket.on("StreamStarted", () => {
-            Logger.bomb("STREAM STARTED!!");
-            streamEventList.start();
-        });
-
-        this.socket.on("StreamStopped", () => {
-            Logger.bomb("STREAM STOPPED!!");
-            streamEventList.stop();
+        this.socket.on("StreamStateChanged", (data: StreamStateChangedEvent) => {
+            if (data.outputActive === true) {
+                Logger.bomb("STREAM STARTED!!");
+                streamEventList.start();
+            } else if (data.outputActive === false) {
+                Logger.bomb("STREAM STOPPED!!");
+                streamEventList.stop();
+            }
         });
     }
 
