@@ -54,8 +54,12 @@ export class Logger {
         Logger.log("[Streamer.bot] " + str, style);
     }
 
-    public static tts(str: string, color: string = "color: #FF9900"): void {
-        Logger.log("[Polly] " + str, color);
+    public static speech(str: string, style: string = "color: #0080FF"): void {
+        Logger.log("[Azure] " + str, style);
+    }
+
+    public static tts(str: string, style: string = "color: #FF9900"): void {
+        Logger.log("[Polly] " + str, style);
     }
     
     public static twitch(str: string, style: string = "color: #9246FF"): void {

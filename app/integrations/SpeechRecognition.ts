@@ -29,8 +29,10 @@ export class SpeechRecognition {
     private async setEventHandlers(): Promise<void> {
         this.recognizer.recognized = (sender: any, event: any) => {
             if (event.result.reason == SpeechSDK.ResultReason.RecognizedSpeech) {
-                if (event.result.text !== undefined || event.result.text !== "") {
-                    Logger.noise("RECOGNIZED: " + event.result.text);
+                const transcript: string = event.result.text;
+                if (transcript !== undefined || transcript !== "") {
+                    Logger.noise("RECOGNIZED: " + transcript);
+                    this.textQueue.push(transcript);
                 }
             }
             else if (event.result.reason == SpeechSDK.ResultReason.NoMatch) {
@@ -48,11 +50,16 @@ export class SpeechRecognition {
     }
 
     public async start(): Promise<void> {
+        Logger.speech("Continuous recognition starting");
+        this.textQueue = new Array<string>();
         this.recognizer.startContinuousRecognitionAsync();
     }
 
     public async stop(): Promise<void> {
+        Logger.speech("Continuous recognition stopping");
         this.recognizer.stopContinuousRecognitionAsync();
         this.recognizer.close();
+        console.log(this.textQueue);
+        this.textQueue = null;
     }
 }
