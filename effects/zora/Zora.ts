@@ -107,7 +107,7 @@ export class Zora extends Effect {
     private async scootSound(): Promise<void> {
         await Util.sleep(650);
         let num: number = Util.Math.getRandomIntegerInclusive(1, 3);
-        let filename = "effects/zora/scoot" + num + ".mp3";
+        let filename = "effects/zora/audio/scoot" + num + ".mp3";
         Util.playSound(filename);
     }
 }
