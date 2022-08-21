@@ -36,7 +36,7 @@ export class OBSSocket {
             });
             Logger.obs(`Connected to server ${obsWebSocketVersion} (using RPC ${negotiatedRpcVersion})`);
         } catch (error: any) {
-            Logger.error("Failed to connect: " + error.code + " - " + error.message);
+            Logger.obs("Failed to connect to OBS");
         }
         //await this.socket.connect(secrets.obsSocketV5.address, secrets.obsSocketV5.password);
     }

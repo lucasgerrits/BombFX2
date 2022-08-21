@@ -4,6 +4,7 @@ import { Logger } from './Logger.js';
 import { OBSSocket } from './obs/OBSSocketV5.js';
 import { Orb } from '../effects/orb/Orb.js';
 import { SFX } from '../effects/sfx/SFX.js';
+import { SpeechRecognition } from './integrations/SpeechRecognition.js';
 import { StreamerBotSocket } from './integrations/StreamerBotSocket.js';
 import { TextToSpeech } from './integrations/TextToSpeech.js';
 import { TimerMap } from './Timer.js';
@@ -22,6 +23,7 @@ export class BombFX {
     public timers: TimerMap;
     public twitch: Twitch;
     public tts: TextToSpeech;
+    public speech: SpeechRecognition;
     public heat: Heat;
     public Util: Util;
 
@@ -32,6 +34,7 @@ export class BombFX {
         this.sbot = new StreamerBotSocket();
         this.twitch = new Twitch();
         this.obs = new OBSSocket();
+        this.speech = new SpeechRecognition();
         this.heat = new Heat();
         
         this.timers = new TimerMap();
@@ -69,6 +72,9 @@ export class BombFX {
         window.resumeAll = () => { this.twitch.rewards.resumeAll(); };
         window.createNewReward = Twitch.createNewReward;
         window.dismissOrb = Orb.dismiss;
+
+        window.startRecog = () => { this.speech.start(); };
+        window.stopRecog = () => { this.speech.stop(); };
     }
 
     private async testGrounds(): Promise<void> {
