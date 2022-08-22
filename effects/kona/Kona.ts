@@ -21,7 +21,7 @@ export class Kona {
     public static async wave(): Promise<void> {
         await app.obs.showSource("Kona Wave", "** Videos");
 
-        let choice: number = Util.Math.getRandomIntegerInclusive(0, Kona.sounds.length - 1);
+        let choice: number = Util.Numbers.getRandomIntegerInclusive(0, Kona.sounds.length - 1);
         let filename: string = "./effects/kona/sounds/" + Kona.sounds[choice] + ".mp3";
         Util.playSound(filename);
 
@@ -33,15 +33,15 @@ export class Kona {
     }
 
     public static determineInterval(): number {
-        const debugms: number = Util.Time.secToMS(20);
+        const debugms: number = Util.Numbers.secToMS(20);
         
-        const min: number = Util.Time.minToMS(30);
-        const max: number = Util.Time.minToMS(60);
+        const min: number = Util.Numbers.minToMS(30);
+        const max: number = Util.Numbers.minToMS(60);
 
         if (Kona.debug) {
             return debugms;
         } else {
-            const ms: number = Util.Math.getRandomIntegerInclusive(min, max);
+            const ms: number = Util.Numbers.getRandomIntegerInclusive(min, max);
             return ms;
         }
     }

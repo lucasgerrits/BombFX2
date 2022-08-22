@@ -56,7 +56,7 @@ export class DonutBreak extends Effect {
     }
 
     private static isDonutMessage(message: string): boolean {
-        if (Util.String.checkAlphanumeric(message)) {
+        if (Util.Strings.checkAlphanumeric(message)) {
             let regex: RegExp = /^carefr3DONUT(\scarefr3DONUT)*$/g;
             return regex.test(message);
         } else {

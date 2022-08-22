@@ -16,7 +16,7 @@ export const timers: Array<TimerData> = [
     }, {
         name: "dice",
         enabled: false,
-        interval: Util.Time.minToMS(60),
+        interval: Util.Numbers.minToMS(60),
         action: async () => {
             let diceStr: string = "/announce To meet the best " + 
                 "followers, viewers, primes, and streamer, tune in " + 

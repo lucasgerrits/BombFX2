@@ -51,7 +51,7 @@ export class TextToSpeech {
 
     private randomVoice(arr: Array<Voice>): Voice {
         let max: number = arr.length;
-        let random = Util.Math.getRandomIntegerInclusive(0, max);
+        let random = Util.Numbers.getRandomIntegerInclusive(0, max);
         return arr[random];
     }
 

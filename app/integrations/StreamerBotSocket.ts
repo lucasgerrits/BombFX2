@@ -102,6 +102,6 @@ export class StreamerBotSocket {
     }
 
     private createID(): number {
-        return Util.Math.getRandomIntegerInclusive(1, 10000);
+        return Util.Numbers.getRandomIntegerInclusive(1, 10000);
     }
 }

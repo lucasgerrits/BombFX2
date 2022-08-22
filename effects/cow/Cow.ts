@@ -53,11 +53,11 @@ export class Cow extends Effect {
         // Update redeemer's launch count
         let url: string = hostURLs.addCowLaunch + "?user=" + 
             this.triggerData.user + "&golden=" + Number(this.isGolden);
-        await Util.Web.makeRequest(url, "GET");
+        await Util.Requests.makeRequest(url, "GET");
 
         // Get redeemer's launch count
         url = hostURLs.getCowLaunchCount + "?user=" + this.triggerData.user + "&format=json";
-        let result = await Util.Web.makeRequest(url, "GET");
+        let result = await Util.Requests.makeRequest(url, "GET");
         let json: any = JSON.parse(result.response);
         let data: CowLaunchData = {
             user_name: json.user_name,
@@ -97,21 +97,21 @@ export class Cow extends Effect {
 
     private async chatUserStats(user: string): Promise<void> {
         let url: string = hostURLs.getCowLaunchCount + "?user=" + user;
-        let result = await Util.Web.makeRequest(url, "GET");
+        let result = await Util.Requests.makeRequest(url, "GET");
         //console.log(result.response);
         app.twitch.bot.say(result.response);
     }
 
     private async chatLeaderboard(): Promise<void> {
         let url: string = hostURLs.cowLeaderboard;
-        let result = await Util.Web.makeRequest(url, "GET");
+        let result = await Util.Requests.makeRequest(url, "GET");
         //console.log(result.response);
         app.twitch.bot.say(result.response);
     }
 
     private async determineGoldenProc(): Promise<void> {
         if (!this.isGolden) {
-            let chance: number = Util.Math.getRandomIntegerInclusive(1, 100);
+            let chance: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
             Logger.noise("Golden Cow Roll: " + chance);
             if (chance <= 4) {
                 Logger.log("GOLDEN COW PROC!");

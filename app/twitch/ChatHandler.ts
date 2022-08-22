@@ -62,8 +62,8 @@ export class ChatHandler {
         if (user === "CareFreeBomb") { return; }
 
         let messageModified: string = message.toLowerCase();
-        messageModified = Util.String.removeNonAlphaNumeric(messageModified);
-        messageModified = Util.String.removeWhiteSpace(messageModified);
+        messageModified = Util.Strings.removeNonAlphaNumeric(messageModified);
+        messageModified = Util.Strings.removeWhiteSpace(messageModified);
 
         let first: string = this.getFirst();
         if (user !== first && (messageModified === "first" || messageModified === "1st")) {
@@ -92,7 +92,7 @@ export class ChatHandler {
         // Convert string to lowercase
         let message: string = data.message.toLowerCase();
         // Get all trigger possibilities with any !command prefixes already excluded
-        let wordCombinations: Set<string> = Util.String.possibleCombinations(message); // removes non alpha-numeric
+        let wordCombinations: Set<string> = Util.Strings.possibleCombinations(message); // removes non alpha-numeric
         // Compare possibilities set against actual commands / aliases set
         let foundTriggers: Set<string> = this.triggers.hasWhich(wordCombinations);
         // If there were any found, run them all up

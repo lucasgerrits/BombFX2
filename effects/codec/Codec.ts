@@ -42,7 +42,7 @@ export class Codec extends Effect {
         let user: string = this.triggerData.user;
         let message: string = this.triggerData.message;
 
-        if (Util.String.containsBadWords(message)) {
+        if (Util.Strings.containsBadWords(message)) {
             message = "This message has been censored for bad language.";
             user = "Twitch";
         }

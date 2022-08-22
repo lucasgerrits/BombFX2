@@ -66,7 +66,7 @@ export class ChatTrigger {
                     let msg: string = this.triggerData.action;
                     // String may also be a url for fetching a response to ouput
                     if (this.triggerData.fetch) {
-                        let result = await Util.Web.makeRequest(this.triggerData.action);
+                        let result = await Util.Requests.makeRequest(this.triggerData.action);
                         msg = result.response;
                     }
                     app.twitch.bot.say(msg);

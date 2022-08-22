@@ -29,11 +29,11 @@ export class VFX extends Effect {
         // Modify input string
         let message: string = this.triggerData.message;
         message = message.toLowerCase();
-        message = Util.String.removeNonAlphaNumeric(message);
-        message = Util.String.removeWhiteSpace(message);
+        message = Util.Strings.removeNonAlphaNumeric(message);
+        message = Util.Strings.removeWhiteSpace(message);
 
         // Make sure no weird invisible characters got through because twitch
-        if (!Util.String.checkAlphanumeric(message)) {
+        if (!Util.Strings.checkAlphanumeric(message)) {
             return;
         }
 
@@ -61,7 +61,7 @@ export class VFX extends Effect {
             videoElement.play();
             
             let removeDelay: number = 0;
-            await Util.sleep(Util.Time.secToMS(videoElement.duration) + removeDelay);
+            await Util.sleep(Util.Numbers.secToMS(videoElement.duration) + removeDelay);
 
             videoElement.pause();
             //videoElement.currentTime = 0;

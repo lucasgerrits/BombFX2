@@ -55,10 +55,10 @@ export class Zora extends Effect {
         let waitMaxInSec: number = 15;
 
         // There is a chance to make him wait
-        let roll: number = Util.Math.getRandomIntegerInclusive(1, 100);
+        let roll: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
         if (roll <= chance) {
             // Random wait time
-            let waitInSec: number = Util.Math.getRandomIntegerInclusive(waitMinInSec, waitMaxInSec);
+            let waitInSec: number = Util.Numbers.getRandomIntegerInclusive(waitMinInSec, waitMaxInSec);
             let waitInMS: number = waitInSec * 1000;
             Logger.noise("Waiting " + waitInSec + " seconds for scoots.");
             app.twitch.bot.say("PauseFish", true);
@@ -106,7 +106,7 @@ export class Zora extends Effect {
 
     private async scootSound(): Promise<void> {
         await Util.sleep(650);
-        let num: number = Util.Math.getRandomIntegerInclusive(1, 3);
+        let num: number = Util.Numbers.getRandomIntegerInclusive(1, 3);
         let filename = "effects/zora/audio/scoot" + num + ".mp3";
         Util.playSound(filename);
     }

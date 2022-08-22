@@ -19,16 +19,16 @@ export const streamEventList = {
         let str: string = "Hello again, <@&648942719669895183>! I am programmed to notify you" +
             " every time CFB clicks the Start Streaming button in OBS. The Milk Bar"+
             " is open, friends: https://www.twitch.tv/carefreebomb";
-        Util.Web.webhook(str, hookURL);
+        Util.Requests.webhook(str, hookURL);
     },
 
     stop: async () => {
         // Post Cow Launch Top 10 to Announcements
         let url: string = hostURLs.cowLeaderboard + "?format=webhook";
-        let result = await Util.Web.makeRequest(url);
+        let result = await Util.Requests.makeRequest(url);
         let msg: string = "CFB programmed me to thank you for joining us! Another stream may have ended, but the milk is always on tap.\n\n";
         msg += result.response;
         let hookURL: string = webhookURLs.announcements;
-        Util.Web.webhook(msg, hookURL);
+        Util.Requests.webhook(msg, hookURL);
     }
 };

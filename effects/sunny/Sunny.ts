@@ -27,7 +27,7 @@ export class Sunny extends Effect {
 
         // Check user input for offensive terms
         let episodeTitle: string = this.triggerData.message;
-        if (Util.String.containsBadWords(episodeTitle)) {
+        if (Util.Strings.containsBadWords(episodeTitle)) {
             episodeTitle = "The Gang Scolds " + this.triggerData.user + " for Being a Big Dangus";
             let modStr: string = "/timeout " + this.triggerData.user + " 300 No Brain";
             app.twitch.bot.say(modStr, true);
@@ -41,7 +41,7 @@ export class Sunny extends Effect {
         // Create text box and fill with episode title
         let textDiv: HTMLDivElement = document.createElement("div");
         textDiv.setAttribute("id", "sunnyText");
-        let titleString: string = "&ldquo; " + Util.String.titleCase(episodeTitle) + " &rdquo;";
+        let titleString: string = "&ldquo; " + Util.Strings.titleCase(episodeTitle) + " &rdquo;";
         textDiv.innerHTML = titleString;
 
         // Add to page

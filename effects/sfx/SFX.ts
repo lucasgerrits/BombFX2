@@ -67,8 +67,8 @@ export class SoundEffect extends Effect {
         // Modify input string
         let message: string = this.triggerData.message;
         message = message.toLowerCase();
-        message = Util.String.removeNonAlphaNumeric(message);
-        message = Util.String.removeWhiteSpace(message);
+        message = Util.Strings.removeNonAlphaNumeric(message);
+        message = Util.Strings.removeWhiteSpace(message);
 
         // Stop if Hyrule does something he's not supposed to
         if (!this.lolHyruleChecks(message)) {
@@ -132,7 +132,7 @@ export abstract class SFX {
     }
 
     public static async bomb(name: string, user: string): Promise<void> {
-        let numberOfSounds = Util.Math.getRandomIntegerInclusive(10, 15);
+        let numberOfSounds = Util.Numbers.getRandomIntegerInclusive(10, 15);
         let filename: string = "effects/sfx/sounds/" + name + ".mp3";
         try {
             let soundCheck: SoundExistenceData = await SFX.soundExists(filename);
@@ -145,7 +145,7 @@ export abstract class SFX {
                 app.twitch.bot.say(chatStr);
                 soundCheck.audio.playbackRate = 0.25;
                 for (let i: number = 0; i < numberOfSounds; i++) {
-                    let delay: number = Util.Math.getRandomIntegerInclusive(100, 3000);
+                    let delay: number = Util.Numbers.getRandomIntegerInclusive(100, 3000);
             
                     setTimeout((audio: HTMLAudioElement) => {
                         let newAudio = new Audio(audio.src);

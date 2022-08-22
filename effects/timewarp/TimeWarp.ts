@@ -39,11 +39,11 @@ export class TimeWarp extends Effect {
         let maxDuration: number = 30;
 
         // Get random duration of warp
-        let randomDuration: number = Util.Math.getRandomIntegerInclusive(minDuration, maxDuration);
+        let randomDuration: number = Util.Numbers.getRandomIntegerInclusive(minDuration, maxDuration);
         let randomDurationInMS: number = randomDuration * 1000;
 
         // Get random angle for warp direction
-        let randomAngle = Util.Math.getRandomIntegerInclusive(0, 360);
+        let randomAngle = Util.Numbers.getRandomIntegerInclusive(0, 360);
 
         // Remember current scene for transitioning back to later
         let currentScene: string = await app.obs.getCurrentSceneName();
@@ -127,7 +127,7 @@ export class TimeWarp extends Effect {
         let block: Array<string> = imgFile.split(";");
         let contentType: string = block[0].split(":")[1];
         let encodedImage: string = block[1].split(",")[1];
-        let blob = Util.Web.base64ToBlob(encodedImage, contentType);
+        let blob = Util.Requests.base64ToBlob(encodedImage, contentType);
         
         let formData: FormData = new FormData();
         formData.append("image", blob, "temp.png");

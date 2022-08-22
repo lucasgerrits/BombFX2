@@ -49,7 +49,7 @@ export class Chatbot {
         ];
 
         if (newColor === "Random") {
-            let rand: number = Util.Math.getRandomIntegerInclusive(0, available.length);
+            let rand: number = Util.Numbers.getRandomIntegerInclusive(0, available.length);
             newColor = available[rand];
         }
 
@@ -58,7 +58,7 @@ export class Chatbot {
     }
 
     public async relay(url: string): Promise<any> {
-        let result = await Util.Web.makeRequest(url, "GET");
+        let result = await Util.Requests.makeRequest(url, "GET");
         console.log(result.response);
         if (result.response !== " ") {
             this.say(result.response);

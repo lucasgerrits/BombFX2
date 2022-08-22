@@ -27,7 +27,7 @@ export class Fanfare extends Effect {
         
         // Check user input for offensive terms
         let itemName: string = this.triggerData.message;
-        if (Util.String.containsBadWords(itemName)) {
+        if (Util.Strings.containsBadWords(itemName)) {
             itemName = this.triggerData.user + " is a dickhead who uses offensive language.";
             let modStr: string = "/timeout " + this.triggerData.user + " 300 No Brain";
             app.twitch.bot.say(modStr, true);

@@ -25,7 +25,7 @@ export class Notifs extends Effect {
     }
     
     public override async start(): Promise<void> {
-        let chance: number = Util.Math.getRandomIntegerInclusive(1, 100);
+        let chance: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
         // Logger.log("Discord Notif Chance: " + chance);
 
         if (chance > 6) {

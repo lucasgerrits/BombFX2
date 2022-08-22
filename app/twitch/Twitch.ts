@@ -66,7 +66,7 @@ export class Twitch {
 
     public async chatList(): Promise<any> {
         let url: string = "https://tmi.twitch.tv/group/user/carefreebomb/chatters";
-        let request = await Util.Web.makeRequest(url);
+        let request = await Util.Requests.makeRequest(url);
         let json: string = request.response;
         let obj: any = JSON.parse(json).chatters;
         let chatters: Array<string> = obj.broadcaster.concat(obj.moderators, obj.vips,
@@ -81,7 +81,7 @@ export class Twitch {
     public async profilePic(user: string, size: number = 300): Promise<any> {
         let url: string = "https://www.carefreebomb.com/twitchapi/profilepic.php?user=" +
             user + "&size=" + size;
-        let result = await Util.Web.makeRequest(url);
+        let result = await Util.Requests.makeRequest(url);
         return result.response;
     };
 }

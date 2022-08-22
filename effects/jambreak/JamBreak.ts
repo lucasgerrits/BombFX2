@@ -43,7 +43,7 @@ export class JamBreak extends Effect {
         // Determine which jamm_
         let chance: number = this.breakNumber - 1; // human numbers in chat, zero indexing in code
         if (this.breakNumber == -1) {
-            chance = Util.Math.getRandomIntegerInclusive(0, jambreaks.length - 1);
+            chance = Util.Numbers.getRandomIntegerInclusive(0, jambreaks.length - 1);
         }
         let jam: JamBreakData = jambreaks[chance];
 
