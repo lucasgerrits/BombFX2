@@ -10,7 +10,7 @@ import { Pineapple } from "../../effects/commands/pineapple/Pineapple.js";
 import { Spray } from "../../effects/commands/spray/Spray.js";
 import { streamEventList } from "../streamEventList.js";
 import { UserLevel } from '../../app/Enums.js';
-import { Util } from "../../app/Util.js";
+import { Util } from "../../app/util/Util.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
 import type { CommandEventData } from "../../types/ComfyTypes.js";
 

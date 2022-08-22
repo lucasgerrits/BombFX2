@@ -3,7 +3,7 @@ import { Logger } from '../Logger.js';
 import { secrets } from '../../data/secrets/secrets.js';
 import { streamEventList } from '../../data/streamEventList.js';
 import { transitionsList } from '../../data/transitionsList.js';
-import { Util } from '../Util.js';
+import { Util } from '../util/Util.js';
 import type { SceneTransition, TransitionScenes } from '../../types/AppTypes.js';
 import type { CurrentProgramSceneChangedEvent, GetInputSettingsResponse, InputMuteStateChangedEvent, StreamStateChangedEvent } from '../../types/OBSSocketV5Types.js';
 

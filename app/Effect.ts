@@ -2,7 +2,7 @@ import { BombFX } from './BombFX.js';
 import { EffectQueueName } from './EffectQueue.js';
 import { EventTriggerData } from './EventTriggerData.js';
 import { Logger } from './Logger.js';
-import { Util } from './Util.js';
+import { Util } from './util/Util.js';
 
 declare var app: BombFX;
 declare var window: any;

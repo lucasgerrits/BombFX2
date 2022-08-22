@@ -1,7 +1,7 @@
 import { BombFX } from "../BombFX.js";
 import { Logger } from "../Logger.js";
 import { UserLevel } from "../Enums.js";
-import { Util } from "../Util.js";
+import { Util } from "../util/Util.js";
 import type { ChatEventData } from "../../types/ComfyTypes";
 import type { ChatTriggerData } from "../../types/AppTypes";
 

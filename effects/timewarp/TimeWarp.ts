@@ -5,7 +5,7 @@ import { EffectQueueName } from '../../app/EffectQueue.js';
 import { Logger } from '../../app/Logger.js';
 import { Reward } from '../../app/twitch/Reward.js';
 import { RewardTriggerData } from '../../app/EventTriggerData.js';
-import { Util } from '../../app/Util.js';
+import { Util } from '../../app/util/Util.js';
 import { webhookURLs } from '../../data/secrets/urls.js';
 import type { TakeSourceScreenshotResponse } from '../../types/OBSSocketV4Types.js';
 

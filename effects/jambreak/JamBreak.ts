@@ -3,7 +3,7 @@ import { jambreaks } from './breaks.js';
 import { Effect } from '../../app/Effect.js';
 import { EffectQueueName } from '../../app/EffectQueue.js';
 import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/Util.js';
+import { Util } from '../../app/util/Util.js';
 import { BattletoadsReward } from '../battletoads/Battletoads.js';
 import type { JamBreakData } from '../../types/EffectTypes.js';
 

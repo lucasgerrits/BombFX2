@@ -8,7 +8,7 @@ import { Reward } from './Reward.js';
 import { RewardMap } from './RewardMap.js';
 import { RewardTriggerData } from '../EventTriggerData.js';
 import { secrets } from '../../data/secrets/secrets.js';
-import { Util } from '../Util.js';
+import { Util } from '../util/Util.js';
 
 declare var app: BombFX;
 declare var ComfyJS: any;

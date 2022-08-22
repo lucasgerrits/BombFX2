@@ -1,5 +1,5 @@
 import { BombFX } from '../../../app/BombFX.js';
-import { Util } from '../../../app/Util.js';
+import { Util } from '../../../app/util/Util.js';
 import type { CommandEventData } from '../../../types/ComfyTypes.js';
 
 declare var app: BombFX;

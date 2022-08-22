@@ -1,6 +1,6 @@
 import { BombFX } from "../app/BombFX.js";
 import { Kona } from "../effects/kona/Kona.js";
-import { Util } from "../app/Util.js";
+import { Util } from "../app/util/Util.js";
 import type { TimerData } from "../types/AppTypes.js";
 
 declare var app: BombFX;

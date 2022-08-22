@@ -1,6 +1,6 @@
 import { BombFX } from '../app/BombFX.js';
 import { SFX } from '../effects/sfx/SFX.js';
-import { Util } from '../app/Util.js';
+import { Util } from '../app/util/Util.js';
 import type { Greeting } from '../types/AppTypes';
 
 declare var app: BombFX;

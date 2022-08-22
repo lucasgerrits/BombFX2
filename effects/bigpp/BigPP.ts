@@ -4,7 +4,7 @@ import { Effect } from '../../app/Effect.js';
 import { EffectQueueName } from '../../app/EffectQueue.js';
 import { Reward } from '../../app/twitch/Reward.js';
 import { Twitch } from '../../app/twitch/Twitch.js';
-import { Util } from '../../app/Util.js';
+import { Util } from '../../app/util/Util.js';
 
 declare var app: BombFX;
 

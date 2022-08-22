@@ -1,5 +1,5 @@
 import { BombFX } from "../app/BombFX.js";
-import { Util } from "../app/Util.js";
+import { Util } from "../app/util/Util.js";
 import type { SceneTransition, TransitionScenes } from "../types/AppTypes.js";
 
 declare var app: BombFX;

@@ -6,7 +6,7 @@ import { GreetingMap } from './GreetingMap.js';
 import { Logger } from '../Logger.js';
 import { secrets } from '../../data/secrets/secrets.js';
 import { TriggerMap } from './TriggerMap.js';
-import { Util } from '../Util.js';
+import { Util } from '../util/Util.js';
 import type { ChatEventData, CheerEventData, CommandEventData } from '../../types/ComfyTypes.js';
 
 declare var app: BombFX;

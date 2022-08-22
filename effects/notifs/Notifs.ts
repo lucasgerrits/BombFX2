@@ -5,7 +5,7 @@ import { Logger } from '../../app/Logger.js';
 import { Reward } from '../../app/twitch/Reward.js';
 import { SFX } from '../sfx/SFX.js';
 import { Twitch } from '../../app/twitch/Twitch.js';
-import { Util } from '../../app/Util.js';
+import { Util } from '../../app/util/Util.js';
 
 declare var app: BombFX;
 

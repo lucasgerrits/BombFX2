@@ -9,7 +9,7 @@ import { StreamerBotSocket } from './integrations/StreamerBotSocket.js';
 import { TextToSpeech } from './integrations/TextToSpeech.js';
 import { TimerMap } from './Timer.js';
 import { Twitch } from './twitch/Twitch.js';
-import { Util } from './Util.js';
+import { Util } from './util/Util.js';
 import type { EffectQueueBucket } from '../types/AppTypes';
 
 declare var window: any;

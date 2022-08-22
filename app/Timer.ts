@@ -1,7 +1,7 @@
 import { BombFX } from './BombFX.js';
 import { Logger } from './Logger.js';
 import { timers } from '../data/timers.js';
-import { Util } from "./Util.js";
+import { Util } from "./util/Util.js";
 
 declare var app: BombFX;
 
