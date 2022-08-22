@@ -73,8 +73,8 @@ export class BombFX {
         window.createNewReward = Twitch.createNewReward;
         window.dismissOrb = Orb.dismiss;
 
-        window.startRecog = () => { this.speech.start(); };
-        window.stopRecog = () => { this.speech.stop(); };
+        window.startRecog = () => { this.speech.startRecognition(); };
+        window.stopRecog = () => { this.speech.stopRecognition(); };
     }
 
     private async testGrounds(): Promise<void> {

@@ -15,6 +15,7 @@ import { OrbReward } from '../effects/orb/Orb.js';
 import { PanicSwitchReward } from '../effects/panic/PanicSwitch.js';
 import { SFXReward, SFXBombReward, SFXDoubleSpeedReward, SFXQuarterSpeedReward } from '../effects/sfx/SFX.js';
 import { SpacebarReward } from '../effects/spacebar/Spacebar.js';
+import { SubsandDubsReward } from '../effects/subsanddubs/SubsandDubs.js';
 import { SunnyReward } from '../effects/sunny/Sunny.js';
 import { SuplexReward } from '../effects/suplex/Suplex.js';
 import { TheWordReward } from '../effects/secretword/TheWord.js';
@@ -50,6 +51,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: SFXQuarterSpeedReward.id, value: new SFXQuarterSpeedReward() },
     { key: SpacebarReward.id, value: new SpacebarReward() },
     { key: SubparImpressionReward.id, value: new SubparImpressionReward() },
+    { key: SubsandDubsReward.id, value: new SubsandDubsReward() },
     { key: SunnyReward.id, value: new SunnyReward() },
     { key: SuplexReward.id, value: new SuplexReward() },
     { key: TheWordReward.id, value: new TheWordReward() },

@@ -31,8 +31,11 @@ export class SpeechRecognition {
             if (event.result.reason == SpeechSDK.ResultReason.RecognizedSpeech) {
                 const transcript: string = event.result.text;
                 if (transcript !== undefined || transcript !== "") {
-                    Logger.noise("RECOGNIZED: " + transcript);
+                    //Logger.noise("RECOGNIZED: " + transcript);
                     this.textQueue.push(transcript);
+
+                    const evt = new CustomEvent("RecognizedSpeechText", { bubbles: true, detail: transcript });
+                    window.dispatchEvent(evt);
                 }
             }
             else if (event.result.reason == SpeechSDK.ResultReason.NoMatch) {
@@ -49,17 +52,16 @@ export class SpeechRecognition {
         }
     }
 
-    public async start(): Promise<void> {
-        Logger.speech("Continuous recognition starting");
+    public async startRecognition(): Promise<void> {
         this.textQueue = new Array<string>();
         this.recognizer.startContinuousRecognitionAsync();
+        Logger.speech("Continuous recognition started");
     }
 
-    public async stop(): Promise<void> {
-        Logger.speech("Continuous recognition stopping");
+    public async stopRecognition(): Promise<void> {
         this.recognizer.stopContinuousRecognitionAsync();
-        this.recognizer.close();
-        console.log(this.textQueue);
+        //this.recognizer.close();
         this.textQueue = null;
+        Logger.speech("Continuous recognition stopped");
     }
 }
