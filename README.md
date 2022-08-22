@@ -6,15 +6,16 @@ This is 95% of the code that runs my (CareFreeBomb's) stream. It is run as a bro
 
 The following packages will be needed to be included in the /vendor directory:
 
-[ComfyJS](https://github.com/instafluff/ComfyJS) - Comfiest Twitch Chat Library for JavaScript | NodeJS + Browser Support
+* [ComfyJS](https://github.com/instafluff/ComfyJS) - Comfiest Twitch Chat Library for JavaScript | NodeJS + Browser Support
 This simplifies chat (via TMI.js), bits, subs, and channel point reward events from Twitch. The creator also streams!
 
-[aws-sdk-js-3](https://github.com/aws/aws-sdk-js-v3) - Modularized AWS SDK for JavaScript.
+* [Azure cognitive-services-speech-sdk-js](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-javascript) - provides speech-to-text capabilities with an Azure Speech resource.
+
+* [aws-sdk-js-3](https://github.com/aws/aws-sdk-js-v3) - Modularized AWS SDK for JavaScript.
 Used for Amazon Polly text-to-speech services.
 
-[obs-websocket-js](https://github.com/obs-websocket-community-projects/obs-websocket-js) - allows Javascript-based connections to the Open Broadcaster Software plugin obs-websocket.
+* [obs-websocket-js v5](https://github.com/obs-websocket-community-projects/obs-websocket-js) - allows Javascript-based connections to the Open Broadcaster Software plugin obs-websocket.
 Needed for most websocket calls to manipulate scenes, sources, and filters in OBS.
-Note: This project currently relies on specifically v4.0.3 with a push to v5 soon (which is a breaking release).
 
 ## Interfaces With
 
@@ -31,11 +32,11 @@ Note: This project currently relies on specifically v4.0.3 with a push to v5 soo
 
 ## FAQ
 
-Q: Why isn't this a Node app
+* Q: Why isn't this a Node app
 
 A: Spaghetti
 
-Q: Why don't you just use Streamer.bot / SAMMI / MixItUp / Biku
+* Q: Why don't you just use Streamer.bot / SAMMI / MixItUp / Biku
 
 A: Spaghetti
 
