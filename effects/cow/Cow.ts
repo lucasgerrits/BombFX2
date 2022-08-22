@@ -38,7 +38,6 @@ export class Cow extends Effect {
     constructor(golden: boolean = false) {
         super(EffectQueueName.Main);
         this.isGolden = golden;
-        this.goldenDelay = 30;
     }
 
     public override async start(): Promise<void> {
@@ -111,6 +110,7 @@ export class Cow extends Effect {
 
     private async determineGoldenProc(): Promise<void> {
         if (!this.isGolden) {
+            this.goldenDelay = Util.Numbers.getRandomIntegerInclusive(15, 90);
             let chance: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
             Logger.noise("Golden Cow Roll: " + chance);
             if (chance <= 4) {
