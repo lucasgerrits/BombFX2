@@ -32,12 +32,10 @@ Needed for most websocket calls to manipulate scenes, sources, and filters in OB
 
 ## FAQ
 
-* Q: Why isn't this a Node app
-
+Q: Why isn't this a Node app
 A: Spaghetti
 
-* Q: Why don't you just use Streamer.bot / SAMMI / MixItUp / Biku
-
+Q: Why don't you just use Streamer.bot / SAMMI / MixItUp / Biku
 A: Spaghetti
 
 ## Obligatory Shill
