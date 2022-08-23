@@ -7,8 +7,8 @@ export class Numbers {
     }
     
     public static msToMinSec(ms: number): string {
-        let minutes: number = Math.floor(ms / 60000);
-        let seconds: number = Math.floor((ms / 1000) - (minutes * 60));
+        const minutes: number = Math.floor(ms / 60000);
+        const seconds: number = Math.floor((ms / 1000) - (minutes * 60));
         //return "hi";
         return minutes.toString().padStart(2, "0") + " minutes " +
             seconds.toString().padStart(2, "0") + " seconds";

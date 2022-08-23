@@ -1,10 +1,11 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class ZoraReward extends Reward {
@@ -24,10 +25,10 @@ export class Zora extends Effect {
     }
     
     public override async start(): Promise<void> {
-        let scootAmount: number = 60;
-        let scootTime: number = 900;
+        const scootAmount: number = 60;
+        const scootTime: number = 900;
         let x: number = 1181.0;
-        let endX: number = -1174.0;
+        const endX: number = -1174.0;
 
         // Reset King Zora's position in case of improper end
         await app.obs.showFilter("** Videos", "Zora - Reset");
@@ -50,16 +51,16 @@ export class Zora extends Effect {
     }
     
     private async pleaseHold(): Promise<void> {
-        let chance: number = 2;
-        let waitMinInSec: number = 3;
-        let waitMaxInSec: number = 15;
+        const chance: number = 2;
+        const waitMinInSec: number = 3;
+        const waitMaxInSec: number = 15;
 
         // There is a chance to make him wait
-        let roll: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
+        const roll: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
         if (roll <= chance) {
             // Random wait time
-            let waitInSec: number = Util.Numbers.getRandomIntegerInclusive(waitMinInSec, waitMaxInSec);
-            let waitInMS: number = waitInSec * 1000;
+            const waitInSec: number = Util.Numbers.getRandomIntegerInclusive(waitMinInSec, waitMaxInSec);
+            const waitInMS: number = waitInSec * 1000;
             Logger.noise("Waiting " + waitInSec + " seconds for scoots.");
             app.twitch.bot.say("PauseFish", true);
             await Util.sleep(waitInMS);
@@ -69,7 +70,7 @@ export class Zora extends Effect {
 
     private async moveKingZora(newX: number, duration: number): Promise<void> {
         // Adjust Move Source filter settings
-        let transform_text: string = "pos: x " + newX + 
+        const transform_text: string = "pos: x " + newX + 
             ".0 y 378.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0";
         //Logger.noise("Sending filter settings");
         await app.obs.setSourceFilterSettings("** Videos", "Zora - Move", {
@@ -106,8 +107,8 @@ export class Zora extends Effect {
 
     private async scootSound(): Promise<void> {
         await Util.sleep(650);
-        let num: number = Util.Numbers.getRandomIntegerInclusive(1, 3);
-        let filename = "effects/zora/audio/scoot" + num + ".mp3";
+        const num: number = Util.Numbers.getRandomIntegerInclusive(1, 3);
+        const filename = "effects/zora/audio/scoot" + num + ".mp3";
         Util.playSound(filename);
     }
 }

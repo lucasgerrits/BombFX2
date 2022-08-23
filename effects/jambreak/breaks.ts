@@ -1,7 +1,8 @@
-import { BombFX } from '../../app/BombFX.js';
+import { BombFX } from "../../app/BombFX.js";
 import { Util } from "../../app/util/Util.js";
 import type { JamBreakData } from "../../types/EffectTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export const jambreaks: Array<JamBreakData> = [
@@ -37,13 +38,13 @@ export const jambreaks: Array<JamBreakData> = [
         action: async () => {
             // Credit to KonaChocolate for scribble overlay
             // Credit to Nutty for effect filter settings + testing
-            let effectScene: string = "Take On Me";
+            const effectScene: string = "Take On Me";
 
             // Play audio
             Util.playSound("./effects/jambreak/jams/aha/ahachorus.mp3");
 
             // Get current scene
-            let currentScene: string = await app.obs.getCurrentSceneName();
+            const currentScene: string = await app.obs.getCurrentSceneName();
             // Set current scene to source mirror properties
             if (currentScene !== effectScene) {
                 await app.obs.changeMirrorSource("Take On Me Scene Mirror", currentScene);
@@ -64,4 +65,4 @@ export const jambreaks: Array<JamBreakData> = [
             }
         }
     }
-]
+];

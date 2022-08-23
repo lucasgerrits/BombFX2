@@ -1,9 +1,10 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class SunnyReward extends Reward {
@@ -29,19 +30,19 @@ export class Sunny extends Effect {
         let episodeTitle: string = this.triggerData.message;
         if (Util.Strings.containsBadWords(episodeTitle)) {
             episodeTitle = "The Gang Scolds " + this.triggerData.user + " for Being a Big Dangus";
-            let modStr: string = "/timeout " + this.triggerData.user + " 300 No Brain";
+            const modStr: string = "/timeout " + this.triggerData.user + " 300 No Brain";
             app.twitch.bot.say(modStr, true);
         }
 
         // Create black background box
-        let fxDiv: HTMLElement = document.getElementById("fx-box");
-        let bgDiv: HTMLDivElement = document.createElement("div");
+        const fxDiv: HTMLElement = document.getElementById("fx-box");
+        const bgDiv: HTMLDivElement = document.createElement("div");
         bgDiv.setAttribute("id", "sunnyBG");
 
         // Create text box and fill with episode title
-        let textDiv: HTMLDivElement = document.createElement("div");
+        const textDiv: HTMLDivElement = document.createElement("div");
         textDiv.setAttribute("id", "sunnyText");
-        let titleString: string = "&ldquo; " + Util.Strings.titleCase(episodeTitle) + " &rdquo;";
+        const titleString: string = "&ldquo; " + Util.Strings.titleCase(episodeTitle) + " &rdquo;";
         textDiv.innerHTML = titleString;
 
         // Add to page

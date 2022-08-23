@@ -1,12 +1,12 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { SFX } from '../sfx/SFX.js';
-import { Twitch } from '../../app/twitch/Twitch.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { SFX } from "../sfx/SFX.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class NotifsReward extends Reward {
@@ -25,7 +25,7 @@ export class Notifs extends Effect {
     }
     
     public override async start(): Promise<void> {
-        let chance: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
+        const chance: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
         // Logger.log("Discord Notif Chance: " + chance);
 
         if (chance > 6) {
@@ -33,28 +33,28 @@ export class Notifs extends Effect {
             return;
         }
         
-        let call: DiscordCall | LewdCall = (chance <= 1) ? new LewdCall() : new DiscordCall();
+        const call: DiscordCall | LewdCall = (chance <= 1) ? new LewdCall() : new DiscordCall();
         call.setTriggerData(this.triggerData);
         app.queues.main.push(call);
     }
 
     private async discordPrank(): Promise<void> {
-        let milliMin: number = 30000; // 30000 - 30 seconds
-        let milliMax: number = 300000; // 300000 - 5 minutes
-        let spamMilliMin: number = 100;
-        let spamMilliMax: number = 1000;
+        const milliMin: number = 30000; // 30000 - 30 seconds
+        const milliMax: number = 300000; // 300000 - 5 minutes
+        const spamMilliMin: number = 100;
+        const spamMilliMax: number = 1000;
         
-        let milliseconds: number = Math.floor(Math.random() * (milliMax - milliMin) + milliMin);
-        let amount: number = Math.floor(Math.random() * 5 + 1);
+        const milliseconds: number = Math.floor(Math.random() * (milliMax - milliMin) + milliMin);
+        const amount: number = Math.floor(Math.random() * 5 + 1);
         
         await Util.sleep(milliseconds); // Initial pause before spam
 
-        let user: string = this.triggerData.user;
+        const user: string = this.triggerData.user;
         Logger.noise("Discording by " + user + " " + amount + " time(s) after " + (milliseconds/1000) + " seconds.");
 
         for (let i: number = 0; i < amount; i++) {
             SFX.play("discord");
-            let sleepMilli = Math.floor(Math.random() * (spamMilliMax - spamMilliMin) + spamMilliMin);
+            const sleepMilli = Math.floor(Math.random() * (spamMilliMax - spamMilliMin) + spamMilliMin);
             // Logger.log(`${sleepMilli}`);
             await Util.sleep(sleepMilli);
         }
@@ -83,12 +83,12 @@ export class DiscordCall extends Effect {
     }
 
     public override async start(): Promise<void> {
-        let scene: string = "Discord Call";
+        const scene: string = "Discord Call";
 
         app.twitch.bot.say("There was a 5% chance that " + 
             this.triggerData.user + " would Discord call the stream, and they did!");
 
-        let imgURL: string = await app.twitch.profilePic(this.triggerData.user, 150);
+        const imgURL: string = await app.twitch.profilePic(this.triggerData.user, 150);
 
         await app.obs.setBrowserURL("Discord Call Avatar", imgURL);
 

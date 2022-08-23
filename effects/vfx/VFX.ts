@@ -1,11 +1,12 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
-import type { VideoExistenceData } from '../../types/EffectTypes.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
+import type { VideoExistenceData } from "../../types/EffectTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class VFXReward extends Reward {
@@ -41,26 +42,26 @@ export class VFX extends Effect {
         this.specificRedeemChecks(message, this.triggerData.user);
 
         // Check if file exists
-        let filename = "effects/vfx/videos/" + message + ".webm";
-        let videoData = await this.videoExists(filename);
+        const filename = "effects/vfx/videos/" + message + ".webm";
+        const videoData = await this.videoExists(filename);
 
         // If it does not, exit
         if (videoData.exists === false) {
-            let errorMessage: string = "Ain't no such video file: " + message;
+            const errorMessage: string = "Ain't no such video file: " + message;
             app.twitch.bot.say(errorMessage);
             return;
         }
 
         // If it does, attempt to add element to browser source and play it
         try {
-            let videoElement: HTMLVideoElement = videoData.video;
+            const videoElement: HTMLVideoElement = videoData.video;
             videoElement.setAttribute("id", "video-player");
 
-            let vfxDiv: HTMLElement = document.getElementById("vfx-box");
+            const vfxDiv: HTMLElement = document.getElementById("vfx-box");
             vfxDiv.appendChild(videoElement);
             videoElement.play();
             
-            let removeDelay: number = 0;
+            const removeDelay: number = 0;
             await Util.sleep(Util.Numbers.secToMS(videoElement.duration) + removeDelay);
 
             videoElement.pause();
@@ -76,7 +77,7 @@ export class VFX extends Effect {
         // Logger.noise(filename);
         return new Promise((resolve, reject) => {
             try {
-                let videoToCheck = document.createElement('video');
+                const videoToCheck = document.createElement("video");
                 videoToCheck.src = filename;
                 videoToCheck.oncanplaythrough = () => {
                     resolve({ exists: true, video: videoToCheck });
@@ -94,7 +95,7 @@ export class VFX extends Effect {
     private async specificRedeemChecks(message: string, user: string): Promise<void> {
         if (message === "disappear") {
             if (this.triggerData.user ==="Snackrodile") {
-                let count: string = await Util.Vars.increment("snackHides");
+                const count: string = await Util.Vars.increment("snackHides");
                 app.twitch.bot.say("Snack has hidden " + count + " times, for whatever reason. homerHide");
             } else {
                 app.twitch.bot.say("Fuck you, pear, ya ain't even RIPE.");

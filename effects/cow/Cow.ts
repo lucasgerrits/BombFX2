@@ -1,12 +1,13 @@
-import { BombFX } from '../../app/BombFX.js';
-import { hostURLs } from '../../data/secrets/urls.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
-import type { CowLaunchData } from '../../types/EffectTypes.js';
+import { BombFX } from "../../app/BombFX.js";
+import { hostURLs } from "../../data/secrets/urls.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
+import type { CowLaunchData } from "../../types/EffectTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class CowReward extends Reward {
@@ -56,9 +57,9 @@ export class Cow extends Effect {
 
         // Get redeemer's launch count
         url = hostURLs.getCowLaunchCount + "?user=" + this.triggerData.user + "&format=json";
-        let result = await Util.Requests.makeRequest(url, "GET");
-        let json: any = JSON.parse(result.response);
-        let data: CowLaunchData = {
+        const result = await Util.Requests.makeRequest(url, "GET");
+        const json: any = JSON.parse(result.response);
+        const data: CowLaunchData = {
             user_name: json.user_name,
             most_recent: json.most_recent,
             rank: json.rank,
@@ -95,15 +96,15 @@ export class Cow extends Effect {
     }
 
     private async chatUserStats(user: string): Promise<void> {
-        let url: string = hostURLs.getCowLaunchCount + "?user=" + user;
-        let result = await Util.Requests.makeRequest(url, "GET");
+        const url: string = hostURLs.getCowLaunchCount + "?user=" + user;
+        const result = await Util.Requests.makeRequest(url, "GET");
         //console.log(result.response);
         app.twitch.bot.say(result.response);
     }
 
     private async chatLeaderboard(): Promise<void> {
-        let url: string = hostURLs.cowLeaderboard;
-        let result = await Util.Requests.makeRequest(url, "GET");
+        const url: string = hostURLs.cowLeaderboard;
+        const result = await Util.Requests.makeRequest(url, "GET");
         //console.log(result.response);
         app.twitch.bot.say(result.response);
     }
@@ -111,7 +112,7 @@ export class Cow extends Effect {
     private async determineGoldenProc(): Promise<void> {
         if (!this.isGolden) {
             this.goldenDelay = Util.Numbers.getRandomIntegerInclusive(15, 90);
-            let chance: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
+            const chance: number = Util.Numbers.getRandomIntegerInclusive(1, 100);
             Logger.noise("Golden Cow Roll: " + chance);
             if (chance <= 4) {
                 Logger.log("GOLDEN COW PROC!");
@@ -125,8 +126,8 @@ export class Cow extends Effect {
     private createCowDivs(data: CowLaunchData): void {
         // Create username box
         if (data.user_name.length > 15) {
-            let newWidth: number = Math.trunc(1790 / data.user_name.length);
-            document.documentElement.style.setProperty('--cow-char-width', newWidth + "px");
+            const newWidth: number = Math.trunc(1790 / data.user_name.length);
+            document.documentElement.style.setProperty("--cow-char-width", newWidth + "px");
         }
         this.createCowDiv("cow-name-box", data.user_name);
         
@@ -134,20 +135,20 @@ export class Cow extends Effect {
         this.createCowDiv("cow-launches-box", data.launches);
         
         // Create rank number box "cow-rank-box"
-        let rankString: string = "Rank " + data.rank + " of " + data.total_users;
+        const rankString: string = "Rank " + data.rank + " of " + data.total_users;
         this.createCowDiv("cow-rank-box", rankString);
     }
 
     private createCowDiv(id: string, str: string) {
-        let fxBox: HTMLElement = document.getElementById("fx-box");
-        let newDiv: HTMLDivElement = document.createElement("div");
+        const fxBox: HTMLElement = document.getElementById("fx-box");
+        const newDiv: HTMLDivElement = document.createElement("div");
         newDiv.setAttribute("id", id);
         newDiv.innerHTML = this.createJimString(str);
         fxBox.appendChild(newDiv);
     }
 
     private removeCowDivs(): void {
-        let fxBox: HTMLElement = document.getElementById("fx-box");
+        const fxBox: HTMLElement = document.getElementById("fx-box");
         while (fxBox.firstChild) {
             fxBox.removeChild(fxBox.firstChild);
         }
@@ -155,8 +156,8 @@ export class Cow extends Effect {
 
     private createJimString(stringIn: string): string {
         // Split input string up into an array of characters
-        let lowerCase: string = stringIn.toLowerCase();
-        let charArray: Array<string> = lowerCase.split("");
+        const lowerCase: string = stringIn.toLowerCase();
+        const charArray: Array<string> = lowerCase.split("");
         let jimString: string = "";
 
         // For each char, add a matching img element to output HTML string

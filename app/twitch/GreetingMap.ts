@@ -14,7 +14,7 @@ export class GreetingMap {
         return this.map.has(key);
     }
 
-    public get(key: string): Function | undefined {
+    public get(key: string): () => unknown | undefined {
         return this.map.get(key);
     }
 }

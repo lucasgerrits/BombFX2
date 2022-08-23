@@ -1,11 +1,13 @@
-import { BombFX } from './BombFX.js';
-import { EffectQueueName } from './EffectQueue.js';
-import { EventTriggerData } from './EventTriggerData.js';
-import { Logger } from './Logger.js';
-import { Util } from './util/Util.js';
+import { BombFX } from "./BombFX.js";
+import { EffectQueueName } from "./EffectQueue.js";
+import { EventTriggerData } from "./EventTriggerData.js";
+import { Logger } from "./Logger.js";
+import { Util } from "./util/Util.js";
 
+/* eslint-disable no-var */
 declare var app: BombFX;
 declare var window: any;
+/* eslint-enable no-var */
 
 export class Effect {
 
@@ -52,7 +54,7 @@ export class Effect {
 
     private async addStopListener(): Promise<void> {
         Logger.noise("Adding stopListener()");
-        this.listener = () => { this.stop(); }
+        this.listener = () => { this.stop(); };
         window.addEventListener("EffectStop", this.listener);
         await Util.sleep(3000);
     }
@@ -79,7 +81,7 @@ export class Effect {
         this.triggerData = dataIn;
     }
 
-    public async setup(): Promise<void> {}
+    public async setup(): Promise<void> { Util.sleep(1); }
 
-    public async dismantle(): Promise<void> {}
+    public async dismantle(): Promise<void> { Util.sleep(1); }
 }

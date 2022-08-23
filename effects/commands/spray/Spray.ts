@@ -1,17 +1,18 @@
-import { BombFX } from '../../../app/BombFX.js';
-import { Util } from '../../../app/util/Util.js';
-import type { CommandEventData } from '../../../types/ComfyTypes.js';
+import { BombFX } from "../../../app/BombFX.js";
+import { Util } from "../../../app/util/Util.js";
+import type { CommandEventData } from "../../../types/ComfyTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class Spray {
 
     public static async bottle(data: CommandEventData): Promise<void> {
-        let callingUser: string = data.user;
+        const callingUser: string = data.user;
     
         // Determine command arguments
-        let message: string = data.message;
-        let firstSpace: number = message.indexOf(" ");
+        const message: string = data.message;
+        const firstSpace: number = message.indexOf(" ");
         let targetUser: string = message;
         let reason: string = "";
 

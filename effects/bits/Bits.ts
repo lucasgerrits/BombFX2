@@ -1,8 +1,9 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Logger } from '../../app/Logger.js';
-import { Util } from '../../app/util/Util.js';
-import type { CheerEventData } from '../../types/ComfyTypes.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Logger } from "../../app/Logger.js";
+import { Util } from "../../app/util/Util.js";
+import type { CheerEventData } from "../../types/ComfyTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class Bits {

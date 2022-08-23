@@ -1,9 +1,10 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class BattletoadsReward extends Reward {
@@ -32,7 +33,7 @@ export class Battletoads extends Effect {
         app.obs.muteMic();
         app.obs.muteDesktop();
 
-        let currentScene: string = await app.obs.getCurrentSceneName();
+        const currentScene: string = await app.obs.getCurrentSceneName();
         
         app.obs.call("CreateSourceFilter", {
             "sourceName" : currentScene,
@@ -43,7 +44,7 @@ export class Battletoads extends Effect {
             
         await Util.sleep(8100);
 
-        app.obs.call('RemoveSourceFilter', {
+        app.obs.call("RemoveSourceFilter", {
             sourceName : currentScene,
             filterName : "Battletoads Freeze"
         });

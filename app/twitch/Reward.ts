@@ -1,8 +1,9 @@
-import { Effect } from '../Effect.js';
-import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import type { RewardSettings } from '../../types/ComfyTypes.js';
+import { Effect } from "../Effect.js";
+import { Logger } from "../Logger.js";
+import { secrets } from "../../data/secrets/secrets.js";
+import type { RewardSettings } from "../../types/ComfyTypes.js";
 
+// eslint-disable-next-line no-var
 declare var ComfyJS: any;
 
 export abstract class Reward {
@@ -25,7 +26,7 @@ export abstract class Reward {
         this.id = idIn;
         this.title = titleIn;
         this.buttonColor = buttonColorIn;
-        this.allowedOnBRB
+        this.allowedOnBRB;
         this.effect = effectIn;
     }
 

@@ -4,15 +4,15 @@ export class Logger {
     public static log(strIn: string, styleIn: Array<string> | string = "color: #FFFFFF"): void {
         if (Logger.DEBUG === true) {
             // Get current local time and append to input string
-            let today : Date = new Date();
-            let ms: string = today.getMilliseconds().toString().padStart(3, '0');
-            let time: string = today.toLocaleTimeString();
-            let timeStr: string = time.substring(0, time.length - 3) + "." + ms + time.substring(time.length - 3);
-            let logStr: string = "%c[" + timeStr + "]%c " + strIn;
+            const today : Date = new Date();
+            const ms: string = today.getMilliseconds().toString().padStart(3, "0");
+            const time: string = today.toLocaleTimeString();
+            const timeStr: string = time.substring(0, time.length - 3) + "." + ms + time.substring(time.length - 3);
+            const logStr: string = "%c[" + timeStr + "]%c " + strIn;
 
             // Create styles arr with timer style string
-            let timerStyle: string = "background-color: #111111; color: #9ACD32";
-            let styles: Array<string> = new Array(timerStyle);
+            const timerStyle: string = "background-color: #111111; color: #9ACD32";
+            const styles: Array<string> = new Array(timerStyle);
 
             // Append arguments based on type
             if (typeof styleIn === "string") {

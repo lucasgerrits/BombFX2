@@ -1,16 +1,18 @@
-import { Bits } from '../../effects/bits/Bits.js';
-import { BombFX } from '../BombFX.js';
-import { ChatTrigger } from './ChatTrigger.js';
-import { DonutBreak } from '../../effects/donut/Donut.js';
-import { GreetingMap } from './GreetingMap.js';
-import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import { TriggerMap } from './TriggerMap.js';
-import { Util } from '../util/Util.js';
-import type { ChatEventData, CheerEventData, CommandEventData } from '../../types/ComfyTypes.js';
+import { Bits } from "../../effects/bits/Bits.js";
+import { BombFX } from "../BombFX.js";
+import { ChatTrigger } from "./ChatTrigger.js";
+import { DonutBreak } from "../../effects/donut/Donut.js";
+import { GreetingMap } from "./GreetingMap.js";
+import { Logger } from "../Logger.js";
+import { secrets } from "../../data/secrets/secrets.js";
+import { TriggerMap } from "./TriggerMap.js";
+import { Util } from "../util/Util.js";
+import type { ChatEventData, CheerEventData, CommandEventData } from "../../types/ComfyTypes.js";
 
+/* eslint-disable no-var */
 declare var app: BombFX;
 declare var ComfyJS: any;
+/* eslint-enable no-var */
 
 export class ChatHandler {
 
@@ -54,7 +56,7 @@ export class ChatHandler {
     }
 
     public getFirst(): string {
-        let [actualFirst]: Set<string> = this.usersWhoHaveTalked;
+        const [actualFirst]: Set<string> = this.usersWhoHaveTalked;
         return actualFirst;
     }
 
@@ -65,7 +67,7 @@ export class ChatHandler {
         messageModified = Util.Strings.removeNonAlphaNumeric(messageModified);
         messageModified = Util.Strings.removeWhiteSpace(messageModified);
 
-        let first: string = this.getFirst();
+        const first: string = this.getFirst();
         if (user !== first && (messageModified === "first" || messageModified === "1st")) {
             this.say("/timeout " + user + " 69 Was not actually first.");
             app.twitch.bot.say("Sorry, " + user + ", but " + first + " was actually first.");
@@ -90,21 +92,21 @@ export class ChatHandler {
 
     private checkTriggers(data: ChatEventData) {
         // Convert string to lowercase
-        let message: string = data.message.toLowerCase();
+        const message: string = data.message.toLowerCase();
         // Get all trigger possibilities with any !command prefixes already excluded
-        let wordCombinations: Set<string> = Util.Strings.possibleCombinations(message); // removes non alpha-numeric
+        const wordCombinations: Set<string> = Util.Strings.possibleCombinations(message); // removes non alpha-numeric
         // Compare possibilities set against actual commands / aliases set
-        let foundTriggers: Set<string> = this.triggers.hasWhich(wordCombinations);
+        const foundTriggers: Set<string> = this.triggers.hasWhich(wordCombinations);
         // If there were any found, run them all up
         if (foundTriggers.size !== 0) {
-            for (let key of foundTriggers) {
+            for (const key of foundTriggers) {
                 this.triggerAction(key, data);
             }
         }
     }
 
     private async triggerAction(triggerStr: string, eventData: ChatEventData): Promise<void> {
-        let trigger: ChatTrigger = this.triggers.get(triggerStr);
+        const trigger: ChatTrigger = this.triggers.get(triggerStr);
         trigger.run(eventData);
     }
 }

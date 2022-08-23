@@ -1,17 +1,19 @@
-import { BombFX } from '../BombFX.js';
-import { Chatbot } from './Chatbot.js';
-import { ChatHandler } from './ChatHandler.js';
-import { Effect } from '../Effect.js';
-import { Logger } from '../Logger.js';
-import { modList } from '../../data/secrets/modlist.js';
-import { Reward } from './Reward.js';
-import { RewardMap } from './RewardMap.js';
-import { RewardTriggerData } from '../EventTriggerData.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import { Util } from '../util/Util.js';
+import { BombFX } from "../BombFX.js";
+import { Chatbot } from "./Chatbot.js";
+import { ChatHandler } from "./ChatHandler.js";
+import { Effect } from "../Effect.js";
+import { Logger } from "../Logger.js";
+import { modList } from "../../data/secrets/modlist.js";
+import { Reward } from "./Reward.js";
+import { RewardMap } from "./RewardMap.js";
+import { RewardTriggerData } from "../EventTriggerData.js";
+import { secrets } from "../../data/secrets/secrets.js";
+import { Util } from "../util/Util.js";
 
+/* eslint-disable no-var */
 declare var app: BombFX;
 declare var ComfyJS: any;
+/* eslint-enable no-var */
 
 export class Twitch {
 
@@ -27,10 +29,10 @@ export class Twitch {
     }
 
     public checkRedemption(data: RewardTriggerData): void {
-        let id = data.rewardID;
+        const id = data.rewardID;
         if (this.rewards.has(id)) {
             let logStr: string = data.user + " redeemed " + data.reward + " for " + data.cost + " PP.";
-            if (data.message !== "") { logStr += "(" + data.message + ")" }
+            if (data.message !== "") { logStr += "(" + data.message + ")"; }
             Logger.twitch(logStr);
             this.queueReward(data);
         } else { 
@@ -39,8 +41,8 @@ export class Twitch {
     }
 
     private queueReward(data: RewardTriggerData): void {
-        let reward: Reward = this.rewards.get(data.rewardID);
-        let effect: Effect = reward.effect;
+        const reward: Reward = this.rewards.get(data.rewardID);
+        const effect: Effect = reward.effect;
         effect.setTriggerData(data);
         app.queues[effect.queueType].push(effect);
     }
@@ -65,23 +67,23 @@ export class Twitch {
     }
 
     public async chatList(): Promise<any> {
-        let url: string = "https://tmi.twitch.tv/group/user/carefreebomb/chatters";
-        let request = await Util.Requests.makeRequest(url);
-        let json: string = request.response;
-        let obj: any = JSON.parse(json).chatters;
-        let chatters: Array<string> = obj.broadcaster.concat(obj.moderators, obj.vips,
+        const url: string = "https://tmi.twitch.tv/group/user/carefreebomb/chatters";
+        const request = await Util.Requests.makeRequest(url);
+        const json: string = request.response;
+        const obj: any = JSON.parse(json).chatters;
+        const chatters: Array<string> = obj.broadcaster.concat(obj.moderators, obj.vips,
             obj.viewers, obj.staff, obj.admins, obj.global_mods);
         console.log(chatters);
     }
 
     public isMod(username: string): boolean {
         return modList.some(mod => username.toLowerCase() === mod);
-    };
+    }
 
     public async profilePic(user: string, size: number = 300): Promise<any> {
-        let url: string = "https://www.carefreebomb.com/twitchapi/profilepic.php?user=" +
+        const url: string = "https://www.carefreebomb.com/twitchapi/profilepic.php?user=" +
             user + "&size=" + size;
-        let result = await Util.Requests.makeRequest(url);
+        const result = await Util.Requests.makeRequest(url);
         return result.response;
-    };
+    }
 }

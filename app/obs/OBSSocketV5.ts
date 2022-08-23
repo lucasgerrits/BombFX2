@@ -1,14 +1,25 @@
-import { BombFX } from '../BombFX.js';
-import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import { streamEventList } from '../../data/streamEventList.js';
-import { transitionsList } from '../../data/transitionsList.js';
-import { Util } from '../util/Util.js';
-import type { SceneTransition, TransitionScenes } from '../../types/AppTypes.js';
-import type { CurrentProgramSceneChangedEvent, GetInputSettingsResponse, InputMuteStateChangedEvent, StreamStateChangedEvent } from '../../types/OBSSocketV5Types.js';
+import { BombFX } from "../BombFX.js";
+import { Logger } from "../Logger.js";
+import { secrets } from "../../data/secrets/secrets.js";
+import { streamEventList } from "../../data/streamEventList.js";
+import { transitionsList } from "../../data/transitionsList.js";
+import { Util } from "../util/Util.js";
+import type { SceneTransition, TransitionScenes } from "../../types/AppTypes.js";
+import type { GetInputSettingsResponse, InputMuteStateChangedEvent, StreamStateChangedEvent } from "../../types/OBSSocketV5Types.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 declare const OBSWebSocket: any;
+
+export enum ObsMediaInputAction {
+    None = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NONE",
+    Play = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PLAY",
+    Pause = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PAUSE",
+    Stop = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_STOP",
+    Restart = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART",
+    Next = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NEXT",
+    Previous = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PREVIOUS"
+}
 
 export class OBSSocket {
 
@@ -16,6 +27,7 @@ export class OBSSocket {
     public previousScene: string;
     public currentScene: string;
     private transitions: Map<string, SceneTransition>;
+    private static readonly ObsMediaInputAction = ObsMediaInputAction;
 
     constructor() {
         this.socket = new OBSWebSocket();
@@ -50,7 +62,7 @@ export class OBSSocket {
 
     // v5 uses ID numbers for most source requests as opposed to the name
     public async getSceneItemId(sourceName: string, sceneName: string): Promise<number> {
-        const {sceneItemId} = await this.call('GetSceneItemId', {
+        const {sceneItemId} = await this.call("GetSceneItemId", {
             sceneName : sceneName,
             sourceName : sourceName,
             searchOffset : 0
@@ -66,7 +78,7 @@ export class OBSSocket {
     }
 
     public async getSceneItemList(sceneName: string): Promise<any> {
-        const sceneItemList = await this.call('GetSceneItemList', { "sceneName": sceneName });
+        const sceneItemList = await this.call("GetSceneItemList", { "sceneName": sceneName });
         return sceneItemList;
     }
 
@@ -109,7 +121,7 @@ export class OBSSocket {
     }
 
     public async setSceneItemEnabled(sourceName: string, sceneName: string, enabled: boolean): Promise<void> {
-        await this.getSceneItemIdThenCall(sourceName, sceneName, 'SetSceneItemEnabled', {
+        await this.getSceneItemIdThenCall(sourceName, sceneName, "SetSceneItemEnabled", {
             "sceneItemEnabled" : enabled
         });
     }
@@ -139,24 +151,24 @@ export class OBSSocket {
     // MEDIA INPUTS
 
     public async playMedia(inputName: string) {
-        await this.call('TriggerMediaInputAction', {
+        await this.call("TriggerMediaInputAction", {
             "inputName": inputName,
             "mediaAction": OBSSocket.ObsMediaInputAction.Play
-        })
+        });
     }
 
     public async pauseMedia(inputName: string) {
-        await this.call('TriggerMediaInputAction', {
+        await this.call("TriggerMediaInputAction", {
             "inputName": inputName,
-            "mediaAction": OBSSocket.ObsMediaInputAction.Pause
-        })
+            "mediaAction": ObsMediaInputAction.Pause
+        });
     }
 
     public async restartMedia(inputName: string) {
-        await this.call('TriggerMediaInputAction', {
+        await this.call("TriggerMediaInputAction", {
             "inputName": inputName,
             "mediaAction": OBSSocket.ObsMediaInputAction.Restart
-        })
+        });
     }
 
     // FILTERS
@@ -170,7 +182,7 @@ export class OBSSocket {
     }
 
     public async setSourceFilterEnabled(sourceName: string, filterName: string, filterEnabled: boolean): Promise<void> {
-        await this.call('SetSourceFilterEnabled', {
+        await this.call("SetSourceFilterEnabled", {
             "sourceName" : sourceName,
             "filterName" : filterName,
             "filterEnabled" : filterEnabled
@@ -178,7 +190,7 @@ export class OBSSocket {
     }
 
     public async setSourceFilterSettings(sourceName: string, filterName: string, filterSettings: object, overlay: boolean = true): Promise<void> {
-        await this.call('SetSourceFilterSettings', {
+        await this.call("SetSourceFilterSettings", {
             "sourceName": sourceName,
             "filterName": filterName,
             "overlay": overlay,
@@ -187,12 +199,12 @@ export class OBSSocket {
     }
 
     public async getSourceFilters(sourceName: string): Promise<void> {
-        const filters: object = await this.call('GetSourceFilterList', { "sourceName" : sourceName });
+        const filters: object = await this.call("GetSourceFilterList", { "sourceName" : sourceName });
         console.log(filters);
     }
 
     public async getSourceFilterInfo(sourceName: string, filterName: string): Promise<void> {
-        const filterInfo: object = await this.call('GetSourceFilter', {
+        const filterInfo: object = await this.call("GetSourceFilter", {
             "sourceName" : sourceName,
             "filterName" : filterName
         });
@@ -205,12 +217,12 @@ export class OBSSocket {
     public async muteMic(voicemodSwap: boolean = false): Promise<void> {
         if (voicemodSwap === true) { this.setInputMute("Mic/Aux 2", false); }
         this.setInputMute("Mic/Aux", true);
-    };
+    }
 
     public async unmuteMic(voicemodSwap: boolean = false): Promise<void> {
         if (voicemodSwap === true) { this.setInputMute("Mic/Aux 2", true); }
         this.setInputMute("Mic/Aux", false);
-    };
+    }
 
     public async muteDesktop(): Promise<void> {
         this.setInputMute("Desktop Audio", true);
@@ -221,17 +233,17 @@ export class OBSSocket {
     }
 
     public async setInputMute(inputName: string, inputMuted: boolean): Promise<void> {
-        this.call('SetInputMute', { "inputName": inputName, "inputMuted": inputMuted });
+        this.call("SetInputMute", { "inputName": inputName, "inputMuted": inputMuted });
     }
 
     public async getInputMute(inputName: string): Promise<boolean> {
-        return await this.call('GetInputMute', { "inputName": inputName });
+        return await this.call("GetInputMute", { "inputName": inputName });
     }
 
     // UTILITY
 
     public async getSourceScreenshot(sourceName: string, imageFilePath: string, imageFormat: string = "png"): Promise<string> {
-        const {imageData}: any = await this.call('GetSourceScreenshot', {
+        const {imageData}: any = await this.call("GetSourceScreenshot", {
             "sourceName" : sourceName,
             "imageFormat" : imageFormat,
             "imageFilePath" : imageFilePath
@@ -240,7 +252,7 @@ export class OBSSocket {
     }
 
     public async pressInputPropertiesButton(inputName: string, propertyName: string): Promise<void> {
-        await this.call('PressInputPropertiesButton', {
+        await this.call("PressInputPropertiesButton", {
             "inputName" : inputName,
             "propertyName" : propertyName
         });
@@ -258,27 +270,27 @@ export class OBSSocket {
     }
 
     private setConnectionEventHandlers(): void {
-        this.socket.on('ConnectionOpened', () => {
+        this.socket.on("ConnectionOpened", () => {
             Logger.obs("Connection Opened");
         });
 
-        this.socket.on('ConnectionClosed', () => {
+        this.socket.on("ConnectionClosed", () => {
             Logger.obs("Connection Closed");
         });
 
         // (OpCode 0) First message sent from the server immediately on client connection.
-        this.socket.on('Hello', (data: object) => {
+        this.socket.on("Hello", () => {
             //Logger.obs("Hello");
             //console.log(data);
         });
 
         // (OpCode 2) Identify request was received and validated, and the connection is now ready for normal operation.
-        this.socket.on('Identified', (data: object) => {
+        this.socket.on("Identified", () => {
             //Logger.obs("Connection ready");
             //console.log(data);
         });
 
-        this.socket.on('error', (error: object) => {
+        this.socket.on("error", (error: object) => {
             Logger.obs("Unhandled Error");
             console.log(error);
         });
@@ -295,9 +307,9 @@ export class OBSSocket {
     }
 
     private setSourceEventHandlers() {
-        this.socket.on('InputMuteStateChanged', async (eventData: InputMuteStateChangedEvent) => {
+        this.socket.on("InputMuteStateChanged", async (eventData: InputMuteStateChangedEvent) => {
             if (eventData.inputName === "Mic/Aux") {
-                let voicemodMuted = await this.getInputMute("Mic/Aux 2");
+                const voicemodMuted = await this.getInputMute("Mic/Aux 2");
                 if (eventData.inputMuted === true && voicemodMuted === true) {
                     this.showSource("Mute Icon", "** Webcam");
                     Logger.noise("MIC MUTED!");
@@ -308,37 +320,26 @@ export class OBSSocket {
             }
         });
 
-        this.socket.on('CurrentProgramSceneChanged', async(eventData: CurrentProgramSceneChangedEvent) => {
+        this.socket.on("CurrentProgramSceneChanged", async() => {
             // this.currentScene = eventData.sceneName;
         });
 
-        this.socket.on('SceneTransitionStarted', async () => {
+        this.socket.on("SceneTransitionStarted", async () => {
             this.previousScene = this.currentScene;
             this.currentScene = await app.obs.getCurrentSceneName();
             const transitionScenes: TransitionScenes = { "fromScene": this.previousScene, "toScene": this.currentScene };
 
             if (this.transitions.has(this.currentScene)) {
-                let transition = this.transitions.get(this.currentScene);
+                const transition = this.transitions.get(this.currentScene);
                 transition.to(transitionScenes);
             }
             
             if (this.transitions.has(this.previousScene)) {
-                let transition = this.transitions.get(this.previousScene);
+                const transition = this.transitions.get(this.previousScene);
                 transition.from(transitionScenes);
             }
         });
     }
 }
 
-export namespace OBSSocket
-{
-    export enum ObsMediaInputAction {
-        None = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NONE",
-        Play = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PLAY",
-        Pause = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PAUSE",
-        Stop = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_STOP",
-        Restart = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART",
-        Next = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NEXT",
-        Previous = "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PREVIOUS"
-    }
-}
+

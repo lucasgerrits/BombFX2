@@ -1,11 +1,11 @@
-import { BattletoadsReward } from '../battletoads/Battletoads.js';
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Twitch } from '../../app/twitch/Twitch.js';
-import { Util } from '../../app/util/Util.js';
+import { BattletoadsReward } from "../battletoads/Battletoads.js";
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class BigPPReward extends Reward {
@@ -33,13 +33,13 @@ export class BigPP extends Effect {
     }
 
     public override async start(user: string = this.triggerData.user): Promise<void> {
-        let ppScene: string = "The Big PP";
+        const ppScene: string = "The Big PP";
 
         // Set username to text source
         await app.obs.setText("The Big PP User Text", user);
 
         // Get URL for Twitch avatar and set to browser source
-        let imgURL: string = await app.twitch.profilePic(user, 150);
+        const imgURL: string = await app.twitch.profilePic(user, 150);
         await app.obs.setBrowserURL("The Big PP Twitch Pic", imgURL);
 
         // Dim the background

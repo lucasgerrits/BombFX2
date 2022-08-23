@@ -1,9 +1,10 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class Barkeep extends Effect {
@@ -49,6 +50,6 @@ export class Barkeep extends Effect {
             await app.obs.restartMedia("Barkeep - Out");
 
             this.emitStop();
-        }
+        };
     }
 }

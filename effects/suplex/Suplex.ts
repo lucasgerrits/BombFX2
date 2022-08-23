@@ -1,10 +1,11 @@
 
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class SuplexReward extends Reward {
@@ -25,7 +26,7 @@ export class Suplex extends Effect {
     
     public override async start(): Promise<void> {
         // Get current scene
-        let currentScene: string = await app.obs.getCurrentSceneName();
+        const currentScene: string = await app.obs.getCurrentSceneName();
 
         // Set current scene to source mirror properties
         if (currentScene !== "Suplex") {

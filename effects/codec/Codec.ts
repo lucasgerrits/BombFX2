@@ -1,12 +1,13 @@
-import { BattletoadsReward } from '../battletoads/Battletoads.js';
-import { BombFX } from '../../app/BombFX.js';
-import { specifiedVoices } from '../../data/specifiedvoices.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BattletoadsReward } from "../battletoads/Battletoads.js";
+import { BombFX } from "../../app/BombFX.js";
+import { specifiedVoices } from "../../data/specifiedvoices.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class CodecReward extends Reward {
@@ -37,7 +38,7 @@ export class Codec extends Effect {
     }
 
     public override async start(): Promise<void> {
-        let currentScene: string = await app.obs.getCurrentSceneName();
+        const currentScene: string = await app.obs.getCurrentSceneName();
 
         let user: string = this.triggerData.user;
         let message: string = this.triggerData.message;
@@ -48,7 +49,7 @@ export class Codec extends Effect {
         }
 
         // Change Twitch profile pic's URL
-        let picURL: string = await app.twitch.profilePic(user, 600);
+        const picURL: string = await app.twitch.profilePic(user, 600);
         await app.obs.setBrowserURL("Codec Call Twitch Pic", picURL);
 
         // Ring ring ring, ring ring ring, phone call, phone call
@@ -80,7 +81,7 @@ export class Codec extends Effect {
                 await app.obs.setScene(currentScene);
                 await Util.sleep(2500);
                 this.emitStop();
-            }
+            };
         } catch (err: unknown) {
             Logger.tts("Catch block: ");
             console.log(err);

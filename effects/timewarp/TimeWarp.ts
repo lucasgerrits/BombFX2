@@ -1,14 +1,14 @@
-import { BattletoadsReward } from '../battletoads/Battletoads.js';
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { RewardTriggerData } from '../../app/EventTriggerData.js';
-import { Util } from '../../app/util/Util.js';
-import { webhookURLs } from '../../data/secrets/urls.js';
-import type { TakeSourceScreenshotResponse } from '../../types/OBSSocketV4Types.js';
+import { BattletoadsReward } from "../battletoads/Battletoads.js";
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { RewardTriggerData } from "../../app/EventTriggerData.js";
+import { Util } from "../../app/util/Util.js";
+import { webhookURLs } from "../../data/secrets/urls.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class TimeWarpReward extends Reward {
@@ -35,18 +35,18 @@ export class TimeWarp extends Effect {
     }
 
     public override async start(): Promise<void> {
-        let minDuration: number = 10;
-        let maxDuration: number = 30;
+        const minDuration: number = 10;
+        const maxDuration: number = 30;
 
         // Get random duration of warp
-        let randomDuration: number = Util.Numbers.getRandomIntegerInclusive(minDuration, maxDuration);
-        let randomDurationInMS: number = randomDuration * 1000;
+        const randomDuration: number = Util.Numbers.getRandomIntegerInclusive(minDuration, maxDuration);
+        const randomDurationInMS: number = randomDuration * 1000;
 
         // Get random angle for warp direction
-        let randomAngle = Util.Numbers.getRandomIntegerInclusive(0, 360);
+        const randomAngle = Util.Numbers.getRandomIntegerInclusive(0, 360);
 
         // Remember current scene for transitioning back to later
-        let currentScene: string = await app.obs.getCurrentSceneName();
+        const currentScene: string = await app.obs.getCurrentSceneName();
 
         // Set random values to time warp filter settings
         app.obs.setSourceFilterSettings("Webcam Time Warp", "Time Warp Scan", {
@@ -72,8 +72,8 @@ export class TimeWarp extends Effect {
         await Util.sleep(randomDurationInMS);
 
         // Put details of warp in Twitch chat
-        let discordLink: string = "https://discord.gg/ZwG2V9bbjA";
-        let chatString: string = "Angle: " + randomAngle + " degrees /" + 
+        const discordLink: string = "https://discord.gg/ZwG2V9bbjA";
+        const chatString: string = "Angle: " + randomAngle + " degrees /" + 
             " Duration: " + randomDuration + " seconds. You can find all" +
             " of the time warped photos here: " + discordLink;
         app.twitch.bot.say(chatString);
@@ -104,9 +104,9 @@ export class TimeWarp extends Effect {
     }
 
     private async uploadTimeWarpToDiscord(duration: number, angle: number, screenshotImageData: string) {
-        let data: RewardTriggerData = <RewardTriggerData> this.triggerData;
+        const data: RewardTriggerData = <RewardTriggerData> this.triggerData;
 
-        let debug: boolean = false;
+        const debug: boolean = false;
 
         let webhookURL: string;
         if (debug) {
@@ -115,35 +115,35 @@ export class TimeWarp extends Effect {
             webhookURL = webhookURLs.endoftime;
         }
         
-        let time = new Date(data.timestamp);
+        const time = new Date(data.timestamp);
         
-        let str =   "Time Warp redeemed by **" + data.user + "** at " +
-                    time.toLocaleTimeString('en-US') + " on " +
+        const str =   "Time Warp redeemed by **" + data.user + "** at " +
+                    time.toLocaleTimeString("en-US") + " on " +
                     time.toDateString() + " for " + data.cost +
                     " PP. Effect duration: " + duration + " seconds " +
                     "/ Warp angle: " + angle + " degrees.";
         
-        let imgFile: string = screenshotImageData;
-        let block: Array<string> = imgFile.split(";");
-        let contentType: string = block[0].split(":")[1];
-        let encodedImage: string = block[1].split(",")[1];
-        let blob = Util.Requests.base64ToBlob(encodedImage, contentType);
+        const imgFile: string = screenshotImageData;
+        const block: Array<string> = imgFile.split(";");
+        const contentType: string = block[0].split(":")[1];
+        const encodedImage: string = block[1].split(",")[1];
+        const blob = Util.Requests.base64ToBlob(encodedImage, contentType);
         
-        let formData: FormData = new FormData();
+        const formData: FormData = new FormData();
         formData.append("image", blob, "temp.png");
         formData.append("content", str);
         //formData.append("payload_json", `{"content": "${str}""}`);
     
-        let requestOptions: RequestInit = {
-            method: 'POST',
+        const requestOptions: RequestInit = {
+            method: "POST",
             body: formData,
-            redirect: 'follow'
+            redirect: "follow"
         };
     
-        let response: Response = await fetch(webhookURL, requestOptions);
+        const response: Response = await fetch(webhookURL, requestOptions);
     
         if (response.status == 401) {
             Logger.log("Invalid webhookURL or webhook Token.");
         }
-    };
+    }
 }

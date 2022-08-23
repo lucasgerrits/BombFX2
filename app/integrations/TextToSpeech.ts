@@ -1,9 +1,10 @@
-import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import { Util } from '../util/Util.js';
-import { voices } from '../../data/pollyvoices.js';
-import type { PollyParams, Voice } from '../../types/PollyTypes.js';
+import { Logger } from "../Logger.js";
+import { secrets } from "../../data/secrets/secrets.js";
+import { Util } from "../util/Util.js";
+import { voices } from "../../data/pollyvoices.js";
+import type { PollyParams, Voice } from "../../types/PollyTypes.js";
 
+// eslint-disable-next-line no-var
 declare var AWS: any;
 
 export class TextToSpeech {
@@ -37,11 +38,11 @@ export class TextToSpeech {
         this.speaker = new Audio();
 
         // Create an audio context and hook up the audio element as the source
-        let audioCtx: AudioContext = new AudioContext();
-        let source: MediaElementAudioSourceNode = audioCtx.createMediaElementSource(this.speaker);
+        const audioCtx: AudioContext = new AudioContext();
+        const source: MediaElementAudioSourceNode = audioCtx.createMediaElementSource(this.speaker);
         
         // Create a gain node
-        let gainNode: GainNode = audioCtx.createGain();
+        const gainNode: GainNode = audioCtx.createGain();
         gainNode.gain.value = 2.5; // GAIN VALUE HERE
         source.connect(gainNode);
 
@@ -50,23 +51,23 @@ export class TextToSpeech {
     }
 
     private randomVoice(arr: Array<Voice>): Voice {
-        let max: number = arr.length;
-        let random = Util.Numbers.getRandomIntegerInclusive(0, max);
+        const max: number = arr.length;
+        const random = Util.Numbers.getRandomIntegerInclusive(0, max);
         return arr[random];
     }
 
     private randomStandardVoice(): Voice  {
-        let usableSet = [...voices.both, ...voices.newscaster, ...voices.standard];
+        const usableSet = [...voices.both, ...voices.newscaster, ...voices.standard];
         return this.randomVoice(usableSet);
     }
 
     private randomNewscasterVoice(): Voice { 
-        let usableSet = [...voices.newscaster];
+        const usableSet = [...voices.newscaster];
         return this.randomVoice(usableSet);
     }
 
     private randomNeuralVoice(): Voice {
-        let usableSet = [...voices.both, ...voices.newscaster, ...voices.neural];
+        const usableSet = [...voices.both, ...voices.newscaster, ...voices.neural];
         return this.randomVoice(usableSet);
     }
 
@@ -115,10 +116,10 @@ export class TextToSpeech {
                         throw(err);
                     }
                     else {
-                        let uInt8Array: Uint8Array = new Uint8Array(data.AudioStream);
-                        let arrayBuffer: ArrayBufferLike = uInt8Array.buffer;
-                        let blob: Blob = new Blob([arrayBuffer]);
-                        let url = URL.createObjectURL(blob);
+                        const uInt8Array: Uint8Array = new Uint8Array(data.AudioStream);
+                        const arrayBuffer: ArrayBufferLike = uInt8Array.buffer;
+                        const blob: Blob = new Blob([arrayBuffer]);
+                        const url = URL.createObjectURL(blob);
                         this.speaker.src = url;
                         this.speaker.play();
                         return;
@@ -126,6 +127,7 @@ export class TextToSpeech {
                 });
         }
         catch (err) {
+            Logger.error(err.toString());
             throw(err);
         }
     }

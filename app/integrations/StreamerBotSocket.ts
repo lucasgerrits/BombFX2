@@ -1,9 +1,10 @@
-import { BombFX } from '../BombFX.js';
-import { Logger } from '../Logger.js';
-import { Util } from '../util/Util.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import { streamerBotTriggers } from '../../data/streamerBotTriggers.js';
+import { BombFX } from "../BombFX.js";
+import { Logger } from "../Logger.js";
+import { Util } from "../util/Util.js";
+import { secrets } from "../../data/secrets/secrets.js";
+import { streamerBotTriggers } from "../../data/streamerBotTriggers.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class StreamerBotSocket {
@@ -12,11 +13,11 @@ export class StreamerBotSocket {
     private triggerMap: Map<string, () => Promise<void>>;
 
     constructor() {
-        let address: string = secrets.sbotSocket.address;
-        let port: string = secrets.sbotSocket.port;
-        let endpoint: string = secrets.sbotSocket.endpoint;
+        const address: string = secrets.sbotSocket.address;
+        const port: string = secrets.sbotSocket.port;
+        const endpoint: string = secrets.sbotSocket.endpoint;
 
-        let fullAddress: string = "ws://" + address + ":" + port + "/" + endpoint;
+        const fullAddress: string = "ws://" + address + ":" + port + "/" + endpoint;
         this.socket = new WebSocket(fullAddress);
         this.fillMap();
         this.setEventHandlers();
@@ -43,34 +44,34 @@ export class StreamerBotSocket {
                     "id": "" + this.createID()
                 }
             ));
-        }
+        };
 
         this.socket.onclose = (): void => {
             Logger.sbot("WebSocket connection closed");
-        }
+        };
 
         this.socket.onerror = (event): void => {
             Logger.sbot("Socket error");
-        }
+        };
 
         this.socket.onmessage = (event): void => {
             let data = JSON.parse(event.data);
 
             // Fix any weird naming structure
-            if (data.hasOwnProperty("data")) { data = data.data; }
+            if (Object.prototype.hasOwnProperty.call(data, "data")) { data = data.data; }
 
-            // Was message type specified
-            if (data.hasOwnProperty("name")) {
+            // Was message type specified // name
+            if (Object.prototype.hasOwnProperty.call(data, "name")) {
                 //console.log(data);
-                let name = data.name;
+                const name = data.name;
 
                 // Function request FROM a Streamer.bot Action
                 if (this.triggerMap.has(name)) {
-                    let action: Function = this.triggerMap.get(name);
+                    const action: (arg: unknown) => unknown = this.triggerMap.get(name);
                     action(data);
                 }
             }
-        }
+        };
     }
     
     public async getEvents(): Promise<void> {
@@ -83,12 +84,12 @@ export class StreamerBotSocket {
     }
 
     public async setVoicemod(voice: string): Promise<void> {
-        let action: string = "Voice - " + voice;
+        const action: string = "Voice - " + voice;
         this.doAction(action);
     }
 
-    public async doAction(action: string, args: { } = { }): Promise<void> {
-        let json: string = JSON.stringify(
+    public async doAction(action: string, args: Record<string, unknown> = { }): Promise<void> {
+        const json: string = JSON.stringify(
             {
                 "request": "DoAction",
                 "action": {
@@ -98,6 +99,7 @@ export class StreamerBotSocket {
                 "id": "" + this.createID()
             }
         );
+        Logger.sbot("Sending action request");
         this.socket.send(json);
     }
 

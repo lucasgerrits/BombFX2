@@ -16,7 +16,7 @@ export class TriggerMap {
         // For each chat trigger (command or otherwise) in array
         for (let currentTrigger: number = 0; currentTrigger < triggerList.length; currentTrigger++) {
             // Add trigger string key and data value to base map
-            let trigObj: ChatTrigger = new ChatTrigger(triggerList[currentTrigger]);
+            const trigObj: ChatTrigger = new ChatTrigger(triggerList[currentTrigger]);
             this.map.set(triggerList[currentTrigger].trigger, trigObj);
             // If any aliases are listed in data:
             if (triggerList[currentTrigger].aliases) {
@@ -40,10 +40,10 @@ export class TriggerMap {
     }
 
     public hasWhich(keysIn: Set<string>): Set<string> {
-        let possibleTriggers: Array<string> = Array.from([...this.map.keys(), ...this.aliases.keys()]);
-        let toCheck: Array<string> = Array.from(keysIn);
-        let intersection: Array<string> = toCheck.filter(element => possibleTriggers.indexOf(element) !== -1);
-        let setFromArr: Set<string> = new Set<string>(intersection);
+        const possibleTriggers: Array<string> = Array.from([...this.map.keys(), ...this.aliases.keys()]);
+        const toCheck: Array<string> = Array.from(keysIn);
+        const intersection: Array<string> = toCheck.filter(element => possibleTriggers.indexOf(element) !== -1);
+        const setFromArr: Set<string> = new Set<string>(intersection);
         return setFromArr;
     }
 }

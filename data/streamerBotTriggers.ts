@@ -5,6 +5,7 @@ import { Orb } from "../effects/orb/Orb.js";
 import { PantsGrab } from "../effects/commands/pantsgrab/PantsGrab.js";
 import type { StreamerBotTriggerData } from "../types/StreamerBotTypes";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export const streamerBotTriggers: Array<StreamerBotTriggerData> = [
@@ -20,7 +21,7 @@ export const streamerBotTriggers: Array<StreamerBotTriggerData> = [
         name: "tts",
         action: async (data) => {
             console.log(data);
-            let effect: Effect = new Barkeep(data.message);
+            const effect: Effect = new Barkeep(data.message);
             app.queues[effect.queueType].push(effect);
         }
     }

@@ -1,12 +1,13 @@
-import { BombFX } from '../../app/BombFX.js';
-import { jambreaks } from './breaks.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
-import { BattletoadsReward } from '../battletoads/Battletoads.js';
-import type { JamBreakData } from '../../types/EffectTypes.js';
+import { BombFX } from "../../app/BombFX.js";
+import { jambreaks } from "./breaks.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
+import { BattletoadsReward } from "../battletoads/Battletoads.js";
+import type { JamBreakData } from "../../types/EffectTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class JamBreakReward extends Reward {
@@ -38,17 +39,17 @@ export class JamBreak extends Effect {
     }
 
     public override async start(): Promise<void> {
-        let jamBreakScene: string = "Jam Break";
+        const jamBreakScene: string = "Jam Break";
 
         // Determine which jamm_
         let chance: number = this.breakNumber - 1; // human numbers in chat, zero indexing in code
         if (this.breakNumber == -1) {
             chance = Util.Numbers.getRandomIntegerInclusive(0, jambreaks.length - 1);
         }
-        let jam: JamBreakData = jambreaks[chance];
+        const jam: JamBreakData = jambreaks[chance];
 
         // Relevant chatbot messages
-        let botMsg: string = `Jamm_ Break #${chance + 1} of ${jambreaks.length}: ${jam.name}`;
+        const botMsg: string = `Jamm_ Break #${chance + 1} of ${jambreaks.length}: ${jam.name}`;
         app.twitch.bot.say(botMsg);
         if (jam.chatText!) {
             app.twitch.bot.say(jam.chatText);

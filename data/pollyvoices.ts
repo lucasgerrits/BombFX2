@@ -73,4 +73,4 @@ export const voices: any = {
         { name: "Filiz", language: "tr-TR", gender: "female" },
         { name: "Gwyneth", language: "cy-GB", gender: "female" }
     ]
-}
+};

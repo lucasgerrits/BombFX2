@@ -2,6 +2,7 @@ import { BombFX } from "../app/BombFX.js";
 import { Util } from "../app/util/Util.js";
 import type { SceneTransition, TransitionScenes } from "../types/AppTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export const transitionsList: Array<SceneTransition> = [
@@ -15,7 +16,7 @@ export const transitionsList: Array<SceneTransition> = [
                 await Util.sleep(500);
                 await app.obs.showSource("Cam Lightning", "** Webcam");
                 await Util.sleep(6500);
-                let msg = "Welcome back, CFB.";
+                const msg = "Welcome back, CFB.";
                 app.twitch.bot.say(msg);
                 app.tts.say(msg);
                 await Util.sleep(3000);
@@ -23,7 +24,7 @@ export const transitionsList: Array<SceneTransition> = [
             }
         },
         from: async (data) => {
-            
+            Util.sleep(1);
         }
     }, {
         scene: "Stream Starting / BRB",

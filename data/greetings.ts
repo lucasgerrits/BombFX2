@@ -1,8 +1,9 @@
-import { BombFX } from '../app/BombFX.js';
-import { SFX } from '../effects/sfx/SFX.js';
-import { Util } from '../app/util/Util.js';
-import type { Greeting } from '../types/AppTypes';
+import { BombFX } from "../app/BombFX.js";
+import { SFX } from "../effects/sfx/SFX.js";
+import { Util } from "../app/util/Util.js";
+import type { Greeting } from "../types/AppTypes";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export const greetings: Array<Greeting> = [

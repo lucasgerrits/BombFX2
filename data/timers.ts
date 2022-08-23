@@ -3,6 +3,7 @@ import { Kona } from "../effects/kona/Kona.js";
 import { Util } from "../app/util/Util.js";
 import type { TimerData } from "../types/AppTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export const timers: Array<TimerData> = [
@@ -18,7 +19,7 @@ export const timers: Array<TimerData> = [
         enabled: false,
         interval: Util.Numbers.minToMS(60),
         action: async () => {
-            let diceStr: string = "/announce To meet the best " + 
+            const diceStr: string = "/announce To meet the best " + 
                 "followers, viewers, primes, and streamer, tune in " + 
                 "to twitch .tv/Dice_The_Vice (remove the space)";
             app.twitch.bot.say(diceStr, true);

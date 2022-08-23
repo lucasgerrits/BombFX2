@@ -2,6 +2,7 @@ import { BombFX } from "../../app/BombFX.js";
 import { Util } from "../../app/util/Util.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export const textTriggers: Array<ChatTriggerData> = [

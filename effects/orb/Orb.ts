@@ -1,9 +1,10 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class OrbReward extends Reward {
@@ -22,9 +23,9 @@ export class Orb extends Effect {
     }
     
     public override async start(): Promise<void> {
-        let scene: string = "** Webcam";
-        let cfbCamSourceMirror: string = "Webcam Greenscreen Mirror";
-        let fullCamSourceMirror: string = "Webcam BG Mirror";
+        const scene: string = "** Webcam";
+        const cfbCamSourceMirror: string = "Webcam Greenscreen Mirror";
+        const fullCamSourceMirror: string = "Webcam BG Mirror";
 
         Util.playSound("effects/orb/audio/orb.mp3");
 
@@ -73,9 +74,9 @@ export class Orb extends Effect {
     }
 
     public static async dismiss(): Promise<void> {
-        let scene: string = "** Webcam";
-        let cfbCamSourceMirror: string = "Webcam Greenscreen Mirror";
-        let fullCamSourceMirror: string = "Webcam BG Mirror";
+        const scene: string = "** Webcam";
+        const cfbCamSourceMirror: string = "Webcam Greenscreen Mirror";
+        const fullCamSourceMirror: string = "Webcam BG Mirror";
 
         Util.playSound("effects/orb/audio/orb2.mp3");
 

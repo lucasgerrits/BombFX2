@@ -1,7 +1,8 @@
-import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import { Util } from '../util/Util.js';
+import { Logger } from "../Logger.js";
+import { secrets } from "../../data/secrets/secrets.js";
+import { Util } from "../util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var tmi: any;
 
 export class Chatbot {
@@ -42,23 +43,23 @@ export class Chatbot {
     }
 
     public setColor(newColor: string = "Random"): void {
-        let available: Array<string> = [
+        const available: Array<string> = [
             "Red", "Blue", "Green", "Firebrick", "Coral", "Goldenrod",
             "BlueViolet", "Chocolate", "CadetBlue", "YellowGreen",
             "SeaGreen", "DodgerBlue", "SpringGreen", "OrangeRed", "HotPink"
         ];
 
         if (newColor === "Random") {
-            let rand: number = Util.Numbers.getRandomIntegerInclusive(0, available.length);
+            const rand: number = Util.Numbers.getRandomIntegerInclusive(0, available.length);
             newColor = available[rand];
         }
 
-        let msg: string = "/color " + newColor;
+        const msg: string = "/color " + newColor;
         this.say(msg, true);
     }
 
     public async relay(url: string): Promise<any> {
-        let result = await Util.Requests.makeRequest(url, "GET");
+        const result = await Util.Requests.makeRequest(url, "GET");
         console.log(result.response);
         if (result.response !== " ") {
             this.say(result.response);

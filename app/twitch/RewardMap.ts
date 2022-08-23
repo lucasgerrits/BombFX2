@@ -1,7 +1,8 @@
-import { BombFX } from '../BombFX.js';
-import { Reward } from './Reward.js';
-import { rewardsList } from '../../data/rewardsList.js';
+import { BombFX } from "../BombFX.js";
+import { Reward } from "./Reward.js";
+import { rewardsList } from "../../data/rewardsList.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class RewardMap {

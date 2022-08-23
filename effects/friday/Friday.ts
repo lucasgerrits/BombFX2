@@ -1,9 +1,10 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class FridayReward extends Reward {
@@ -25,14 +26,14 @@ export class Friday extends Effect {
     public override async start(): Promise<void> {
         // Get the current day of the week
         const today: Date = new Date();
-        let dayInt: number = today.getDay();
+        const dayInt: number = today.getDay();
 
         // Check if not Friday
         if (dayInt !== 5) {
             // Yeet that dum dum
-            let timeoutStr: string = "/timeout " + this.triggerData.user + " 300 Not actually Friday.";
+            const timeoutStr: string = "/timeout " + this.triggerData.user + " 300 Not actually Friday.";
             app.twitch.chat.say(timeoutStr);
-            let chatStr: string = this.triggerData.user + ", if yoooooooooouuuuuuuuuuu can believe it, you're timed out once again!";
+            const chatStr: string = this.triggerData.user + ", if yoooooooooouuuuuuuuuuu can believe it, you're timed out once again!";
             app.twitch.bot.say(chatStr);
             return;
         }
@@ -42,7 +43,7 @@ export class Friday extends Effect {
         let duration: number = 13;
 
         // Determine if Jason Voorhees video
-        let thirteenth: boolean = false;
+        const thirteenth: boolean = false;
         if (thirteenth) {
             video = "Friday the 13th Once Again";
             duration = 15;

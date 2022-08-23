@@ -1,12 +1,13 @@
-import { BombFX } from '../../../app/BombFX.js';
-import { Util } from '../../../app/util/Util.js';
+import { BombFX } from "../../../app/BombFX.js";
+import { Util } from "../../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class Pineapple {
 
     public static async check() {
-        let allowed: boolean | string = await Util.Vars.get("pineapple");
+        const allowed: boolean | string = await Util.Vars.get("pineapple");
 
         let source: string = "Pineapple Yes";
         let msg: string = "Pineapple currently ALLOWED - This specific stream is backseat and spoiler friendly.";
@@ -32,7 +33,7 @@ export class Pineapple {
     }
 
     private static async set(allowed: boolean = true) {
-        let result: any = await Util.Vars.set("pineapple", allowed.toString());
+        const result: any = await Util.Vars.set("pineapple", allowed.toString());
         let outputStr: string = "";
         if (result.response === "success") {
             outputStr = "Successfully set pineapple mode to ";

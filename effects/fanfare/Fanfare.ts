@@ -1,9 +1,10 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class FanfareReward extends Reward {
@@ -29,13 +30,13 @@ export class Fanfare extends Effect {
         let itemName: string = this.triggerData.message;
         if (Util.Strings.containsBadWords(itemName)) {
             itemName = this.triggerData.user + " is a dickhead who uses offensive language.";
-            let modStr: string = "/timeout " + this.triggerData.user + " 300 No Brain";
+            const modStr: string = "/timeout " + this.triggerData.user + " 300 No Brain";
             app.twitch.bot.say(modStr, true);
         }
 
         // Create HTML elements
-        let fxDiv: HTMLElement = document.getElementById("fx-box");
-        let metroidItemDiv: HTMLDivElement = document.createElement("div");
+        const fxDiv: HTMLElement = document.getElementById("fx-box");
+        const metroidItemDiv: HTMLDivElement = document.createElement("div");
         metroidItemDiv.setAttribute("id", "metroid-item-box");
         metroidItemDiv.textContent = itemName;
         fxDiv.appendChild(metroidItemDiv);

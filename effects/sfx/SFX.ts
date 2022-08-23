@@ -1,11 +1,12 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
-import type { SoundExistenceData } from '../../types/EffectTypes.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
+import type { SoundExistenceData } from "../../types/EffectTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class SFXReward extends Reward {
@@ -99,14 +100,14 @@ export class SoundEffect extends Effect {
 
 export abstract class SFX {
     public static async play(name: string, playbackRate: number = 1.0): Promise<void> {
-        let filename: string = "effects/sfx/sounds/" + name + ".mp3";
+        const filename: string = "effects/sfx/sounds/" + name + ".mp3";
         try {
-            let soundCheck: SoundExistenceData = await SFX.soundExists(filename);
+            const soundCheck: SoundExistenceData = await SFX.soundExists(filename);
             if (soundCheck.exists) {
                 soundCheck.audio.playbackRate = playbackRate;
                 soundCheck.audio.play();
             } else {
-                let errorMessage: string = "Ain't no such sound file: " + name;
+                const errorMessage: string = "Ain't no such sound file: " + name;
                 Logger.error(errorMessage);
                 app.twitch.bot.say(errorMessage);
             }
@@ -118,7 +119,7 @@ export abstract class SFX {
     private static soundExists(filename: string): Promise<SoundExistenceData> {
         return new Promise((resolve, reject) => {
             try {
-                let audioToCheck = new Audio(filename);
+                const audioToCheck = new Audio(filename);
                 audioToCheck.oncanplay = () => {
                     resolve({ exists: true, audio: audioToCheck });
                 };
@@ -132,28 +133,28 @@ export abstract class SFX {
     }
 
     public static async bomb(name: string, user: string): Promise<void> {
-        let numberOfSounds = Util.Numbers.getRandomIntegerInclusive(10, 15);
-        let filename: string = "effects/sfx/sounds/" + name + ".mp3";
+        const numberOfSounds = Util.Numbers.getRandomIntegerInclusive(10, 15);
+        const filename: string = "effects/sfx/sounds/" + name + ".mp3";
         try {
-            let soundCheck: SoundExistenceData = await SFX.soundExists(filename);
+            const soundCheck: SoundExistenceData = await SFX.soundExists(filename);
             if (soundCheck.exists) {
                 if (name.includes("doro")) {
                     app.twitch.bot.say("PepeSpin YOU HAVE ENTERED, THE DORO ZONE PepeSpin");
                 }
-                let chatStr: string = user + " has provided chat with a delightful treat of " +
+                const chatStr: string = user + " has provided chat with a delightful treat of " +
                     numberOfSounds + " [" + name + "]'s.";
                 app.twitch.bot.say(chatStr);
                 soundCheck.audio.playbackRate = 0.25;
                 for (let i: number = 0; i < numberOfSounds; i++) {
-                    let delay: number = Util.Numbers.getRandomIntegerInclusive(100, 3000);
+                    const delay: number = Util.Numbers.getRandomIntegerInclusive(100, 3000);
             
                     setTimeout((audio: HTMLAudioElement) => {
-                        let newAudio = new Audio(audio.src);
+                        const newAudio = new Audio(audio.src);
                         newAudio.play();
                     }, delay, soundCheck.audio);
                 }
             } else {
-                let errorMessage: string = "Ain't no such sound file: " + name;
+                const errorMessage: string = "Ain't no such sound file: " + name;
                 Logger.error(errorMessage);
                 app.twitch.bot.say(errorMessage);
             }

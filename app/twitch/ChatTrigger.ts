@@ -5,6 +5,7 @@ import { Util } from "../util/Util.js";
 import type { ChatEventData } from "../../types/ComfyTypes";
 import type { ChatTriggerData } from "../../types/AppTypes";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class ChatTrigger {
@@ -27,7 +28,7 @@ export class ChatTrigger {
             this.cdInMS = this.cdInSec * 1000;
         }
         if (dataIn.fetch) {
-            this.fetch = true
+            this.fetch = true;
         }
         if (dataIn.announceCD === false) {
             this.announceCD = dataIn.announceCD;
@@ -66,7 +67,7 @@ export class ChatTrigger {
                     let msg: string = this.triggerData.action;
                     // String may also be a url for fetching a response to ouput
                     if (this.triggerData.fetch) {
-                        let result = await Util.Requests.makeRequest(this.triggerData.action);
+                        const result = await Util.Requests.makeRequest(this.triggerData.action);
                         msg = result.response;
                     }
                     app.twitch.bot.say(msg);

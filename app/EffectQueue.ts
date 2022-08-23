@@ -1,4 +1,4 @@
-import { Effect } from './Effect.js';
+import { Effect } from "./Effect.js";
 
 export class EffectQueue {
     queue: Array<Effect>;
@@ -45,7 +45,7 @@ export class EffectQueue {
             }
         }
     }
-};
+}
 
 export enum EffectQueueName {
     Barkeep = "barkeep",

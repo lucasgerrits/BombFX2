@@ -1,8 +1,5 @@
-import { Blank } from '../blank/Blank.js';
-import { BombFX } from '../../app/BombFX.js';
-import { Reward } from '../../app/twitch/Reward.js';
-
-declare var app: BombFX;
+import { Blank } from "../blank/Blank.js";
+import { Reward } from "../../app/twitch/Reward.js";
 
 export class ButtsbotWordReward extends Reward {
     public static override id: string = "4c4d7734-a51c-4518-ab2f-649a067c4291";

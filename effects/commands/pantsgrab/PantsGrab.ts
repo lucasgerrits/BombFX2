@@ -1,7 +1,8 @@
-import { BombFX } from '../../../app/BombFX.js';
-import { Logger } from '../../../app/Logger.js';
-import { Util } from '../../../app/util/Util.js';
+import { BombFX } from "../../../app/BombFX.js";
+import { Logger } from "../../../app/Logger.js";
+import { Util } from "../../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class PantsGrab {
@@ -12,7 +13,7 @@ export class PantsGrab {
 
     public static async these(user: string = "voice") {
         if (user !== "voice" && PantsGrab.isOnCooldown) {
-            let errorMsg: string = "No pants were grabbed due to cooldown.";
+            const errorMsg: string = "No pants were grabbed due to cooldown.";
             Logger.noise(errorMsg);
             app.twitch.bot.say(errorMsg);
             return;

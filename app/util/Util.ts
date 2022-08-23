@@ -1,23 +1,20 @@
-import { BombFX } from '../BombFX.js';
-import { Colors } from './Colors.js';
-import { Numbers } from './Numbers.js';
-import { Requests } from './Requests.js';
-import { Strings } from './Strings.js';
-import { Vars } from './Vars.js';
-
-declare var app: BombFX;
+import { Colors } from "./Colors.js";
+import { Numbers } from "./Numbers.js";
+import { Requests } from "./Requests.js";
+import { Strings } from "./Strings.js";
+import { Vars } from "./Vars.js";
 
 export class Util {
 
     public static playSound(filename: string, volumeIn: number = 1.0): void {
-        let sound = new Audio();
+        const sound = new Audio();
         sound.src = filename;
         sound.volume = volumeIn;
         sound.play();
     }
 
     public static async playSoundForDuration(filename: string, durationInMS: number) {
-        let sound = new Audio();
+        const sound = new Audio();
         sound.src = filename;
         sound.play();
         await Util.sleep(durationInMS);
@@ -33,16 +30,16 @@ export class Util {
     }
 
     public static typeCheck(variable: object) {
-        const varToString: Function = (varObj: Object) => Object.keys(varObj)[0];
-        let varName: string = varToString(variable);
-        let varType: string = typeof (variable as any)[varName];
+        const varToString: (varObj: unknown) => string = (varObj: unknown) => Object.keys(varObj)[0];
+        const varName: string = varToString(variable);
+        const varType: string = typeof (variable as any)[varName];
         console.log(varName + " is of type " + varType);
     }
  
-    public static wrapFn(fn: Function, context: unknown, params: Array<any>): Function {
+    public static wrapFn(fn: () => unknown, context: unknown, params: []): () => unknown {
         return function () {
             fn.apply(context, params);
-        }
+        };
     }
 
     public static activator<T extends object>(type: { new(): T ;} ): T {

@@ -2,17 +2,18 @@ import { Barkeep } from "../../effects/barkeep/Barkeep.js";
 import { BombFX } from "../../app/BombFX.js";
 import { ChatEventTriggerData } from "../../app/EventTriggerData.js";
 import { Effect } from "../../app/Effect.js";
-import { EventTriggerData } from '../../app/EventTriggerData.js';
+import { EventTriggerData } from "../../app/EventTriggerData.js";
 import { hostURLs, webhookURLs } from "../secrets/urls.js";
 import { JamBreak } from "../../effects/jambreak/JamBreak.js";
 import { PantsGrab } from "../../effects/commands/pantsgrab/PantsGrab.js";
 import { Pineapple } from "../../effects/commands/pineapple/Pineapple.js";
 import { Spray } from "../../effects/commands/spray/Spray.js";
-import { UserLevel } from '../../app/Enums.js';
+import { UserLevel } from "../../app/Enums.js";
 import { Util } from "../../app/util/Util.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
 import type { CommandEventData } from "../../types/ComfyTypes.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export const actionTriggers: Array<ChatTriggerData> = [
@@ -20,7 +21,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!barkeep",
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
-            let effect: Effect = new Barkeep();
+            const effect: Effect = new Barkeep();
             effect.setTriggerData(new ChatEventTriggerData(data));
             app.queues[effect.queueType].push(effect);
         }
@@ -41,9 +42,9 @@ export const actionTriggers: Array<ChatTriggerData> = [
             if (data.message !== "") {
                 userToCheck = data.message;
             }
-            let url: string = hostURLs.getCowLaunchCount + "?user=" + userToCheck;
-            let result: any = await Util.Requests.makeRequest(url);
-            let msg: string = result.response;
+            const url: string = hostURLs.getCowLaunchCount + "?user=" + userToCheck;
+            const result: any = await Util.Requests.makeRequest(url);
+            const msg: string = result.response;
             app.twitch.bot.say(msg);
         }
     }, {
@@ -69,10 +70,10 @@ export const actionTriggers: Array<ChatTriggerData> = [
             if (data.message !== "") {
                 userToCheck = data.message;
             }
-            let url: string = "https://api.2g.be/twitch/followage/carefreebomb/" + userToCheck +
+            const url: string = "https://api.2g.be/twitch/followage/carefreebomb/" + userToCheck +
                 "?format=mwdhms";
-            let result: any = await Util.Requests.makeRequest(url);
-            let msg: string = result.response.replace("CareFreeBomb ", "") + ".";
+            const result: any = await Util.Requests.makeRequest(url);
+            const msg: string = result.response.replace("CareFreeBomb ", "") + ".";
             app.twitch.bot.say(msg);
         }
     }, {
@@ -90,7 +91,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         cooldown: 60,
         announceCD: false, // "IT'S HIM MOOOO"
         action: async (data) => {
-            let translations: Array<string> = [
+            const translations: Array<string> = [
                 "IT'S HIM", // English
                 "C'EST LUI", // French
                 "ES ÉL", // Spanish
@@ -100,8 +101,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 "GHAH'E'", // Klingon
                 "Ha'S hon" // Elvish (Sindarin)
             ];
-            let rand: number = Util.Numbers.getRandomIntegerInclusive(0, translations.length - 1);
-            let output: string = translations[rand] + " MOOOO";
+            const rand: number = Util.Numbers.getRandomIntegerInclusive(0, translations.length - 1);
+            const output: string = translations[rand] + " MOOOO";
             app.twitch.bot.say(output);
         }
     }, {
@@ -113,7 +114,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("Enter a specific break number, you dingdong.");
                 return;
             }
-            let effect: Effect = new JamBreak(parseInt(data.message));
+            const effect: Effect = new JamBreak(parseInt(data.message));
             effect.setTriggerData(new ChatEventTriggerData(data));
             app.queues[effect.queueType].push(effect);
         }
@@ -128,9 +129,9 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("Enter text next time, dingus.");
                 return;
             }
-            let clap: string = "👏";
-            let wordArray: Array<string> = data.message.toUpperCase().split(" ");
-            let newString: string = wordArray.join(" " + clap + " ");
+            const clap: string = "👏";
+            const wordArray: Array<string> = data.message.toUpperCase().split(" ");
+            const newString: string = wordArray.join(" " + clap + " ");
             app.twitch.bot.say(clap + " " + newString + " " + clap);
         }
     }, {
@@ -148,12 +149,12 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("Enter text next time, dingus.");
                 return;
             }
-            let url: string = "https://api.funtranslations.com/translate/minion.json";
-            let body = { text: data.message };
-            let json = JSON.stringify(body);
-            let result: any = await Util.Requests.makeRequest(url, "POST", json);
-            let obj: any = JSON.parse(result.response);
-            let msg: string = obj.contents.translated;
+            const url: string = "https://api.funtranslations.com/translate/minion.json";
+            const body = { text: data.message };
+            const json = JSON.stringify(body);
+            const result: any = await Util.Requests.makeRequest(url, "POST", json);
+            const obj: any = JSON.parse(result.response);
+            const msg: string = obj.contents.translated;
             app.twitch.bot.say(msg);
         }
     }, {
@@ -195,8 +196,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!reminder",
         cooldown: 3,
         action: async (data) => {
-            let hookURL: string = webhookURLs.reminders;
-            let str: string = "*Reminder from @user at @time " + 
+            const hookURL: string = webhookURLs.reminders;
+            const str: string = "*Reminder from @user at @time " + 
                 "on @date* \n<:MELK:616025879830855681> @message" + "";
             Util.Requests.chatWebhook(str, data.extra.timestamp, data.message, data.user, hookURL);
         }
@@ -216,7 +217,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!setbutt",
         userLevel: UserLevel.Moderator,
         action: async (data) => {
-            let newWord: string = data.message;
+            const newWord: string = data.message;
             app.twitch.chat.say("!setword " + newWord);
         }
     }, {
@@ -228,17 +229,17 @@ export const actionTriggers: Array<ChatTriggerData> = [
         aliases: ["!soundreminder", "!newsound", "!addsound"],
         cooldown: 3,
         action: async (data) => {
-            let hookURL: string = webhookURLs.sfx;
-            let str: string = "*SFX suggestion from @user at @time " + 
+            const hookURL: string = webhookURLs.sfx;
+            const str: string = "*SFX suggestion from @user at @time " + 
                 "on @date* \n<:MELK:616025879830855681> @message" + "";
             Util.Requests.chatWebhook(str, data.extra.timestamp, data.message, data.user, hookURL);
         }
     }, {
         trigger: "!sounds",
         action: async (data) => {
-            let url: string = hostURLs.sfxPageNumber + "?page=" + data.message;
-            let result: any = await Util.Requests.makeRequest(url);
-            let msg: string = result.response;
+            const url: string = hostURLs.sfxPageNumber + "?page=" + data.message;
+            const result: any = await Util.Requests.makeRequest(url);
+            const msg: string = result.response;
             app.twitch.bot.say(msg);
         }
     }, {
@@ -252,8 +253,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!squirrels",
         userLevel: UserLevel.Broadcaster,
         action: async () => {
-            let effect: Effect = new JamBreak(2);
-            let data = new EventTriggerData("CFB", "eat ass", "0");
+            const effect: Effect = new JamBreak(2);
+            const data = new EventTriggerData("CFB", "eat ass", "0");
             effect.setTriggerData(data);
             app.queues[effect.queueType].push(effect);
         }
@@ -272,11 +273,11 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!timeoutduration",
         aliases: ["!secondstohoursminutes", "!s2hm"],
         action: async (data) => {
-            if (data.message === "" || parseInt(data.message) === NaN) {
+            if (data.message === "" || isNaN(parseInt(data.message))) {
                 app.twitch.bot.say("Enter a numerical value next time, dingus.");
                 return;
             }
-            let duration: string = Util.Numbers.secToHMS(parseInt(data.message));
+            const duration: string = Util.Numbers.secToHMS(parseInt(data.message));
             app.twitch.bot.say(duration);
         }
     }, {
@@ -286,20 +287,20 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("Enter text next time, dingus.");
                 return;
             }
-            let url: string = "https://uwuaas.herokuapp.com/api/";
-            let body = { text: data.message };
-            let json = JSON.stringify(body);
-            let result: any = await Util.Requests.makeRequest(url, "POST", json);
-            let obj: any = JSON.parse(result.response);
-            let msg: string = obj.text;
+            const url: string = "https://uwuaas.herokuapp.com/api/";
+            const body = { text: data.message };
+            const json = JSON.stringify(body);
+            const result: any = await Util.Requests.makeRequest(url, "POST", json);
+            const obj: any = JSON.parse(result.response);
+            const msg: string = obj.text;
             app.twitch.bot.say(msg);
         }
     }, {
         trigger: "!variable",
         userLevel: UserLevel.Moderator,
         action: async (data) => {
-            let variable: string = data.message;
-            let value: boolean | string = await Util.Vars.get(variable);
+            const variable: string = data.message;
+            const value: boolean | string = await Util.Vars.get(variable);
             app.twitch.bot.say("{ " + variable + ": " + value + " }");
         }
     }, {
@@ -313,12 +314,12 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("Enter text next time, dingus.");
                 return;
             }
-            let url: string = "https://api.funtranslations.com/translate/yoda.json";
-            let body = { text: data.message };
-            let json = JSON.stringify(body);
-            let result: any = await Util.Requests.makeRequest(url, "POST", json);
-            let obj: any = JSON.parse(result.response);
-            let msg: string = obj.contents.translated;
+            const url: string = "https://api.funtranslations.com/translate/yoda.json";
+            const body = { text: data.message };
+            const json = JSON.stringify(body);
+            const result: any = await Util.Requests.makeRequest(url, "POST", json);
+            const obj: any = JSON.parse(result.response);
+            const msg: string = obj.contents.translated;
             app.twitch.bot.say(msg);
         }
     },
@@ -327,7 +328,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!playurself",
         aliases: ["!djkhaled", "!khaled", "DJ Khaled", "Khaled"],
         action: async () => {
-            let khaled: Array<string> = [
+            const khaled: Array<string> = [
                 "they dont want you to have lunch",
                 "the minute we think we went hard, go harder. we gotta work",
                 "they wanna come stress me out? heh, bye 👋",
@@ -349,7 +350,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 "its not an easy road, but give thanks to the road",
                 "i love my bamboo trees. i love fruits. i love apples"
             ];
-            let choice: number = Util.Numbers.getRandomIntegerInclusive(0, khaled.length - 1);
+            const choice: number = Util.Numbers.getRandomIntegerInclusive(0, khaled.length - 1);
             app.twitch.bot.say(khaled[choice]);
         }
     }

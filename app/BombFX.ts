@@ -1,17 +1,18 @@
-import { EffectQueue } from './EffectQueue.js';
-import { Heat } from './twitch/Heat.js';
-import { Logger } from './Logger.js';
-import { OBSSocket } from './obs/OBSSocketV5.js';
-import { Orb } from '../effects/orb/Orb.js';
-import { SFX } from '../effects/sfx/SFX.js';
-import { SpeechRecognition } from './integrations/SpeechRecognition.js';
-import { StreamerBotSocket } from './integrations/StreamerBotSocket.js';
-import { TextToSpeech } from './integrations/TextToSpeech.js';
-import { TimerMap } from './Timer.js';
-import { Twitch } from './twitch/Twitch.js';
-import { Util } from './util/Util.js';
-import type { EffectQueueBucket } from '../types/AppTypes';
+import { EffectQueue } from "./EffectQueue.js";
+import { Heat } from "./twitch/Heat.js";
+import { Logger } from "./Logger.js";
+import { OBSSocket } from "./obs/OBSSocketV5.js";
+import { Orb } from "../effects/orb/Orb.js";
+import { SFX } from "../effects/sfx/SFX.js";
+import { SpeechRecognition } from "./integrations/SpeechRecognition.js";
+import { StreamerBotSocket } from "./integrations/StreamerBotSocket.js";
+import { TextToSpeech } from "./integrations/TextToSpeech.js";
+import { TimerMap } from "./Timer.js";
+import { Twitch } from "./twitch/Twitch.js";
+import { Util } from "./util/Util.js";
+import type { EffectQueueBucket } from "../types/AppTypes";
 
+// eslint-disable-next-line no-var
 declare var window: any;
 
 export class BombFX {

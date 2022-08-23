@@ -1,10 +1,8 @@
-import { Util } from './Util.js';
-
 export class Colors {
 
     public static hexToInt(hex: string): number {
-        let rgb: Array<number> = Colors.hexToRGB(hex);
-        let int: number = Colors.rgbToInt(rgb[0], rgb[1], rgb[2]);
+        const rgb: Array<number> = Colors.hexToRGB(hex);
+        const int: number = Colors.rgbToInt(rgb[0], rgb[1], rgb[2]);
         return int;
     }
 
@@ -13,7 +11,7 @@ export class Colors {
         let tmp: any;
 
         // Check if hex prefixed with #
-        let c: number = hex.search("#");
+        const c: number = hex.search("#");
         if (c != -1) {
             hex = hex.substr(1);
         }
@@ -30,7 +28,7 @@ export class Colors {
                 chunks.push(parseInt((tmp[i] as string), 16));
             }
         } else {
-            chunks = [-1, -1, -1]
+            chunks = [-1, -1, -1];
         }
 
         return chunks;

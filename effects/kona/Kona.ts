@@ -1,6 +1,7 @@
 import { BombFX } from "../../app/BombFX.js";
 import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class Kona {
@@ -21,8 +22,8 @@ export class Kona {
     public static async wave(): Promise<void> {
         await app.obs.showSource("Kona Wave", "** Videos");
 
-        let choice: number = Util.Numbers.getRandomIntegerInclusive(0, Kona.sounds.length - 1);
-        let filename: string = "./effects/kona/sounds/" + Kona.sounds[choice] + ".mp3";
+        const choice: number = Util.Numbers.getRandomIntegerInclusive(0, Kona.sounds.length - 1);
+        const filename: string = "./effects/kona/sounds/" + Kona.sounds[choice] + ".mp3";
         Util.playSound(filename);
 
         await Util.sleep(2000);

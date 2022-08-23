@@ -1,10 +1,11 @@
-import { BombFX } from '../../app/BombFX.js';
-import { Effect } from '../../app/Effect.js';
-import { EffectQueueName } from '../../app/EffectQueue.js';
-import { Logger } from '../../app/Logger.js';
-import { Reward } from '../../app/twitch/Reward.js';
-import { Util } from '../../app/util/Util.js';
+import { BombFX } from "../../app/BombFX.js";
+import { Effect } from "../../app/Effect.js";
+import { EffectQueueName } from "../../app/EffectQueue.js";
+import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
+import { Util } from "../../app/util/Util.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class SubsandDubsReward extends Reward {
@@ -33,7 +34,7 @@ export class SubsandDubs extends Effect {
     }
     
     public override async start(): Promise<void> {
-        this.speechListener = () => { this.onNewText(); }
+        this.speechListener = () => { this.onNewText(); };
         window.addEventListener("RecognizedSpeechText", this.speechListener);
 
         app.speech.startRecognition();

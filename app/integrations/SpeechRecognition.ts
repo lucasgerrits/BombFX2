@@ -1,7 +1,7 @@
-import { Logger } from '../Logger.js';
-import { secrets } from '../../data/secrets/secrets.js';
-import { Util } from '../util/Util.js';
+import { Logger } from "../Logger.js";
+import { secrets } from "../../data/secrets/secrets.js";
 
+// eslint-disable-next-line no-var
 declare var SpeechSDK: any;
 
 export class SpeechRecognition {
@@ -41,15 +41,15 @@ export class SpeechRecognition {
             else if (event.result.reason == SpeechSDK.ResultReason.NoMatch) {
                 //Logger.noise("NOMATCH: Speech could not be recognized.");
             }
-        }
+        };
 
         this.recognizer.recognizing = (sender: any, event: any) => {
             //Logger.noise("RECOGNIZING: " + event.result.text);
-        }
+        };
 
         this.recognizer.canceled = (sender: any, event: any) => {
             Logger.noise("CANCELLED: " + event.reason);
-        }
+        };
     }
 
     public async startRecognition(): Promise<void> {

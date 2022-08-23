@@ -20,6 +20,7 @@
 *.js
 *.js.map
 
+node_modules/
 /vendor/*
 data/secrets/*
 

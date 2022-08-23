@@ -1,35 +1,36 @@
-import { BombFX } from '../BombFX.js';
-import { Logger } from '../Logger.js';
-import { webhookURLs } from '../../data/secrets/urls.js';
+import { BombFX } from "../BombFX.js";
+import { Logger } from "../Logger.js";
+import { webhookURLs } from "../../data/secrets/urls.js";
 
+// eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class Requests {
     public static base64ToBlob(b64Data: string, contentType: string, sliceSize: number = 512): Blob {
-        contentType = contentType || '';
+        contentType = contentType || "";
     
-        let byteCharacters: string = atob(b64Data);
-        let byteArrays = new Array<Uint8Array>();
+        const byteCharacters: string = atob(b64Data);
+        const byteArrays = new Array<Uint8Array>();
     
         for (let offset: number = 0; offset < byteCharacters.length; offset += sliceSize) {
-            let slice: string = byteCharacters.slice(offset, offset + sliceSize);
+            const slice: string = byteCharacters.slice(offset, offset + sliceSize);
     
-            let byteNumbers = new Array<number>(slice.length);
+            const byteNumbers = new Array<number>(slice.length);
             for (let i: number = 0; i < slice.length; i++) {
                 byteNumbers[i] = slice.charCodeAt(i);
             }
     
-            var byteArray = new Uint8Array(byteNumbers);
+            const byteArray = new Uint8Array(byteNumbers);
             byteArrays.push(byteArray);
         }
     
-        let blob = new Blob(byteArrays, {type: contentType});
+        const blob = new Blob(byteArrays, {type: contentType});
         return blob;
     }
 
     public static async makeRequest(url: string, method: string = "GET", body?: string): Promise<any> {
         // Create the XHR request
-        var request = new XMLHttpRequest();
+        const request = new XMLHttpRequest();
         // Return it as a Promise
         return new Promise(function (resolve, reject) {
             // Setup our listener to process compeleted requests
@@ -60,20 +61,20 @@ export class Requests {
                 request.send();
             }
         });
-    };
+    }
 
     public static async chatWebhook(str: string, timestamp: string, message: string = "", 
         user: string = "MilkBarkeep", webhookURL: string = null) {
         
-        let naughtyUsers: Array<string> = [ ];
+        const naughtyUsers: Array<string> = [ ];
         if (naughtyUsers.includes(user)) {
             app.twitch.bot.say("Unable to post reminder, user is on 'the naughty list'.");
             return;
         }
 
-        let dateObj: Date = new Date(parseInt(timestamp) * 1);
-        let time: string = dateObj.toLocaleTimeString('en-US');
-        let date: string = dateObj.toDateString();
+        const dateObj: Date = new Date(parseInt(timestamp) * 1);
+        const time: string = dateObj.toLocaleTimeString("en-US");
+        const date: string = dateObj.toDateString();
 
         if (str.includes("@user")) { str = str.replace("@user", user); }
         if (str.includes("@time")) { str = str.replace("@time", time); }
@@ -84,7 +85,7 @@ export class Requests {
     }
 
     public static async webhook(str: string, webhookURL: string = null) {
-        let debug: boolean = false;
+        const debug: boolean = false;
 
         if (debug || webhookURL == null) { // secret -> testing
             webhookURL = webhookURLs.testing;
@@ -94,15 +95,15 @@ export class Requests {
         //username: user,
         //avatar_url: avatarURL,
 
-        let postData: { } = {
+        const postData: { content: string } = {
             content: str
         };
 
-        let request: XMLHttpRequest = new XMLHttpRequest();
+        const request: XMLHttpRequest = new XMLHttpRequest();
         request.onload = function (): void {
             // HTTP response status, e.g., 200 for "200 OK"
-            let status: number = request.status;
-            let statusText: string = request.statusText;
+            const status: number = request.status;
+            const statusText: string = request.statusText;
             let statusStr: string = "Webhook HTTP response status: " + status;
             if (statusText !== "") {
                 statusStr += " - " + statusText;
@@ -117,7 +118,7 @@ export class Requests {
             } else {
                 app.twitch.bot.say("There was an issue with posting to Discord.");
             }
-        }
+        };
         request.open("POST", webhookURL, true);
         request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         request.send(JSON.stringify(postData));

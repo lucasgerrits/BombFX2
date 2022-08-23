@@ -1,0 +1,25 @@
+{
+  "name": "fx2",
+  "version": "1.0.0",
+  "description": "This is 95% of the code that runs my (CareFreeBomb's) stream. It is run as a browser source inside of OBS Studio (Open Broadcaster Software) with the remote debug console docked. The source is posted here publically not to be run locally, but for the purpose of example for any curious parties - whether they be Twitch viewers or potential employers looking to see how I waste my free time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasgerrits/BombFX2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasgerrits/BombFX2/issues"
+  },
+  "homepage": "https://github.com/lucasgerrits/BombFX2#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.34.0",
+    "@typescript-eslint/parser": "^5.34.0",
+    "eslint": "^8.22.0"
+  }
+}
