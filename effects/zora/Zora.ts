@@ -51,7 +51,7 @@ export class Zora extends Effect {
     }
     
     private async pleaseHold(): Promise<void> {
-        const chance: number = 2;
+        const chance: number = 5;
         const waitMinInSec: number = 3;
         const waitMaxInSec: number = 15;
 
