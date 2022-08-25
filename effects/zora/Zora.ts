@@ -27,8 +27,9 @@ export class Zora extends Effect {
     public override async start(): Promise<void> {
         const scootAmount: number = 60;
         const scootTime: number = 900;
-        let x: number = 1181.0;
+        const startX: number = 1181.0;
         const endX: number = -1174.0;
+        let x: number = startX;
 
         // Reset King Zora's position in case of improper end
         await app.obs.showFilter("** Videos", "Zora - Reset");
@@ -38,7 +39,9 @@ export class Zora extends Effect {
         
         // While King Zora has not yet reached left edge, scoot left
         while (x > endX) {
-            await this.pleaseHold();
+            if (x < startX) {
+                await this.pleaseHold();
+            }
             x -= scootAmount;
             await this.moveKingZora(x, scootTime);
         }
