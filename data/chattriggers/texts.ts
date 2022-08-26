@@ -55,6 +55,10 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "!multi",
         action: "https://kadgar.net/live/baloojay/carefreebomb"
     }, {
+        trigger: "!nate",
+        aliases: ["!nate1280"],
+        action: "CREATOR NATE IS HERE bombHandsUp"
+    }, {
         trigger: "!nevtime",
         action: "http://www.carefreebomb.com/nightbot/uk_time.php",
         fetch: true
