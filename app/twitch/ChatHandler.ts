@@ -22,10 +22,25 @@ export class ChatHandler {
     private greetings: GreetingMap;
     public triggers: TriggerMap;
 
+    private activeTimeouts: Map<string, number>;
+
     constructor() {
         this.triggers = new TriggerMap();
         this.usersWhoHaveTalked = new Set<string>();
         this.greetings = new GreetingMap();
+        this.activeTimeouts = new Map<string, number>();
+    }
+
+    public setActiveTimeout(username: string, jsTimeoutId: number): void {
+        this.activeTimeouts.set(username, jsTimeoutId);
+    }
+
+    public hasActiveTimeout(username: string): boolean {
+        return this.activeTimeouts.has(username);
+    }
+
+    public clearActiveTimeout(username: string): void {
+        clearInterval(this.activeTimeouts.get(username));
     }
 
     public async say(msg: string): Promise<void> {

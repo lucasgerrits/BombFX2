@@ -22,8 +22,18 @@ export class Chatbot {
             },
             channels: [ secrets.channel ]
         });
+    }
 
-        this.client.connect();
+    public async connect(): Promise<void> {
+        return this.client.connect();
+    }
+
+    public disconnect(): void {
+        this.client.disconnect();
+    }
+
+    public timeout(username: string, durationInSeconds: number, reason?: string): void {
+        this.client.timeout(secrets.channel, username, durationInSeconds, reason);
     }
 
     public say(msgIn: string, actionOverride: boolean = false): void {

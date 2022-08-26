@@ -1,5 +1,6 @@
 import { Barkeep } from "../../effects/barkeep/Barkeep.js";
 import { BombFX } from "../../app/BombFX.js";
+import { Chatbot } from "../../app/twitch/Chatbot.js";
 import { ChatEventTriggerData } from "../../app/EventTriggerData.js";
 import { Effect } from "../../app/Effect.js";
 import { EventTriggerData } from "../../app/EventTriggerData.js";
@@ -7,6 +8,7 @@ import { hostURLs, webhookURLs } from "../secrets/urls.js";
 import { JamBreak } from "../../effects/jambreak/JamBreak.js";
 import { PantsGrab } from "../../effects/commands/pantsgrab/PantsGrab.js";
 import { Pineapple } from "../../effects/commands/pineapple/Pineapple.js";
+import { secrets } from "../secrets/secrets.js";
 import { Spray } from "../../effects/commands/spray/Spray.js";
 import { UserLevel } from "../../app/Enums.js";
 import { Util } from "../../app/util/Util.js";
@@ -267,7 +269,11 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("Kona buddy, you gotta provide a username.");
                 return;
             }
-            app.twitch.bot.say("/timeout " + data.message + " 24 because papas fritas", true);
+            let konaAccount: Chatbot = new Chatbot(secrets.kona.name, secrets.kona.oauth);
+            await konaAccount.connect();
+            konaAccount.say("/timeout " + data.message + " 24 because papas fritas", true);
+            konaAccount.disconnect();
+            konaAccount = null;
         }
     }, { 
         trigger: "!timeoutduration",

@@ -24,6 +24,7 @@ export class Twitch {
     constructor() {
         ComfyJS.Init(secrets.channel, secrets.comfy.oauth);
         this.bot = new Chatbot();
+        this.bot.connect();
         this.chat = new ChatHandler();
         this.rewards = new RewardMap();
     }

@@ -73,13 +73,19 @@ ComfyJS.onCheer = async (user: string, message: string, bits: number, flags: Cha
 
 ComfyJS.onTimeout = (timedOutUsername: string, durationInSeconds: number, extra: object) => {
     const notifDuration: number = (durationInSeconds + 1) * 1000;
-    setTimeout(function(username: string, timeoutDuration: number) {
-        let str: string = timeoutDuration + " second timeout on " + 
-            username + " complete.";
-        if ( app.twitch.isMod(username) === true ) {
-            app.twitch.chat.say("/mod " + username);
-            str += " Remodding.";
-        }
-        app.twitch.bot.say(str);
-    }, notifDuration, timedOutUsername, durationInSeconds);
+
+    if (!app.twitch.chat.hasActiveTimeout(timedOutUsername)) {
+        const id: number = setTimeout(function(username: string, timeoutDuration: number) {
+            let str: string = timeoutDuration + " second timeout on " + 
+                username + " complete.";
+            if ( app.twitch.isMod(username) === true ) {
+                app.twitch.chat.say("/mod " + username);
+                str += " Remodding.";
+            }
+            app.twitch.chat.clearActiveTimeout(timedOutUsername);
+            app.twitch.bot.say(str);
+        }, notifDuration, timedOutUsername, durationInSeconds);
+
+        app.twitch.chat.setActiveTimeout(timedOutUsername, id);
+    }
 };
