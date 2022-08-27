@@ -22,6 +22,8 @@ export abstract class Reward {
 
     public effect: Effect;
 
+    public "creator": Pick<typeof Reward, keyof typeof Reward>;
+
     constructor(idIn: string, titleIn: string, effectIn: Effect, buttonColorIn: string = Reward.buttonColor) {
         this.id = idIn;
         this.title = titleIn;
@@ -133,6 +135,32 @@ export abstract class Reward {
 
     public static async updateReward(idIn: string, settings: RewardSettings): Promise<void> {
         Logger.twitch("Updating multiple settings of " + this.title);
+        await ComfyJS.UpdateChannelReward(secrets.comfy.clientID, idIn, settings);
+    }
+
+    // RESET TO DEFAULTS
+
+    public async reset(): Promise<void> {
+        const settings: RewardSettings = {
+            "title": this.title,
+            "cost": this.cost,
+            "background_color": this.buttonColor,
+            "is_paused": false
+        };
+        Reward.resetReward(this.id, settings);
+    }
+
+    public static async reset(): Promise<void> {
+        const settings: RewardSettings = {
+            "title": this.title,
+            "cost": this.cost,
+            "background_color": this.buttonColor,
+            "is_paused": false
+        };
+        Reward.resetReward(this.id, settings);
+    }
+
+    public static async resetReward(idIn: string, settings: RewardSettings): Promise<void> {
         await ComfyJS.UpdateChannelReward(secrets.comfy.clientID, idIn, settings);
     }
 }

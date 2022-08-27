@@ -40,4 +40,10 @@ export class RewardMap {
             value.resume();
         });
     }
+
+    public async resetAll(): Promise<void> {
+        this.map.forEach(async (value, key) => {
+            value.reset();
+        });
+    }
 }
