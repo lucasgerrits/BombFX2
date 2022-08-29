@@ -52,6 +52,9 @@ export const socialTriggers: Array<ChatTriggerData> = [
         trigger: "!rouletterequest",
         action: "You can make game suggestions to BootToucher for future Retro Roulettes by using this Google Form: http://www.carefreebomb.com/roulette/request"
     }, {
+        trigger: "!socials",
+        action: "Hey, follow me on Twitter and Instagram because I actually use those. This is not a request, it is a demand: https://www.twitter.com/carefreeb0mb https://www.instagram.com/care.free.bomb/"
+    }, {
         trigger: "!specs",
         aliases: ["!pc"],
         action: "CPU: Intel Core i9-9900K 3.6 GHz 8-Core ... GPU: EVGA GeForce RTX 2080 SUPER 8 GB BLACK ... RAM: G.Skill Ripjaws V Series 32GB DDR4-3200 ... MOBO: Asus PRIME Z390-P ATX LGA1151 ... Storage 1: Samsung 970 Evo 1 TB M.2-2280 NVME ... Storage 2: Western Digital Black 4 TB 3.5\" 7200RPM ... Cooler: Cooler Master MasterLiquid ML240L RGB ... PSU: Corsair TXM Gold 750W Semi-modular ATX ... Case: Phanteks P300 ATX Mid Tower Black"
@@ -65,6 +68,9 @@ export const socialTriggers: Array<ChatTriggerData> = [
         trigger: "!switch",
         aliases: ["!fc", "!friendcode", "!switchfc"],
         action: "Here is my Switch friend code: SW-8157-6568-1108"
+    }, {
+        trigger: "!tiktok",
+        action: "I don't make any videos... yet: https://www.tiktok.com/@carefreebomb"
     }, {
         trigger: "!tip",
         aliases: ["!donate"],
