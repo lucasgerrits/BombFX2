@@ -15,12 +15,23 @@ declare var app: BombFX;
 declare var ComfyJS: any;
 /* eslint-enable no-var */
 
+/**
+ * @class - Containing object for all Twitch related functions, API calls, chat and reward handlers.
+ * 
+ * @property bot {Chatbot}          - The object handling all of the IRC messages sent from the Twitch bot account
+ * @property chat {ChatHandler}     - Handles parsing of chat messages for commands and triggers
+ * @property rewards {RewardMap}    - HashMap containing reward ID keys and associated reward / effect data values
+ */
 export class Twitch {
 
     public bot: Chatbot;
     public chat: ChatHandler;
     public rewards: RewardMap;
 
+    /**
+     * Initializes class properties and establishes connection to chat and Twitch websocket through ComfyJS
+     * @constructor
+     */
     constructor() {
         ComfyJS.Init(secrets.channel, secrets.comfy.oauth);
         this.bot = new Chatbot();
@@ -28,7 +39,13 @@ export class Twitch {
         this.chat = new ChatHandler();
         this.rewards = new RewardMap();
     }
-
+    
+    /**
+     * Checks if the provided Twitch reward ID is present in the HashMap of available redeems.
+     * 
+     * @param data {RewardTriggerData} A object containing all relevant information to the Twtich channel point reward event
+     * including username, reward ID, cost, optional message, etc.
+     */
     public checkRedemption(data: RewardTriggerData): void {
         const id = data.rewardID;
         if (this.rewards.has(id)) {
@@ -36,11 +53,17 @@ export class Twitch {
             if (data.message !== "") { logStr += "(" + data.message + ")"; }
             Logger.twitch(logStr);
             this.queueReward(data);
-        } else { 
+        } else {
             Logger.twitch("Unhandled Reward ID: " + id);
         }
     }
 
+    /**
+     * Creates a reward object based on the event data and queues it in the appropriate place.
+     * 
+     * @param data {RewardTriggerData} A object containing all relevant information to the Twtich channel point reward event
+     * including username, reward ID, cost, optional message, etc.
+     */
     private queueReward(data: RewardTriggerData): void {
         const reward: Reward = this.rewards.get(data.rewardID);
         const effect: Effect = reward.effect;
@@ -48,6 +71,9 @@ export class Twitch {
         app.queues[effect.queueType].push(effect);
     }
 
+    /**
+     * Makes a Twitch Helix API call through ComfyJS to create a new channel point reward.
+     */
     public static async createNewReward(): Promise<void> {
         await ComfyJS.CreateChannelReward(secrets.comfy.clientID, {
             title: "Newly Created Reward",
@@ -67,6 +93,9 @@ export class Twitch {
         Logger.twitch("New reward created.");
     }
 
+    /**
+     * Outputs a list of the current chatters to the remote debugging console.
+     */
     public async chatList(): Promise<any> {
         const url: string = "https://tmi.twitch.tv/group/user/carefreebomb/chatters";
         const request = await Util.Requests.makeRequest(url);
@@ -77,10 +106,23 @@ export class Twitch {
         console.log(chatters);
     }
 
+    /**
+     * Determines whether a particular user is present on the list of moderators.
+     * 
+     * @param username {string} The user to be checked for mod status
+     * @returns {boolean} True if user moderator, else false
+     */
     public isMod(username: string): boolean {
         return modList.some(mod => username.toLowerCase() === mod);
     }
 
+    /**
+     * Makes a call to Twitch API to retrieve the URL of a given user's profile picture
+     * 
+     * @param user {string} The given user to retrieve the profile picture for
+     * @param size {number} The dimension of the sides of the profile picture
+     * @returns {string} The url of the specified user's profile picture at the optionally specified resolution
+     */
     public async profilePic(user: string, size: number = 300): Promise<any> {
         const url: string = "https://www.carefreebomb.com/twitchapi/profilepic.php?user=" +
             user + "&size=" + size;
