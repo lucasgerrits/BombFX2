@@ -20,6 +20,7 @@ import { SunnyReward } from "../effects/sunny/Sunny.js";
 import { SuplexReward } from "../effects/suplex/Suplex.js";
 import { TheWordReward } from "../effects/secretword/TheWord.js";
 import { TimeWarpReward } from "../effects/timewarp/TimeWarp.js";
+import { UwuReward } from "../effects/uwu/Uwu.js";
 import { VFXReward } from "../effects/vfx/VFX.js";
 import { YodaReward } from "../effects/yoda/Yoda.js";
 import { ZoraReward } from "../effects/zora/Zora.js";
@@ -57,6 +58,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: TheWordReward.id, value: new TheWordReward() },
     { key: TimeWarpReward.id, value: new TimeWarpReward() },
     { key: TypeRacerBreakReward.id, value: new TypeRacerBreakReward() },
+    { key: UwuReward.id, value: new UwuReward() },
     { key: VFXReward.id, value: new VFXReward() },
     { key: YodaReward.id, value: new YodaReward() },
     { key: ZoraReward.id, value: new ZoraReward() }
