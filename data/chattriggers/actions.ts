@@ -94,14 +94,14 @@ export const actionTriggers: Array<ChatTriggerData> = [
         announceCD: false, // "IT'S HIM MOOOO"
         action: async (data) => {
             const translations: Array<string> = [
-                "IT'S HIM", // English
-                "C'EST LUI", // French
-                "ES ÉL", // Spanish
-                "ANDIYAN NA SIYA", // Filipino
-                "01001001 01010100 00100111 01010011 00100000 01001000 01001001 01001101", // Binary
-                "495427532048494D", // Hexadecimal
-                "GHAH'E'", // Klingon
-                "Ha'S hon" // Elvish (Sindarin)
+                "IT'S HIM (English)", // English
+                "C'EST LUI (French)", // French
+                "ES ÉL (Spanish)", // Spanish
+                "ANDIYAN NA SIYA (Filipino)", // Filipino
+                "01001001 01010100 00100111 01010011 00100000 01001000 01001001 01001101 (Binary)", // Binary
+                "495427532048494D (Hexadecimal)", // Hexadecimal
+                "GHAH'E' (Klingon)", // Klingon
+                "Ha'S hon (Elvish-Sindarian)" // Elvish (Sindarin)
             ];
             const rand: number = Util.Numbers.getRandomIntegerInclusive(0, translations.length - 1);
             const output: string = translations[rand] + " MOOOO";
@@ -182,6 +182,19 @@ export const actionTriggers: Array<ChatTriggerData> = [
         cooldown: 5,
         action: async () => { Pineapple.forbidden(); }
     }, {
+        trigger: "!profilepic",
+        userLevel: UserLevel.Moderator,
+        action: async (data) => {
+            let userToView: string;
+            if (data.message === "") {
+                userToView = data.user;
+            } else {
+                userToView = data.message;
+            }
+            const url: string = await app.twitch.profilePic(userToView, 600);
+            app.twitch.bot.say(url);
+        }
+    }, {
         trigger: "!refresh",
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
@@ -213,6 +226,20 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.rewards.resumeAll();
             } else {
                 app.twitch.bot.say("bruh wut");
+            }
+        }
+    }, {
+        trigger: "!scene",
+        userLevel: UserLevel.Moderator,
+        action: async (data) => {
+            if (data.message === "") {
+                app.twitch.bot.say("Ya gotta enter a scene name, man");
+            } else if (data.message.toLowerCase() === "brb") {
+                app.obs.setScene("Stream Starting / BRB");
+            } else if (data.message.toLowerCase() === "chatting" || data.message.toLowerCase() === "chat") {
+                app.obs.setScene("Just Chatting");
+            } else if (data.message.toLowerCase() === "bed") {
+                app.obs.setScene("Bed Time");
             }
         }
     }, {
@@ -250,6 +277,18 @@ export const actionTriggers: Array<ChatTriggerData> = [
         userLevel: UserLevel.VIP,
         action: async (data) => {
             Spray.bottle(<CommandEventData>data);
+        }
+    }, {
+        trigger: "!startstream",
+        userLevel: UserLevel.Moderator,
+        action: async () => {
+            app.obs.startStream();
+        }
+    }, {
+        trigger: "!stopstream",
+        userLevel: UserLevel.Moderator,
+        action: async () => {
+            app.obs.stopStream();
         }
     }, {
         trigger: "!squirrels",

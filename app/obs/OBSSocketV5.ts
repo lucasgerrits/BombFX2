@@ -58,6 +58,16 @@ export class OBSSocket {
         return await this.socket.call(requestType, requestData);
     }
 
+    // STREAM OUTPUT
+
+    public async startStream(): Promise<void> {
+        await this.call("StartStream");
+    }
+
+    public async stopStream(): Promise<void> {
+        await this.call("StopStream");
+    }
+
     // SCENES
 
     // v5 uses ID numbers for most source requests as opposed to the name
