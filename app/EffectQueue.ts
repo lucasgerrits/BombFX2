@@ -57,5 +57,6 @@ export enum EffectQueueName {
     None = "none",
     Scene = "scene",
     Toads = "toads",
+    Timeouts = "timeouts",
     Zora = "zora"
 }

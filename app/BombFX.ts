@@ -59,7 +59,8 @@ export class BombFX {
             zora: new EffectQueue(1),
             camera: new EffectQueue(1),
             scene: new EffectQueue(2),
-            none: new EffectQueue(-1)
+            none: new EffectQueue(-1),
+            timeouts: new EffectQueue(1)
         };
     }
 

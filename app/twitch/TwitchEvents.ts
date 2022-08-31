@@ -1,5 +1,7 @@
 import { BombFX } from "../BombFX.js";
-import { RewardTriggerData } from "../EventTriggerData.js";
+import { Effect } from "../Effect.js";
+import { ChatEventTriggerData, EventTriggerData, RewardTriggerData } from "../EventTriggerData.js";
+import { Timeout } from "../../effects/timeouts/Timeouts.js";
 import { Logger } from "../Logger.js";
 import type { ChatEventData, ChatExtra, ChatFlags, CheerEventData, CommandEventData, CommandExtra, RewardExtra } from "../../types/ComfyTypes.js";
 
@@ -74,7 +76,12 @@ ComfyJS.onCheer = async (user: string, message: string, bits: number, flags: Cha
 ComfyJS.onTimeout = (timedOutUsername: string, durationInSeconds: number, extra: object) => {
     const notifDuration: number = (durationInSeconds + 1) * 1000;
 
+    console.log(extra);
+
     if (!app.twitch.chat.hasActiveTimeout(timedOutUsername)) {
+        //const effect: Effect = new Timeout();
+        //effect.setTriggerData(new EventTriggerData());
+
         const id: number = setTimeout(function(username: string, timeoutDuration: number) {
             let str: string = timeoutDuration + " second timeout on " + 
                 username + " complete.";
