@@ -59,7 +59,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "dead rising 2",
-        aliases: ["Dead Rising 2", "Dead rising 2"],
+        aliases: ["dead rlslng 2", "dead rislng 2", "dead rlsing 2"],
         action: async (data) => {
             app.twitch.chat.deleteMessage(data.extra.id);
             app.twitch.bot.say("carefr3Stare", true);
@@ -231,14 +231,19 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!scene",
         userLevel: UserLevel.Moderator,
         action: async (data) => {
-            if (data.message === "") {
+            const sceneName: string = data.message.toLowerCase();
+            if (sceneName === "") {
                 app.twitch.bot.say("Ya gotta enter a scene name, man");
-            } else if (data.message.toLowerCase() === "brb") {
+            } else if (sceneName === "brb") {
                 app.obs.setScene("Stream Starting / BRB");
-            } else if (data.message.toLowerCase() === "chatting" || data.message.toLowerCase() === "chat") {
+            } else if (sceneName === "chatting" || sceneName === "chat") {
                 app.obs.setScene("Just Chatting");
-            } else if (data.message.toLowerCase() === "bed") {
+            } else if (sceneName === "bed" || sceneName === "bedge") {
                 app.obs.setScene("Bed Time");
+            } else if (sceneName === "phone" || sceneName === "irl" || sceneName === "car") {
+                app.obs.setScene("Phone Stuff");
+            } else if (sceneName === "desktop") {
+                app.obs.setScene("Desktop + Cam - Bottom");
             }
         }
     }, {
