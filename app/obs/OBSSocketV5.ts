@@ -181,6 +181,14 @@ export class OBSSocket {
         });
     }
 
+    public async setMediaFile(inputName: string, newFileName: string): Promise<void> {
+        // if is_local: false, use input instead of local_file
+        await this.setInputSettings(inputName, {
+            "is_local_file": true,
+            "local_file": newFileName
+        });
+    }
+
     // FILTERS
 
     public async showFilter(sourceName: string, filterName: string): Promise<void> {
