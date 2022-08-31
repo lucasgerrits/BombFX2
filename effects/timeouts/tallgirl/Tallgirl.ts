@@ -8,13 +8,26 @@ declare var app: BombFX;
 
 export class TallGirl
 {
+    private static readonly filepath: string = "C:\\xampp\\htdocs\\fx2\\effects\\timeouts\\tallgirl\\videos\\";
+
+    private static readonly filenames: Array<string> = [
+        "TallGrill.webm",
+        "GOTH_MOMMY.webm"
+    ];
+
     public static async step(username: string): Promise<void> {
         // Timeout user from chat using Kona's account
         await TallGirl.timeout(username);
+
         // Get timed out user's profile pic's URL
         const url: string = await app.twitch.profilePic(username, 600);
+
         // Set profile pic URL to browser source in Tall Girl scene
         await app.obs.setBrowserURL("Tall Girl User Profile Pic", url);
+
+        // Determine random tall girl foot filename then set to media source
+        const whichGirl: number = Util.Numbers.getRandomIntegerInclusive(0, TallGirl.filenames.length - 1);
+        await app.obs.setMediaFile("Tall Girl Step", TallGirl.filepath + TallGirl.filenames[whichGirl]);
 
         // Show browser source
         const scene: string = "Tall Girls";
