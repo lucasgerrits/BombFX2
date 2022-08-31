@@ -327,6 +327,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "!uwu",
+        userLevel: UserLevel.Broadcaster,
+        cooldown: 300,
         action: async (data) => {
             if (data.message === "") {
                 app.twitch.bot.say("Enter text next time, dingus.");
@@ -339,6 +341,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
             const obj: any = JSON.parse(result.response);
             const msg: string = obj.text;
             app.twitch.bot.say(msg);
+            app.tts.say(msg, "Ivy");
         }
     }, {
         trigger: "!variable",
