@@ -10,6 +10,10 @@ export const spamTriggers: Array<ChatTriggerData> = [
         aliases: ["!croatia"],
         action: "Just to be banned for a more than an hour because some fat dweeb didn't know how to exolain what the content of his stream is and I didn't ask 4 only 2 times, just a bunch of bs with no content at all and you 38 are wasting your time on this crap, props to you all, you all really don't have a life at all obviously! The dumbest dumbass I have ever encounter on Twitch like seriously, waste of sperm, goodbye lol I! Mommy should swallow, a brainless freak show"
     }, {
+        trigger: "!directions",
+        aliases: ["!bootshouse", "!hardleft"],
+        action: "take college, left at story 2 blocks after richmond. First right after that. second house"
+    }, {
         trigger: "!donut",
         action: "DONUT all DONUT they DONUT do DONUT is DONUT spam DONUT that DONUT fucking DONUT donut DONUT"
     }, {
