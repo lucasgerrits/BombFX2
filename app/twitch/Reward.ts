@@ -22,7 +22,7 @@ export abstract class Reward {
 
     public effect: Effect;
 
-    public "creator": Pick<typeof Reward, keyof typeof Reward>;
+    public creator: Pick<typeof Reward, keyof typeof Reward>;
 
     constructor(idIn: string, titleIn: string, effectIn: Effect, buttonColorIn: string = Reward.buttonColor) {
         this.id = idIn;
