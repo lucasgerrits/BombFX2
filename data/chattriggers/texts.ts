@@ -80,6 +80,11 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "!toxic",
         action: "You have been muted for receiving significantly more communications abuse reports than most players. Players will not see your communication unless they choose to unmute you."
     }, {
+        trigger: "!weekstream",
+        aliases: ["!oneweek", "!uptime"],
+        action: "http://www.carefreebomb.com/nightbot/weekstream.php",
+        fetch: true
+    }, {
         trigger: "!wetkiss",
         action: "A wet wet kiss to u bro. yaaayyyyy that sluspilsuspslsu"
     }
