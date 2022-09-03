@@ -27,6 +27,23 @@ export const actionTriggers: Array<ChatTriggerData> = [
             app.queues[effect.queueType].push(effect);
         }
     }, {
+        trigger: "!bedzoom",
+        aliases: ["!bedgezoom"],
+        userLevel: UserLevel.Moderator,
+        action: async (data) => {
+            const direction: string = data.message.toLowerCase();
+            if (direction === "") {
+                app.twitch.bot.say("Please specify a direction.");
+                return;
+            } else if (direction === "in") {
+                app.obs.showFilter("DroidCam Boot's Phone", "Move Value Zoom In");
+            } else if (direction === "out") {
+                app.obs.showFilter("DroidCam Boot's Phone", "Move Value Zoom Out");
+            } else {
+                app.twitch.bot.say("Don't");
+            }
+        }
+    }, {
         trigger: "!cat",
         cooldown: 5,
         userLevel: UserLevel.VIP,
@@ -163,6 +180,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
         userLevel: UserLevel.Broadcaster,
         permittedUsers: ["Currrrt", "RustyShakes"],
         cooldown: 60,
+        announceCD: false,
+        announcePrivs: false,
         action: async () => { PantsGrab.these(); }
     }, {
         trigger: "!pineapple",
@@ -308,11 +327,19 @@ export const actionTriggers: Array<ChatTriggerData> = [
         userLevel: UserLevel.Broadcaster,
         permittedUsers: ["KonaChocolate"],
         action: async (data) => {
-            if (data.message === "") {
+            const message: string = data.message;
+            if (message === "") {
                 app.twitch.bot.say("Kona buddy, you gotta provide a username.");
                 return;
             }
-            TallGirl.step(data.message);
+            
+            // Determine if space present in message
+            if (message.indexOf(" ") >= 0) {
+                const args: Array<string> = message.split(" ");
+                TallGirl.step(args[0], parseInt(args[1]));
+            } else {
+                TallGirl.step(message);
+            }
         }
     }, { 
         trigger: "!timeoutduration",
@@ -354,7 +381,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!vfx",
         aliases: ["!videos", "!videolist"],
-        action: "boned, catjam, cena, chocolate, coffin, confused, dance, dante, disappear, doit, donuts, duckhuntdog, eyboss, frydrool, frythink, game, guns, hannibal, hello, kirby, ko, manydoors, math, milk, miyamoto, nokids, notfunny, nou, nouwu, ohh, pizzatime, place, popuko, prettygood, profanity, ready, scream, scum, showme, soccer, stop, thatshot, therules, torture, totsugeki, totsugeki2, trap, tunes, wasted, wow, youdied"
+        action: "boned, catjam, cena, chocolate, coffin, confused, dance, dante, disappear, doit, donuts, duckhuntdog, eyboss, frydrool, frythink, game, guns, hannibal, hello, kirby, ko, manydoors, math, milk, miyamoto, nokids, notfunny, nou, nouwu, ohh, pizzatime, place, popuko, prettygood, profanity, ready, scream, scum, showme, soccer, stop, thankyou, thatshot, therules, torture, totsugeki, totsugeki2, trap, tunes, wasted, wow, youdied"
     }, {
         trigger: "!yoda",
         action: async (data) => {
