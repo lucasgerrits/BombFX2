@@ -12,10 +12,12 @@ export class TallGirl
 
     private static readonly filenames: Array<string> = [
         "TallGrill.webm",
-        "GOTH_MOMMY.webm"
+        "GOTH_MOMMY.webm",
+        "Satsuki_1.webm",
+        "CL.webm"
     ];
 
-    public static async step(username: string): Promise<void> {
+    public static async step(username: string, whichGirl: number = -1): Promise<void> {
         // Timeout user from chat using Kona's account
         await TallGirl.timeout(username);
 
@@ -25,8 +27,11 @@ export class TallGirl
         // Set profile pic URL to browser source in Tall Girl scene
         await app.obs.setBrowserURL("Tall Girl User Profile Pic", url);
 
-        // Determine random tall girl foot filename then set to media source
-        const whichGirl: number = Util.Numbers.getRandomIntegerInclusive(0, TallGirl.filenames.length - 1);
+        // Determine random tall girl foot filename (if one was not provided) then set to media source\
+        whichGirl--;
+        if (whichGirl < 0) {
+            whichGirl = Util.Numbers.getRandomIntegerInclusive(0, TallGirl.filenames.length - 1);
+        }
         await app.obs.setMediaFile("Tall Girl Step", TallGirl.filepath + TallGirl.filenames[whichGirl]);
 
         // Show browser source
@@ -60,7 +65,9 @@ export class TallGirl
     private static async timeout(username: string): Promise<void> {
         let konaAccount: Chatbot = new Chatbot(secrets.kona.name, secrets.kona.oauth);
         await konaAccount.connect();
-        konaAccount.say("/timeout " + username + " 24 because papas fritas", true);
+        const twentyFour: number = 24;
+        const reason: string = "Know your place...";
+        konaAccount.say("/timeout " + username + " " + twentyFour + " " + reason, true);
         konaAccount.disconnect();
         konaAccount = null;
     }
