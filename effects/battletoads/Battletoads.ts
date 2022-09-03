@@ -24,14 +24,16 @@ export class Battletoads extends Effect {
     }
     
     public override async start(): Promise<void> {
-        app.obs.showSource("Battletoads Pause Jam", "** Mega Overlay");
+        await app.obs.muteMic();
+        await app.obs.muteDesktop();
+
+        await Util.sleep(200);
 
         if (this.triggerData.user === "FoxiFries") {
             app.twitch.bot.say("hi fox, ");
         }
-        
-        app.obs.muteMic();
-        app.obs.muteDesktop();
+
+        app.obs.showSource("Battletoads Pause Jam", "** Mega Overlay");
 
         const currentScene: string = await app.obs.getCurrentSceneName();
         
