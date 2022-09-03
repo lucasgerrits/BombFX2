@@ -8,6 +8,7 @@ export type ChatTriggerData = {
     aliases?: string[],
     cooldown?: number,
     announceCD?: boolean,
+    announcePrivs?: boolean,
     userLevel?: UserLevel,
     permittedUsers?: string[],
     fetch?: boolean,

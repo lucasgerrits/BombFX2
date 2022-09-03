@@ -20,6 +20,7 @@ export class ChatTrigger {
     public isOnCD: boolean = false;
     public isPaused: boolean = false;
     public announceCD: boolean = true;
+    public announcePrivs: boolean = true;
 
     constructor(dataIn: ChatTriggerData) {
         this.triggerData = dataIn;
@@ -32,6 +33,9 @@ export class ChatTrigger {
         }
         if (dataIn.announceCD === false) {
             this.announceCD = dataIn.announceCD;
+        }
+        if (dataIn.announcePrivs === false) {
+            this.announcePrivs = dataIn.announcePrivs;
         }
         this.action = this.triggerData.action;
     }
@@ -89,7 +93,9 @@ export class ChatTrigger {
         {
             return true;
         } else {
-            app.twitch.bot.say("Sorry, " + this.eventData.user + ", but you just ain't poggy enough for that command.");
+            if (this.announcePrivs === true) {
+                app.twitch.bot.say("Sorry, " + this.eventData.user + ", but you just ain't poggy enough for that command.");
+            }
             return false;
         }
     }
