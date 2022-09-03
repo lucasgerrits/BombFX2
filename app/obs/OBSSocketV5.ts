@@ -231,14 +231,11 @@ export class OBSSocket {
 
     // MICROPHONE + AUDIO
 
-    // FIX VOICEMOD STUFF LATER!
-    public async muteMic(voicemodSwap: boolean = false): Promise<void> {
-        if (voicemodSwap === true) { this.setInputMute("Mic/Aux 2", false); }
+    public async muteMic(): Promise<void> {
         this.setInputMute("Mic/Aux", true);
     }
 
-    public async unmuteMic(voicemodSwap: boolean = false): Promise<void> {
-        if (voicemodSwap === true) { this.setInputMute("Mic/Aux 2", true); }
+    public async unmuteMic(): Promise<void> {
         this.setInputMute("Mic/Aux", false);
     }
 
@@ -327,8 +324,8 @@ export class OBSSocket {
     private setSourceEventHandlers() {
         this.socket.on("InputMuteStateChanged", async (eventData: InputMuteStateChangedEvent) => {
             if (eventData.inputName === "Mic/Aux") {
-                const voicemodMuted = await this.getInputMute("Mic/Aux 2");
-                if (eventData.inputMuted === true && voicemodMuted === true) {
+                //const voicemodMuted = await this.getInputMute("Mic/Aux 2");
+                if (eventData.inputMuted === true) {
                     this.showSource("Mute Icon", "** Webcam");
                     Logger.noise("MIC MUTED!");
                 } else if (eventData.inputMuted === false) {
