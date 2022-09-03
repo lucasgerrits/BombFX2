@@ -108,10 +108,10 @@ export class VFX extends Effect {
             const roll: number = Util.Numbers.getRandomIntegerInclusive(0, 100);
             app.twitch.bot.say(this.triggerData.user + "'s Ronald Roll: " + roll);
             if (roll === 24) {
-                app.twitch.bot.say("/timeout " + this.triggerData.user + " 2400 24", true);
+                app.twitch.chat.say("/timeout " + this.triggerData.user + " 2400 24");
                 app.twitch.bot.say("̵͊́[̴͑̋2̶͗̈́]̸͐̾[̷͊̒4̷̌͘]̷̔̍");
             } else if (roll <= chance) {
-                app.twitch.bot.say("/timeout " + this.triggerData.user + " 300 Ronald Gamba", true);
+                app.twitch.chat.say("/timeout " + this.triggerData.user + " 300 Ronald Gamba");
                 app.twitch.bot.say("Fuck you, " + this.triggerData.user);
                 return false;
             }
