@@ -39,7 +39,10 @@ export class VFX extends Effect {
         }
 
         // Specific user checks
-        this.specificRedeemChecks(message, this.triggerData.user);
+        const shouldContinue: boolean = await this.specificRedeemChecks(message, this.triggerData.user);
+        if (!shouldContinue) {
+            return;
+        }
 
         // Check if file exists
         const filename = "effects/vfx/videos/" + message + ".webm";
@@ -92,7 +95,7 @@ export class VFX extends Effect {
         });
     }
 
-    private async specificRedeemChecks(message: string, user: string): Promise<void> {
+    private async specificRedeemChecks(message: string, user: string): Promise<boolean> {
         if (message === "disappear") {
             if (this.triggerData.user ==="Snackrodile") {
                 const count: string = await Util.Vars.increment("snackHides");
@@ -100,6 +103,19 @@ export class VFX extends Effect {
             } else {
                 app.twitch.bot.say("Fuck you, pear, ya ain't even RIPE.");
             }
+        } else if (message === "ronald") {
+            const chance: number = 20;
+            const roll: number = Util.Numbers.getRandomIntegerInclusive(0, 100);
+            app.twitch.bot.say(this.triggerData.user + "'s Ronald Roll: " + roll);
+            if (roll === 24) {
+                app.twitch.bot.say("/timeout " + this.triggerData.user + " 2400 24", true);
+                app.twitch.bot.say("̵͊́[̴͑̋2̶͗̈́]̸͐̾[̷͊̒4̷̌͘]̷̔̍");
+            } else if (roll <= chance) {
+                app.twitch.bot.say("/timeout " + this.triggerData.user + " 300 Ronald Gamba", true);
+                app.twitch.bot.say("Fuck you, " + this.triggerData.user);
+                return false;
+            }
         }
+        return true;
     }
 }
