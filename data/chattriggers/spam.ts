@@ -31,6 +31,12 @@ export const spamTriggers: Array<ChatTriggerData> = [
         trigger: "!lane",
         action: "👏 STAY 👏 IN 👏 YOUR 👏 LANE 👏 DONT 👏 RAID 👏 ME 👏 I 👏 DONT 👏 KNOW 👏 YOU 👏"
     }, {
+        trigger: "!nocop",
+        aliases: ["!nostop", "no cop", "no stop"],
+        cooldown: 30,
+        announceCD: false,
+        action: "NO COP 👮‍♂️ NO STOP 🚫"
+    }, {
         trigger: "!steak",
         action: "buttonsPls STEAK buttonsPls POTATERS"
     }, {
