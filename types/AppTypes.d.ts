@@ -41,7 +41,7 @@ export type TransitionScenes = {
 
 export type TimerData = {
     name: string,
-    enabled: boolean,
+    isEnabled: boolean,
     interval: number,
     action: () => Promise<void>
 }

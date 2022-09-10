@@ -43,7 +43,9 @@ export class TimerMap {
 
     private setTimers(): void {
         timers.forEach((t) => {
-            this.map.set(t.name, new Timer(t.interval, t.action));
+            if (t.isEnabled) {
+                this.map.set(t.name, new Timer(t.interval, t.action));
+            }
         });
     }
 }

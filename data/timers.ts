@@ -9,14 +9,14 @@ declare var app: BombFX;
 export const timers: Array<TimerData> = [
     {
         name: "kona",
-        enabled: true,
+        isEnabled: true,
         interval: Kona.determineInterval(),
         action: async () => {
             Kona.wave();
         }
     }, {
         name: "dice",
-        enabled: false,
+        isEnabled: false,
         interval: Util.Numbers.minToMS(60),
         action: async () => {
             const diceStr: string = "/announce To meet the best " + 
