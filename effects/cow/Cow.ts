@@ -42,7 +42,7 @@ export class Cow extends Effect {
     }
 
     public override async start(): Promise<void> {
-        let source: string = "Cow Launch Dot Webm";
+        let source: string = "Cow Launch Dot Webm 2";
 
         // If golden cow, deactivate golden cow reward
         if (this.isGolden === true) {

@@ -46,7 +46,7 @@ export const socialTriggers: Array<ChatTriggerData> = [
         action: "RetroAchievements uses modified emulators to track a user's progress throughout many old games via their website. You can find my profile here: http://retroachievements.org/user/carefreebomb"
     }, {
         trigger: "!requests",
-        aliases: ["!clone", "!clonehero", "!songs", "!songlist"],
+        aliases: ["!request", "!clone", "!clonehero", "!songs", "!songlist"],
         action: "Search this page for all Clone Hero songs: https://chorus.fightthe.pw/ If I don't have it, I can get it via the Bridge app."
     }, {
         trigger: "!rouletterequest",

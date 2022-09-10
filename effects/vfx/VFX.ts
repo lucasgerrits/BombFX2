@@ -104,7 +104,7 @@ export class VFX extends Effect {
                 app.twitch.bot.say("Fuck you, pear, ya ain't even RIPE.");
             }
         } else if (message === "ronald") {
-            const chance: number = 20;
+            const chance: number = 33;
             const roll: number = Util.Numbers.getRandomIntegerInclusive(0, 100);
             app.twitch.bot.say(this.triggerData.user + "'s Ronald Roll: " + roll);
             if (roll === 24) {
