@@ -4,7 +4,7 @@ import { EffectQueueName } from "../../app/EffectQueue.js";
 import { pauses } from "./pauses.js";
 import { Reward } from "../../app/twitch/Reward.js";
 import { Util } from "../../app/util/Util.js";
-import type { PauseData } from "../../types/EffectTypes.js";
+import type { PauseTypeData, PauseEventData } from "../../types/EffectTypes.js";
 
 // eslint-disable-next-line no-var
 declare var app: BombFX;
@@ -24,19 +24,21 @@ export class Pause extends Effect {
     private pauseNumber: number = -1;
 
     constructor(pauseNumber?: number) {
-        super(EffectQueueName.None);
+        super(EffectQueueName.Pause);
         if (pauseNumber != null) {
             this.pauseNumber = pauseNumber;
         }
     }
     
     public override async start(): Promise<void> {
+        const filterName: string = "Pause Redeem Freeze";
+
         // Determine which pause
         let chance: number = this.pauseNumber - 1; // human numbers in chat, zero indexing in code
         if (this.pauseNumber == -1) {
             chance = Util.Numbers.getRandomIntegerInclusive(0, pauses.length - 1);
         }
-        const pause: PauseData = pauses[chance];
+        const pause: PauseTypeData = pauses[chance];
 
         // Relevant chatbot messages
         const botMsg: string = `Pause #${chance + 1} of ${pauses.length}: ${pause.game}`;
@@ -45,44 +47,47 @@ export class Pause extends Effect {
             app.twitch.bot.say(pause.chatText);
         }
 
-        await this.foxCheck(chance);
+        // Determines if the bot needs to say hi to fox lol
+        this.foxCheck(chance);
 
-        // Mute mic and output before specific pause instructions
-        await app.obs.muteMic();
-        await app.obs.muteDesktop();
-        await Util.sleep(200);
-
-        // Get current scene and apply freeze filter to it
+        // Get current scene and apply freeze filter to it, but immediately hidden
         const currentScene: string = await app.obs.getCurrentSceneName();
-        app.obs.call("CreateSourceFilter", {
+        await app.obs.call("CreateSourceFilter", {
             "sourceName" : currentScene,
-            "filterName" : "Pause Redeem Freeze",
+            "filterName" : filterName,
             "filterKind" : "freeze_filter",
             "filterSettings" : { "refresh_interval": 0 }
         });
-
-        // Begin specific Pause instructions
+        await app.obs.hideFilter(currentScene, filterName);
 
         // If action is a string, jam requires a single source
         if (typeof pause.action === "string") {
+            // Mute mic and output before specific pause instructions
+            await app.obs.muteMic();
+            await app.obs.muteDesktop();
+            await Util.sleep(200);
+
+            await app.obs.showFilter(currentScene, filterName);
+
             // Show relevant media file / browser source
             app.obs.showSourceForDuration(pause.action, Pause.scene, pause.duration);
             await Util.sleep(pause.duration);
         } else {
             // Otherwise it requires multiple steps (filters, etc)
-            await pause.action();
+            const data: PauseEventData = { scene: currentScene, filter: filterName };
+            await pause.action(data);
         }
 
         // Remove freeze filter from current scene
-        app.obs.call("RemoveSourceFilter", {
+        await app.obs.call("RemoveSourceFilter", {
             sourceName : currentScene,
-            filterName : "Pause Redeem Freeze"
+            filterName : filterName
         });
 
         // Unmute mic and output
-        app.obs.unmuteMic();
-        app.obs.unmuteDesktop();
-
+        await app.obs.unmuteMic();
+        await app.obs.unmuteDesktop();
+        await Util.sleep(500);
     }
 
     private async foxCheck(pauseNumber: number): Promise<void> {

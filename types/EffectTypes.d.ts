@@ -15,11 +15,16 @@ export type JamBreakData = {
     chatText?: string
 }
 
-export type PauseData = {
+export type PauseTypeData = {
     game: string,
-    action: string | (() => Promise<void>),
+    action: string | ((data?: PauseEventData) => Promise<void>),
     duration?: number,
     chatText?: string
+}
+
+export type PauseEventData = {
+    scene: string,
+    filter: string
 }
 
 export type SoundExistenceData = {

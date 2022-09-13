@@ -232,23 +232,23 @@ export class OBSSocket {
     // MICROPHONE + AUDIO
 
     public async muteMic(): Promise<void> {
-        this.setInputMute("Mic/Aux", true);
+        await this.setInputMute("Mic/Aux", true);
     }
 
     public async unmuteMic(): Promise<void> {
-        this.setInputMute("Mic/Aux", false);
+        await this.setInputMute("Mic/Aux", false);
     }
 
     public async muteDesktop(): Promise<void> {
-        this.setInputMute("Desktop Audio", true);
+        await this.setInputMute("Desktop Audio", true);
     }
 
     public async unmuteDesktop(): Promise<void> {
-        this.setInputMute("Desktop Audio", false);
+        await this.setInputMute("Desktop Audio", false);
     }
 
     public async setInputMute(inputName: string, inputMuted: boolean): Promise<void> {
-        this.call("SetInputMute", { "inputName": inputName, "inputMuted": inputMuted });
+        await this.call("SetInputMute", { "inputName": inputName, "inputMuted": inputMuted });
     }
 
     public async getInputMute(inputName: string): Promise<boolean> {

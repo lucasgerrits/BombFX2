@@ -53,7 +53,7 @@ export class BombFX {
             main: new EffectQueue(4),
             barkeep: new EffectQueue(2),
             media: new EffectQueue(1),
-            toads: new EffectQueue(3),
+            pause: new EffectQueue(3),
             jump: new EffectQueue(1),
             crimbob: new EffectQueue(1),
             zora: new EffectQueue(1),
