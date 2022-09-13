@@ -1,5 +1,4 @@
 import { AguaReward } from "../effects/agua/Agua.js";
-import { BattletoadsReward } from "../effects/battletoads/Battletoads.js";
 import { BigPPReward } from "../effects/bigpp/BigPP.js";
 import { ButtsbotWordReward, CloneHeroRequestReward, FiveMinPaintReward, NutButtonReward, SubparImpressionReward, TypeRacerBreakReward } from "../effects/misc/MiscRewards.js";
 import { CodecReward } from "../effects/codec/Codec.js";
@@ -13,6 +12,7 @@ import { NiceReward } from "../effects/nice/Nice.js";
 import { NotifsReward } from "../effects/notifs/Notifs.js";
 import { OrbReward } from "../effects/orb/Orb.js";
 import { PanicSwitchReward } from "../effects/panic/PanicSwitch.js";
+import { PauseReward } from "../effects/pause/Pause.js";
 import { SFXReward, SFXBombReward, SFXDoubleSpeedReward, SFXQuarterSpeedReward } from "../effects/sfx/SFX.js";
 import { SpacebarReward } from "../effects/spacebar/Spacebar.js";
 import { SubsandDubsReward } from "../effects/subsanddubs/SubsandDubs.js";
@@ -28,7 +28,6 @@ import type { RewardMapping } from "../types/AppTypes";
 
 export const rewardsList: Array<RewardMapping> = [
     { key: AguaReward.id, value: new AguaReward() },
-    { key: BattletoadsReward.id, value: new BattletoadsReward() },
     { key: BigPPReward.id, value: new BigPPReward() },
     { key: ButtsbotWordReward.id, value: new ButtsbotWordReward() },
     { key: CloneHeroRequestReward.id, value: new CloneHeroRequestReward() },
@@ -46,6 +45,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: NutButtonReward.id, value: new NutButtonReward() },
     { key: OrbReward.id, value: new OrbReward() },
     { key: PanicSwitchReward.id, value: new PanicSwitchReward() },
+    { key: PauseReward.id, value: new PauseReward() },
     { key: SFXReward.id, value: new SFXReward() },
     { key: SFXBombReward.id, value: new SFXBombReward() },
     { key: SFXDoubleSpeedReward.id, value: new SFXDoubleSpeedReward() },

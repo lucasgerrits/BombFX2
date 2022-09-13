@@ -2,9 +2,9 @@ import { BombFX } from "../../app/BombFX.js";
 import { jambreaks } from "./breaks.js";
 import { Effect } from "../../app/Effect.js";
 import { EffectQueueName } from "../../app/EffectQueue.js";
+import { PauseReward } from "../pause/Pause.js";
 import { Reward } from "../../app/twitch/Reward.js";
 import { Util } from "../../app/util/Util.js";
-import { BattletoadsReward } from "../battletoads/Battletoads.js";
 import type { JamBreakData } from "../../types/EffectTypes.js";
 
 // eslint-disable-next-line no-var
@@ -31,11 +31,11 @@ export class JamBreak extends Effect {
     }
     
     public override async setup(): Promise<void> {
-        BattletoadsReward.pause();
+        PauseReward.pause();
     }
 
     public override async dismantle(): Promise<void> {
-        BattletoadsReward.resume();
+        PauseReward.resume();
     }
 
     public override async start(): Promise<void> {

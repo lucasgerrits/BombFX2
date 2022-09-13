@@ -15,6 +15,13 @@ export type JamBreakData = {
     chatText?: string
 }
 
+export type PauseData = {
+    game: string,
+    action: string | (() => Promise<void>),
+    duration?: number,
+    chatText?: string
+}
+
 export type SoundExistenceData = {
     exists: boolean;
     audio: HTMLAudioElement;

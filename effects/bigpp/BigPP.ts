@@ -1,7 +1,7 @@
-import { BattletoadsReward } from "../battletoads/Battletoads.js";
 import { BombFX } from "../../app/BombFX.js";
 import { Effect } from "../../app/Effect.js";
 import { EffectQueueName } from "../../app/EffectQueue.js";
+import { PauseReward } from "../pause/Pause.js";
 import { Reward } from "../../app/twitch/Reward.js";
 import { Util } from "../../app/util/Util.js";
 
@@ -25,11 +25,11 @@ export class BigPP extends Effect {
     }
     
     public override async setup(): Promise<void> {
-        BattletoadsReward.pause();
+        PauseReward.pause();
     }
 
     public override async dismantle(): Promise<void> {
-        BattletoadsReward.resume();
+        PauseReward.resume();
     }
 
     public override async start(user: string = this.triggerData.user): Promise<void> {

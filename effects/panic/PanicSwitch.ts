@@ -1,7 +1,7 @@
-import { BattletoadsReward } from "../battletoads/Battletoads.js";
 import { BombFX } from "../../app/BombFX.js";
 import { Effect } from "../../app/Effect.js";
 import { EffectQueueName } from "../../app/EffectQueue.js";
+import { PauseReward } from "../pause/Pause.js";
 import { Reward } from "../../app/twitch/Reward.js";
 import { SFXDoubleSpeedReward, SFXQuarterSpeedReward, SFXReward } from "../sfx/SFX.js";
 import { Util } from "../../app/util/Util.js";
@@ -27,14 +27,14 @@ export class PanicSwitch extends Effect {
     
     public override async setup(): Promise<void> {
         const newColor: string = "#9E0B0F";
-        BattletoadsReward.update({ cost: 2000, title: BattletoadsReward.title + " (Panic)", background_color: newColor });
+        PauseReward.update({ cost: 2000, title: PauseReward.title + " (Panic)", background_color: newColor });
         SFXReward.update({ cost: 10, title: SFXReward.title + " (Panic)", background_color: newColor });
         SFXDoubleSpeedReward.update({ cost: 1, title: SFXDoubleSpeedReward.title + " (Panic)", background_color: newColor });
         SFXQuarterSpeedReward.update({ cost: 20, title: SFXQuarterSpeedReward.title + " (Panic)", background_color: newColor });
     }
 
     public override async dismantle(): Promise<void> {
-        BattletoadsReward.update({ cost: 300, title: BattletoadsReward.title, background_color: BattletoadsReward.buttonColor });
+        PauseReward.update({ cost: 300, title: PauseReward.title, background_color: PauseReward.buttonColor });
         SFXReward.update({ cost: 250, title: SFXReward.title, background_color: SFXReward.buttonColor });
         SFXDoubleSpeedReward.update({ cost: 150, title: SFXDoubleSpeedReward.title, background_color: SFXDoubleSpeedReward.buttonColor });
         SFXQuarterSpeedReward.update({ cost: 700, title: SFXQuarterSpeedReward.title, background_color: SFXQuarterSpeedReward.buttonColor });
