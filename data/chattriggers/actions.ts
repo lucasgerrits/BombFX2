@@ -110,14 +110,16 @@ export const actionTriggers: Array<ChatTriggerData> = [
         announceCD: false, // "IT'S HIM MOOOO"
         action: async (data) => {
             const translations: Array<string> = [
-                "IT'S HIM (English)", // English
-                "C'EST LUI (French)", // French
-                "ES ÉL (Spanish)", // Spanish
-                "ANDIYAN NA SIYA (Filipino)", // Filipino
-                "01001001 01010100 00100111 01010011 00100000 01001000 01001001 01001101 (Binary)", // Binary
-                "495427532048494D (Hexadecimal)", // Hexadecimal
-                "GHAH'E' (Klingon)", // Klingon
-                "Ha'S hon (Elvish-Sindarian)" // Elvish (Sindarin)
+                "IT'S HIM (English)",
+                "C'EST LUI (French)",
+                "ES ÉL (Spanish)",
+                "É ELE (Portuguese-BR)",
+                "ANDIYAN NA SIYA (Filipino)",
+                "KARE DA (Japanese)",
+                "01001001 01010100 00100111 01010011 00100000 01001000 01001001 01001101 (Binary)",
+                "495427532048494D (Hexadecimal)",
+                "GHAH'E' (Klingon)",
+                "Ha'S hon (Elvish-Sindarian)"
             ];
             const rand: number = Util.Numbers.getRandomIntegerInclusive(0, translations.length - 1);
             const output: string = translations[rand] + " MOOOO";
