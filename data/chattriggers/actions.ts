@@ -218,14 +218,26 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!refresh",
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
+            let source: string = "nothing";
             if (data.message === "") {
                 app.twitch.bot.say("Enter something to refresh, CFB.");
                 return;
             } else if (data.message === "code") {
                 app.obs.refreshBrowserSource("Bomb FX 2");
+                source = "CFB's code";
             } else if (data.message === "chat") {
                 app.obs.refreshBrowserSource("Sideways Chat");
+                source = "Sideways Chat";
+            } else if (data.message === "streamelements" || data.message === "alerts" || data.message === "se") {
+                app.obs.refreshBrowserSource("StreamElements");
+                source = "StreamElements overlay";
+            } else if (data.message === "all") {
+                app.obs.refreshBrowserSource("Bomb FX 2");
+                app.obs.refreshBrowserSource("Sideways Chat");
+                app.obs.refreshBrowserSource("StreamElements");
+                source = "E V E R Y T H I N G";
             }
+            app.twitch.bot.say("Refreshing " + source + ".");
         }
     }, {
         trigger: "!reminder",
