@@ -24,7 +24,7 @@ ComfyJS.onError = (error: any) => {
 };
 
 ComfyJS.onChat = (user: string, message: string, flags: ChatFlags, self: boolean, extra: ChatExtra) => {
-    if (user === "MilkBarkeep" || user === "KonaVanilla") return; // Ignore bots
+    if (user === "MilkBarkeep" || user === "KonaVanilla" || user === "Buttsbot") return; // Ignore bots
 
     const data: ChatEventData = {
         user: user,
