@@ -33,7 +33,7 @@ export class Friday extends Effect {
             // Yeet that dum dum
             const timeoutStr: string = "/timeout " + this.triggerData.user + " 300 Not actually Friday.";
             app.twitch.chat.say(timeoutStr);
-            const chatStr: string = this.triggerData.user + ", if yoooooooooouuuuuuuuuuu can believe it, you're timed out once again!";
+            const chatStr: string = this.triggerData.user + ", if yoooooooooouuuuuuuuuuu can believe it, you've been timed out once again!";
             app.twitch.bot.say(chatStr);
             return;
         }
