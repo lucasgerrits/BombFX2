@@ -313,10 +313,10 @@ export class OBSSocket {
         this.socket.on("StreamStateChanged", (data: StreamStateChangedEvent) => {
             if (data.outputState === "OBS_WEBSOCKET_OUTPUT_STARTED") {
                 Logger.bomb("STREAM STARTED!!");
-                streamEventList.start();
+                //streamEventList.start();
             } else if (data.outputState === "OBS_WEBSOCKET_OUTPUT_STOPPED") {
                 Logger.bomb("STREAM STOPPED!!");
-                streamEventList.stop();
+                //streamEventList.stop();
             }
         });
     }
