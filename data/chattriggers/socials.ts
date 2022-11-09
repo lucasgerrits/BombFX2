@@ -24,7 +24,7 @@ export const socialTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!github",
         aliases: ["!git", "!code", "!fx2"],
-        action: "https://github.com/lucasgerrits/BombFX2"
+        action: "https://github.com/lucasgerrits/"
     }, {
         trigger: "!gmod",
         aliases: ["!ttt"],
