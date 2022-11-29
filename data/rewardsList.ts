@@ -33,7 +33,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: CloneHeroRequestReward.id, value: new CloneHeroRequestReward() },
     { key: CodecReward.id, value: new CodecReward() },
     { key: CowReward.id, value: new CowReward() },
-    //{ key: CrimbobReward.id, value: new CrimbobReward() },
+    { key: CrimbobReward.id, value: new CrimbobReward() },
     { key: FanfareReward.id, value: new FanfareReward() },
     //{ key: FiveMinPaintReward.id, value: new FiveMinPaintReward() },
     { key: FridayReward.id, value: new FridayReward() },

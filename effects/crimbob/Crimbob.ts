@@ -14,7 +14,7 @@ export class CrimbobReward extends Reward {
     public static override cost: number = 50;
 
     constructor() {
-        super(CrimbobReward.id, CrimbobReward.title, new Crimbob());
+        super(CrimbobReward.id, CrimbobReward.title, new Crimbob(), CrimbobReward.buttonColor);
     }
 }
 
@@ -28,10 +28,18 @@ export class Crimbob extends Effect {
 
         await app.obs.showSource("Merty Crimbob OG", "** Mega Overlay");
 
+        await app.obs.showSource("Snowverlay", "** Mega Overlay");
+
         Util.playSound("effects/crimbob/mertycrimbobquieter.mp3");
+
+        Util.playSound("effects/crimbob/sleighbells.mp3");
 
         await Util.sleep(4200); // he he weed number
 
         await app.obs.hideSource("Merty Crimbob OG", "** Mega Overlay");
+
+        await Util.sleep(45000); // Let it snow, let it snow, let it snow
+
+        await app.obs.hideSource("Snowverlay", "** Mega Overlay");
     }
 }
