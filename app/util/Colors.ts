@@ -14,6 +14,10 @@ export class Colors {
         return fillStyle;
     }
 
+    public static createRandomHex(): string {
+        return "#" + Math.floor(Math.random()*16777215).toString(16);
+    }
+
     public static hexToInt(hex: string): number {
         const rgb: Array<number> = Colors.hexToRGB(hex);
         const int: number = Colors.rgbToInt(rgb[0], rgb[1], rgb[2]);

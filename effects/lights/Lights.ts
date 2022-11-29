@@ -25,8 +25,17 @@ export class LightChange extends Effect {
     public override async start(): Promise<void> {
         // Get color string from user's Twitch redemption text input
         const colorStr: string = this.triggerData.message;
+
         // Convert said string to any possible corresponding hex value
-        const hexVal: string = Util.Colors.convertStringToHex(colorStr);
+        let hexVal: string = Util.Colors.convertStringToHex(colorStr);
+
+        // Determine if color string could be processed properly, or if input value is black
+        if (hexVal === "#000000") {
+            app.twitch.bot.say("Input value could not be used. Assigning random color.");
+            hexVal = Util.Colors.createRandomHex();
+            console.log(hexVal);
+        }
+        
         // Send hex value to appropriate bulb(s)
         app.lumia.sendHex(hexVal);
     }
