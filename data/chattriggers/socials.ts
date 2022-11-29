@@ -30,6 +30,9 @@ export const socialTriggers: Array<ChatTriggerData> = [
         aliases: ["!ttt"],
         action: "Thanks to @DRock4Real1324 for hosting the server! - IP: 65.31.255.217 Password: bombsquad"
     }, {
+        trigger: "!horror",
+        action: "https://www.carefreebomb.com/horror"
+    }, {
         trigger: "!instagram",
         aliases: ["!insta", "!ig", "!gram"],
         action: "https://www.instagram.com/care.free.bomb/"
