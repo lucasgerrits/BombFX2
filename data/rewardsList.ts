@@ -22,6 +22,7 @@ import { TheWordReward } from "../effects/secretword/TheWord.js";
 import { TimeWarpReward } from "../effects/timewarp/TimeWarp.js";
 import { UwuReward } from "../effects/uwu/Uwu.js";
 import { VFXReward } from "../effects/vfx/VFX.js";
+import { WeatherReward } from "../effects/weather/Weather.js";
 import { YodaReward } from "../effects/yoda/Yoda.js";
 import { ZoraReward } from "../effects/zora/Zora.js";
 import type { RewardMapping } from "../types/AppTypes";
@@ -60,6 +61,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: TypeRacerBreakReward.id, value: new TypeRacerBreakReward() },
     { key: UwuReward.id, value: new UwuReward() },
     { key: VFXReward.id, value: new VFXReward() },
+    { key: WeatherReward.id, value: new WeatherReward() },
     { key: YodaReward.id, value: new YodaReward() },
     { key: ZoraReward.id, value: new ZoraReward() }
 ];
