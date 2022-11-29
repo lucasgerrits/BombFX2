@@ -26,7 +26,7 @@ export class LightChange extends Effect {
         // Get color string from user's Twitch redemption text input
         const colorStr: string = this.triggerData.message;
 
-        // Convert said string to any possible corresponding hex value
+        // Convert said string to any possible corresponding hex value using a 2D canvas context
         let hexVal: string = Util.Colors.convertStringToHex(colorStr);
 
         // Determine if color string could be processed properly, or if input value is black
@@ -35,8 +35,8 @@ export class LightChange extends Effect {
             hexVal = Util.Colors.createRandomHex();
             console.log(hexVal);
         }
-        
-        // Send hex value to appropriate bulb(s)
+
+        // Send the values to appropriate bulb(s)
         app.lumia.sendHex(hexVal);
     }
 }

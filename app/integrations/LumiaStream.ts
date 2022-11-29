@@ -43,4 +43,26 @@ export class LumiaStream {
             }
         ));
     }
+
+    public sendRGB(rgbArr: Array<number>) {
+        this.socket.send(JSON.stringify(
+            {
+                "type": "rgb-color",
+                "params": {
+                    "value": {
+                        "r": rgbArr[0],
+                        "g": rgbArr[1],
+                        "b": rgbArr[2]
+                    }, // ct range: [2000, 7000]
+                    "brightness": 100,
+                    "transition": 0,
+                    "duration": 0
+                },
+                "lights": [
+                    { "type": lightIDs.lampBulb.type, "value": lightIDs.lampBulb.id }
+                ]
+            }
+        ));
+    }
+
 }
