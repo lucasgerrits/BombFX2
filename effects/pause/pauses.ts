@@ -7,16 +7,13 @@ import type { PauseTypeData, PauseEventData } from "../../types/EffectTypes.js";
 // eslint-disable-next-line no-var
 declare var app: BombFX;
 
-export const pauses: Array<PauseTypeData> = [
-    {
-        game: "Battletoads (NES)",
-        duration: 8100,
-        action: "Battletoads Pause Jam"
-    }, {
-        game: "Street Fighter II: The World Warrior (SNES)",
-        duration: 6100,
-        action: "Street Fighter II Pause Sounds"
-    }, {
+export const pauses: Record<string, PauseTypeData> = {
+    "hl2": {
+        game: "Half-Life 2",
+        duration: 6000,
+        action: "HL2 Load"
+    },
+    "melee": {
         game: "Super Smash Bros. Melee (GameCube)",
         action: async (data: PauseEventData) => {
             async function pauseOn(text?: string) {
@@ -54,5 +51,15 @@ export const pauses: Array<PauseTypeData> = [
             await Util.sleep(3000);
             await pauseOff("off 3");
         }
+    },
+    "sf2": {
+        game: "Street Fighter II: The World Warrior (SNES)",
+        duration: 6100,
+        action: "Street Fighter II Pause Sounds"
+    },
+    "toads": {
+        game: "Battletoads (NES)",
+        duration: 8100,
+        action: "Battletoads Pause Jam"
     }
-];
+};

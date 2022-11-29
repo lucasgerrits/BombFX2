@@ -33,22 +33,30 @@ export class Pause extends Effect {
     public override async start(): Promise<void> {
         const filterName: string = "Pause Redeem Freeze";
 
+        const pauseKey: string = this.triggerData.message;
+
+        /*
         // Determine which pause
         let chance: number = this.pauseNumber - 1; // human numbers in chat, zero indexing in code
         if (this.pauseNumber == -1) {
             chance = Util.Numbers.getRandomIntegerInclusive(0, pauses.length - 1);
         }
         const pause: PauseTypeData = pauses[chance];
+        */
 
+        const pause: PauseTypeData = pauses[pauseKey];
+
+        /*
         // Relevant chatbot messages
         const botMsg: string = `Pause #${chance + 1} of ${pauses.length}: ${pause.game}`;
         app.twitch.bot.say(botMsg);
         if (pause.chatText!) {
             app.twitch.bot.say(pause.chatText);
         }
+        */
 
         // Determines if the bot needs to say hi to fox lol
-        this.foxCheck(chance);
+        this.foxCheck(pauseKey);
 
         // Get current scene and apply freeze filter to it, but immediately hidden
         const currentScene: string = await app.obs.getCurrentSceneName();
@@ -90,8 +98,8 @@ export class Pause extends Effect {
         await Util.sleep(500);
     }
 
-    private async foxCheck(pauseNumber: number): Promise<void> {
-        if (this.triggerData.user === "FoxiFries" && pauseNumber === 0) {
+    private async foxCheck(pauseKey: string): Promise<void> {
+        if (this.triggerData.user === "FoxiFries" && pauseKey === "toads") {
             app.twitch.bot.say("hi fox, ");
         }
     }
