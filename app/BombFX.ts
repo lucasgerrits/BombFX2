@@ -1,6 +1,7 @@
 import { EffectQueue } from "./EffectQueue.js";
 import { Heat } from "./twitch/Heat.js";
 import { Logger } from "./Logger.js";
+import { LumiaStream } from "./integrations/LumiaStream.js";
 import { OBSSocket } from "./obs/OBSSocketV5.js";
 import { Orb } from "../effects/orb/Orb.js";
 import { SFX } from "../effects/sfx/SFX.js";
@@ -26,6 +27,7 @@ export class BombFX {
     public tts: TextToSpeech;
     public speech: SpeechRecognition;
     public heat: Heat;
+    public lumia: LumiaStream;
     public Util: Util;
 
     constructor() {
@@ -37,6 +39,7 @@ export class BombFX {
         this.obs = new OBSSocket();
         this.speech = new SpeechRecognition();
         this.heat = new Heat();
+        this.lumia = new LumiaStream();
         
         this.timers = new TimerMap();
         this.setEffectQueues();

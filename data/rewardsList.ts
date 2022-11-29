@@ -8,6 +8,7 @@ import { FanfareReward } from "../effects/fanfare/Fanfare.js";
 import { FridayReward } from "../effects/friday/Friday.js";
 import { HardwareReward } from "../effects/hardware/Hardware.js";
 import { JamBreakReward } from "../effects/jambreak/JamBreak.js";
+import { LightsReward } from "../effects/lights/Lights.js";
 import { NiceReward } from "../effects/nice/Nice.js";
 import { NotifsReward } from "../effects/notifs/Notifs.js";
 import { OrbReward } from "../effects/orb/Orb.js";
@@ -27,6 +28,7 @@ import { YodaReward } from "../effects/yoda/Yoda.js";
 import { ZoraReward } from "../effects/zora/Zora.js";
 import type { RewardMapping } from "../types/AppTypes";
 
+
 export const rewardsList: Array<RewardMapping> = [
     { key: AguaReward.id, value: new AguaReward() },
     { key: BigPPReward.id, value: new BigPPReward() },
@@ -41,6 +43,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: GoldenCowReward.id, value: new GoldenCowReward() },
     { key: HardwareReward.id, value: new HardwareReward() },
     { key: JamBreakReward.id, value: new JamBreakReward() },
+    { key: LightsReward.id, value: new LightsReward() },
     { key: NiceReward.id, value: new NiceReward() },
     { key: NotifsReward.id, value: new NotifsReward() },
     { key: NutButtonReward.id, value: new NutButtonReward() },

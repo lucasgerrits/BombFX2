@@ -1,5 +1,19 @@
 export class Colors {
 
+    /**
+     * Accepts a string containing a color value and returns the corresponding hex value string.
+     * Solution created by StackOverflow user JayB - https://stackoverflow.com/a/47355187/18557526
+     * 
+     * @param str {string} A string containing possibly: color name, RGB, HSL, or another hex
+     * @return fillStyle {string} A string containing the hex value of passed in color
+     */
+    public static convertStringToHex(str: string): string {
+        const ctx = document.createElement("canvas").getContext("2d");
+        ctx.fillStyle = str;
+        const fillStyle: string = ctx.fillStyle;
+        return fillStyle;
+    }
+
     public static hexToInt(hex: string): number {
         const rgb: Array<number> = Colors.hexToRGB(hex);
         const int: number = Colors.rgbToInt(rgb[0], rgb[1], rgb[2]);
