@@ -63,7 +63,8 @@ export class BombFX {
             camera: new EffectQueue(1),
             scene: new EffectQueue(2),
             none: new EffectQueue(-1),
-            timeouts: new EffectQueue(1)
+            timeouts: new EffectQueue(1),
+            ronald: new EffectQueue(1)
         };
     }
 

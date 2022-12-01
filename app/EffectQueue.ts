@@ -55,8 +55,9 @@ export enum EffectQueueName {
     Main = "main",
     Media = "media",
     None = "none",
-    Scene = "scene",
     Pause = "pause",
+    Ronald = "ronald",
+    Scene = "scene",
     Timeouts = "timeouts",
     Zora = "zora"
 }

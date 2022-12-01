@@ -1,3 +1,4 @@
+import { AggroReward } from "../effects/aggro/Aggro.js";
 import { AguaReward } from "../effects/agua/Agua.js";
 import { BigPPReward } from "../effects/bigpp/BigPP.js";
 import { ButtsbotWordReward, CloneHeroRequestReward, FiveMinPaintReward, NutButtonReward, SubparImpressionReward, TypeRacerBreakReward } from "../effects/misc/MiscRewards.js";
@@ -14,11 +15,11 @@ import { NotifsReward } from "../effects/notifs/Notifs.js";
 import { OrbReward } from "../effects/orb/Orb.js";
 import { PanicSwitchReward } from "../effects/panic/PanicSwitch.js";
 import { PauseReward } from "../effects/pause/Pause.js";
+import { RonaldReward } from "../effects/ronald/Ronald.js";
 import { SFXReward, SFXBombReward, SFXDoubleSpeedReward, SFXQuarterSpeedReward } from "../effects/sfx/SFX.js";
 import { SpacebarReward } from "../effects/spacebar/Spacebar.js";
 import { SubsandDubsReward } from "../effects/subsanddubs/SubsandDubs.js";
 import { SunnyReward } from "../effects/sunny/Sunny.js";
-import { SuplexReward } from "../effects/suplex/Suplex.js";
 import { TheWordReward } from "../effects/secretword/TheWord.js";
 import { TimeWarpReward } from "../effects/timewarp/TimeWarp.js";
 import { UwuReward } from "../effects/uwu/Uwu.js";
@@ -28,8 +29,8 @@ import { YodaReward } from "../effects/yoda/Yoda.js";
 import { ZoraReward } from "../effects/zora/Zora.js";
 import type { RewardMapping } from "../types/AppTypes";
 
-
 export const rewardsList: Array<RewardMapping> = [
+    { key: AggroReward.id, value: new AggroReward() },
     { key: AguaReward.id, value: new AguaReward() },
     { key: BigPPReward.id, value: new BigPPReward() },
     { key: ButtsbotWordReward.id, value: new ButtsbotWordReward() },
@@ -50,6 +51,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: OrbReward.id, value: new OrbReward() },
     { key: PanicSwitchReward.id, value: new PanicSwitchReward() },
     { key: PauseReward.id, value: new PauseReward() },
+    { key: RonaldReward.id, value: new RonaldReward() },
     { key: SFXReward.id, value: new SFXReward() },
     { key: SFXBombReward.id, value: new SFXBombReward() },
     { key: SFXDoubleSpeedReward.id, value: new SFXDoubleSpeedReward() },
@@ -58,7 +60,6 @@ export const rewardsList: Array<RewardMapping> = [
     { key: SubparImpressionReward.id, value: new SubparImpressionReward() },
     { key: SubsandDubsReward.id, value: new SubsandDubsReward() },
     { key: SunnyReward.id, value: new SunnyReward() },
-    { key: SuplexReward.id, value: new SuplexReward() },
     { key: TheWordReward.id, value: new TheWordReward() },
     { key: TimeWarpReward.id, value: new TimeWarpReward() },
     { key: TypeRacerBreakReward.id, value: new TypeRacerBreakReward() },
