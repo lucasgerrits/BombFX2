@@ -24,14 +24,20 @@ export class Ronald extends Effect {
     
     public override async start(): Promise<void> {
         const chance: number = 33;
+
+        // Determine user's roll and post in chat
         const roll: number = Util.Numbers.getRandomIntegerInclusive(0, 100);
         app.twitch.bot.say(this.triggerData.user + "'s Ronald Roll: " + roll);
+
+        // If roll is 24, give big boy timeout
         if (roll === 24) {
             app.twitch.chat.say("/timeout " + this.triggerData.user + " 2400 24");
             app.twitch.bot.say("̵͊́[̴͑̋2̶͗̈́]̸͐̾[̷͊̒4̷̌͘]̷̔̍");
+        // If roll is below threshold, give regular timeout
         } else if (roll <= chance) {
             app.twitch.chat.say("/timeout " + this.triggerData.user + " 300 Ronald Gamba");
             app.twitch.bot.say("Fuck you, " + this.triggerData.user);
+        // Otherwise, play obnoxious video
         } else {
             await app.obs.showSource("Ronald Dot Webm", "** Videos");
             await Util.sleep(1500);
