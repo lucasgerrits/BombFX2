@@ -266,6 +266,15 @@ export class OBSSocket {
         return <string>imageData;
     }
 
+    public async saveSourceScreenshot(sourceName: string, imageFilePath: string, imageFormat: string = "png"): Promise<void> {
+        await this.call("SaveSourceScreenshot", {
+            "sourceName" : sourceName,
+            "imageFormat" : imageFormat,
+            "imageFilePath" : imageFilePath,
+            "imageCompressionQuality": 100
+        });
+    }
+
     public async pressInputPropertiesButton(inputName: string, propertyName: string): Promise<void> {
         await this.call("PressInputPropertiesButton", {
             "inputName" : inputName,
