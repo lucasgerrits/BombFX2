@@ -39,7 +39,7 @@ export class Suplex extends Effect {
 
         // Play suplex video
         await app.obs.showSource("Suplex Dot Webm", "Suplex");
-        await Util.sleep(3700);
+        await Util.sleep(6500);
 
         // Apply filter to move source mirror up
         await app.obs.showFilter("Suplex", "Suplex - Up");
