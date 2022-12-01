@@ -16,40 +16,7 @@ export const pauses: Record<string, PauseTypeData> = {
     "melee": {
         game: "Super Smash Bros. Melee (GameCube)",
         action: async (data: PauseEventData) => {
-            async function pauseOn(text?: string) {
-                //console.log(text);
-                await app.obs.showSource("Smash Melee Pause Sound", Pause.scene);
-                console.log("sound started");
-                await app.obs.showSource("Smash Melee Pause Screen", Pause.scene);
-                console.log("image showing");
-                await Util.sleep(100);
-                await app.obs.showFilter(data.scene, data.filter);
-                await app.obs.hideSource("Smash Melee Pause Sound", Pause.scene);
-                await app.obs.muteMic();
-                await app.obs.muteDesktop();
-            }
-
-            async function pauseOff(text?: string) {
-                //console.log(text);
-                await app.obs.hideFilter(data.scene, data.filter);
-                await app.obs.hideSource("Smash Melee Pause Screen", Pause.scene);
-                await app.obs.unmuteMic();
-                await app.obs.unmuteDesktop();
-            }
-
-            await pauseOn("on 1");
-            await Util.sleep(500);
-            await pauseOff("off 1");
-            await Util.sleep(300);
-
-            await pauseOn("on 2");
-            await Util.sleep(500);
-            await pauseOff("off 2");
-            await Util.sleep(300);
-
-            await pauseOn("on 3");
-            await Util.sleep(3000);
-            await pauseOff("off 3");
+            Util.sleep(1);
         }
     },
     "sf2": {

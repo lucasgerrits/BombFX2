@@ -33,52 +33,49 @@ export class Pause extends Effect {
     public override async start(): Promise<void> {
         const filterName: string = "Pause Redeem Freeze";
 
+        // Get pause type from user input
         const pauseKey: string = this.triggerData.message;
-
-        /*
-        // Determine which pause
-        let chance: number = this.pauseNumber - 1; // human numbers in chat, zero indexing in code
-        if (this.pauseNumber == -1) {
-            chance = Util.Numbers.getRandomIntegerInclusive(0, pauses.length - 1);
-        }
-        const pause: PauseTypeData = pauses[chance];
-        */
-
         const pause: PauseTypeData = pauses[pauseKey];
-
-        /*
-        // Relevant chatbot messages
-        const botMsg: string = `Pause #${chance + 1} of ${pauses.length}: ${pause.game}`;
-        app.twitch.bot.say(botMsg);
-        if (pause.chatText!) {
-            app.twitch.bot.say(pause.chatText);
-        }
-        */
 
         // Determines if the bot needs to say hi to fox lol
         this.foxCheck(pauseKey);
 
-        // Get current scene and apply freeze filter to it, but immediately hidden
+        // Get current scene
         const currentScene: string = await app.obs.getCurrentSceneName();
-        await app.obs.call("CreateSourceFilter", {
-            "sourceName" : currentScene,
-            "filterName" : filterName,
-            "filterKind" : "freeze_filter",
-            "filterSettings" : { "refresh_interval": 0 }
-        });
-        await app.obs.hideFilter(currentScene, filterName);
 
-        // If action is a string, jam requires a single source
+        // If action is a string, pause requires a single source
         if (typeof pause.action === "string") {
-            // Mute mic and output before specific pause instructions
-            await app.obs.muteMic();
-            await app.obs.muteDesktop();
-            await Util.sleep(200);
+            // Apply freeze filter to it
+            await app.obs.call("CreateSourceFilter", {
+                "sourceName" : currentScene,
+                "filterName" : filterName,
+                "filterKind" : "freeze_filter",
+                "filterSettings" : { "refresh_interval": 0 }
+            });
 
-            await app.obs.showFilter(currentScene, filterName);
+            // Give OBS and socket some buffer time to add filter
+            await Util.sleep(50);
+
+            // Create screenshot from frozen scene
+            const imageFilePath = "C:\\xampp\\htdocs\\fx2\\effects\\pause\\freezeframe.png";
+            await app.obs.saveSourceScreenshot(currentScene, imageFilePath);
+
+            // Show paused scene screenshot
+            await app.obs.showSource("Paused Scene Screenshot", "** Mega Overlay");
 
             // Show relevant media file / browser source
             app.obs.showSourceForDuration(pause.action, Pause.scene, pause.duration);
+
+            // Mute mic and output before specific pause instructions
+            await app.obs.muteMic();
+            await app.obs.muteDesktop();
+
+            // Remove freeze filter from current scene
+            app.obs.call("RemoveSourceFilter", {
+                sourceName : currentScene,
+                filterName : filterName
+            });
+
             await Util.sleep(pause.duration);
         } else {
             // Otherwise it requires multiple steps (filters, etc)
@@ -86,11 +83,8 @@ export class Pause extends Effect {
             await pause.action(data);
         }
 
-        // Remove freeze filter from current scene
-        await app.obs.call("RemoveSourceFilter", {
-            sourceName : currentScene,
-            filterName : filterName
-        });
+        // Hide paused scene screenshot
+        await app.obs.hideSource("Paused Scene Screenshot", "** Mega Overlay");
 
         // Unmute mic and output
         await app.obs.unmuteMic();
