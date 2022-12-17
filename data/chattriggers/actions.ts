@@ -21,6 +21,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     {
         trigger: "!barkeep",
         userLevel: UserLevel.Broadcaster,
+        permittedUsers: ["Doronyaa", "KonaChocolate"],
         action: async (data) => {
             const effect: Effect = new Barkeep();
             effect.setTriggerData(new ChatEventTriggerData(data));
@@ -180,7 +181,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "pantsgrab",
         userLevel: UserLevel.Broadcaster,
-        permittedUsers: ["Currrrt", "RustyShakes"],
+        permittedUsers: ["Currrrt", "LloydThePirate", "RustyShakes"],
         cooldown: 60,
         announceCD: false,
         announcePrivs: false,
@@ -277,6 +278,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.obs.setScene("Phone Stuff");
             } else if (sceneName === "desktop") {
                 app.obs.setScene("Desktop + Cam - Bottom");
+            } else if (sceneName === "retro" || sceneName === "original hardware") {
+                app.obs.setScene("Retro");
             }
         }
     }, {
