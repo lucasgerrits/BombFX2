@@ -36,6 +36,10 @@ export const linkTriggers: Array<ChatTriggerData> = [
         aliases: ["!dittoconga", "!dittokonga"],
         action: "https://matias.ma/nsfw/"
     }, {
+        trigger: "!oz",
+        aliases: ["ozkai"],
+        action: "OZKai makes cool traditional art pieces primarily using markers, with interests including Gundam and Metroid. He is also working on his own book series, and you can reach him via Twitter here: https://twitter.com/OZKai and on his Patreon here: https://www.patreon.com/studioozkai/"
+    }, {
         trigger: "!polly",
         aliases: ["!voices"],
         action: "You can test out (almost) all of the Amazon Polly voices here: https://ai-service-demos.go-aws.com/polly"
