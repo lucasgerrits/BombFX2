@@ -22,6 +22,7 @@ import { SubsandDubsReward } from "../effects/subsanddubs/SubsandDubs.js";
 import { SunnyReward } from "../effects/sunny/Sunny.js";
 import { TheWordReward } from "../effects/secretword/TheWord.js";
 import { TimeWarpReward } from "../effects/timewarp/TimeWarp.js";
+import { TwizzieReward } from "../effects/misc/Twizzies.js";
 import { UwuReward } from "../effects/uwu/Uwu.js";
 import { VFXReward } from "../effects/vfx/VFX.js";
 import { WeatherReward } from "../effects/weather/Weather.js";
@@ -62,6 +63,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: SunnyReward.id, value: new SunnyReward() },
     { key: TheWordReward.id, value: new TheWordReward() },
     { key: TimeWarpReward.id, value: new TimeWarpReward() },
+    { key: TwizzieReward.id, value: new TwizzieReward() },
     { key: TypeRacerBreakReward.id, value: new TypeRacerBreakReward() },
     { key: UwuReward.id, value: new UwuReward() },
     { key: VFXReward.id, value: new VFXReward() },
