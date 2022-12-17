@@ -49,6 +49,9 @@ export const spamTriggers: Array<ChatTriggerData> = [
         trigger: "!totsugeki",
         action: "TOTSUGEKI T TOTSUGEKI O TOTSUGEKI T TOTSUGEKI S TOTSUGEKI U TOTSUGEKI G TOTSUGEKI E TOTSUGEKI K TOTSUGEKI I TOTSUGEKI"
     }, {
+        trigger: "!twist",
+        action: "Yunat ooooh ratat ema Eeimta pouu ratatingna oontapoun shrata tiika ruunta ouuuhrat Datatike maubeautiyata tadousaputa Eeeurrraaatt Sopentenbidyata figabeibet eeuurrraaatt sometith thingmy ouuh rigdot eema ahimuraha sombi raha ima ahentabeauuraha yatatim ouuhrat twist twist twist twist"
+    }, {
         trigger: "!weeb",
         action: "ME WEEB KonCha ME SPAM TehePelo MODS BAKA PunOko IF BAN TearGlove"
     },
