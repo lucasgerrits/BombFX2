@@ -76,7 +76,7 @@ export class ChatHandler {
     }
 
     private actuallyFirstCheck(user: string, message: string): void {
-        if (user === "CareFreeBomb") { return; }
+        if (user === "CareFreeBomb" || user === "MilkBarkeep" || user === "Buttsbot" || user === "LumiaStream") { return; }
 
         let messageModified: string = message.toLowerCase();
         messageModified = Util.Strings.removeNonAlphaNumeric(messageModified);
