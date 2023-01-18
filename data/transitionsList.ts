@@ -31,7 +31,7 @@ export const transitionsList: Array<SceneTransition> = [
         to: async (data) => {
             app.obs.muteMic();
             
-            //app.twitch.rewards.pauseAll();
+            app.twitch.rewards.pauseAll();
             
             //commands.cat.pause();
         },
@@ -42,7 +42,7 @@ export const transitionsList: Array<SceneTransition> = [
             app.obs.setInputMute("StreamElements", false);
 
             if (data.toScene === "Just Chatting") {
-                //await Util.sleepInSeconds(90);
+                await Util.sleepInSeconds(90);
                 app.twitch.rewards.resumeAll();
             } else {
                 //await Util.sleepInSeconds(5);
