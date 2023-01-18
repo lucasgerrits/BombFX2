@@ -1,4 +1,8 @@
+import { BombFX } from "../../app/BombFX";
 import type { ChatTriggerData } from "../../types/AppTypes";
+
+// eslint-disable-next-line no-var
+declare var app: BombFX;
 
 export const linkTriggers: Array<ChatTriggerData> = [
     {
@@ -9,7 +13,9 @@ export const linkTriggers: Array<ChatTriggerData> = [
         action: "https://thediplomat.com/2020/12/taiwanese-horror-game-devotion-gets-pulled-again-over-chinese-objections/"
     }, {
         trigger: "!dice",
-        action: "FOLLOW DICE https://www.twitch.tv/dice_the_vice"
+        action: async (data) => {
+            app.twitch.chat.deleteMessage(data.extra.id);
+        }
     }, {
         trigger: "!exeldro",
         action: "Many of the OBS plugins used in this stream are created by Exeldro and can be found here: " +
