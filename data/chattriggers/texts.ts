@@ -15,7 +15,7 @@ export const textTriggers: Array<ChatTriggerData> = [
             app.twitch.chat.say("carefr3HiBaron");
         }
     }, {
-        trigger: "!bong",
+        trigger: "!boing",
         aliases: ["!zoom", "!boingzoom"],
         action: "http://www.carefreebomb.com/nightbot/boingzoom.php",
         fetch: true
