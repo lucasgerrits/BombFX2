@@ -10,6 +10,11 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "appreciate",
         action: "Alternatives: thankful, grateful, flattered, glad, tickled pink, pleased, indebted, contented, ecstatic, delighted, much obliged"
     }, {
+        trigger: "baronv18Hibomb",
+        action: async () => {
+            app.twitch.chat.say("carefr3HiBaron");
+        }
+    }, {
         trigger: "!bong",
         aliases: ["!zoom", "!boingzoom"],
         action: "http://www.carefreebomb.com/nightbot/boingzoom.php",
