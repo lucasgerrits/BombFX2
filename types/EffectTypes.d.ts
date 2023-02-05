@@ -40,3 +40,11 @@ export type SourceExistenceData = {
     filename?: string;
     exists: boolean;
 }
+
+export type SubsAndDubsData = {
+    [name: string]: SubsAndDubsVoice;
+}
+
+export type SubsAndDubsVoice = {
+    duration?: number;
+}

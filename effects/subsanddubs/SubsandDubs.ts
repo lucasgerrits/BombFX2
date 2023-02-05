@@ -34,8 +34,14 @@ export class SubsandDubs extends Effect {
     }
     
     public override async start(): Promise<void> {
+        // Get "voice" data from user redemption
+        let message: string = this.triggerData.message;
+        message = message.toLowerCase();
+        message = Util.Strings.removeNonAlphaNumeric(message);
+        message = Util.Strings.removeWhiteSpace(message);
+
         this.speechListener = () => { this.onNewText(); };
-        window.addEventListener("RecognizedSpeechText", this.speechListener);
+        //window.addEventListener("RecognizedSpeechText", this.speechListener);
 
         app.speech.startRecognition();
 
@@ -43,7 +49,7 @@ export class SubsandDubs extends Effect {
         
         app.speech.stopRecognition();
 
-        window.removeEventListener("RecognizedSpeechText", this.speechListener);
+        //window.removeEventListener("RecognizedSpeechText", this.speechListener);
         this.speechListener = null;
     }
 }
