@@ -23,6 +23,6 @@ export class Yoda extends Effect {
     
     public override async start(): Promise<void> {
         // message, rawInputEscaped
-        app.sbot.doAction("Read My Message", { "message": this.triggerData.message });
+        app.sbot.doAction("Rewards - Yoda TTS", { "message": this.triggerData.message });
     }
 }

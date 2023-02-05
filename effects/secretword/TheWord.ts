@@ -23,6 +23,6 @@ export class TheWord extends Effect {
     
     public override async start(): Promise<void> {
         // message, rawInputEscaped
-        app.sbot.doAction("Set Forbidden Word", { "rawInput": this.triggerData.message });
+        app.sbot.doAction("Rewards - Forbidden Word", { "rawInput": this.triggerData.message });
     }
 }
