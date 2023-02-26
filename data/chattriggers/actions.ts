@@ -348,6 +348,9 @@ export const actionTriggers: Array<ChatTriggerData> = [
             if (message === "") {
                 app.twitch.bot.say("Kona buddy, you gotta provide a username.");
                 return;
+            } else if (message.toLowerCase() === "carefreebomb") {
+                app.twitch.chat.say("NOPE");
+                return;
             }
             
             // Determine if space present in message
