@@ -9,7 +9,7 @@ declare var app: BombFX;
 export const timers: Array<TimerData> = [
     {
         name: "kona",
-        isEnabled: true,
+        isEnabled: false,
         interval: Kona.determineInterval(),
         action: async () => {
             Kona.wave();
