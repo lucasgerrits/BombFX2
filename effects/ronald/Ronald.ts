@@ -23,7 +23,7 @@ export class Ronald extends Effect {
     }
     
     public override async start(): Promise<void> {
-        const chance: number = 33;
+        const chance: number = 50;
 
         // Determine user's roll and post in chat
         const roll: number = Util.Numbers.getRandomIntegerInclusive(0, 100);
