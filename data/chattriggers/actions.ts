@@ -353,13 +353,10 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 return;
             }
             
-            // Determine if space present in message
-            if (message.indexOf(" ") >= 0) {
-                const args: Array<string> = message.split(" ");
-                TallGirl.step(args[0], parseInt(args[1]));
-            } else {
-                TallGirl.step(message);
-            }
+            const effect: Effect = new TallGirl();
+            const triggerData = new EventTriggerData(data.user, message, data.extra.timestamp);
+            effect.setTriggerData(triggerData);
+            app.queues[effect.queueType].push(effect);
         }
     }, { 
         trigger: "!timeoutduration",

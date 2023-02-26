@@ -1,12 +1,14 @@
 import { BombFX } from "../../../app/BombFX.js";
 import { Chatbot } from "../../../app/twitch/Chatbot.js";
+import { Effect } from "../../../app/Effect.js";
+import { EffectQueueName } from "../../../app/EffectQueue.js";
 import { Util } from "../../../app/util/Util.js";
 import { secrets } from "../../../data/secrets/secrets.js";
 
 // eslint-disable-next-line no-var
 declare var app: BombFX;
 
-export class TallGirl
+export class TallGirl extends Effect
 {
     private static readonly filepath: string = "C:\\xampp\\htdocs\\fx2\\effects\\timeouts\\tallgirl\\videos\\";
 
@@ -17,21 +19,36 @@ export class TallGirl
         "CL.webm"
     ];
 
-    public static async step(username: string, whichGirl: number = -1): Promise<void> {
+    constructor() {
+        super(EffectQueueName.Timeouts);
+    }
+
+    public override async start(): Promise<void> {
+        const user: string = this.triggerData.user;
+        const message: string = this.triggerData.message;
+        let steppieTarget: string = message;
+        
+        // Determine if specific step argument was passed in (by checking for a space lol)
+        let whichGirl: number = -1;
+        if (message.indexOf(" ") >= 0) {
+            const args: Array<string> = message.split(" ");
+            whichGirl = parseInt(args[1]) - 1;
+            steppieTarget = args[0];
+        } else {
+            // Determine random tall girl foot filename (as one was not provided)
+            whichGirl = Util.Numbers.getRandomIntegerInclusive(0, TallGirl.filenames.length - 1);
+        }
+
         // Timeout user from chat using Kona's account
-        await TallGirl.timeout(username);
+        await TallGirl.timeout(steppieTarget);
 
         // Get timed out user's profile pic's URL
-        const url: string = await app.twitch.profilePic(username, 600);
+        const url: string = await app.twitch.profilePic(steppieTarget, 600);
 
         // Set profile pic URL to browser source in Tall Girl scene
         await app.obs.setBrowserURL("Tall Girl User Profile Pic", url);
 
-        // Determine random tall girl foot filename (if one was not provided) then set to media source\
-        whichGirl--;
-        if (whichGirl < 0) {
-            whichGirl = Util.Numbers.getRandomIntegerInclusive(0, TallGirl.filenames.length - 1);
-        }
+        // Set filename to media source
         await app.obs.setMediaFile("Tall Girl Step", TallGirl.filepath + TallGirl.filenames[whichGirl]);
 
         // Show browser source
