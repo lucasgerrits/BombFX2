@@ -33,6 +33,14 @@ export const counterTriggers: Array<ChatTriggerData> = [
             app.twitch.bot.say(msg);
         }
     }, {
+        trigger: "!majora",
+        cooldown: 5,
+        action: async (data) => {
+            const count: string = await Util.Vars.increment("majora");
+            const msg: string = "CFB has failed hitless + maskless Majora " + count + " times. Pohg";
+            app.twitch.bot.say(msg);
+        }
+    }, {
         trigger: "!tangent",
         cooldown: 5,
         action: async (data) => {
