@@ -11,14 +11,15 @@ export const textTriggers: Array<ChatTriggerData> = [
         action: "Alternatives: thankful, grateful, flattered, glad, tickled pink, pleased, indebted, contented, ecstatic, delighted, much obliged"
     }, {
         trigger: "barkeep no",
-        aliases: ["no barkeep", "barkeep bad", "bad barkeep", "@MilkBarkeep no", "no @MilkBarkeep", "@MilkBarkeep bad", "bad @MilkBarkeep"],
+        aliases: ["no barkeep", "barkeep bad", "bad barkeep", "milkbarkeep no", "no milkbarkeep", "milkbarkeep bad", "bad milkbarkeep"],
         action: ":("
     }, {
         trigger: "barkeep yes",
-        aliases: ["yes barkeep", "barkeep good", "good barkeep", "@MilkBarkeep yes", "yes @MilkBarkeep", "@MilkBarkeep good", "good @MilkBarkeep"],
+        aliases: ["yes barkeep", "barkeep good", "good barkeep", "milkbarkeep yes", "yes milkbarkeep", "milkbarkeep good", "good milkbarkeep"],
         action: ":)"
     }, {
-        trigger: "baronv18Hibomb",
+        trigger: "baronv18hibomb",
+        permittedUsers: ["Baronvcreepy"],
         action: async () => {
             app.twitch.chat.say("carefr3HiBaron");
         }
