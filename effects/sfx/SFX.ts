@@ -74,6 +74,8 @@ export class SoundEffect extends Effect {
         // Stop if Hyrule does something he's not supposed to
         if (!this.lolHyruleChecks(message)) {
             return;
+        } else if (message === "konatres") {
+            app.twitch.bot.say("¡¿TRES?!");
         }
 
         // Try playing sound file
