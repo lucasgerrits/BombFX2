@@ -49,12 +49,12 @@ export class PanicSwitch extends Effect {
 
         Util.playSound("effects/panic/alarm.mp3");
 
-        const panicStr: string = "/announce ThisIsFine elmoFire " + this.triggerData.user + 
+        const panicStr: string = "ThisIsFine elmoFire " + this.triggerData.user + 
             " has flipped the Panic Switch!! Sound Effects (and double speed)" +
             " now cost only 1 PP, 1/4 Speed Sounds are also discounted to 20 PP," +
             " and Battletoads has inflated to 2000 PP for the next " + duration + 
             " seconds!! elmoFire ThisIsFine";
-        app.twitch.bot.say(panicStr, true);
+        app.twitch.chat.sbotAnnouncement(panicStr);
 
         await Util.sleep(durationInMS - warningInMS);
 
@@ -64,9 +64,9 @@ export class PanicSwitch extends Effect {
         
         await Util.sleep(warningInMS);
 
-        const orderStr: string = "/announce Order has been restored. Sound Effects," + 
+        const orderStr: string = "Order has been restored. Sound Effects," + 
             " Double Speed, 1/4 Speed, and Battletoads are now back to their original costs.";
-        app.twitch.bot.say(orderStr, true);
+        app.twitch.chat.sbotAnnouncement(orderStr);
 
         Util.playSound("effects/panic/alarm.mp3");
     }

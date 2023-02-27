@@ -134,4 +134,12 @@ export class ChatHandler {
         };
         app.sbot.doAction(actionName, args);
     }
+
+    public async sbotAnnouncement(chatMessage: string): Promise<void> {
+        const actionName: string = "Chat Announcement";
+        const args: Record<string, unknown> = {
+            "chatMessage": chatMessage
+        };
+        app.sbot.doAction(actionName, args);
+    }
 }
