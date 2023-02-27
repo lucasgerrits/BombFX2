@@ -9,6 +9,9 @@ export const linkTriggers: Array<ChatTriggerData> = [
         trigger: "!aroo",
         action: "https://www.acapela-group.com/vocal-smileys-examples/"
     }, {
+        trigger: "!bimpson",
+        action: "Learn about the absolute sensation that is Bimpson: https://www.avclub.com/meet-bimpson-a-true-abomination-of-the-covid-19-intern-1844232382"
+    }, {
         trigger: "!devotion",
         action: "https://thediplomat.com/2020/12/taiwanese-horror-game-devotion-gets-pulled-again-over-chinese-objections/"
     }, {
