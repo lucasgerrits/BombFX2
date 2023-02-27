@@ -124,4 +124,14 @@ export class ChatHandler {
         const trigger: ChatTrigger = this.triggers.get(triggerStr);
         trigger.run(eventData);
     }
+
+    public async sbotTimeout(user: string, duration: number, reason: string = ""): Promise<void> {
+        const actionName: string = "Timeout User";
+        const args: Record<string, unknown> = {
+            "user": user,
+            "duration": duration,
+            "reason": reason
+        };
+        app.sbot.doAction(actionName, args);
+    }
 }

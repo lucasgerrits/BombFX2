@@ -40,7 +40,8 @@ export class TallGirl extends Effect
         }
 
         // Timeout user from chat using Kona's account
-        await TallGirl.timeout(steppieTarget);
+        //await TallGirl.timeoutFromKonasAccount(steppieTarget);
+        await app.twitch.chat.sbotTimeout(steppieTarget, 24, "Know your place...");
 
         // Get timed out user's profile pic's URL
         const url: string = await app.twitch.profilePic(steppieTarget, 600);
@@ -79,7 +80,7 @@ export class TallGirl extends Effect
         await app.obs.hideSource("Tall Girl Step", scene);
     }
 
-    private static async timeout(username: string): Promise<void> {
+    private static async timeoutFromKonasAccount(username: string): Promise<void> {
         let konaAccount: Chatbot = new Chatbot(secrets.kona.name, secrets.kona.oauth);
         await konaAccount.connect();
         const twentyFour: number = 24;

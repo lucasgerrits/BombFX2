@@ -19,6 +19,12 @@ declare var app: BombFX;
 
 export const actionTriggers: Array<ChatTriggerData> = [
     {
+        trigger: "!cfbtest",
+        userLevel: UserLevel.Broadcaster,
+        action: async (data) => {
+            app.twitch.chat.sbotTimeout("Pokimane", 10, "testing, no worries my queen");
+        }
+    }, {
         trigger: "!barkeep",
         userLevel: UserLevel.Broadcaster,
         permittedUsers: ["Doronyaa", "KonaChocolate"],

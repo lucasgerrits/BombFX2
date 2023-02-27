@@ -31,8 +31,7 @@ export class Friday extends Effect {
         // Check if not Friday
         if (dayInt !== 5) {
             // Yeet that dum dum
-            const timeoutStr: string = "/timeout " + this.triggerData.user + " 300 Not actually Friday.";
-            app.twitch.chat.say(timeoutStr);
+            app.twitch.chat.sbotTimeout(this.triggerData.user, 300, "Not actually Friday.");
             const chatStr: string = this.triggerData.user + ", if yoooooooooouuuuuuuuuuu can believe it, you've been timed out once again!";
             app.twitch.bot.say(chatStr);
             return;
