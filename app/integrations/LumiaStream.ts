@@ -16,7 +16,7 @@ export class LumiaStream {
         this.socket = new WebSocket(fullAddress);
 
         this.socket.onopen = (): void => {
-            Logger.bomb("WebSocket connection opened L!!");
+            Logger.lumia("WebSocket connection opened");
         };
     }
 

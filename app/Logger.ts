@@ -42,6 +42,10 @@ export class Logger {
         Logger.log("[Heat] " + str, style);
     }
 
+    public static lumia(str: string, style: string = "color: #FF4076"): void {
+        Logger.log("[Lumia] " + str, style);
+    }
+
     public static noise(str: string, style: string = "color: #777777; font-style: italic;"): void {
         Logger.log(str, style);
     }
