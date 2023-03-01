@@ -94,12 +94,12 @@ export class BigPP extends Effect {
     }
 
     private async botSpam(user: string): Promise<void> {
-        app.twitch.chat.sbotAnnouncement("...OH SHIT pikaOMG");
+        app.twitch.chat.announce("...OH SHIT pikaOMG");
         await Util.sleep(1700);
-        app.twitch.chat.sbotAnnouncement("cfbTurboBongo THIS IS NOT A DRILL!! cfbTurboBongo");
+        app.twitch.chat.announce("cfbTurboBongo THIS IS NOT A DRILL!! cfbTurboBongo");
         await Util.sleep(1700);
-        app.twitch.chat.sbotAnnouncement(user + " NOW HAS...");
+        app.twitch.chat.announce(user + " NOW HAS...");
         await Util.sleep(1700);
-        app.twitch.chat.sbotAnnouncement("THE BIG SpeedL BigPP SpeedR !!!");
+        app.twitch.chat.announce("THE BIG SpeedL BigPP SpeedR !!!");
     }
 }

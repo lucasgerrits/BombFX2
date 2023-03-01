@@ -54,7 +54,7 @@ export class PanicSwitch extends Effect {
             " now cost only 1 PP, 1/4 Speed Sounds are also discounted to 20 PP," +
             " and Battletoads has inflated to 2000 PP for the next " + duration + 
             " seconds!! elmoFire ThisIsFine";
-        app.twitch.chat.sbotAnnouncement(panicStr);
+        app.twitch.chat.announce(panicStr);
 
         await Util.sleep(durationInMS - warningInMS);
 
@@ -66,7 +66,7 @@ export class PanicSwitch extends Effect {
 
         const orderStr: string = "Order has been restored. Sound Effects," + 
             " Double Speed, 1/4 Speed, and Battletoads are now back to their original costs.";
-        app.twitch.chat.sbotAnnouncement(orderStr);
+        app.twitch.chat.announce(orderStr);
 
         Util.playSound("effects/panic/alarm.mp3");
     }

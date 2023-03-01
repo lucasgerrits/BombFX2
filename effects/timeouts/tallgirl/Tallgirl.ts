@@ -41,7 +41,7 @@ export class TallGirl extends Effect
 
         // Timeout user from chat using Kona's account
         //await TallGirl.timeoutFromKonasAccount(steppieTarget);
-        await app.twitch.chat.sbotTimeout(steppieTarget, 24, "Know your place...");
+        await app.twitch.chat.timeoutUser(steppieTarget, 24, "Know your place...");
 
         // Get timed out user's profile pic's URL
         const url: string = await app.twitch.profilePic(steppieTarget, 600);

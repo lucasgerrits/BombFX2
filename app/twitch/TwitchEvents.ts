@@ -86,7 +86,7 @@ ComfyJS.onTimeout = (timedOutUsername: string, durationInSeconds: number, extra:
             let str: string = timeoutDuration + " second timeout on " + 
                 username + " complete.";
             if ( app.twitch.isMod(username) === true ) {
-                app.twitch.chat.say("/mod " + username);
+                app.twitch.chat.modUser(username);
                 str += " Remodding.";
             }
             app.twitch.chat.clearActiveTimeout(timedOutUsername);

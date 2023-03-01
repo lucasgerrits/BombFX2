@@ -55,7 +55,7 @@ export class ChatHandler {
         this.firstFromUserCheck(data.user);
         this.actuallyFirstCheck(data.user, data.message);
         this.checkTriggers(data);
-        DonutBreak.handler(data.user, data.message, data.extra.id);
+        //DonutBreak.handler(data.user, data.message, data.extra.id);
     }
 
     private firstFromUserCheck(user: string) {
@@ -125,7 +125,21 @@ export class ChatHandler {
         trigger.run(eventData);
     }
 
-    public async sbotTimeout(user: string, duration: number, reason: string = ""): Promise<void> {
+    public async timeoutUser(user: string, duration: number, reason: string = ""): Promise<void> {
+        this.sbotTimeoutUser(user, duration, reason);
+    }
+
+    public async modUser(user: string): Promise<void> {
+        this.sbotModUser(user);
+    }
+
+    public async announce(chatMessage: string): Promise<void> {
+        this.sbotAnnounce(chatMessage);
+    }
+
+    // StreamerBot band-aid for deprecated IRC slash commands
+
+    private async sbotTimeoutUser(user: string, duration: number, reason: string = ""): Promise<void> {
         const actionName: string = "Timeout User";
         const args: Record<string, unknown> = {
             "user": user,
@@ -135,7 +149,15 @@ export class ChatHandler {
         app.sbot.doAction(actionName, args);
     }
 
-    public async sbotAnnouncement(chatMessage: string): Promise<void> {
+    public async sbotModUser(user: string): Promise<void> {
+        const actionName: string = "Mod User";
+        const args: Record<string, unknown> = {
+            "user": user
+        };
+        app.sbot.doAction(actionName, args);
+    }
+
+    public async sbotAnnounce(chatMessage: string): Promise<void> {
         const actionName: string = "Chat Announcement";
         const args: Record<string, unknown> = {
             "chatMessage": chatMessage
