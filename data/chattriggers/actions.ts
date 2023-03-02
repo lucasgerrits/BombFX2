@@ -223,7 +223,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "!refresh",
-        userLevel: UserLevel.Broadcaster,
+        userLevel: UserLevel.Moderator,
         action: async (data) => {
             let source: string = "nothing";
             if (data.message === "") {
