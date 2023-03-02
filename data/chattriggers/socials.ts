@@ -47,6 +47,8 @@ export const socialTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!ra",
         aliases: ["ra", "Retro Achievements"],
+        cooldown: 600,
+        announceCD: false,
         action: "RetroAchievements uses modified emulators to track a user's progress throughout many old games via their website. You can find my profile here: http://retroachievements.org/user/carefreebomb"
     }, {
         trigger: "!requests",
