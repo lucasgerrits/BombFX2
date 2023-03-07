@@ -84,7 +84,7 @@ export class ChatHandler {
 
         const first: string = this.getFirst();
         if (user !== first && (messageModified === "first" || messageModified === "1st")) {
-            this.say("/timeout " + user + " 69 Was not actually first.");
+            app.twitch.chat.timeoutUser(user, 69, "Was not actually first.");
             app.twitch.bot.say("Sorry, " + user + ", but " + first + " was actually first.");
         }
     }
