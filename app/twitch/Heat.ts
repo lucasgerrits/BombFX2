@@ -99,8 +99,9 @@ export class Heat extends EventTarget {
 
     private async uwuClick(click: ClickData): Promise<void> {
         // Options determining size and duration of visual click indicator
-        const persistence: boolean = false;
-        const size: number = 50;
+        const persistence: boolean = false; // default = false
+        const size: number = 50; // default = 50
+        const displayDuration: number = 1500; // default = 1500, if persistence false, this is display length 
 
         // Determing position of indicator inside container div based on where stream was clicked
         const left: number = click.coords.x - (size / 2);
@@ -139,8 +140,8 @@ export class Heat extends EventTarget {
                 
                 setTimeout(async function() {
                     clickBox.removeChild(clickBox.firstElementChild);
-                }, 1500);
-            }, 1500, id);
+                }, displayDuration);
+            }, displayDuration, id);
         }
     }
 
