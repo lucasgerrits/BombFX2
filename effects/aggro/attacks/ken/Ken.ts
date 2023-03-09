@@ -27,5 +27,21 @@ export const ken = async () => {
     await Util.sleep(3400);
 
     // Apply first filter to move scene up and slightly left
-    await app.obs.showFilter(effectScene, "Throw Step 1");
+    await app.obs.showFilter(effectScene, "Throw 1");
+
+    // Await a length of time to play sound effects for hitting ground twice and CFB groan
+    await Util.sleep(684);
+    Util.playSound("effects/aggro/attacks/ken/audio/ElBounceroniWhenBeingThrownerino.mp3");
+    Util.playSound("effects/aggro/attacks/ken/audio/CFBDefeat.mp3");
+
+    // Await a duration of time to let the rest of the video play and put a few
+    // seconds in between resetting the scene back to its original place
+    await Util.sleep(4816); // 5500 before sfx were added
+
+    // Reset scene placement
+    await app.obs.showFilter(effectScene, "Throw Reset");
+
+    // Switch back to original scene
+    await Util.sleep(400);
+    await app.obs.setScene(currentScene);
 };

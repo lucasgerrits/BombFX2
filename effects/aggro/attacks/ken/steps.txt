@@ -1,28 +1,214 @@
 
-3.250 - Step 1 - Slight up and left from grab to leg up
+Filter 1
+From: Grab
+Start: 3.433
+To: leg up
+Stop: 3.450
+Duration: 17 ms
+Action: Move scene up slightly and left even less
+	Rotate: 0
+	X: -100
+	Y: 50
 
-3.450 - Step 2 - Rotate left and slight up from leg up to butt
+Filter 2
+From: leg up
+Start: 3.533
+To: Ken butt/back on ground
+Stop: 3.550
+Duration: 17 ms
+Action: Rotate scene left and move up slightly
+	Rotate: -90
+	X: -200
+	Y: -64
 
-3.550 - Step 3 - Slight up and left to follow Ken left
+Filter 3
+From: Ken butt/back on ground
+Start: 3.550
+To: Before Ken rotates left to be upside down
+Stop: 3.633
+Duration: 83 ms
+Action: Move scene up slightly and left even less to follow Ken
+	Rotate: 0
+	X: -120
+	Y: 45
 
-3.616 - Step 4 - Another slight up and left to follow Ken left
+Filter 4
+From: Before Ken rotates left to be upside down
+Start: 3.633
+To: Ken on head with feet in air
+Stop: 3.650
+Duration: 17 ms
+Action: Rotate scene approx -90 degrees, move left slightly
+	Rotate: -90
+	X: -60
+	Y: -135
 
-3.633 - Step 5 - Rotate approx. another -90 degrees, slight left
+Filter 5
+From: Ken on head with feet in air
+Start: 3.650
+To: Before Ken rotates to put back in air
+Stop: 3.733
+Duration: 83 ms
+Action: Move scene left a bit while upside down
+	Rotate: 0
+	X: -115
+	Y: 16
 
-3.650 - Step 6 - Move left a bit while upside down
+Filter 6
+From: Before Ken rotates to put back in air
+Start: 3.733
+To: Ken facing down with back in air
+Stop: 3.750
+Duration: 17 ms
+Action: Rotate scene approx -90 degrees
+	Rotate: -90
+	X: 15
+	Y: -35
 
-3.733 - Step 7 - Rotate approx. another -90
+Filter 7
+From: Ken facing down with back in air
+Start: 3.750
+To: Before Ken foot on ground
+Stop: 3.800
+Duration: 50 ms
+Action: Move scene left
+	Rotate: 0
+	X: -70
+	Y: 0
 
-3.750 - Step 8 - Just left movement
+Filter 8
+From: Before Ken foot on ground
+Start: 3.800
+To: Ken foot on ground
+Stop: 3.816
+Duration: 16 ms
+Action: Rotate scene approx -90 degrees, back to upright pos
+	Rotate: -90
+	X: -100
+	Y: 180
 
-3.800 - Step 9 - Rotate approx. another -90 back to upright
+Filter 9
+From: Ken foot on ground
+Start: 3.816
+To: Before Ken butt on ground with left foot in air
+Stop: 3.866
+Duration: 50 ms
+Action: Move scene left
+	Rotate: 0
+	X: -45
+	Y: 0
 
-3.816 - Step 10 - Just left movement
+Filter 10
+From: Before Ken butt on ground with left foot in air
+Start: 3.866
+To: Ken butt on ground with left foot in air
+Stop: 3.883
+Duration: 17 ms
+Action: Rotate scene approx -90 degrees to face left, slight upleft movement
+	Rotate: -90
+	X: -580
+	Y: 60
 
-3.866 - Step 11 - Rotate approx. another -90 to face left, slight upleft
+Filter 11
+From: Ken butt on ground with left foot in air
+Start: 3.883
+To: Before Ken yoga stretchy leg and mouth agape
+Stop: 3.933
+Duration: 50 ms
+Action: Move scene left, and down slightly?
+	Rotate: 0
+	X: -50
+	Y: -10
 
-3.883 - Step 12 - Left and slight down
+Filter 12
+From: Before Ken yoga stretchy leg and mouth agape
+Start: 3.933
+To: Ken yoga stretchy leg and mouth agape
+Stop: 3.950
+Duration: 17 ms
+Action: Rotate scene approx -90 degrees to face down?, slight left movement
+	Rotate: -90
+	X: -250
+	Y: -160
 
-3.933 - Step 13 - 
+Filter 13
+From: Ken yoga stretchy leg and mouth agape
+Start: 3.950
+To: Ken yoga but on ground now
+Stop: 4.000
+Duration: 50 ms
+Action: Rotate scene approx -90 degrees to face right?, slight left movement
+	Rotate: -90
+	X: -135
+	Y: -30
 
-3.950 - 
+Filter 14
+From: Ken yoga but on ground now
+Start: 4.000
+To: ??? (Ryu movement is anchor for this step)
+Stop: 4.200
+Duration: 200 ms
+Action: Move scene up and left away from Ken to arc for a fall
+	Rotate: 0
+	X: -400
+	Y: 90
+
+Filter 15
+From: ??? (Ryu movement is anchor for this step)
+Start: 4.200
+To: Ken turns left in disbelief pog
+Stop: 4.450
+Duration: 250 ms
+Action: Move scene left and down from height of throw to hit ground
+	Rotate: 0
+	X: -300
+	Y: -200
+
+Filter 16
+From: Ken turns left in disbelief pog
+Start: 4.450
+To: Ken crouches
+Stop: 4.550
+Duration: 250 ms
+Action: Move scene slightly up and a bit more left for bounce
+	Rotate: 0 
+	X: -60
+	Y: 80
+
+Filter 17
+From: Ken crouches
+Start: 4.550
+To: Ken fully standing hand sorta down
+Stop: 4.683
+Duration: 133 ms
+Action: Move scene even more left and up to continue bounce
+	Rotate: 0
+	X: -50
+	Y: 0
+
+Filter 18
+From: Ken fully standing hand sorta down
+Start: 4.683
+To: Ken fully standing but now hand sorta down a 2nd time lol
+Stop: 4.816
+Duration: 133 ms
+Action: Move scene a bit left and down back to floor position
+	Rotate: 
+	X: -60
+	Y: -80
+
+Filter 19
+From: Last position I don't know anymore
+Start: 4.816
+To: Whenever we feel like it
+Stop: 4.950
+Duration: 134 ms
+Action: Slide scene left a bit for momentum on ground I guess
+	Rotate: 0
+	X: -35
+	Y: 0
+
+DELAY OF 3.050
+
+Filter 20 - RESET
+

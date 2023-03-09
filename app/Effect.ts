@@ -81,6 +81,13 @@ export class Effect {
         this.triggerData = dataIn;
     }
 
+    public cleanTriggerText(text: string): string {
+        text = text.toLowerCase();
+        text = Util.Strings.removeNonAlphaNumeric(text);
+        text = Util.Strings.removeWhiteSpace(text);
+        return text;
+    }
+
     public async setup(): Promise<void> { Util.sleep(1); }
 
     public async dismantle(): Promise<void> { Util.sleep(1); }

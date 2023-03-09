@@ -20,12 +20,12 @@ export class AggroReward extends Reward {
 
 export class Aggro extends Effect {
     constructor() {
-        super(EffectQueueName.None);
+        super(EffectQueueName.Scene);
     }
     
     public override async start(): Promise<void> {
         // Get attack type from user input string
-        const attack: string = this.triggerData.message;
+        const attack: string = this.cleanTriggerText(this.triggerData.message);
         
         // Determine if attack list contains attack type
         if (!Object.prototype.hasOwnProperty.call(attacks, attack)) {
@@ -35,6 +35,6 @@ export class Aggro extends Effect {
         }
 
         // Attack!!
-        attacks[attack]();
+        await attacks[attack]();
     }
 }
