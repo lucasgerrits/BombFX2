@@ -66,10 +66,7 @@ export class SoundEffect extends Effect {
     public override async start(): Promise<void> {
         
         // Modify input string
-        let message: string = this.triggerData.message;
-        message = message.toLowerCase();
-        message = Util.Strings.removeNonAlphaNumeric(message);
-        message = Util.Strings.removeWhiteSpace(message);
+        const message: string = this.cleanTriggerText(this.triggerData.message);
 
         // Stop if Hyrule does something he's not supposed to
         if (!this.lolHyruleChecks(message)) {

@@ -28,10 +28,7 @@ export class VFX extends Effect {
     public override async start(): Promise<void> {
         
         // Modify input string
-        let message: string = this.triggerData.message;
-        message = message.toLowerCase();
-        message = Util.Strings.removeNonAlphaNumeric(message);
-        message = Util.Strings.removeWhiteSpace(message);
+        const message: string = this.cleanTriggerText(this.triggerData.message);
 
         // Make sure no weird invisible characters got through because twitch
         if (!Util.Strings.checkAlphanumeric(message)) {

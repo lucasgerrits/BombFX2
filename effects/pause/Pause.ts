@@ -34,7 +34,7 @@ export class Pause extends Effect {
         const filterName: string = "Pause Redeem Freeze";
 
         // Get pause type from user input
-        const pauseKey: string = this.triggerData.message;
+        const pauseKey: string = this.cleanTriggerText(this.triggerData.message);
         const pause: PauseTypeData = pauses[pauseKey];
 
         // Determines if the bot needs to say hi to fox lol
