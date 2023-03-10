@@ -58,9 +58,9 @@ export class PanicSwitch extends Effect {
 
         await Util.sleep(durationInMS - warningInMS);
 
-        const warningStr: string = "/announce WARNING!! ONLY " + warning +
+        const warningStr: string = "WARNING!! ONLY " + warning +
             " SECONDS REMAIN!!";
-        app.twitch.bot.say(warningStr, true);
+        app.twitch.bot.announce(warningStr);
         
         await Util.sleep(warningInMS);
 
