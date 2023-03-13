@@ -187,7 +187,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "pantsgrab",
         userLevel: UserLevel.Broadcaster,
-        permittedUsers: ["Currrrt", "LloydThePirate", "RustyShakes"],
+        permittedUsers: ["Currrrt", "doronyaa", "LloydThePirate", "RustyShakes"],
         cooldown: 60,
         announceCD: false,
         announcePrivs: false,
@@ -404,7 +404,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!vfx",
         aliases: ["!videos", "!videolist"],
-        action: "boned, catjam, cena, chocolate, coffin, confused, dance, dante, disappear, doit, donuts, duckhuntdog, eyboss, frydrool, frythink, game, guns, hannibal, hello, kirby, ko, manydoors, math, milk, miyamoto, nokids, notfunny, nou, nouwu, ohh, pizzatime, place, popuko, prettygood, profanity, ready, scream, scum, showme, soccer, stop, thankyou, thatshot, therules, torture, totsugeki, totsugeki2, trap, tunes, wasted, wow, youdied"
+        action: "boned, catjam, cena, chocolate, coffin, confused, dance, dante, disappear, dk, doit, donuts, duckhuntdog, eyboss, frydrool, frythink, game, guns, hannibal, hello, keanu, kirby, ko, manydoors, math, milk, miyamoto, nokids, notfunny, nou, nouwu, ohh, pizzatime, place, popuko, prettygood, profanity, ready, scream, scum, showme, stop, thankyou, thatshot, thepizza, therules, torture, totsugeki, totsugeki2, trap, tunes, wasted, wow, youdied"
     }, {
         trigger: "!yoda",
         action: async (data) => {
