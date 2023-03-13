@@ -64,6 +64,10 @@ export const linkTriggers: Array<ChatTriggerData> = [
         aliases: ["!timewarpplugin"],
         action: "https://obsproject.com/forum/resources/time-warp-scan.1167/"
     }, {
+        trigger: "!ytdlp",
+        aliases: ["!yt-dlp", "!ytdl", "!ytdownloader", "!ytdownload", "!youtubedownloader", "!youtubedownload"],
+        action: "https://github.com/yt-dlp/yt-dlp"
+    }, {
         trigger: "!zeldasong",
         aliases: ["!konanotsoad", "!notsoad"],
         action: "The Zelda song was not in fact created by System of a Down, but rather a man named Joe Pleiman - https://kotaku.com/no-system-of-a-down-did-not-make-a-zelda-song-but-thi-5885558"
