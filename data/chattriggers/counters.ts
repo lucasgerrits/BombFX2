@@ -1,4 +1,5 @@
 import { BombFX } from "../../app/BombFX.js";
+import { UserLevel } from "../../app/Enums.js";
 import { Util } from "../../app/util/Util.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
 
@@ -46,6 +47,16 @@ export const counterTriggers: Array<ChatTriggerData> = [
         action: async (data) => {
             const count: string = await Util.Vars.increment("tangents");
             const msg: string = "We have been off the rails " + count + " times baby!";
+            app.twitch.bot.say(msg);
+        }
+    }, {
+        trigger: "!undyne",
+        userLevel: UserLevel.Broadcaster,
+        cooldown: 5,
+        action: async (data) => {
+            const count: string = await Util.Vars.increment("undyne");
+            const msg: string = "CFB has failed at murdering Undyne " + count + " times, " +
+                "he remains filled with... Determination.";
             app.twitch.bot.say(msg);
         }
     }
