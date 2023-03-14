@@ -64,6 +64,9 @@ export const linkTriggers: Array<ChatTriggerData> = [
         aliases: ["!timewarpplugin"],
         action: "https://obsproject.com/forum/resources/time-warp-scan.1167/"
     }, {
+        trigger: "!tzuyang",
+        action: "https://www.youtube.com/@tzuyang6145"
+    }, {
         trigger: "!ytdlp",
         aliases: ["!yt-dlp", "!ytdl", "!ytdownloader", "!ytdownload", "!youtubedownloader", "!youtubedownload"],
         action: "https://github.com/yt-dlp/yt-dlp"
