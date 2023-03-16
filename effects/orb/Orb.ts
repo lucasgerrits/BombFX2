@@ -29,6 +29,10 @@ export class Orb extends Effect {
 
         Util.playSound("effects/orb/audio/orb.mp3");
 
+        // Show Orb Media Source
+        await app.obs.showSource("ORB", scene);
+        await Util.sleep(100);
+
         // Enable orb upward movement
         await app.obs.showFilter(scene, "Move Orb Up");
 
@@ -101,6 +105,9 @@ export class Orb extends Effect {
 
         // Disable Webcam Greenscreen
         await app.obs.hideSource(cfbCamSourceMirror, scene);
+
+        // Hide Orb Media Source
+        await app.obs.hideSource("ORB", scene);
     }
 
     private async chatText(user: string): Promise<void> {
