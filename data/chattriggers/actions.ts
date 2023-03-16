@@ -61,6 +61,52 @@ export const actionTriggers: Array<ChatTriggerData> = [
         userLevel: UserLevel.VIP,
         action: async () => { app.obs.showFilter("Webcam", "Cat Zoom Out"); }
     }, {
+        trigger: "!countdown",
+        aliases: ["!racestart"],
+        cooldown: 10,
+        userLevel: UserLevel.VIP,
+        action: async (data) => {
+            // Check for empty arguments
+            if (data.message === "") {
+                app.twitch.bot.say("Please provide an amount of time to count down?");
+                return;
+            }
+            // Check to make sure number passed in is actually a number and not "beans"
+            if (!Util.Strings.checkNumeric(data.message)) {
+                app.twitch.bot.say("I'm sorry friend, but do you know what a number is?");
+                return;
+            }
+            // Parse argument as actual number type var
+            let duration: number = parseInt(data.message);
+            // Function that sends the appropriate Twitch chat message
+            const announceRemainingTime = function(remainingTime: number) {
+                let message: string = remainingTime + "...";
+                if (remainingTime >= 30) {
+                    message = Util.Numbers.secToMinSec(remainingTime) + " remaining...";
+                } else if (remainingTime === 0) {
+                    message = "GO!! OOOO";
+                }
+                app.twitch.bot.say(message);
+            };
+            // Function that determines whether a chat message needs to be sent yet
+            const evaluateRemainingTime = function(remainingTime: number) {
+                if ((remainingTime <= 10) ||
+                    (remainingTime % 30 === 0)) {
+                    announceRemainingTime(remainingTime);
+                }
+            };
+            // Announce that the countdown has been created
+            app.twitch.bot.say(Util.Numbers.secToMinSec(duration) + " countdown starting.");
+            // The actual interval to be run that calls aforementioned functions every 1 second
+            const interval = setInterval(function() {
+                evaluateRemainingTime(duration);
+                duration = duration - 1;
+                if (duration === -1) {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+    }, {
         trigger: "!cows",
         action: async(data) => {
             let userToCheck: string = data.user;
@@ -372,7 +418,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("Enter a numerical value next time, dingus.");
                 return;
             }
-            const duration: string = Util.Numbers.secToHMS(parseInt(data.message));
+            const duration: string = Util.Numbers.secToHourMinSec(parseInt(data.message));
             app.twitch.bot.say(duration);
         }
     }, {
