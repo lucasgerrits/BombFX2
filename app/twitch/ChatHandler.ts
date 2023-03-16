@@ -31,6 +31,18 @@ export class ChatHandler {
         this.activeTimeouts = new Map<string, number>();
     }
 
+    public async isUserTag(username: string): Promise<boolean> {
+        return (username.substring(0, 1) === "@");
+    }
+
+    public async parseTagChar(username: string): Promise<string> {
+        if (this.isUserTag(username)) {
+            return username.substring(1);
+        } else {
+            return username;
+        }
+    }
+
     public setActiveTimeout(username: string, jsTimeoutId: number): void {
         this.activeTimeouts.set(username, jsTimeoutId);
     }
