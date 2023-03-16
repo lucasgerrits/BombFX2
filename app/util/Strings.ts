@@ -1,9 +1,14 @@
 import { badWords } from "../../data/secrets/badwords.js";
 
 export class Strings {
-    
+
     public static checkAlphanumeric(str: string): boolean {
         const regex: RegExp = /^[a-zA-Z0-9\s]*$/g;
+        return regex.test(str);
+    }
+
+    public static checkNumeric(str: string): boolean {
+        const regex: RegExp = /^-?\d+\.?\d*$/;
         return regex.test(str);
     }
 
