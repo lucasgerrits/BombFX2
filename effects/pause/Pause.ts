@@ -11,7 +11,7 @@ declare var app: BombFX;
 
 export class PauseReward extends Reward {
     public static override id: string = "0e7ab4e5-9df3-48e1-b7fd-18203623b712";
-    public static override title: string = "Press Start";
+    public static override title: string = "Pause";
     public static override cost: number = 300;
 
     constructor() {
@@ -35,6 +35,13 @@ export class Pause extends Effect {
 
         // Get pause type from user input
         const pauseKey: string = this.cleanTriggerText(this.triggerData.message);
+
+        // Determine if pause list even contains the passed in pause name
+        if (!Object.prototype.hasOwnProperty.call(pauses, pauseKey)) {
+            app.twitch.bot.say("Hey dingdong, ya done goofed");
+            return;
+        }
+
         const pause: PauseTypeData = pauses[pauseKey];
 
         // Determines if the bot needs to say hi to fox lol
