@@ -302,6 +302,25 @@ export const actionTriggers: Array<ChatTriggerData> = [
             Util.Requests.chatWebhook(str, data.extra.timestamp, data.message, data.user, hookURL);
         }
     }, {
+        trigger: "!remod",
+        aliases: ["!fixmod", "!givemod"],
+        cooldown: 10,
+        announceCD: false,
+        action: async (data) => {
+            const targetUser: string = await app.twitch.chat.parseTagChar(data.message);
+            if (targetUser === "") {
+                app.twitch.bot.say("You gotta provide a username, friendo.");
+                return;
+            }
+
+            if (app.twitch.isMod(targetUser)) {
+                app.twitch.bot.say(targetUser + " is on the list. Remodding.");
+                app.twitch.chat.modUser(targetUser);
+            } else {
+                app.twitch.bot.say("Specified user was not found on the moderator list.");
+            }
+        }
+    }, {
         trigger: "!rewards",
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
