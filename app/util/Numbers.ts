@@ -9,7 +9,6 @@ export class Numbers {
     public static msToMinSec(ms: number): string {
         const minutes: number = Math.floor(ms / 60000);
         const seconds: number = Math.floor((ms / 1000) - (minutes * 60));
-        //return "hi";
         return minutes.toString().padStart(2, "0") + " minutes " +
             seconds.toString().padStart(2, "0") + " seconds";
     }
@@ -26,7 +25,11 @@ export class Numbers {
         return seconds * 1000;
     }
 
-    public static secToHMS(seconds: number): string {
+    public static secToHourMinSec(seconds: number): string {
         return new Date(seconds * 1000).toISOString().slice(11, 19);
+    }
+
+    public static secToMinSec(seconds: number): string {
+        return new Date(seconds * 1000).toISOString().slice(14, 19);
     }
 }
