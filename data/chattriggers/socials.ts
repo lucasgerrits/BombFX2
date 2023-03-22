@@ -2,6 +2,10 @@ import type { ChatTriggerData } from "../../types/AppTypes";
 
 export const socialTriggers: Array<ChatTriggerData> = [
     {
+        trigger: "!bnet",
+        aliases: ["!battlenet", "!blizzard"],
+        action: "carefreebomb#11102"
+    }, {
         trigger: "!boinglist",
         aliases: ["!zoomlist", "!boingzoomlist"],
         action: "Entire list of Mr. Saturn Quotes: http://www.carefreebomb.com/nightbot/boingzoom.php?showall"
