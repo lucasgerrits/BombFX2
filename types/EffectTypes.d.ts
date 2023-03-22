@@ -1,3 +1,5 @@
+import { ISubsAndDubsVoice } from "../effects/subsanddubs/ISubsAndDubsVoice.js";
+import { SubsAndDubsVoice } from "../effects/subsanddubs/SubsAndDubsVoice.js";
 
 export type CowLaunchData = {
     user_name: string,
@@ -16,7 +18,7 @@ export type JamBreakData = {
 }
 
 export type PauseTypeData = {
-    game: string,
+    game?: string,
     action: string | ((data?: PauseEventData) => Promise<void>),
     duration?: number,
     chatText?: string
@@ -42,9 +44,10 @@ export type SourceExistenceData = {
 }
 
 export type SubsAndDubsData = {
-    [name: string]: SubsAndDubsVoice;
+    [name: string]: SubsAndDubsVoiceData;
 }
 
-export type SubsAndDubsVoice = {
-    duration?: number;
+export type SubsAndDubsVoiceData = {
+    duration: number;
+    effect: ISubsAndDubsVoice & SubsAndDubsVoice;
 }

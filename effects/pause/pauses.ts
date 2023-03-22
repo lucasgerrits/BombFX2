@@ -33,5 +33,9 @@ export const pauses: Record<string, PauseTypeData> = {
         game: "Battletoads (NES)",
         duration: 8100,
         action: "Battletoads Pause Jam"
+    },
+    "waitwhat": {
+        duration: 8000,
+        action: "Encoder Error"
     }
 };
