@@ -36,7 +36,7 @@ export class ChatHandler {
     }
 
     public async parseTagChar(username: string): Promise<string> {
-        if (this.isUserTag(username)) {
+        if (await this.isUserTag(username)) {
             return username.substring(1);
         } else {
             return username;
