@@ -1,4 +1,5 @@
 import { BombFX } from "../../app/BombFX.js";
+import { UserLevel } from "../../app/Enums.js";
 import { Util } from "../../app/util/Util.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
 
@@ -52,6 +53,13 @@ export const textTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "have you ever",
         action: "Have you ever thought about what it would be like to be a bee??"
+    }, {
+        trigger: "i click da cfb",
+        userLevel: UserLevel.Broadcaster,
+        permittedUsers: ["IClickDaCFB"],
+        cooldown: 30,
+        announceCD: false,
+        action: "They Click Da CFB"
     }, {
         trigger: "itchy",
         action: async () => {
