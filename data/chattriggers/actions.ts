@@ -351,6 +351,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.obs.setScene("Desktop + Cam - Bottom");
             } else if (sceneName === "retro" || sceneName === "original hardware") {
                 app.obs.setScene("Retro");
+            } else if (sceneName === "street" || sceneName === "appleton" || sceneName ==="weather") {
+                app.obs.setScene("Appleton Cam Full");
             }
         }
     }, {
