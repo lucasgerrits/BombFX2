@@ -18,7 +18,7 @@ import { PauseReward } from "../effects/pause/Pause.js";
 import { RonaldReward } from "../effects/ronald/Ronald.js";
 import { SFXReward, SFXBombReward, SFXDoubleSpeedReward, SFXQuarterSpeedReward } from "../effects/sfx/SFX.js";
 import { SpacebarReward } from "../effects/spacebar/Spacebar.js";
-import { SubsandDubsReward } from "../effects/subsanddubs/SubsandDubs.js";
+import { SubsAndDubsReward } from "../effects/subsanddubs/SubsAndDubs.js";
 import { SunnyReward } from "../effects/sunny/Sunny.js";
 import { TheWordReward } from "../effects/secretword/TheWord.js";
 import { TimeWarpReward } from "../effects/timewarp/TimeWarp.js";
@@ -59,7 +59,7 @@ export const rewardsList: Array<RewardMapping> = [
     { key: SFXQuarterSpeedReward.id, value: new SFXQuarterSpeedReward() },
     { key: SpacebarReward.id, value: new SpacebarReward() },
     { key: SubparImpressionReward.id, value: new SubparImpressionReward() },
-    { key: SubsandDubsReward.id, value: new SubsandDubsReward() },
+    { key: SubsAndDubsReward.id, value: new SubsAndDubsReward() },
     { key: SunnyReward.id, value: new SunnyReward() },
     { key: TheWordReward.id, value: new TheWordReward() },
     { key: TimeWarpReward.id, value: new TimeWarpReward() },

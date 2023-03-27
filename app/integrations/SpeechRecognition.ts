@@ -31,7 +31,7 @@ export class SpeechRecognition {
             if (event.result.reason == SpeechSDK.ResultReason.RecognizedSpeech) {
                 const transcript: string = event.result.text;
                 if (transcript !== undefined || transcript !== "") {
-                    //Logger.noise("RECOGNIZED: " + transcript);
+                    Logger.noise("RECOGNIZED: " + transcript);
                     this.textQueue.push(transcript);
 
                     const evt = new CustomEvent("RecognizedSpeechText", { bubbles: true, detail: transcript });
