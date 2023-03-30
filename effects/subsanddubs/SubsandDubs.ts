@@ -6,13 +6,16 @@ import { Reward } from "../../app/twitch/Reward.js";
 import { Util } from "../../app/util/Util.js";
 import { subsAndDubsVoices } from "./subsAndDubsVoiceList.js";
 
+import { ISubsAndDubsVoice } from "./ISubsAndDubsVoice.js";
+import { SubsAndDubsVoice } from "./SubsAndDubsVoice.js";
+
 // eslint-disable-next-line no-var
 declare var app: BombFX;
 
 export class SubsAndDubsReward extends Reward {
     public static override id: string = "28fdee0e-b4fa-4014-94c1-37b157bd3aa8";
     public static override title: string = "Subs & Dubs";
-    public static override cost: number = 100;
+    public static override cost: number = 1500;
 
     constructor() {
         super(SubsAndDubsReward.id, SubsAndDubsReward.title, new SubsAndDubs());
@@ -22,6 +25,8 @@ export class SubsAndDubsReward extends Reward {
 export class SubsAndDubs extends Effect {
     protected textQueue: Array<string>;
     protected speechListener: () => void = null;
+    protected currentVoice: ISubsAndDubsVoice & SubsAndDubsVoice;
+    protected timer: number;
 
     constructor() {
         super(EffectQueueName.Main);
@@ -31,7 +36,7 @@ export class SubsAndDubs extends Effect {
     protected async onNewText(): Promise<void> {
         const text: string = app.speech.textQueue.shift();
         this.textQueue.push(text);
-        Logger.noise("Made it!: " + text);
+        this.currentVoice.displayText(this.textQueue.shift());
     }
     
     public override async start(): Promise<void> {
@@ -46,26 +51,46 @@ export class SubsAndDubs extends Effect {
 
         // Get duration of specified voice effect
         const durationInSeconds: number = subsAndDubsVoices[voice].duration;
+        this.currentVoice = subsAndDubsVoices[voice].effect;
 
         // Enable speech recognition
         this.speechListener = () => { this.onNewText(); };
-        //window.addEventListener("RecognizedSpeechText", this.speechListener);
+        window.addEventListener("RecognizedSpeechText", this.speechListener);
         await app.speech.startRecognition();
-
-        this.textQueue = subsAndDubsVoices[voice].effect.textQueue;
-
+        
         // Start specified speech effect
-        subsAndDubsVoices[voice].effect.start();
+        this.currentVoice.start();
+
+        this.textQueue = this.currentVoice.textQueue;
+
+        // Create remainingSeconds timer for individual effect display
+        this.startTimer(durationInSeconds);
 
         // Await duration
-        await Util.sleep(durationInSeconds * 1000);
+        await Util.sleep((durationInSeconds * 1000) + 1500);
         
         // Stop specified speech effect
-        subsAndDubsVoices[voice].effect.stop();
+        await this.currentVoice.stop();
         
         // Stop speech recognition
         await app.speech.stopRecognition();
-        //window.removeEventListener("RecognizedSpeechText", this.speechListener);
+        window.removeEventListener("RecognizedSpeechText", this.speechListener);
         this.speechListener = null;
+
+        // Clear the text queue
+        this.textQueue = null;
+    }
+
+    private async startTimer(durationInSeconds: number): Promise<void> {
+        this.currentVoice.remainingSeconds = durationInSeconds;
+        this.timer = setInterval(() => {
+            this.currentVoice.remainingTimeString = Util.Numbers.secToMinSec(this.currentVoice.remainingSeconds);
+            this.currentVoice.updateTimer();
+            this.currentVoice.remainingSeconds--;
+            if (this.currentVoice.remainingSeconds < 0) {
+                clearInterval(this.timer);
+                this.timer = null;
+            }
+        }, 1000);
     }
 }

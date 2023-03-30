@@ -1,0 +1,113 @@
+
+@font-face {
+   font-family: 'Nunito Bold';
+   src: url('fonts/Nunito-Bold.ttf') format('truetype');
+}
+
+/*-----------------------------
+   Animal Crossing Voice
+------------------------------*/
+
+@keyframes abinalGrow {
+   0% {
+      transform: scale(.7, .7);
+   }
+   85% {
+      transform: scale(1.05, 1.05);
+   }
+   100% {
+      transform: scale(1, 1);
+   }
+}
+
+.abinal-grow {
+   animation: abinalGrow .5s ease-in-out;
+}
+
+@keyframes abinalGhost {
+   0% {
+      transform: scale(1, 1);
+   }
+   25% {
+      transform: scale(.95, .95);
+      opacity: 1.0;
+   }
+   100% {
+      transform: scale(1.05, 1.05);
+      opacity: 0.0;
+   }
+}
+
+.abinal-ghost {
+   animation: abinalGhost .4s ease-in-out;
+}
+
+@keyframes abinalShrink {
+   0% {
+      transform: scale(1, 1);
+   }
+   100% {
+      transform: scale(0, 0);
+   }
+}
+
+.abinal-shrink {
+   animation: abinalShrink .5s ease-in-out;
+}
+
+#abinal-box {
+   background-image: url('img/ACspeech.png');
+   border: 1px solid red;
+   position: absolute;
+   bottom: 0px;
+   left: 329px;
+   width: 1262px;
+   height: 398px;
+}
+
+#abinal-video {
+   width: 1520px;
+   height: 470px;
+   position: absolute;
+   bottom: 20px; /* -30px */
+   left: 220px;
+}
+
+#abinal-text-box {
+   border: 0px solid #000000;
+   width: 980px;
+   height: 260px;
+   position: absolute;
+   bottom: 100px; /* 50px */
+   left: 435px;
+   overflow: hidden;
+   line-height: 1.4;
+}
+
+#abinal-text {
+   font-family: 'Nunito Bold', sans-serif;
+   font-size: 46pt;
+   color: #837155;
+   position: absolute;
+   bottom: 0px; /* 0px */
+}
+
+#abinal-timer-box {
+   /* background-image: url('img/ACTimer.png'); */
+   border: 0px solid #3333FF;
+   width: 257px;
+   height: 101px;
+   position: absolute;
+   bottom: 15px;
+   right: 265px;
+}
+
+#abinal-timer-text {
+   font-family: 'Nunito Bold', sans-serif;
+   font-size: 38pt;
+   color: #FDA00B;
+   position: absolute;
+   bottom: 62px; /* 12px */
+   right: 6px;
+   border: 0px solid purple;
+}

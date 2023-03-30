@@ -11,7 +11,7 @@ export const subsAndDubsVoices: SubsAndDubsData = {
         
     }, */
     "nook": {
-        duration: 30,
+        duration: 60,
         effect: new NookVoice()
     }
 };
