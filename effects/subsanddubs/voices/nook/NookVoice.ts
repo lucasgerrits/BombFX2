@@ -57,6 +57,11 @@ export class NookVoice extends SubsAndDubsVoice implements ISubsAndDubsVoice {
         // Clear text queues, but MOVE THIS LATER TO BE VOICE CLASS-WIDE
         this.textQueue = null;
         this.textToBeSpokenQueue = null;
+
+        // Reset all variables for subsequent redeems
+        this.currentPhrase = null;
+        this.currentWord = null;
+        this.isMakingAnimalese = false;
     }
 
     public async updateTimer(): Promise<void> {
