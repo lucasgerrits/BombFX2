@@ -170,7 +170,7 @@ export class NookVoice extends SubsAndDubsVoice implements ISubsAndDubsVoice {
         const acTextBox = document.getElementById("abinal-text-box");
         fxBox.removeChild(acTextBox);
         
-        // Get containing AC effect box, remove grow class and replace with ghost class
+        // Get containing AC effect box, replace grow class with ghost class
         const acVideo = document.getElementById("abinal-video");
         acVideo.classList.remove("abinal-grow");
         acVideo.classList.add("abinal-ghost");
