@@ -24,7 +24,13 @@ export class LightChange extends Effect {
     
     public override async start(): Promise<void> {
         // Get color string from user's Twitch redemption text input
-        const colorStr: string = this.triggerData.message;
+        let colorStr: string = this.triggerData.message;
+
+        // Check if user input string was a hexadecimal value, but without the preceding pound sign
+        if (Util.Strings.isHexadecimal(colorStr) && colorStr.substring(0,1) !== "#") {
+            // If true, simply add one, as the canvas converting method requires it to preserve the input hex
+            colorStr = "#" + colorStr;
+        }
 
         // Convert said string to any possible corresponding hex value using a 2D canvas context
         let hexVal: string = Util.Colors.convertStringToHex(colorStr);

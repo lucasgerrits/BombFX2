@@ -16,6 +16,11 @@ export class Strings {
         return badWords.some(word => str.includes(word));
     }
 
+    public static isHexadecimal(str: string): boolean {
+        const regex: RegExp = /^(#)?[A-Fa-f0-9]{6}$/g;
+        return regex.test(str);
+    }
+
     public static removeCommandPrefix(str: string): string {
         if (str.charAt(0) === "!") {
             str = str.substring(1);
