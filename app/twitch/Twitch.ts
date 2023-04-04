@@ -27,6 +27,7 @@ export class Twitch {
     public bot: Chatbot;
     public chat: ChatHandler;
     public rewards: RewardMap;
+    public lastRedeemedID: string;
 
     /**
      * Initializes class properties and establishes connection to chat and Twitch websocket through ComfyJS
