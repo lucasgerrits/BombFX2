@@ -54,11 +54,11 @@ ComfyJS.onCommand = (user: string, command: string, message: string, flags: Chat
 ComfyJS.onReward = (user: string, reward: string, cost: number, message: string, extra: RewardExtra) => {
 
     // Check for duplicate redemption ID to prevent unexplained multiple events
-    if (app.twitch.lastRedeemedID !== undefined && extra.reward.id === app.twitch.lastRedeemedID) {
+    if (app.twitch.lastRedeemedID !== undefined && extra.customRewardId === app.twitch.lastRedeemedID) {
         return;
     }
 
-    app.twitch.lastRedeemedID = extra.reward.id;
+    app.twitch.lastRedeemedID = extra.customRewardId;
 
     const data: RewardTriggerData = new RewardTriggerData({
         user, reward, cost, message, extra
