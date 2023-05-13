@@ -8,6 +8,24 @@ declare var app: BombFX;
 
 export const counterTriggers: Array<ChatTriggerData> = [
     {
+        trigger: "!cfbifeelobligatedtotellyouthatigottalurkbecausespoilers",
+        cooldown: 5,
+        action: async (data) => {
+            const count: string = await Util.Vars.increment("spoilerslurk");
+            const msg: string = "Chat has felt obligated to tell CFB that they gotta lurk" +
+                " because of spoilers " + count + " times.";
+            app.twitch.bot.say(msg);
+        }
+    }, {
+        trigger: "!howisit",
+        cooldown: 5,
+        action: async(data) => {
+            const count: string = await Util.Vars.increment("howisit");
+            const msg: string = "CFB has been asked how the game is / how he likes it " +
+                count + " times.";
+            app.twitch.bot.say(msg);
+        }
+    }, {
         trigger: "!konabed",
         cooldown: 5,
         action: async (data) => {
