@@ -233,7 +233,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "pantsgrab",
         userLevel: UserLevel.Broadcaster,
-        permittedUsers: ["Currrrt", "doronyaa", "Harlinson", "LloydThePirate", "RustyShakes"],
+        permittedUsers: ["Currrrt", "doronyaa", "Harlinson", "IamHadriel", "LimeJade", "LloydThePirate", "RustyShakes"],
         cooldown: 60,
         announceCD: false,
         announcePrivs: false,
