@@ -392,18 +392,6 @@ export const actionTriggers: Array<ChatTriggerData> = [
             Spray.bottle(<CommandEventData>data);
         }
     }, {
-        trigger: "!startstream",
-        userLevel: UserLevel.Moderator,
-        action: async () => {
-            app.obs.startStream();
-        }
-    }, {
-        trigger: "!stopstream",
-        userLevel: UserLevel.Moderator,
-        action: async () => {
-            app.obs.stopStream();
-        }
-    }, {
         trigger: "!squirrels",
         userLevel: UserLevel.Broadcaster,
         action: async () => {
@@ -411,6 +399,22 @@ export const actionTriggers: Array<ChatTriggerData> = [
             const data = new EventTriggerData("CFB", "eat ass", "0");
             effect.setTriggerData(data);
             app.queues[effect.queueType].push(effect);
+        }
+    }, {
+        trigger: "!stream",
+        userLevel: UserLevel.Moderator,
+        action: async (data) => {
+            if (data.message === "start") {
+                app.obs.startStream();
+            } else if (data.message === "stop") {
+                app.obs.stopStream();
+            } else if (data.message === "restart") {
+                app.obs.stopStream();
+                await Util.sleep(15000);
+                app.obs.startStream();
+            } else {
+                app.twitch.bot.say("You need to include an argument: start, stop, restart");
+            }
         }
     }, {
         trigger: "!tallgirl",
