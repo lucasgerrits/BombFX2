@@ -43,6 +43,6 @@ export class WeatherCheck extends Effect {
 
         // Give some time for slide out and then hide nested scene
         await Util.sleep(1500);
-        await app.obs.showSource("Weather", "** Mega Overlay");
+        await app.obs.hideSource("Weather", "** Mega Overlay");
     }
 }
