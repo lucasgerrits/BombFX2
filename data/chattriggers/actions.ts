@@ -34,33 +34,6 @@ export const actionTriggers: Array<ChatTriggerData> = [
             app.queues[effect.queueType].push(effect);
         }
     }, {
-        trigger: "!bedzoom",
-        aliases: ["!bedgezoom"],
-        userLevel: UserLevel.Moderator,
-        action: async (data) => {
-            const direction: string = data.message.toLowerCase();
-            if (direction === "") {
-                app.twitch.bot.say("Please specify a direction.");
-                return;
-            } else if (direction === "in") {
-                app.obs.showFilter("DroidCam Boot's Phone", "Move Value Zoom In");
-            } else if (direction === "out") {
-                app.obs.showFilter("DroidCam Boot's Phone", "Move Value Zoom Out");
-            } else {
-                app.twitch.bot.say("Don't");
-            }
-        }
-    }, {
-        trigger: "!cat",
-        cooldown: 5,
-        userLevel: UserLevel.VIP,
-        action: async () => { app.obs.showFilter("Webcam", "Cat Zoom In"); }
-    }, {
-        trigger: "!uncat",
-        cooldown: 5,
-        userLevel: UserLevel.VIP,
-        action: async () => { app.obs.showFilter("Webcam", "Cat Zoom Out"); }
-    }, {
         trigger: "!countdown",
         aliases: ["!racestart"],
         cooldown: 10,
@@ -268,31 +241,6 @@ export const actionTriggers: Array<ChatTriggerData> = [
             app.twitch.bot.say(url);
         }
     }, {
-        trigger: "!refresh",
-        userLevel: UserLevel.Moderator,
-        action: async (data) => {
-            let source: string = "nothing";
-            if (data.message === "") {
-                app.twitch.bot.say("Enter something to refresh, CFB.");
-                return;
-            } else if (data.message === "code") {
-                app.obs.refreshBrowserSource("Bomb FX 2");
-                source = "CFB's code";
-            } else if (data.message === "chat") {
-                app.obs.refreshBrowserSource("Sideways Chat");
-                source = "Sideways Chat";
-            } else if (data.message === "streamelements" || data.message === "alerts" || data.message === "se") {
-                app.obs.refreshBrowserSource("StreamElements");
-                source = "StreamElements overlay";
-            } else if (data.message === "all") {
-                app.obs.refreshBrowserSource("Bomb FX 2");
-                app.obs.refreshBrowserSource("Sideways Chat");
-                app.obs.refreshBrowserSource("StreamElements");
-                source = "E V E R Y T H I N G";
-            }
-            app.twitch.bot.say("Refreshing " + source + ".");
-        }
-    }, {
         trigger: "!reminder",
         cooldown: 3,
         action: async (data) => {
@@ -330,29 +278,6 @@ export const actionTriggers: Array<ChatTriggerData> = [
                 app.twitch.rewards.resumeAll();
             } else {
                 app.twitch.bot.say("bruh wut");
-            }
-        }
-    }, {
-        trigger: "!scene",
-        userLevel: UserLevel.Moderator,
-        action: async (data) => {
-            const sceneName: string = data.message.toLowerCase();
-            if (sceneName === "") {
-                app.twitch.bot.say("Ya gotta enter a scene name, man");
-            } else if (sceneName === "brb") {
-                app.obs.setScene("Stream Starting / BRB");
-            } else if (sceneName === "chatting" || sceneName === "chat") {
-                app.obs.setScene("Just Chatting");
-            } else if (sceneName === "bed" || sceneName === "bedge") {
-                app.obs.setScene("Bed Time");
-            } else if (sceneName === "phone" || sceneName === "irl" || sceneName === "car") {
-                app.obs.setScene("Phone Stuff");
-            } else if (sceneName === "desktop") {
-                app.obs.setScene("Desktop + Cam - Bottom");
-            } else if (sceneName === "retro" || sceneName === "original hardware") {
-                app.obs.setScene("Retro");
-            } else if (sceneName === "street" || sceneName === "appleton" || sceneName ==="weather") {
-                app.obs.setScene("Appleton Cam Full");
             }
         }
     }, {
@@ -399,22 +324,6 @@ export const actionTriggers: Array<ChatTriggerData> = [
             const data = new EventTriggerData("CFB", "eat ass", "0");
             effect.setTriggerData(data);
             app.queues[effect.queueType].push(effect);
-        }
-    }, {
-        trigger: "!stream",
-        userLevel: UserLevel.Moderator,
-        action: async (data) => {
-            if (data.message === "start") {
-                app.obs.startStream();
-            } else if (data.message === "stop") {
-                app.obs.stopStream();
-            } else if (data.message === "restart") {
-                app.obs.stopStream();
-                await Util.sleep(15000);
-                app.obs.startStream();
-            } else {
-                app.twitch.bot.say("You need to include an argument: start, stop, restart");
-            }
         }
     }, {
         trigger: "!tallgirl",
