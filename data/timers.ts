@@ -24,6 +24,14 @@ export const timers: Array<TimerData> = [
                 "to twitch .tv/Dice_The_Vice (remove the space)";
             app.twitch.bot.say(diceStr, true);
         }
+    }, {
+        name: "weather",
+        isEnabled: false,
+        interval: Util.Numbers.minToMS(20),
+        action: async () => {
+            app.obs.refreshBrowserSource("Google Weather Result");
+            app.twitch.bot.say("Hey, CFB, I refreshed the weather result.");
+        }
     }
 
 ];

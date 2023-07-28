@@ -36,7 +36,7 @@ export const controlTriggers: Array<ChatTriggerData> = [
         action: async () => { app.obs.showFilter("Webcam", "Cat Zoom Out"); }
     }, {
         trigger: "!refresh",
-        userLevel: UserLevel.Moderator,
+        userLevel: UserLevel.VIP,
         action: async (data) => {
             let source: string = "nothing";
             if (data.message === "") {
