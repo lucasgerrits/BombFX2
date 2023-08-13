@@ -8,7 +8,7 @@ export class PrimeIntro {
     
     public static async run(): Promise<void> {
         // Apply filter to hide webcam via moving position to under scene
-        await app.obs.showFilter("Webcam", "Metroid Move Value Hide");
+        await app.obs.showFilter("Webcam", "Move Value - Metroid Hide");
 
         // Play Metroid Prime Intro sound
         await Util.sleep(1000);
