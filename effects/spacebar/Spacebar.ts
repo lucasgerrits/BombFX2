@@ -25,7 +25,7 @@ export class Spacebar extends Effect {
     public override async start(): Promise<void> {
         Util.playSound("effects/spacebar/QuakeJumpSound.mp3");
 
-        app.obs.showFilter("Webcam", "Quake Move Value Rise");
+        app.obs.showFilter("Webcam", "Move Value - Quake Rise");
 
         await Util.sleep(1000);
     }

@@ -28,12 +28,12 @@ export const controlTriggers: Array<ChatTriggerData> = [
         trigger: "!cat",
         cooldown: 5,
         userLevel: UserLevel.VIP,
-        action: async () => { app.obs.showFilter("Webcam", "Cat Zoom In"); }
+        action: async () => { app.obs.showFilter("Webcam", "Move Value - Cat Zoom In"); }
     }, {
         trigger: "!uncat",
         cooldown: 5,
         userLevel: UserLevel.VIP,
-        action: async () => { app.obs.showFilter("Webcam", "Cat Zoom Out"); }
+        action: async () => { app.obs.showFilter("Webcam", "Move Value - Reset Camera Zoom"); }
     }, {
         trigger: "!refresh",
         userLevel: UserLevel.VIP,
