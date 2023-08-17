@@ -22,7 +22,9 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!cfbtest",
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
-            app.twitch.chat.timeoutUser("Pokimane", 10, "testing, no worries my queen");
+            const url: string = "https://www.wearegreenbay.com/skyviewnetwork/";
+            const page: any = await Util.Requests.get(url);
+            console.log(page.response);
         }
     }, {
         trigger: "!barkeep",

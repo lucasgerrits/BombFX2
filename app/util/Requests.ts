@@ -28,9 +28,64 @@ export class Requests {
         return blob;
     }
 
+    public static async get(url: string, contentType: string = "application/json"): Promise<any> {
+        const data = {
+            url: url,
+            method: "GET",
+            contentType: contentType,
+        };
+        return Requests.make(data);
+    }
+
+    public static async getHTML(url: string): Promise<any> {
+        return Requests.get(url, "text/html");
+    }
+
+    public static async post(url: string, body: string, contentType: string = "application/json"): Promise<any> {
+        const data = {
+            url: url,
+            method: "POST",
+            contentType: contentType,
+            body: body
+        };
+        return Requests.make(data);
+    }
+
+    private static async make(data: { url: string, method: string, contentType: string, body?: string}): Promise<any> {
+        // Setup the XHR request
+        const request: XMLHttpRequest = new XMLHttpRequest();
+        request.open(data.method, data.url, true);
+        request.setRequestHeader("Content-Type", data.contentType);
+
+        return new Promise(function (resolve, reject) {
+            // Setup our listener to process compeleted requests
+            request.onreadystatechange = function () {
+                
+                // Only run if the request is complete
+                if (request.readyState !== 4) return;
+                // Process the response
+                if (request.status >= 200 && request.status < 300) {
+                    // If successful
+                    resolve(request);
+                } else {
+                    // If failed
+                    reject({
+                        status: request.status,
+                        statusText: request.statusText
+                    });
+                }
+            };
+
+            // Send the request
+            (data.method === "POST") ? request.send(data.body) : request.send();
+        });
+    }
+
+    /* TO BE REMOVED ONCE NO LONGER IN USE */
     public static async makeRequest(url: string, method: string = "GET", body?: string): Promise<any> {
         // Create the XHR request
-        const request = new XMLHttpRequest();
+        const request: XMLHttpRequest = new XMLHttpRequest();
+
         // Return it as a Promise
         return new Promise(function (resolve, reject) {
             // Setup our listener to process compeleted requests
