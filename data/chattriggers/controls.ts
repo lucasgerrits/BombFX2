@@ -54,7 +54,7 @@ export const controlTriggers: Array<ChatTriggerData> = [
             } else if (data.message === "weather") {
                 app.obs.refreshBrowserSource("Google Weather Result");
                 source = "weather results";
-            } else if (data.message === "all") {
+            } else if (data.message === "all" || data.message === "everything") {
                 app.obs.refreshBrowserSource("Bomb FX 2");
                 app.obs.refreshBrowserSource("Sideways Chat");
                 app.obs.refreshBrowserSource("StreamElements");
