@@ -1,0 +1,69 @@
+MAKE SURE SOURCE CLONE IS POSITIONALLY ALIGNED TO CENTER
+
+Throw Reset
+Duration: 300ms
+Transform: pos: x 960.0 y 540.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0
+
+Throw 1
+Duration: 17ms
+Transform: pos: x 860.0 y 490.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 2
+
+Throw 2
+Duration: 17ms
+Transform: pos: x 659.5 y 553.6 rot: -90.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 3
+
+Throw 3
+Duration: 83ms
+Transform: pos: x 539.5 y 508.6 rot: -90.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 4
+
+Throw 4
+Duration: 17ms
+Transform: pos: x 479.5 y 643.6 rot: -180.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 5
+
+Throw 5
+Duration: 83ms
+Transform: pos: x 364.5 y 627.6 rot: -180.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 6
+
+Throw 6
+Duration: 17ms
+Transform: pos: x 379.5 y 662.6 rot: -270.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 7
+
+Throw 7
+Duration: 50ms
+Transform: pos: x 309.5 y 662.6 rot: -270.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 8
+
+Throw 8
+Duration: 16ms
+Transform: pos: x 209.5 y 482.6 rot: -360.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 9
+
+Throw 9
+Duration: 50ms
+Transform: pos: x 164.5 y 482.6 rot: -360.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 10
+
+Throw 10
+Duration: 17ms
+Transform: pos: x -416.5 y 422.6 rot: -90.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 11
+
+Throw 11
+Duration: 50ms
+Transform: pos: x -466.5 y 432.6 rot: -90.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 12
+
+Throw 12
+Duration: 17ms
+Transform: pos: x -716.5 y 592.6 rot: -180.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0
+Next Move: Throw 13
+
+Throw 13
+Duration: 50ms
+Transform: pos: x -851.5 y 622.6 rot: -270.0 scale: x 0.999 y 0.999 crop: l 0 t 0 r 0 b 0

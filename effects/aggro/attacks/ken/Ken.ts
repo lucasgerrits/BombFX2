@@ -6,6 +6,7 @@ declare var app: BombFX;
 
 export const ken = async () => {
     const effectScene = "Ken Throw";
+    const sceneClone = "Ken Current Scene Clone";
 
     await app.obs.hideSource("SF2 Dot Webm", effectScene);
 
@@ -14,7 +15,7 @@ export const ken = async () => {
 
     // Set current scene to source mirror properties
     if (currentScene !== effectScene) {
-        await app.obs.changeMirrorSource("Ken Current Scene Mirror", currentScene);
+        await app.obs.changeMirrorSource(sceneClone, currentScene);
 
         // Switch to Ken scene
         await app.obs.setScene(effectScene);
