@@ -35,6 +35,8 @@ export class TimeWarp extends Effect {
     }
 
     public override async start(): Promise<void> {
+        const webcamCloneSource: string = "Webcam Time Warp Clone";
+
         const minDuration: number = 10;
         const maxDuration: number = 30;
 
@@ -49,7 +51,7 @@ export class TimeWarp extends Effect {
         const currentScene: string = await app.obs.getCurrentSceneName();
 
         // Set random values to time warp filter settings
-        app.obs.setSourceFilterSettings("Webcam Time Warp", "Time Warp Scan", {
+        app.obs.setSourceFilterSettings(webcamCloneSource, "Time Warp Scan", {
             "rotation" : randomAngle,
             "scan_duration" : randomDurationInMS
         });
@@ -68,7 +70,7 @@ export class TimeWarp extends Effect {
         await Util.sleep(2000);
 
         // Activate filter
-        await app.obs.showFilter("Webcam Time Warp", "Time Warp Scan");
+        await app.obs.showFilter(webcamCloneSource, "Time Warp Scan");
         await Util.sleep(randomDurationInMS);
 
         // Put details of warp in Twitch chat
@@ -96,7 +98,7 @@ export class TimeWarp extends Effect {
         await Util.sleep(1000);
 
         // Turn off time warp filter
-        await app.obs.hideFilter("Webcam Time Warp", "Time Warp Scan");
+        await app.obs.hideFilter(webcamCloneSource, "Time Warp Scan");
         await Util.sleep(2000);
 
         // Turn off portal circle video
