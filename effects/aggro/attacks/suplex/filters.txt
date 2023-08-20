@@ -1,0 +1,17 @@
+Suplex - Up
+Duration: 300ms
+End Delay: 650ms
+Transform: pos: x 0.0 y -1080.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0
+Next Move: Suplex - Down
+
+Suplex - Down
+Duration: 300ms
+Transform: pos: x 0.0 y 0.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0
+
+Suplex - Reset
+Duration: 100ms
+Transform: pos: x 0.0 y 0.0 rot: 0.0 scale: x 1.000 y 1.000 crop: l 0 t 0 r 0 b 0
+
+3D Effect - Vertical Flip
+Rotation Y: -180.00° Deg
+Rotation Z: -180.00° Deg
