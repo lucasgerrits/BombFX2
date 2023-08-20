@@ -63,12 +63,12 @@ export class BigPP extends Effect {
 
         // Show username
         await app.obs.showSource("The Big PP User Text", ppScene);
-        await app.obs.showSource("The Big PP User Text Shadow", ppScene);
+        await app.obs.showSource("The Big PP User Text Shadow Clone", ppScene);
         await Util.sleep(2000);
 
         // Show additional text
         await app.obs.showSource("The Big PP Additional Text", ppScene);
-        await app.obs.showSource("The Big PP Additional Text Shadow", ppScene);
+        await app.obs.showSource("The Big PP Additional Text Shadow Clone", ppScene);
         await Util.sleep(11000);
 
         // Hide profile pic
@@ -76,11 +76,11 @@ export class BigPP extends Effect {
 
         // Hide username
         app.obs.hideSource("The Big PP User Text", ppScene);
-        app.obs.hideSource("The Big PP User Text Shadow", ppScene);
+        app.obs.hideSource("The Big PP User Text Shadow Clone", ppScene);
 
         // Hide additional text
         app.obs.hideSource("The Big PP Additional Text", ppScene);
-        app.obs.hideSource("The Big PP Additional Text Shadow", ppScene);
+        app.obs.hideSource("The Big PP Additional Text Shadow Clone", ppScene);
 
         // Remove background dim
         app.obs.showFilter("The Big PP Black", "Move Value Reset");
