@@ -1,0 +1,79 @@
+====================================
+SOURCES:
+====================================
+
+Seeing Red - Left Scene Clone
+Pos X: -508.0000 px
+Pos Y: 169.5000 px
+Size X: 1317.0000 px
+Size Y: 740.9999 px
+Show Transition:
+    Type: Fade
+    Duration: 1000
+Hide Transition:
+    Type: Fade
+    Duration: 1000
+
+Seeing Red - Right Scene Clone
+Pos X: 1151.0000 px
+Pos Y: 169.5000 px
+Size X: 1317.0000 px
+Size Y: 740.9999 px
+Show Transition:
+    Type: Fade
+    Duration: 1000
+Hide Transition:
+    Type: Fade
+    Duration: 1000
+
+====================================
+SCENE CLONE FILTERS:
+====================================
+
+Shader-filter: Pixelation
+
+Shader-filter: Edge Detection
+Sensitivty: 0.050
+Edge Color: #ffcf0000
+Alpha Channel: enabled
+
+//Color Correction - Saturation
+Saturation: -1
+
+Color Correction - Red
+Color Multiply: #cf0000
+
+Shader-filter: Fisheye
+Power: -0.20
+
+//Shader-filter: Zoom Blur
+Samples: 50
+Magnitude: 0.4
+Speed Percent: 1400 (have to adjust exeldro shader max)
+
+//Shader-filter: Zoom Blur Faster
+Samples: 150 (have to adjust exeldro shader max)
+Magnitude: 0.5
+Speed Percent: 5000 (have to adjust exeldro shader max)
+
+====================================
+MOVE FILTERS:
+====================================
+
+Move Goggles Center
+Duration: 2000ms
+Transform: pos: x -2904.0 y -1443.0 rot: 0.0 scale: x 1.913 y 1.913 crop: l 0 t 0 r 0 b 0
+
+Move Goggles Left
+Duration: 2500ms
+Transform: pos: x -2931.0 y -1443.0 rot: 0.0 scale: x 1.913 y 1.913 crop: l 0 t 0 r 0 b 0
+Next Move: Move Goggles Right
+
+Move Goggles Right
+Duration: 2500ms
+Transform: pos: x -2864.0 y -1443.0 rot: 0.0 scale: x 1.913 y 1.913 crop: l 0 t 0 r 0 b 0
+Next Move: Move Goggles Left
+
+Move Goggles Bottom
+Duration: 2000ms
+Transform: pos: x -2904.3 y 787.0 rot: 0.0 scale: x 1.913 y 1.913 crop: l 0 t 0 r 0 b 0

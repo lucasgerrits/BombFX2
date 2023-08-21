@@ -47,7 +47,7 @@ export const jambreaks: Array<JamBreakData> = [
             const currentScene: string = await app.obs.getCurrentSceneName();
             // Set current scene to source mirror properties
             if (currentScene !== effectScene) {
-                await app.obs.changeMirrorSource("Take On Me Scene Mirror", currentScene);
+                await app.obs.changeMirrorSource("Take On Me Scene Clone", currentScene);
                 // Switch to Take On Me scene
                 await app.obs.setScene(effectScene);
             }
@@ -70,14 +70,16 @@ export const jambreaks: Array<JamBreakData> = [
         chatText: "pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN",
         action: async() => {
             const effectScene: string = "Seeing Red";
+            const sceneCloneLeft: string = "Seeing Red - Left Scene Clone";
+            const sceneCloneRight: string = "Seeing Red - Right Scene Clone";
 
             // Get current scene
             const currentScene: string = await app.obs.getCurrentSceneName();
 
             // Set current scene to both source mirror properties
             if (currentScene !== effectScene) {
-                await app.obs.changeMirrorSource("Seeing Red - Current Scene Left Side", currentScene);
-                await app.obs.changeMirrorSource("Seeing Red - Current Scene Right Side", currentScene);
+                await app.obs.changeMirrorSource(sceneCloneLeft, currentScene);
+                await app.obs.changeMirrorSource(sceneCloneRight, currentScene);
                 // Switch to effect scene
                 await app.obs.setScene(effectScene);
             }
@@ -93,14 +95,14 @@ export const jambreaks: Array<JamBreakData> = [
             Util.playSound("./effects/jambreak/jams/red/TheRed.mp3");
             
             // Fade in eye screens
-            app.obs.showSource("Seeing Red - Current Scene Left Side", effectScene);
-            app.obs.showSource("Seeing Red - Current Scene Right Side", effectScene);
+            app.obs.showSource(sceneCloneLeft, effectScene);
+            app.obs.showSource(sceneCloneRight, effectScene);
 
             await Util.sleep(500);
 
             // Start regular speed zoom blur filters
-            app.obs.showFilter("Seeing Red - Current Scene Left Side", "Zoom Blur");
-            app.obs.showFilter("Seeing Red - Current Scene Right Side", "Zoom Blur");
+            app.obs.showFilter(sceneCloneLeft, "Zoom Blur");
+            app.obs.showFilter(sceneCloneRight, "Zoom Blur");
 
             // Start goggle wiggle filter
             await app.obs.showFilter(effectScene, "Move Goggles Left");
@@ -108,18 +110,18 @@ export const jambreaks: Array<JamBreakData> = [
             await Util.sleep(19000);
 
             // Start faster speed zoom blur filters
-            app.obs.showFilter("Seeing Red - Current Scene Left Side", "Zoom Blur Faster");
-            app.obs.showFilter("Seeing Red - Current Scene Right Side", "Zoom Blur Faster");
+            app.obs.showFilter(sceneCloneLeft, "Zoom Blur Faster");
+            app.obs.showFilter(sceneCloneRight, "Zoom Blur Faster");
 
             // Stop regular speed zoom blur filters
-            app.obs.hideFilter("Seeing Red - Current Scene Left Side", "Zoom Blur");
-            app.obs.hideFilter("Seeing Red - Current Scene Right Side", "Zoom Blur");
+            app.obs.hideFilter(sceneCloneLeft, "Zoom Blur");
+            app.obs.hideFilter(sceneCloneRight, "Zoom Blur");
 
             await Util.sleep(6000);
 
             // Fade out eye screens
-            app.obs.hideSource("Seeing Red - Current Scene Left Side", effectScene);
-            app.obs.hideSource("Seeing Red - Current Scene Right Side", effectScene);
+            app.obs.hideSource(sceneCloneLeft, effectScene);
+            app.obs.hideSource(sceneCloneRight, effectScene);
 
             // Turn off wiggle filters
             app.obs.hideFilter(effectScene, "Move Goggles Left");
@@ -134,8 +136,8 @@ export const jambreaks: Array<JamBreakData> = [
             await app.obs.setScene(currentScene);
 
             // Stop faster speed zoom blur filters
-            app.obs.hideFilter("Seeing Red - Current Scene Left Side", "Zoom Blur Faster");
-            app.obs.hideFilter("Seeing Red - Current Scene Right Side", "Zoom Blur Faster");
+            app.obs.hideFilter(sceneCloneLeft, "Zoom Blur Faster");
+            app.obs.hideFilter(sceneCloneRight, "Zoom Blur Faster");
         }
     }
 ];
