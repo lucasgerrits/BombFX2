@@ -206,6 +206,17 @@ export const actionTriggers: Array<ChatTriggerData> = [
             app.twitch.bot.say(msg);
         }
     }, {
+        trigger: "!obscolor",
+        action: async (data) => {
+            if (data.message === "") {
+                app.twitch.bot.say("Enter an OBS color integer to be converted.");
+                return;
+            } else if (!Util.Strings.checkNumeric(data.message)) {
+                app.twitch.bot.say("Provided argument must be a decimal number.");
+                return;
+            }
+        }
+    }, {
         trigger: "pantsgrab",
         userLevel: UserLevel.Broadcaster,
         permittedUsers: ["Currrrt", "doronyaa", "Harlinson", "IamHadriel", "LimeJade", "LloydThePirate", "RustyShakes"],
