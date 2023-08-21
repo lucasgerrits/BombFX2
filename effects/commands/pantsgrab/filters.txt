@@ -1,0 +1,4 @@
+Shader-filter: Zoom Blur
+Samples: 100 (455 from JSON backup)
+Magnitude: 0.400
+Speed percent: 100 (6000 from JSON backup)
