@@ -25,6 +25,10 @@ export class NookVoice extends SubsAndDubsVoice implements ISubsAndDubsVoice {
         this.textQueue = new Array<string>();
         this.textToBeSpokenQueue = new Array<string>();
 
+        // Initialize any reset variables
+        this.currentPhrase = new Array<string>();
+        this.currentWord = new Array<string>();
+
         // Initialize Animalese script
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         this.animalizer = new Animalese("effects/subsanddubs/voices/nook/animalese/animalese.wav", function() {});
