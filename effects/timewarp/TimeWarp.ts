@@ -63,7 +63,7 @@ export class TimeWarp extends Effect {
         Util.playSound("effects/timewarp/audio/portalreverb.mp3", 0.5);
         await Util.sleep(1800);
         Util.playSoundForDuration("effects/timewarp/audio/timegate.mp3", 
-            3000 + randomDurationInMS);
+            3700 + randomDurationInMS);
 
         // Switch scene
         app.obs.setScene("Time Warp");
