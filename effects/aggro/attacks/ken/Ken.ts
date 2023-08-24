@@ -15,7 +15,7 @@ export const ken = async () => {
 
     // Set current scene to source mirror properties
     if (currentScene !== effectScene) {
-        await app.obs.changeMirrorSource(sceneClone, currentScene);
+        await app.obs.setCloneSource(sceneClone, currentScene);
 
         // Switch to Ken scene
         await app.obs.setScene(effectScene);

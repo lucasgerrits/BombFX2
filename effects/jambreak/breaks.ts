@@ -47,7 +47,7 @@ export const jambreaks: Array<JamBreakData> = [
             const currentScene: string = await app.obs.getCurrentSceneName();
             // Set current scene to source mirror properties
             if (currentScene !== effectScene) {
-                await app.obs.changeMirrorSource("Take On Me Scene Clone", currentScene);
+                await app.obs.setCloneSource("Take On Me Scene Clone", currentScene);
                 // Switch to Take On Me scene
                 await app.obs.setScene(effectScene);
             }
@@ -78,8 +78,8 @@ export const jambreaks: Array<JamBreakData> = [
 
             // Set current scene to both source mirror properties
             if (currentScene !== effectScene) {
-                await app.obs.changeMirrorSource(sceneCloneLeft, currentScene);
-                await app.obs.changeMirrorSource(sceneCloneRight, currentScene);
+                await app.obs.setCloneSource(sceneCloneLeft, currentScene);
+                await app.obs.setCloneSource(sceneCloneRight, currentScene);
                 // Switch to effect scene
                 await app.obs.setScene(effectScene);
             }

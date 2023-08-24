@@ -154,8 +154,13 @@ export class OBSSocket {
         await this.setInputSettings(inputName, { "url" : urlIn });
     }
 
+    // DEPRECATED FROM STREAMFX PLUGIN
     public async changeMirrorSource(inputName: string, newInputToMirror: string): Promise<void> {
         await this.setInputSettings(inputName, { "Source.Mirror.Source" : newInputToMirror });
+    }
+
+    public async setCloneSource(inputName: string, newInputToClone: string): Promise<void> {
+        await this.setInputSettings(inputName, { "clone" : newInputToClone, "active_clone" : true });
     }
 
     // MEDIA INPUTS

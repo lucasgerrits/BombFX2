@@ -30,7 +30,7 @@ export class Suplex extends Effect {
 
         // Set current scene to source mirror properties
         if (currentScene !== "Suplex") {
-            await app.obs.changeMirrorSource("Suplex Current Scene Mirror", currentScene);
+            await app.obs.setCloneSource("Suplex Current Scene Mirror", currentScene);
 
             // Switch to suplex scene
             await app.obs.setScene("Suplex");
