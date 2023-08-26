@@ -5,8 +5,8 @@ import type { JamBreakData } from "../../types/EffectTypes.js";
 // eslint-disable-next-line no-var
 declare var app: BombFX;
 
-export const jambreaks: Array<JamBreakData> = [
-    {
+export const jamBreaks: Record<string, JamBreakData> = {
+    "ditto": {
         name: "\"Conga\" - Gloria Estefan, Miami Sound Machine",
         action: "Ditto Conga",
         duration: 21000,
@@ -14,26 +14,26 @@ export const jambreaks: Array<JamBreakData> = [
         "shake ya body baby (ditto) dittoDumper do the conga (ditto) dittoDumper " +
         "I know (ditto) dittoDumper you can't control yourself (ditto) dittoDumper " +
         "any longer (ditto) dittoDumper pugPls"
-    },
-    {
+    }, 
+    "butterfly": {
         name: "\"Butterfly\" - Smile.dk",
         action: "Butterfly Dot Webm",
         duration: 26000,
         chatText: "🦋 B Y E 🦋 C H A I R 🦋"
     },
-    {
+    "squirrel": {
         name: "\"Я буду Ебать\" - Moreart, IHI",
         action: "Squirrels Dot Webm",
         duration: 21000,
-        chatText: "squirrelJAM squirrelJam squirrelJAM squirrelJam squirrelJAM squirrelJam squirrelJAM squirrelJam "
+        chatText: "squirrelJAM squirrelJam squirrelJAM squirrelJam squirrelJAM squirrelJam squirrelJAM squirrelJam"
     },
-    {
+    "dansen": {
         name: "\"Caramelldansen\" - Caramella Girls",
         action: "Caramelldansen",
         duration: 24000,
         chatText: "O-o, o-a, o-a! O-o, o-a, o-a~a-a~ O-o, o-a, o-a! O-o, o-a, o-a~a-a~"
     },
-    {
+    "aha": {
         name: "\"Take On Me\" - a-ha",
         action: async () => {
             // Credit to KonaChocolate for scribble overlay
@@ -45,7 +45,7 @@ export const jambreaks: Array<JamBreakData> = [
 
             // Get current scene
             const currentScene: string = await app.obs.getCurrentSceneName();
-            // Set current scene to source mirror properties
+            // Set current scene to source clone properties
             if (currentScene !== effectScene) {
                 await app.obs.setCloneSource("Take On Me Scene Clone", currentScene);
                 // Switch to Take On Me scene
@@ -63,9 +63,9 @@ export const jambreaks: Array<JamBreakData> = [
             if (currentScene !== effectScene) {
                 await app.obs.setScene(currentScene);
             }
-        }
+        } // action
     },
-    {
+    "red": {
         name: "\"The Red\" - Chevelle",
         chatText: "pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN pokiBASS SEEING RED AGAIN",
         action: async() => {
@@ -76,7 +76,7 @@ export const jambreaks: Array<JamBreakData> = [
             // Get current scene
             const currentScene: string = await app.obs.getCurrentSceneName();
 
-            // Set current scene to both source mirror properties
+            // Set current scene to both source clone properties
             if (currentScene !== effectScene) {
                 await app.obs.setCloneSource(sceneCloneLeft, currentScene);
                 await app.obs.setCloneSource(sceneCloneRight, currentScene);
@@ -108,7 +108,7 @@ export const jambreaks: Array<JamBreakData> = [
             await app.obs.showFilter(effectScene, "Move Goggles Left");
 
             await Util.sleep(19000);
-
+            
             // Start faster speed zoom blur filters
             app.obs.showFilter(sceneCloneLeft, "Zoom Blur Faster");
             app.obs.showFilter(sceneCloneRight, "Zoom Blur Faster");
@@ -138,6 +138,6 @@ export const jambreaks: Array<JamBreakData> = [
             // Stop faster speed zoom blur filters
             app.obs.hideFilter(sceneCloneLeft, "Zoom Blur Faster");
             app.obs.hideFilter(sceneCloneRight, "Zoom Blur Faster");
-        }
+        } // action
     }
-];
+};

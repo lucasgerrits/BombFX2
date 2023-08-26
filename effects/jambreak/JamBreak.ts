@@ -1,5 +1,5 @@
 import { BombFX } from "../../app/BombFX.js";
-import { jambreaks } from "./breaks.js";
+import { jamBreaks } from "./breaks.js";
 import { Effect } from "../../app/Effect.js";
 import { EffectQueueName } from "../../app/EffectQueue.js";
 import { PauseReward } from "../pause/Pause.js";
@@ -22,12 +22,14 @@ export class JamBreakReward extends Reward {
 
 export class JamBreak extends Effect {
     private breakNumber: number = -1;
+    private jamProps: Array<string>;
 
     constructor(breakNumber?: number) {
         super(EffectQueueName.Scene);
         if (breakNumber != null) {
             this.breakNumber = breakNumber;
         }
+        this.jamProps = Object.keys(jamBreaks);
     }
     
     public override async setup(): Promise<void> {
@@ -41,21 +43,32 @@ export class JamBreak extends Effect {
     public override async start(): Promise<void> {
         const jamBreakScene: string = "Jam Break";
 
-        // Determine which jamm_
-        let chance: number = this.breakNumber - 1; // human numbers in chat, zero indexing in code
-        if (this.breakNumber == -1) {
-            chance = Util.Numbers.getRandomIntegerInclusive(0, jambreaks.length - 1);
+        // Get specified jam break trigger from user input string
+        const inputJam: string = this.cleanTriggerText(this.triggerData.message);
+
+        // Get random input jam data
+        if (inputJam === "random") {
+            this.breakNumber = Util.Numbers.getRandomIntegerInclusive(0, this.jamProps.length - 1);
+        } // Otherwise, determine if jam list contains user input jam 
+        else if (!Object.prototype.hasOwnProperty.call(jamBreaks, inputJam)) {
+            // If it doesn't, shame chatter and end
+            app.twitch.bot.say("Hey dingdong, ya done goofed");
+            return;
         }
-        const jam: JamBreakData = jambreaks[chance];
+        else {
+            this.breakNumber = this.jamProps.indexOf(inputJam);
+        }
+
+        const jam: JamBreakData = jamBreaks[this.jamProps[this.breakNumber]];
 
         // Relevant chatbot messages
-        const botMsg: string = `Jamm_ Break #${chance + 1} of ${jambreaks.length}: ${jam.name}`;
+        const botMsg: string = `Jamm_ Break #${this.breakNumber + 1} of ${this.jamProps.length}: ${jam.name}`;
         app.twitch.bot.say(botMsg);
         if (jam.chatText!) {
             app.twitch.bot.say(jam.chatText);
         }
 
-        // If action is a string, jam requires a single source
+        // If action is a string, jam requires a single OBS source
         if (typeof jam.action === "string") {
             // Show relevant media file / browser source
             app.obs.showSourceForDuration(jam.action, jamBreakScene, jam.duration);

@@ -159,8 +159,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
             if (data.message === "") {
-                app.twitch.bot.say("Enter a specific break number, you dingdong.");
-                return;
+                data.message = "random";
             }
             const effect: Effect = new JamBreak(parseInt(data.message));
             effect.setTriggerData(new ChatEventTriggerData(data));
