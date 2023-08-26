@@ -13,6 +13,10 @@ export const pauses: Record<string, PauseTypeData> = {
         duration: 8000,
         action: "Banjo Kazooie Pause Screen"
     },
+    "bebop": {
+        duration: 7600,
+        action: "Bebop Pause"
+    },
     "hl2": {
         game: "Half-Life 2",
         duration: 6000,
@@ -33,6 +37,10 @@ export const pauses: Record<string, PauseTypeData> = {
         game: "Battletoads (NES)",
         duration: 8100,
         action: "Battletoads Pause Jam"
+    },
+    "trigun": {
+        duration: 11600,
+        action: "Trigun Pause"
     },
     "waitwhat": {
         duration: 8000,
