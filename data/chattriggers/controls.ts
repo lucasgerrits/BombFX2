@@ -39,10 +39,7 @@ export const controlTriggers: Array<ChatTriggerData> = [
         userLevel: UserLevel.VIP,
         action: async (data) => {
             let source: string = "nothing";
-            if (data.message === "") {
-                app.twitch.bot.say("You need to include an argument: all, chat, code, streamelements, weather");
-                return;
-            } else if (data.message === "code") {
+            if (data.message === "code") {
                 app.obs.refreshBrowserSource("Bomb FX 2");
                 source = "CFB's code";
             } else if (data.message === "chat") {
@@ -59,6 +56,9 @@ export const controlTriggers: Array<ChatTriggerData> = [
                 app.obs.refreshBrowserSource("Sideways Chat");
                 app.obs.refreshBrowserSource("StreamElements");
                 source = "E V E R Y T H I N G";
+            } else {
+                app.twitch.bot.say("You need to include one of the following arguments: all, chat, code, streamelements, weather");
+                return;
             }
             app.twitch.bot.say("Refreshing " + source + ".");
         }
