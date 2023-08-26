@@ -5,6 +5,7 @@ import { Effect } from "../../app/Effect.js";
 import { EventTriggerData } from "../../app/EventTriggerData.js";
 import { hostURLs, webhookURLs } from "../secrets/urls.js";
 import { JamBreak } from "../../effects/jambreak/JamBreak.js";
+import { LightChange } from "../../effects/lights/Lights.js";
 import { PantsGrab } from "../../effects/commands/pantsgrab/PantsGrab.js";
 import { Pineapple } from "../../effects/commands/pineapple/Pineapple.js";
 import { Spray } from "../../effects/commands/spray/Spray.js";
@@ -169,6 +170,14 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!leaderboard",
         action: hostURLs.cowLeaderboard,
         fetch: true
+    }, {
+        trigger: "!lights",
+        userLevel: UserLevel.Broadcaster,
+        action: async (data) => {
+            const effect: Effect = new LightChange();
+            effect.setTriggerData(new ChatEventTriggerData(data));
+            effect.start();
+        }
     }, {
         trigger: "!louder",
         action: async (data) => {
