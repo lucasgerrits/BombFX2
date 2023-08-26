@@ -205,6 +205,19 @@ export const actionTriggers: Array<ChatTriggerData> = [
             app.twitch.bot.say(msg);
         }
     }, {
+        trigger: "!mock",
+        action: async (data) => {
+            if (data.message === "") {
+                data.message = data.user + " is a big stinky.";
+            }
+            const emote: string = "cfbMock";
+            const mock = function(char: string) {
+                return Math.random() < 0.5 ? char.toLowerCase() : char.toUpperCase();
+            };
+            const mockedText: string = data.message.split("").map(mock).join("");
+            app.twitch.bot.say(emote + " " + mockedText);
+        }
+    }, {
         trigger: "!obscolor",
         action: async (data) => {
             if (data.message === "") {
