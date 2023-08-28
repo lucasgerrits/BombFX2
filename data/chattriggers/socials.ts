@@ -2,6 +2,10 @@ import type { ChatTriggerData } from "../../types/AppTypes";
 
 export const socialTriggers: Array<ChatTriggerData> = [
     {
+        trigger: "!1ysp",
+        aliases: ["!subpick", "!subpicks"],
+        action: "The 1 Year Sub Pick allows those who subscribe to my channel for one entire year the ability to request a single stream of one ore more activities of their choosing for approximately four hours. You can view the list of past and present choices here: https://www.carefreebomb.com/1ysp"
+    }, {
         trigger: "!bnet",
         aliases: ["!battlenet", "!blizzard"],
         action: "carefreebomb#11102"
