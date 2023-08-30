@@ -33,14 +33,14 @@ export class Agua extends Effect {
         // Turn on voicemod settings
         await app.sbot.setVoicemod("Underwater");
         // Swap mic/aux devices
-        await app.obs.muteMic();
+        //await app.obs.muteMic();
 
         // Play The Sound TM
         Util.playSound("./effects/sfx/sounds/agua.mp3");
         await Util.sleep(13000);
 
         // Swap mic/aux devices back
-        await app.obs.unmuteMic();
+        //await app.obs.unmuteMic();
         await Util.sleep(3000);
 
         // Turn off both videos
