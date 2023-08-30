@@ -3,6 +3,7 @@ import { Heat } from "./twitch/Heat.js";
 import { Logger } from "./Logger.js";
 import { LumiaStream } from "./integrations/LumiaStream.js";
 import { OBSSocket } from "./obs/OBSSocketV5.js";
+import { OpenAI } from "./integrations/OpenAI.js";
 import { Orb } from "../effects/orb/Orb.js";
 import { SFX } from "../effects/sfx/SFX.js";
 import { SpeechRecognition } from "./integrations/SpeechRecognition.js";
@@ -28,6 +29,7 @@ export class BombFX {
     public speech: SpeechRecognition;
     public heat: Heat;
     public lumia: LumiaStream;
+    public openAI: OpenAI;
     public Util: Util;
 
     constructor() {
@@ -40,6 +42,7 @@ export class BombFX {
         this.speech = new SpeechRecognition();
         this.heat = new Heat();
         this.lumia = new LumiaStream();
+        this.openAI = new OpenAI();
         
         this.timers = new TimerMap();
         this.setEffectQueues();

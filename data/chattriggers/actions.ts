@@ -28,7 +28,24 @@ export const actionTriggers: Array<ChatTriggerData> = [
             console.log(page.response);
         }
     }, {
+        trigger: "!modflagtest",
+        userLevel: UserLevel.Broadcaster,
+        action: async (data) => {
+            const response: any = await app.openAI.isModerationFlagged(data.message);
+        }
+    }, {
         trigger: "!barkeep",
+        userLevel: UserLevel.Broadcaster,
+        action: async (data) => {
+            if (data.message === "") {
+                app.twitch.bot.say("Were you trying to ask me a question?");
+                return;
+            }
+            const answer: any = await app.openAI.chat(data.message);
+            app.twitch.bot.say(answer);
+        }
+    }, {
+        trigger: "!barkeepsay",
         userLevel: UserLevel.Broadcaster,
         permittedUsers: ["Doronyaa", "KonaChocolate"],
         action: async (data) => {

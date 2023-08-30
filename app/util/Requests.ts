@@ -28,34 +28,46 @@ export class Requests {
         return blob;
     }
 
-    public static async get(url: string, contentType: string = "application/json"): Promise<any> {
-        const data = {
-            url: url,
+    public static async get(dataIn: string | {url: string, contentType?: string, authentication?: string}): Promise<any> {
+        const dataOut = {
+            url: "",
             method: "GET",
-            contentType: contentType,
+            contentType: "application/json",
+            authentication: ""
         };
-        return Requests.make(data);
+        if (typeof dataIn === "string") {
+            dataOut.url = dataIn;
+        } else {
+            dataOut.url = dataIn.url;
+            dataOut.contentType = dataIn.contentType || "application/json";
+            dataOut.authentication = dataIn.authentication || "";
+        }
+        return Requests.make(dataOut);
     }
+
+    
 
     public static async getHTML(url: string): Promise<any> {
-        return Requests.get(url, "text/html");
+        return Requests.get({url: url, contentType: "text/html"});
     }
 
-    public static async post(url: string, body: string, contentType: string = "application/json"): Promise<any> {
-        const data = {
-            url: url,
+    public static async post(dataIn: {url: string, body: string, contentType?: string, authentication?: string}): Promise<any> {
+        const dataOut = {
+            url: dataIn.url,
             method: "POST",
-            contentType: contentType,
-            body: body
+            contentType: dataIn.contentType || "application/json",
+            body: dataIn.body,
+            authentication: dataIn.authentication || ""
         };
-        return Requests.make(data);
+        return Requests.make(dataOut);
     }
 
-    private static async make(data: { url: string, method: string, contentType: string, body?: string}): Promise<any> {
+    private static async make(data: { url: string, method: string, contentType: string, body?: string, authentication?: string}): Promise<any> {
         // Setup the XHR request
         const request: XMLHttpRequest = new XMLHttpRequest();
         request.open(data.method, data.url, true);
         request.setRequestHeader("Content-Type", data.contentType);
+        if (data.authentication) { request.setRequestHeader("Authorization", `Bearer ${data.authentication}`); }
 
         return new Promise(function (resolve, reject) {
             // Setup our listener to process compeleted requests
