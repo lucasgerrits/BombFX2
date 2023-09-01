@@ -43,7 +43,8 @@ export class OpenAI {
         });
         const jsonObj = JSON.parse(response.responseText);
         const message = jsonObj.choices[0].message.content;
-        return message;
+        const cleanedMessage = Util.Strings.removeNewLineChars(message);
+        return cleanedMessage;
     }
 
 }

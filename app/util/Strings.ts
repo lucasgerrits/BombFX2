@@ -28,6 +28,10 @@ export class Strings {
         return str;
     }
 
+    public static removeNewLineChars(str: string): string {
+        return str.replace(/(\r\n|\n|\r)/gm, "");
+    }
+
     public static removeNonAlphaNumeric(str: string): string {
         return str.replace(/[^a-zA-Z0-9 ]/g, "");
     }
