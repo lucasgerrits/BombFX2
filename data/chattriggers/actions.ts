@@ -35,19 +35,21 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "!barkeep",
-        userLevel: UserLevel.Broadcaster,
+        userLevel: UserLevel.Moderator,
         action: async (data) => {
             if (data.message === "") {
-                app.twitch.bot.say("Were you trying to ask me a question?");
+                app.twitch.bot.say("@" + data.user + " : were you trying to ask me a question?");
                 return;
             }
             const answer: any = await app.openAI.chat(data.message);
-            app.twitch.bot.say(answer);
+            const effect: Effect = new Barkeep(answer);
+            app.queues[effect.queueType].push(effect);
+            app.twitch.bot.say("@" + data.user + " : " + answer);
         }
     }, {
         trigger: "!barkeepsay",
         userLevel: UserLevel.Broadcaster,
-        permittedUsers: ["Doronyaa", "KonaChocolate"],
+        permittedUsers: ["doronyaa", "KonaChocolate"],
         action: async (data) => {
             const effect: Effect = new Barkeep();
             effect.setTriggerData(new ChatEventTriggerData(data));

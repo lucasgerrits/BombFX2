@@ -27,9 +27,11 @@ export class OpenAI {
 
     public async chat(prompt: string): Promise<any> {
         const endpoint: string = "https://api.openai.com/v1/chat/completions";
-        if (this.isModerationFlagged(prompt)) {
+        if (await this.isModerationFlagged(prompt) === true) {
             return "I'm sorry, but this request violates my API's content moderation rules.";
         }
+        const additionalText: string = ". Also please keep your response under 300 characters.";
+        prompt += additionalText;
         const requestData = {
             model: this.model,
             messages: [{ role: "assistant", content: prompt }]
