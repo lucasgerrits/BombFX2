@@ -102,8 +102,8 @@ export class ChatTrigger {
 
     private checkIfPermittedUser(): boolean {
         if (this.triggerData.permittedUsers && 
-            (this.triggerData.permittedUsers.includes(this.eventData.user)) ||
-            (this.triggerData.permittedUsers.includes(this.eventData.user.toLowerCase()))) {
+            (this.triggerData.permittedUsers.includes(this.eventData.user) ||
+            this.triggerData.permittedUsers.includes(this.eventData.user.toLowerCase()))) {
             return true;
         } else {
             return false;
