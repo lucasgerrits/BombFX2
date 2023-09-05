@@ -22,8 +22,7 @@ export const jamBreaks: Record<string, JamBreakData> = {
     "butterfly": {
         name: "\"Butterfly\" - Smile.dk",
         action: "Butterfly Dot Webm",
-        duration: 26000,
-        chatText: "🦋 B Y E 🦋 C H A I R 🦋"
+        duration: 26000
     },
     "squirrel": {
         name: "\"Я буду Ебать\" - Moreart, IHI",
