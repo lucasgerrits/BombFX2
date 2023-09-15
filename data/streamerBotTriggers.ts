@@ -2,6 +2,7 @@ import { Barkeep } from "../effects/barkeep/Barkeep.js";
 import { BombFX } from "../app/BombFX.js";
 import { Chortle } from "../effects/commands/chortle/Chortle.js";
 import { Effect } from "../app/Effect.js";
+import { Illuminati } from "../effects/illuminati/Illuminati.js";
 import { Orb } from "../effects/orb/Orb.js";
 import { PantsGrab } from "../effects/commands/pantsgrab/PantsGrab.js";
 import { PrimeIntro } from "../effects/misc/primeintro/PrimeIntro.js";
@@ -25,6 +26,12 @@ export const streamerBotTriggers: Array<StreamerBotTriggerData> = [
     }, {
         name: "dismissOrb",
         action: async () => { Orb.dismiss(); }
+    }, {
+        name: "Illuminati",
+        action: async() => {
+            const effect: Effect = new Illuminati();
+            app.queues[effect.queueType].push(effect);
+        }
     }, {
         name: "PantsGrab",
         action: async () => { PantsGrab.these(); }
