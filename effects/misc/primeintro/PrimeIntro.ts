@@ -1,4 +1,7 @@
+import { Barkeep } from "../../barkeep/Barkeep.js";
 import { BombFX } from "../../../app/BombFX.js";
+import { ChatEventTriggerData } from "../../../app/EventTriggerData.js";
+import { Effect } from "../../../app/Effect.js";
 import { Util } from "../../../app/util/Util.js";
 
 // eslint-disable-next-line no-var
@@ -22,7 +25,9 @@ export class PrimeIntro {
         await Util.sleep(6500);
         const msg: string = "Welcome back, CFB.";
         app.twitch.bot.say(msg);
-        app.tts.say(msg);
+        
+        const effect: Effect = new Barkeep(msg);
+        app.queues[effect.queueType].push(effect);
 
         // Hide lightning file for reset
         await Util.sleep(3000);

@@ -1,5 +1,6 @@
 import { AggroReward } from "../effects/aggro/Aggro.js";
 import { AguaReward } from "../effects/agua/Agua.js";
+import { BarkeepReward } from "../effects/barkeep/Barkeep.js";
 import { BigPPReward } from "../effects/bigpp/BigPP.js";
 import { ButtsbotWordReward, CloneHeroRequestReward, FiveMinPaintReward, NutButtonReward, SubparImpressionReward, TypeRacerBreakReward } from "../effects/misc/MiscRewards.js";
 import { CodecReward } from "../effects/codec/Codec.js";
@@ -33,6 +34,7 @@ import type { RewardMapping } from "../types/AppTypes";
 export const rewardsList: Array<RewardMapping> = [
     { key: AggroReward.id, value: new AggroReward() },
     { key: AguaReward.id, value: new AguaReward() },
+    { key: BarkeepReward.id, value: new BarkeepReward() },
     { key: BigPPReward.id, value: new BigPPReward() },
     { key: ButtsbotWordReward.id, value: new ButtsbotWordReward() },
     //{ key: CloneHeroRequestReward.id, value: new CloneHeroRequestReward() },

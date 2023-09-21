@@ -2,10 +2,21 @@ import { BombFX } from "../../app/BombFX.js";
 import { Effect } from "../../app/Effect.js";
 import { EffectQueueName } from "../../app/EffectQueue.js";
 import { Logger } from "../../app/Logger.js";
+import { Reward } from "../../app/twitch/Reward.js";
 import { Util } from "../../app/util/Util.js";
 
 // eslint-disable-next-line no-var
 declare var app: BombFX;
+
+export class BarkeepReward extends Reward {
+    public static override id: string = "a0c392ac-b9c5-4d0d-b248-75fc45dbf44c";
+    public static override title: string = "Barkeep TTS";
+    public static override cost: number = 999;
+    
+    constructor() {
+        super(BarkeepReward.id, BarkeepReward.title, new Barkeep());
+    }
+}
 
 export class Barkeep extends Effect {
     private message: string = "";
@@ -28,6 +39,8 @@ export class Barkeep extends Effect {
 
         await app.obs.showSource("Barkeep - Loop", "Barkeep");
 
+        await Util.sleep(50);
+
         await app.obs.hideSource("Barkeep - In", "Barkeep");
 
         app.tts.say(this.message);
@@ -37,7 +50,7 @@ export class Barkeep extends Effect {
 
             await app.obs.showSource("Barkeep - Out", "Barkeep");
     
-            await Util.sleep(100);
+            await Util.sleep(50);
 
             await app.obs.hideSource("Barkeep - Loop", "Barkeep");
     

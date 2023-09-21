@@ -35,7 +35,9 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "!barkeep",
+        aliases: ["!heybarkeep", "hey barkeep"],
         userLevel: UserLevel.Moderator,
+        permittedUsers: ["LimeJade", "MisterC_4"],
         action: async (data) => {
             if (data.message === "") {
                 app.twitch.bot.say("@" + data.user + " : were you trying to ask me a question?");
@@ -48,12 +50,27 @@ export const actionTriggers: Array<ChatTriggerData> = [
         }
     }, {
         trigger: "!barkeepsay",
+        aliases: ["!barkeeptts"],
         userLevel: UserLevel.Broadcaster,
-        permittedUsers: ["doronyaa", "KonaChocolate"],
+        permittedUsers: ["doronyaa", "KonaChocolate", "RustyShakes"],
         action: async (data) => {
             const effect: Effect = new Barkeep();
             effect.setTriggerData(new ChatEventTriggerData(data));
             app.queues[effect.queueType].push(effect);
+        }
+    }, {
+        trigger: "!petbarkeep",
+        userLevel: UserLevel.Broadcaster,
+        cooldown: 30,
+        action: async (data) => {
+            // Make Barkeep appear
+            const effect: Effect = new Barkeep("uwu am I the good boy?");
+            app.queues[effect.queueType].push(effect);
+            // Turn on Petting hand
+            await Util.sleep(300);
+            app.obs.showSource("Petting Hand", "Barkeep");
+            await Util.sleep(2700);
+            app.obs.hideSource("Petting Hand", "Barkeep");
         }
     }, {
         trigger: "!countdown",
@@ -308,10 +325,9 @@ export const actionTriggers: Array<ChatTriggerData> = [
         cooldown: 10,
         announceCD: false,
         action: async (data) => {
-            const targetUser: string = await app.twitch.chat.parseTagChar(data.message);
+            let targetUser: string = await app.twitch.chat.parseTagChar(data.message);
             if (targetUser === "") {
-                app.twitch.bot.say("You gotta provide a username, friendo.");
-                return;
+                targetUser = data.user;
             }
 
             if (app.twitch.isMod(targetUser)) {
