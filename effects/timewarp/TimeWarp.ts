@@ -5,6 +5,7 @@ import { Logger } from "../../app/Logger.js";
 import { PauseReward } from "../pause/Pause.js";
 import { Reward } from "../../app/twitch/Reward.js";
 import { RewardTriggerData } from "../../app/EventTriggerData.js";
+import { SpacebarReward } from "../spacebar/Spacebar.js";
 import { Util } from "../../app/util/Util.js";
 import { webhookURLs } from "../../data/secrets/urls.js";
 
@@ -27,11 +28,14 @@ export class TimeWarp extends Effect {
     }
     
     public override async setup(): Promise<void> {
-        PauseReward.pause();
+        const newColor: string = "#0E096F";
+        PauseReward.pause(); 
+        SpacebarReward.update({ cost: 2000, title: SpacebarReward.title + " (Warp)", background_color: newColor });
     }
 
     public override async dismantle(): Promise<void> {
         PauseReward.resume();
+        SpacebarReward.update({ cost: 25, title: SpacebarReward.title, background_color: SpacebarReward.buttonColor });
     }
 
     public override async start(): Promise<void> {
