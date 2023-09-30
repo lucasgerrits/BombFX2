@@ -71,6 +71,16 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "!itsnot",
         action: "\"It's not sexual!!\""
     }, {
+        trigger: "joel",
+        aliases: ["joeler", "joelest", "joelbutmywindowsxpiscrashing", "lethimjoel", "wholethimjoel"],
+        announceCD: false,
+        announcePrivs: false,
+        action: async (data) => {
+            if (data.user === "gengar_kiwami") {
+                app.twitch.chat.deleteMessage(data.extra.id);
+            }
+        }
+    }, {
         trigger: "leclumpout",
         action: "Hasty's tears fuel the Nightbo...Barkeep."
     }, {

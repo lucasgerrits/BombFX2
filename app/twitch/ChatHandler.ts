@@ -59,10 +59,6 @@ export class ChatHandler {
         ComfyJS.Say(msg);
     }
 
-    public async deleteMessage(id: string): Promise<void> {
-        ComfyJS.GetClient().deletemessage(secrets.channel, id);
-    }
-
     public handler(data: ChatEventData) {
         this.firstFromUserCheck(data.user);
         this.actuallyFirstCheck(data.user, data.message);
@@ -149,7 +145,20 @@ export class ChatHandler {
         this.sbotAnnounce(chatMessage);
     }
 
-    // StreamerBot band-aid for deprecated IRC slash commands
+    public async deleteMessage(id: string): Promise<void> {
+        //ComfyJS.GetClient().deletemessage(secrets.channel, id);
+        this.sbotDeleteMessage(id);
+    }
+
+    // StreamerBot band-aid for deprecated IRC slash commands and ComfyJS methods
+
+    private async sbotDeleteMessage(messageId: string): Promise<void> {
+        const actionName: string = "Chat Delete";
+        const args: Record<string, unknown> = {
+            "chatMessageId": messageId
+        };
+        app.sbot.doAction(actionName, args);
+    }
 
     private async sbotTimeoutUser(user: string, duration: number, reason: string = ""): Promise<void> {
         const actionName: string = "Timeout User";
