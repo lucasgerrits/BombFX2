@@ -1,0 +1,24 @@
+
+Acquire:
+
+[ ] All sound files
+
+[ ] Font
+
+[ ] Some gif or image of a Mr Saturn
+
+
+Create:
+
+[ ] New folder
+
+[ ] New TypeScript file extends Reward & Effect
+
+[ ] Nested OBS Scene
+
+
+Code: 
+
+[ ] Make Mr Saturn appear
+
+[ ] 
