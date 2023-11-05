@@ -47,6 +47,8 @@ export class OBSSocket {
                 rpcVersion: 1
             });
             Logger.obs(`Connected to server ${obsWebSocketVersion} (using RPC ${negotiatedRpcVersion})`);
+
+            this.currentScene = await this.getCurrentSceneName();
         } catch (error: any) {
             Logger.obs("Failed to connect to OBS");
         }
