@@ -48,11 +48,22 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "!gamba",
         action: "(Values are based on shop costs) Piece of Heart > Rupees (100) > Rupees(50) > Arrows(10) > Rupees(20) > Heart > Bomb(1) > Arrow(1) > Rupee(1)"
     }, {
+        trigger: "!goodmorning",
+        action: "I go to bed 😴 🛌 CFB 💯 🙏 I wake up 🌄 😁 It's CFB 😤 🙌"
+    }, {
         trigger: "!greg",
         action: "In case you are unaware, we are dating! :angry:"
     }, {
         trigger: "have you ever",
         action: "Have you ever thought about what it would be like to be a bee??"
+    }, {
+        trigger: "huge raid",
+        announceCD: false,
+        action: async (data) => {
+            if (data.user === "iambearnow") {
+                app.twitch.chat.deleteMessage(data.extra.id);
+            }
+        }
     }, {
         trigger: "i click da cfb",
         userLevel: UserLevel.Broadcaster,
