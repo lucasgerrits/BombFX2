@@ -208,6 +208,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         fetch: true
     }, {
         trigger: "!lights",
+        aliases: ["!light"],
         userLevel: UserLevel.Broadcaster,
         action: async (data) => {
             const effect: Effect = new LightChange();
