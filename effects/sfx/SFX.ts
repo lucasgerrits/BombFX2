@@ -84,7 +84,7 @@ export class SoundEffect extends Effect {
     }
 
     private lolHyruleChecks(message: string): boolean {
-        if (this.triggerData.user === "HyruleHero" && 
+        if ((this.triggerData.user === "HyruleHero" || this.triggerData.user === "IClickDaCFB") && 
             (message === "usbin" || message === "usbout"))
         {
             app.twitch.bot.say("/timeout HyruleHero 69", true);
