@@ -113,5 +113,14 @@ export const controlTriggers: Array<ChatTriggerData> = [
                 app.twitch.bot.say("You need to include an argument: start, stop, restart");
             }
         }
+    }, {
+        trigger: "!weather",
+        aliases: ["!temp", "!temperature"],
+        cooldown: 60,
+        action: async (data) => {
+            const cooldownInSeconds: number = 70;
+            app.obs.showSourceForDuration("Google Weather Result", "Phone Stuff", Util.Numbers.secToMS(cooldownInSeconds));
+            app.obs.showSourceForDuration("Clone - Google Weather Result", "Phone Stuff", Util.Numbers.secToMS(cooldownInSeconds));
+        }
     }
 ];
