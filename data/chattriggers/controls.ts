@@ -119,8 +119,8 @@ export const controlTriggers: Array<ChatTriggerData> = [
         cooldown: 60,
         action: async (data) => {
             const cooldownInSeconds: number = 70;
-            app.obs.showSourceForDuration("Google Weather Result", "Phone Stuff", Util.Numbers.secToMS(cooldownInSeconds));
-            app.obs.showSourceForDuration("Clone - Google Weather Result", "Phone Stuff", Util.Numbers.secToMS(cooldownInSeconds));
+            app.obs.showSourceForDuration("Google Weather Result", "** Mega Overlay", Util.Numbers.secToMS(cooldownInSeconds));
+            app.obs.showSourceForDuration("Clone - Google Weather Result", "** Mega Overlay", Util.Numbers.secToMS(cooldownInSeconds));
         }
     }
 ];
