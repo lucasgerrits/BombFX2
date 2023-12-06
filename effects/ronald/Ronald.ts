@@ -28,13 +28,9 @@ export class Ronald extends Effect {
         // Determine user's roll and post in chat
         const roll: number = Util.Numbers.getRandomIntegerInclusive(0, 100);
         app.twitch.bot.say(this.triggerData.user + "'s Ronald Roll: " + roll);
-
-        // If roll is 24, give big boy timeout
-        if (roll === 24) {
-            app.twitch.chat.timeoutUser(this.triggerData.user, 2400, "24");
-            app.twitch.bot.say("̵͊́[̴͑̋2̶͗̈́]̸͐̾[̷͊̒4̷̌͘]̷̔̍");
+       
         // If roll is below threshold, give regular timeout
-        } else if (roll <= chance) {
+        if (roll <= chance) {
             app.twitch.chat.timeoutUser(this.triggerData.user, 300, "Ronald Gamba");
             app.twitch.bot.say("Fuck you, " + this.triggerData.user);
         // Otherwise, play obnoxious video

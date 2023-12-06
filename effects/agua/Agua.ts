@@ -9,7 +9,7 @@ declare var app: BombFX;
 
 export class AguaReward extends Reward {
     public static override id: string = "67907311-e073-458e-8bee-e06b3bc14138";
-    public static override title: string = "AGUA v2";
+    public static override title: string = "\"A Water Redeem\"";
     public static override cost: number = 499;
     
     constructor() {
@@ -36,7 +36,7 @@ export class Agua extends Effect {
         //await app.obs.muteMic();
 
         // Play The Sound TM
-        Util.playSound("./effects/sfx/sounds/agua.mp3");
+        // Util.playSound("./effects/sfx/sounds/agua.mp3");
         await Util.sleep(13000);
 
         // Swap mic/aux devices back

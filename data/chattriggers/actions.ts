@@ -52,7 +52,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!barkeepsay",
         aliases: ["!barkeeptts"],
         userLevel: UserLevel.Broadcaster,
-        permittedUsers: ["doronyaa", "KonaChocolate", "RustyShakes"],
+        permittedUsers: ["doronyaa", "RustyShakes"],
         action: async (data) => {
             const effect: Effect = new Barkeep();
             effect.setTriggerData(new ChatEventTriggerData(data));
@@ -398,11 +398,10 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!tallgirl",
         userLevel: UserLevel.Broadcaster,
-        permittedUsers: ["KonaChocolate"],
         action: async (data) => {
             const message: string = data.message;
             if (message === "") {
-                app.twitch.bot.say("Kona buddy, you gotta provide a username.");
+                app.twitch.bot.say("You gotta provide a username.");
                 return;
             } else if (message.toLowerCase() === "carefreebomb") {
                 app.twitch.chat.say("NOPE");
