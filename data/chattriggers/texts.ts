@@ -36,6 +36,9 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "!dad",
         action: "Guys I think it's time"
     }, {
+        trigger: "!dmc",
+        action: "I don't know who needs this information but the DMC HD collection is less than $10 on steam right now"
+    }, {
         trigger: "!faces",
         aliases: ["!quarry"],
         action: "is it just me or are the faces somehow a bit off in this game"
