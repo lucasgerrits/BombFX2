@@ -28,21 +28,20 @@ data/secrets/*
 audio/
 fonts/
 img/
-naughty/
 old/
 photos/
+retired/
 sounds/
 video/
 videos/
 
 effects/ankha/
+effects/archive/
 effects/cow/char/
 effects/cow/kowna/
 effects/disrespect/
-effects/greetings/
 effects/hardware/
 effects/jambreak/jams/conga/
-effects/kona/cfb/
 effects/lights/colorlist.json
 effects/mii/
 effects/notifs/discord/
@@ -50,9 +49,7 @@ effects/ocarina/
 effects/pause/pauses/
 effects/sfx/retired/
 effects/sfx/sources/
-effects/silenthill/
 effects/stuff/
 effects/subsanddubs/voices/nook/animalese
-effects/summon/
 effects/timewarp/gaspar/
 effects/timewarp/masks/
