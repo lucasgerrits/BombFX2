@@ -1,7 +1,6 @@
 import { Bits } from "../../effects/bits/Bits.js";
 import { BombFX } from "../BombFX.js";
 import { ChatTrigger } from "./ChatTrigger.js";
-import { DonutBreak } from "../../effects/donut/Donut.js";
 import { GreetingMap } from "./GreetingMap.js";
 import { Logger } from "../Logger.js";
 import { secrets } from "../../data/secrets/secrets.js";
