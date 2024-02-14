@@ -8,6 +8,10 @@ import type { PauseTypeData, PauseEventData } from "../../types/EffectTypes.js";
 declare var app: BombFX;
 
 export const pauses: Record<string, PauseTypeData> = {
+    "athf": {
+        duration: 5100,
+        action: "ATHF Credits"
+    },
     "banjo": {
         game: "Banjo-Kazooie",
         duration: 8000,
