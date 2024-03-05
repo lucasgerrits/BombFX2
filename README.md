@@ -7,7 +7,7 @@ The code that handles chat triggers, point redeems, audio, visual effects, and m
 * [aws-sdk-js-3](https://github.com/aws/aws-sdk-js-v3) - Provides Amazon Polly text-to-speech services.
 * [cognitive-services-speech-sdk-js](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-javascript) - Provides Microsoft Azure speech-to-text recognition.
 
-* [ComfyJS](https://github.com/instafluff/ComfyJS) - Simplifies Twitch chat (via [TMI.js](https://github.com/tmijs/tmi.js)), bits, subs, and channel point reward events. 
+* [ComfyJS](https://github.com/instafluff/ComfyJS) - Simplifies Twitch chat (via [TMI.js](https://github.com/tmijs/tmi.js)), bit, sub, and point reward events. 
 The creator [also streams](https://www.twitch.tv/instafluff)!
 
 * [Heat](https://heat.j38.net/) - Twitch Extension that allows for user click data directly on video feed.
