@@ -36,8 +36,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!barkeep",
         aliases: ["!heybarkeep", "hey barkeep"],
-        userLevel: UserLevel.Moderator,
-        permittedUsers: ["LimeJade", "MisterC_4", "Princess_Xena"],
+        userLevel: UserLevel.VIP,
+        permittedUsers: ["Blackstaffx", "LimeJade", "MisterC_4", "Princess_Xena"],
         action: async (data) => {
             if (data.message === "") {
                 app.twitch.bot.say("@" + data.user + " : were you trying to ask me a question?");
