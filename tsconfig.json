@@ -9,7 +9,6 @@
         "noImplicitOverride": true,
         "noImplicitAny": true,
         "noUnusedLocals": false,
-        "watch": true,
         "typeRoots": [
             "./types/",
             "node_modules/@types"
