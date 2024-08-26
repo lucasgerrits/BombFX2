@@ -22,8 +22,8 @@ The creator [also streams](https://www.twitch.tv/instafluff)!
 
 ## Contact
 
-[Twitch](https://www.twitch.tv/carefreebomb)
+[Email](mailto:lucasjgerrits@gmail.com)
 
-[Twitter](https://twitter.com/carefreeb0mb)
+[Twitch](https://www.twitch.tv/carefreebomb)
 
 [Discord](https://discord.gg/0X84YV4Sn1v0wyUa)
