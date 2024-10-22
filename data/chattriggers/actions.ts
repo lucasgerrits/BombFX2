@@ -9,7 +9,6 @@ import { LightChange } from "../../effects/lights/Lights.js";
 import { PantsGrab } from "../../effects/commands/pantsgrab/PantsGrab.js";
 import { Pineapple } from "../../effects/commands/pineapple/Pineapple.js";
 import { Spray } from "../../effects/commands/spray/Spray.js";
-import { TallGirl } from "../../effects/timeouts/tallgirl/Tallgirl.js";
 import { UserLevel } from "../../app/Enums.js";
 import { Util } from "../../app/util/Util.js";
 import type { ChatTriggerData } from "../../types/AppTypes";
@@ -393,24 +392,6 @@ export const actionTriggers: Array<ChatTriggerData> = [
             const effect: Effect = new JamBreak(2);
             const data = new EventTriggerData("CFB", "eat ass", "0");
             effect.setTriggerData(data);
-            app.queues[effect.queueType].push(effect);
-        }
-    }, {
-        trigger: "!tallgirl",
-        userLevel: UserLevel.Broadcaster,
-        action: async (data) => {
-            const message: string = data.message;
-            if (message === "") {
-                app.twitch.bot.say("You gotta provide a username.");
-                return;
-            } else if (message.toLowerCase() === "carefreebomb") {
-                app.twitch.chat.say("NOPE");
-                return;
-            }
-            
-            const effect: Effect = new TallGirl();
-            const triggerData = new EventTriggerData(data.user, message, data.extra.timestamp);
-            effect.setTriggerData(triggerData);
             app.queues[effect.queueType].push(effect);
         }
     }, { 

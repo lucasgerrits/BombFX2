@@ -27,18 +27,6 @@ export const greetings: Array<Greeting> = [
             await app.obs.hideSource("Doro Greeting Gif", "** Mega Overlay");
         }
     }, {
-        user: "EazyWithIt",
-        action: async () => {
-            Util.playSound("effects/greetings/eazyf.mp3");
-        }
-    }, {
-        user: "KonaChocolate",
-        action: async () => {
-            await app.obs.showSource("Kona Greeting", "** Videos");
-            await Util.sleep(8000);
-            await app.obs.hideSource("Kona Greeting", "** Videos");
-        }
-    }, {
         user: "LloydThePirate",
         action: async () => {
             Util.playSound("effects/greetings/lloyd.mp3");

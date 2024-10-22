@@ -6,9 +6,6 @@ export const clipTriggers: Array<ChatTriggerData> = [
         aliases: ["!ogbuuug"],
         action: "https://www.twitch.tv/ogstinkydiver/clip/CautiousImpartialMosquitoRalpherZ-QpJSaFI-p62FyN49"
     }, {
-        trigger: "!cereal",
-        action: "https://www.twitch.tv/videos/1198550187"
-    }, {
         trigger: "!doroitalian",
         action: "https://clips.twitch.tv/FantasticKindCheetahVoHiYo-p5X3GHDXiP2J_RHn"
     }, {

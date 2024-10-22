@@ -26,22 +26,6 @@ export const counterTriggers: Array<ChatTriggerData> = [
             app.twitch.bot.say(msg);
         }
     }, {
-        trigger: "!konabed",
-        cooldown: 5,
-        action: async (data) => {
-            const count: string = await Util.Vars.increment("konaBed");
-            const msg: string = "Kona has \"gone to el bedland\" " + count + " times.";
-            app.twitch.bot.say(msg);
-        }
-    }, {
-        trigger: "!konadm",
-        cooldown: 5,
-        action: async (data) => {
-            const count: string = await Util.Vars.increment("konaDM");
-            const msg: string = "Kona has asked strimmer to check DM's " + count + " times.";
-            app.twitch.bot.say(msg);
-        }
-    }, {
         trigger: "!longstream",
         cooldown: 5,
         action: async (data) => {

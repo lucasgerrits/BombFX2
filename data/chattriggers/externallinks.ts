@@ -75,7 +75,7 @@ export const linkTriggers: Array<ChatTriggerData> = [
         action: "https://github.com/yt-dlp/yt-dlp"
     }, {
         trigger: "!zeldasong",
-        aliases: ["!konanotsoad", "!notsoad"],
+        aliases: ["!notsoad"],
         action: "The Zelda song was not in fact created by System of a Down, but rather a man named Joe Pleiman - https://kotaku.com/no-system-of-a-down-did-not-make-a-zelda-song-but-thi-5885558"
     }
 ];

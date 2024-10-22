@@ -30,12 +30,6 @@ export const textTriggers: Array<ChatTriggerData> = [
         action: "http://www.carefreebomb.com/nightbot/boingzoom.php",
         fetch: true
     }, {
-        trigger: "!curtspecial",
-        action: "rice, potatoes, chicken, avocado, carrots, hot sauce/soy sauce"
-    }, {
-        trigger: "!dad",
-        action: "Guys I think it's time"
-    }, {
         trigger: "!dmc",
         action: "I don't know who needs this information but the DMC HD collection is less than $10 on steam right now"
     }, {
@@ -104,14 +98,6 @@ export const textTriggers: Array<ChatTriggerData> = [
         trigger: "!nate",
         aliases: ["!nate1280"],
         action: "CREATOR NATE IS HERE bombHandsUp"
-    }, {
-        trigger: "!nevtime",
-        action: "http://www.carefreebomb.com/nightbot/uk_time.php",
-        fetch: true
-    }, {
-        trigger: "np",
-        cooldown: 10,
-        action: "np np np np"
     }, {
         trigger: "!promise",
         action: "\"cfb, you hot, moist garbage, you promised\" - MisterC_4"
