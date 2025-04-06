@@ -79,14 +79,4 @@ export class TallGirl extends Effect
         // Hide tall girl foot media source
         await app.obs.hideSource("Tall Girl Step", scene);
     }
-
-    private static async timeoutFromKonasAccount(username: string): Promise<void> {
-        let konaAccount: Chatbot = new Chatbot(secrets.kona.name, secrets.kona.oauth);
-        await konaAccount.connect();
-        const twentyFour: number = 24;
-        const reason: string = "Know your place...";
-        konaAccount.say("/timeout " + username + " " + twentyFour + " " + reason, true);
-        konaAccount.disconnect();
-        konaAccount = null;
-    }
 }
