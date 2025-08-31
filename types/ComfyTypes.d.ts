@@ -63,7 +63,7 @@ export type RewardExtra = {
     customRewardId: string;
     reward: { id: string; };
     rewardFulfilled: boolean;
-    timestamp: string;
+    redeemed_at: string;
 }
 
 export type RewardSettings = {

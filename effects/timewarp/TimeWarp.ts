@@ -123,7 +123,7 @@ export class TimeWarp extends Effect {
         
         const time = new Date(data.timestamp);
         
-        const str =   "Time Warp redeemed by **" + data.user + "** at " +
+        const str = "Time Warp redeemed by **" + data.user + "** at " +
                     time.toLocaleTimeString("en-US") + " on " +
                     time.toDateString() + " for " + data.cost +
                     " PP. Effect duration: " + duration + " seconds " +

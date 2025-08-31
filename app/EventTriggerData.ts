@@ -18,7 +18,7 @@ export class RewardTriggerData extends EventTriggerData {
     public rewardID: string;
 
     constructor(data: RewardEventData) {
-        super(data.user, data.message, data.extra.timestamp);
+        super(data.user, data.message, data.extra.redeemed_at);
         this.reward = data.reward;
         this.cost = data.cost;
         this.rewardID = data.extra.reward.id;
