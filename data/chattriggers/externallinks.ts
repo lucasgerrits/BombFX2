@@ -23,10 +23,6 @@ export const linkTriggers: Array<ChatTriggerData> = [
             app.twitch.chat.deleteMessage(data.extra.id);
         }
     }, {
-        trigger: "!exeldro",
-        action: "Many of the OBS plugins used in this stream are created by Exeldro and can be found here: " +
-            "https://obsproject.com/forum/resources/authors/exeldro.128836/"
-    }, {
         trigger: "!feetpic",
         action: "https://cdn.discordapp.com/attachments/888257851187941377/1014923889610080356/image-3.png"
     }, {
