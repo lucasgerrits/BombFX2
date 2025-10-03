@@ -16,8 +16,6 @@ The creator [also streams](https://www.twitch.tv/instafluff)!
 
 * [obs-websocket-js v5](https://github.com/obs-websocket-community-projects/obs-websocket-js) - allows JS-based connections to OBS (now built-in).
 
-* [OpenAI](https://platform.openai.com/) - For ChatGPT responses through chatbot account.
-
 * [Streamer.bot](https://www.streamer.bot/) - for Windows Speech Recognition and VoiceMod through websocket.
 
 ## Contact
@@ -25,5 +23,3 @@ The creator [also streams](https://www.twitch.tv/instafluff)!
 [Email](mailto:lucasjgerrits@gmail.com)
 
 [Twitch](https://www.twitch.tv/carefreebomb)
-
-[Discord](https://discord.gg/0X84YV4Sn1v0wyUa)
