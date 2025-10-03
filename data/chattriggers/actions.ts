@@ -209,6 +209,7 @@ export const actionTriggers: Array<ChatTriggerData> = [
         trigger: "!lurk",
         cooldown: 8,
         action: async () => {
+            app.twitch.bot.say("I NEED EVERYONE TO KNOW THAT WHILE I WILL NOT READILY BE AVAILABLE TO SEND MESSAGES IN THIS CHAT THAT I AM STILL HERE TO BE VERY SUPPORTIVE OF THIS FLEDGLING CREATOR AND THEIR VISIBLE VIEW COUNT BECAUSE I AM A VERY GOOD PERSON WHO DOES NOT REQUIRE VALIDATION OF ANY KIND OKAY");
             await app.obs.showSource("Bomb Lurking", "** Videos");
             await Util.sleep(5300);
             await app.obs.hideSource("Bomb Lurking", "** Videos");
