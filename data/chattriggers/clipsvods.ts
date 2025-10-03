@@ -2,10 +2,6 @@ import type { ChatTriggerData } from "../../types/AppTypes";
 
 export const clipTriggers: Array<ChatTriggerData> = [
     {
-        trigger: "!bugenhagen",
-        aliases: ["!ogbuuug"],
-        action: "https://www.twitch.tv/ogstinkydiver/clip/CautiousImpartialMosquitoRalpherZ-QpJSaFI-p62FyN49"
-    }, {
         trigger: "!doroitalian",
         action: "https://clips.twitch.tv/FantasticKindCheetahVoHiYo-p5X3GHDXiP2J_RHn"
     }, {
