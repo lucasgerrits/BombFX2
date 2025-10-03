@@ -27,29 +27,8 @@ export const actionTriggers: Array<ChatTriggerData> = [
             console.log(page.response);
         }
     }, {
-        trigger: "!modflagtest",
-        userLevel: UserLevel.Broadcaster,
-        action: async (data) => {
-            const response: any = await app.openAI.isModerationFlagged(data.message);
-        }
-    }, {
         trigger: "!barkeep",
-        aliases: ["!heybarkeep", "hey barkeep"],
-        userLevel: UserLevel.VIP,
-        permittedUsers: ["Blackstaffx", "LimeJade", "MisterC_4", "Princess_Xena"],
-        action: async (data) => {
-            if (data.message === "") {
-                app.twitch.bot.say("@" + data.user + " : were you trying to ask me a question?");
-                return;
-            }
-            const answer: any = await app.openAI.chat(data.message);
-            const effect: Effect = new Barkeep(answer);
-            app.queues[effect.queueType].push(effect);
-            app.twitch.bot.say("@" + data.user + " : " + answer);
-        }
-    }, {
-        trigger: "!barkeepsay",
-        aliases: ["!barkeeptts"],
+        aliases: ["!barkeepsay, !barkeeptts"],
         userLevel: UserLevel.Broadcaster,
         permittedUsers: ["doronyaa", "RustyShakes"],
         action: async (data) => {

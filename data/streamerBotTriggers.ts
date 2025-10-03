@@ -13,14 +13,6 @@ declare var app: BombFX;
 
 export const streamerBotTriggers: Array<StreamerBotTriggerData> = [
     {
-        name: "barkeep",
-        action: async (data) => {
-            const answer: any = await app.openAI.chat(data.message);
-            const effect: Effect = new Barkeep(answer);
-            app.queues[effect.queueType].push(effect);
-            app.twitch.bot.say(answer);
-        }
-    }, {
         name: "cfbChortle",
         action: async () => { Chortle.react(); }
     }, {

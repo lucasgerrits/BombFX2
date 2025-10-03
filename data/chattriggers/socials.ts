@@ -18,7 +18,7 @@ export const socialTriggers: Array<ChatTriggerData> = [
         aliases: ["discord"],
         cooldown: 300,
         announceCD: false,
-        action: "https://discord.gg/0X84YV4Sn1v0wyUa"
+        action: "https://disord.gg/bombsquad"
     }, {
         trigger: "!extralife",
         aliases: ["!el", "Extra Life"],
@@ -88,7 +88,7 @@ export const socialTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!tip",
         aliases: ["!donate"],
-        action: "https://streamelements.com/carefreebomb/tip"
+        action: "https://paypal.me/lucasgerrits or https://ko-fi.com/carefreebomb"
     }, {
         trigger: "!twitter",
         action: "https://twitter.com/carefreeb0mb"
