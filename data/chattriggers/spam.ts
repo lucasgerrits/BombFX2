@@ -40,9 +40,6 @@ export const spamTriggers: Array<ChatTriggerData> = [
         trigger: "!steak",
         action: "buttonsPls STEAK buttonsPls POTATERS"
     }, {
-        trigger: "!tdb",
-        action: "behbE 3 day ban behbE"
-    }, {
         trigger: "!thrust",
         action: "WPOGGERS THRUST IF YOU MUST WPOGGERS BUT TRY NOT TO BUST WPOGGERS"
     }, {
