@@ -2,13 +2,13 @@ import type { ChatTriggerData } from "../../types/AppTypes";
 
 export const socialTriggers: Array<ChatTriggerData> = [
     {
-        trigger: "!1ysp",
-        aliases: ["!subpick", "!subpicks"],
-        action: "The 1 Year Sub Pick allows those who subscribe to my channel for one entire year the ability to request a single stream of one ore more activities of their choosing for approximately four hours. You can view the list of past and present choices here: https://www.carefreebomb.com/1ysp"
-    }, {
         trigger: "!bnet",
         aliases: ["!battlenet", "!blizzard"],
         action: "carefreebomb#11102"
+    }, {
+        trigger: "!bluesky",
+        aliases: ["!bsky"],
+        action: "https://bsky.app/profile/carefreebomb.com"
     }, {
         trigger: "!boinglist",
         aliases: ["!zoomlist", "!boingzoomlist"],
@@ -24,10 +24,6 @@ export const socialTriggers: Array<ChatTriggerData> = [
         aliases: ["!el", "Extra Life"],
         action: "CFB is participating in Extra Life, an annual 24-hour gaming marathon benefiting Children's Miracle Network on Saturday, November 5th. You can make a donation to help sick kids in need here (not through Twitch, please): https://www.extra-life.org/participant/carefreebomb"
     }, {
-        trigger: "!facebook",
-        aliases: ["!fb"],
-        action: "https://www.facebook.com/carefreebomb/"
-    }, {
         trigger: "!gartic",
         action: "https://www.carefreebomb.com/joingartic"
     }, {
@@ -37,10 +33,7 @@ export const socialTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!gmod",
         aliases: ["!ttt"],
-        action: "Thanks to @DRock4Real1324 for hosting the server! - IP: 65.31.255.217 Password: bombsquad"
-    }, {
-        trigger: "!horror",
-        action: "https://www.carefreebomb.com/horror"
+        action: "Thanks to @DRock4Real1324 for hosting the server! - IP: unknown Password: bombsquad"
     }, {
         trigger: "!instagram",
         aliases: ["!insta", "!ig", "!gram"],
@@ -55,7 +48,7 @@ export const socialTriggers: Array<ChatTriggerData> = [
     }, {
         trigger: "!ra",
         aliases: ["ra", "Retro Achievements"],
-        cooldown: 600,
+        cooldown: 300,
         announceCD: false,
         action: "RetroAchievements uses modified emulators to track a user's progress throughout many old games via their website. You can find my profile here: http://retroachievements.org/user/carefreebomb"
     }, {
@@ -63,11 +56,9 @@ export const socialTriggers: Array<ChatTriggerData> = [
         aliases: ["!request", "!clone", "!clonehero", "!songs", "!songlist"],
         action: "Search this page for all Clone Hero songs: https://chorus.fightthe.pw/ If I don't have it, I can get it via the Bridge app."
     }, {
-        trigger: "!rouletterequest",
-        action: "You can make game suggestions to BootToucher for future Retro Roulettes by using this Google Form: http://www.carefreebomb.com/roulette/request"
-    }, {
         trigger: "!socials",
-        action: "Hey, follow me on Twitter and Instagram because I actually use those. This is not a request, it is a demand: https://www.twitter.com/carefreeb0mb https://www.instagram.com/care.free.bomb/"
+        aliases: ["!linktree", "!social"],
+        action: "Follow me on every platform. This is not a request, it is a demand. https://linktr.ee/carefreebomb"
     }, {
         trigger: "!specs",
         aliases: ["!pc"],
@@ -89,9 +80,6 @@ export const socialTriggers: Array<ChatTriggerData> = [
         trigger: "!tip",
         aliases: ["!donate"],
         action: "https://paypal.me/lucasgerrits or https://ko-fi.com/carefreebomb"
-    }, {
-        trigger: "!twitter",
-        action: "https://twitter.com/carefreeb0mb"
     }, {
         trigger: "!venmo",
         action: "@carefreebomb"
